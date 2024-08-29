@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/lv_image"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:background="@color/white">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/size_2"
+            android:layout_marginBottom="@dimen/size_2"
+            android:background="@drawable/bg_square_round_hashtag">
+
+            <TextView
+                android:id="@+id/lbl_name_teg"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/size_8"
+                android:paddingBottom="2dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="1dp"
+                android:paddingTop="8dp"
+                android:textColor="@color/white"
+                android:textSize="14dp"
+                android:text="#"
+                 />
+
+            <TextView
+                android:id="@+id/lbl_name"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/size_17"
+                android:layout_marginRight="@dimen/size_17"
+                android:paddingBottom="2dp"
+                android:paddingLeft="5dp"
+                android:paddingRight="1dp"
+                android:paddingTop="8.5dp"
+                android:textColor="@color/white"
+                android:textSize="14dp"
+                android:text="해시태그"
+                />
+
+        </RelativeLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

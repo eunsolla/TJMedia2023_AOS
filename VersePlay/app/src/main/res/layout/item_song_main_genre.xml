@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.song.viewmodel.SongMainViewModel" />
+
+        <variable
+            name="data"
+            type="com.verse.app.model.song.SongMainInfo" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_161616">
+
+        <TextView
+            android:id="@+id/title_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/size_20"
+            android:layout_marginTop="@dimen/size_44"
+            android:fontFamily="@font/font_noto_sans_kr_medium"
+            android:includeFontPadding="false"
+            android:text="@string/song_main_title_genre"
+            android:textColor="@color/white"
+            android:textSize="@dimen/size_18"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/more_image_view"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:gravity="center_vertical"
+            android:visibility="@{data.genreList.size() != 0}"
+            android:paddingLeft="@dimen/size_20"
+            android:paddingRight="@dimen/size_20"
+            android:src="@drawable/ic_down"
+            android:textColor="@color/color_8c8c8c"
+            android:textSize="@dimen/size_13"
+            app:layout_constraintBottom_toBottomOf="@+id/title_text_view"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/title_text_view" />
+
+        <com.google.android.flexbox.FlexboxLayout
+            android:id="@+id/flexbox_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_28"
+            android:paddingStart="@dimen/size_20"
+            app:alignContent="flex_start"
+            app:alignItems="flex_start"
+            app:flexDirection="row"
+            app:flexWrap="wrap"
+            app:genreDataList="@{data}"
+            app:viewModel="@{viewModel}"
+            app:layout_constraintTop_toBottomOf="@+id/title_text_view"
+            app:moreView="@{moreImageView}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_28"
+            android:text="@string/str_genre_no_data"
+            android:fontFamily="@font/font_noto_sans_kr_medium"
+            android:includeFontPadding="false"
+            android:textSize="@dimen/size_15"
+            android:textColor="@color/color_707070"
+            android:visibility="@{data.genreList.size() == 0 }"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title_text_view" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

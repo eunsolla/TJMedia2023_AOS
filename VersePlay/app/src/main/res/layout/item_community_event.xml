@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="requestManager"
+            type="com.bumptech.glide.RequestManager" />
+
+        <variable
+            name="data"
+            type="com.verse.app.model.community.CommunityEventData" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:background="@color/white">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/font_noto_sans_kr_medium"
+            android:maxLines="1"
+            android:text="@{data.title}"
+            android:textColor="@color/color_222222"
+            android:textSize="@dimen/size_14"
+            tools:text="벌스 무제한 할인 쿠폰을 ?! by jsPark" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/font_noto_sans_kr_light"
+            android:includeFontPadding="false"
+            android:text="@{data.dateText}"
+            android:visibility="@{data.dateText.length() > 0,default=gone}"
+            tools:text="2023.03.14"
+            tools:visibility="visible" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_14"
+            android:visibility="@{data.imagePath.length() > 0,default=gone}"
+            tools:visibility="visible">
+
+            <com.verse.app.widget.views.CustomConstraintLayout
+                android:id="@+id/clImageThumb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutCorner="@dimen/size_10"
+                app:layout_constraintDimensionRatio="335:80"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_220"
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    app:imageUrl="@{data.imagePath}"
+                    app:requestManager="@{requestManager}"
+                    app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize10"
+                    app:strokeColor="#40000000"
+                    app:strokeWidth="@dimen/size_2"
+                    tools:src="@tools:sample/backgrounds/scenic" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_220"
+                    android:background="@color/color_80000000_50"
+                    android:visibility="@{data.isEventEnd(),default=gone}"
+                    tools:visibility="visible">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/font_noto_sans_kr_medium"
+                        android:text="@string/str_finish"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/size_18"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.verse.app.widget.views.CustomConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.legacy.widget.Space
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/size_26" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</layout>

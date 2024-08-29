@@ -1,0 +1,776 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="requestManager"
+            type="com.bumptech.glide.RequestManager" />
+
+        <import type="com.verse.app.contants.ExoPageType" />
+
+        <import type="com.verse.app.contants.MediaType" />
+
+        <import type="com.verse.app.contants.SingType" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="myInfo"
+            type="com.verse.app.model.user.UserData" />
+
+        <variable
+            name="data"
+            type="com.verse.app.model.feed.FeedContentsData" />
+
+        <variable
+            name="position"
+            type="java.lang.Integer" />
+
+        <variable
+            name="isDetail"
+            type="java.lang.Boolean" />
+
+        <import type="android.graphics.Paint" />
+
+    </data>
+
+    <com.verse.app.widget.views.CustomConstraintLayout
+        android:id="@+id/cl_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:visibility="visible">
+
+        <!--비디오-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/black"
+            android:visibility="@{data.mdTpCd.equalsIgnoreCase(MediaType.VIDEO.code) || data.paTpCd.equalsIgnoreCase(SingType.AD.code)}">
+
+            <com.verse.app.utility.exo.ExoStyledPlayerView
+                android:id="@+id/player_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:albumView="@{ivAlbum}"
+                app:btBtnPlayView="@{ivBtPlay}"
+                app:btPlayingTime="@{tvPlayingTime}"
+                app:btSbBarView="@{sbBar}"
+                app:btTotalTimeView="@{tvTotalTime}"
+                app:btnPlayView="@{ivPlay}"
+                app:feedContentsData="@{data}"
+                app:feedUrl="@{!isDetail ? data.feedUrl : data.orgConPath}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:position="@{position}"
+                app:surface_type="texture_view"
+                app:thumbnailView="@{ivThumbnail}" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_thumbnail"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="visible"
+                app:feedContentsData="@{data}"
+                app:requestManager="@{requestManager}"
+                app:thumbPlaceHolder="@{@drawable/ic_verse_2}"
+                app:thumbUrl="@{data.thumbPicPath}" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!--오디오-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_audio"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="@{data.mdTpCd.equalsIgnoreCase(MediaType.AUDIO.code)  &amp;&amp; !data.paTpCd.equalsIgnoreCase(SingType.AD.code)}">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                app:imageUrl="@{data.albImgPath}"
+                app:placeholder="@{@drawable/ic_verse_1}"
+                app:requestManager="@{requestManager}" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/color_B3161616_70" />
+
+            <View
+                android:id="@+id/v_empty_left"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/size_1"
+                android:background="@color/color_00000000"
+                app:layout_constraintHorizontal_weight="23"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/cl_album_jacket"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/v_empty_right"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/size_1"
+                android:background="@color/color_00000000"
+                app:layout_constraintHorizontal_weight="23"
+                app:layout_constraintLeft_toRightOf="@+id/cl_album_jacket"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.verse.app.widget.views.CustomConstraintLayout
+                android:id="@+id/cl_album_jacket"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layoutClickEffect="false"
+                app:layoutCorner="@dimen/size_18"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintHorizontal_weight="54"
+                app:layout_constraintLeft_toRightOf="@+id/v_empty_left"
+                app:layout_constraintRight_toLeftOf="@id/v_empty_right"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.4">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_album_jacket"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    app:imageUrl="@{data.albImgPath}"
+                    app:placeholder="@{@drawable/ic_album_default}"
+                    app:requestManager="@{requestManager}"
+                    tools:src="@drawable/ic_album_default" />
+
+            </com.verse.app.widget.views.CustomConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/iv_play"
+            android:layout_width="@dimen/size_60"
+            android:layout_height="@dimen/size_60"
+            android:src="@drawable/ic_play"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="@dimen/size_80"
+            android:layout_height="0dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/gradation_side_feed"
+            app:layout_constraintBottom_toBottomOf="@+id/cl_contents_info"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/cl_contents_info" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_157"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/gradation_bottom_feed"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_contents_info"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/size_20"
+            android:layout_marginRight="@dimen/size_8"
+            android:layout_marginBottom="@dimen/size_4"
+            app:layout_constraintBottom_toTopOf="@+id/more_text_view"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/iv_album"
+            app:layout_constraintVertical_bias="1"
+            app:layout_goneMarginBottom="@dimen/size_40">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/size_20"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clMore"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/iv_mike"
+                        android:layout_width="@dimen/size_44"
+                        android:layout_height="@dimen/size_44"
+                        android:layout_marginBottom="@dimen/size_12"
+                        android:src="@{data.isDualMic ? data.paTpCd.equalsIgnoreCase(SingType.DUET.code) ? @drawable/ic_duet_w : @drawable/ic_battle : @drawable/ic_solo}"
+                        android:visibility="@{data.isMikeVisible, default=gone}"
+                        app:layout_constraintBottom_toTopOf="@+id/nsv"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_goneMarginBottom="0dp"
+                        tools:src="@drawable/ic_duet_w"
+                        tools:visibility="visible" />
+
+                    <com.verse.app.widget.views.CustomTextView
+                        android:id="@+id/tv_join"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/size_5"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/font_noto_sans_kr_medium"
+                        android:includeFontPadding="false"
+                        android:lineSpacingExtra="@dimen/size_5"
+                        android:maxLines="1"
+                        android:paddingLeft="@dimen/size_7"
+                        android:paddingTop="@dimen/size_3"
+                        android:paddingRight="@dimen/size_7"
+                        android:paddingBottom="@dimen/size_3"
+                        android:text="@{data.paTpCd.equalsIgnoreCase(SingType.DUET.code) ? @string/str_join_duet : @string/str_join_battle}"
+                        android:textSize="@dimen/size_10"
+                        android:visibility="@{!data.ownerMemCd.equalsIgnoreCase(myInfo.memCd)  &amp;&amp; data.isJoin ? View.VISIBLE : View.GONE, default=gone}"
+                        app:layout_constraintBottom_toTopOf="@+id/feed_info_linear_layout"
+                        app:layout_constraintHorizontal_bias="0"
+                        app:layout_constraintLeft_toLeftOf="@+id/feed_info_linear_layout"
+                        app:layout_constraintRight_toRightOf="@+id/feed_info_linear_layout"
+                        app:textViewBgColor="@color/color_2fc2ff"
+                        app:textViewCorner="@dimen/size_9"
+                        app:textViewTxtColor="@color/white"
+                        tools:text="@string/str_join_duet"
+                        tools:visibility="visible" />
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/feed_info_linear_layout"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_marginLeft="@dimen/size_10"
+                        android:layout_marginRight="@dimen/size_20"
+                        android:orientation="vertical"
+                        android:visibility="@{data.paTpCd.equalsIgnoreCase(SingType.AD.code) ? View.GONE : View.VISIBLE, default = gone}"
+                        app:layout_constraintBottom_toBottomOf="@+id/iv_mike"
+                        app:layout_constraintLeft_toRightOf="@+id/iv_mike"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/iv_mike"
+                        tools:visibility="visible">
+
+                        <com.verse.app.widget.views.CustomTextView
+                            android:id="@+id/tv_song_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/font_noto_sans_kr_light"
+                            android:includeFontPadding="false"
+                            android:maxLines="1"
+                            android:shadowColor="#262626"
+                            android:shadowDx="0.5"
+                            android:shadowDy="0.5"
+                            android:shadowRadius="1.0"
+                            android:text="@{data.songNm}"
+                            android:textSize="@dimen/size_15"
+                            app:textViewBgColor="@color/color_00000000"
+                            app:textViewTxtColor="@color/white"
+                            tools:text="머냐" />
+
+                        <com.verse.app.widget.views.CustomTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/font_noto_sans_kr_light"
+                            android:includeFontPadding="false"
+                            android:maxLines="1"
+                            android:shadowColor="#262626"
+                            android:shadowDx="0.5"
+                            android:shadowDy="0.5"
+                            android:shadowRadius="1.0"
+                            android:text="@{data.artNm}"
+                            android:textSize="@dimen/size_13"
+                            app:textViewBgColor="@color/color_00000000"
+                            app:textViewTxtColor="@color/color_8c8c8c"
+                            tools:text="블랙핑크" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/iv_ad"
+                        android:layout_width="@dimen/size_38"
+                        android:layout_height="@dimen/size_20"
+                        android:layout_marginBottom="@dimen/size_12"
+                        android:src="@drawable/ic_ad"
+                        android:visibility="@{data.paTpCd.equalsIgnoreCase(SingType.AD.code) ? View.VISIBLE : View.GONE, default = gone}"
+                        app:layout_constraintBottom_toTopOf="@+id/nsv"
+                        app:layout_constraintLeft_toLeftOf="@+id/nsv"
+                        app:layout_constraintVertical_bias="1"
+                        tools:visibility="gone" />
+
+                    <com.verse.app.widget.views.CustomTextView
+                        android:id="@+id/tv_ad_detail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_marginLeft="@dimen/size_10"
+                        android:gravity="center_vertical"
+                        android:includeFontPadding="false"
+                        android:paddingLeft="@dimen/size_7"
+                        android:paddingRight="@dimen/size_7"
+                        android:src="@drawable/ic_ad"
+                        android:text="@string/str_ad_detail"
+                        android:textSize="@dimen/size_10"
+                        android:visibility="@{data.paTpCd.equalsIgnoreCase(SingType.AD.code)  &amp;&amp; data.adConUrl.length() > 0 ? View.VISIBLE : View.GONE, default = gone}"
+                        app:fontFamily="@font/font_noto_sans_kr_medium"
+                        app:layout_constraintBottom_toBottomOf="@+id/iv_ad"
+                        app:layout_constraintLeft_toRightOf="@+id/iv_ad"
+                        app:layout_constraintTop_toTopOf="@+id/iv_ad"
+                        app:layout_constraintVertical_bias="1"
+                        app:textViewBgColor="@color/color_ff6f0f"
+                        app:textViewCorner="@dimen/size_4"
+                        app:textViewTxtColor="@color/white"
+                        tools:visibility="gone" />
+
+                    <androidx.core.widget.NestedScrollView
+                        android:id="@+id/nsv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="false"
+                        android:focusable="false"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintVertical_bias="1">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/clTag"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:animateLayoutChanges="true"
+                            android:clickable="false"
+                            android:descendantFocusability="blocksDescendants"
+                            android:focusable="false"
+                            app:layout_constraintBottom_toBottomOf="parent">
+
+                            <com.verse.app.widget.views.CustomLinkableTextView
+                                android:id="@+id/tvTag"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom|end"
+                                android:background="@color/color_00000000"
+                                android:bufferType="spannable"
+                                android:fontFamily="@font/font_noto_sans_kr_light"
+                                android:includeFontPadding="false"
+                                android:lineSpacingExtra="@dimen/size_5"
+                                android:maxLines="2"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/size_15"
+                                android:visibility="@{data.more == false,default=visible}"
+                                app:feedTagData="@{data}"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:moreView="@{moreTextView}"
+                                app:nestedScrollView="@{nsv}"
+                                app:originTagView="@{tvOriginalTag}"
+                                app:rootView="@{clRoot}"
+                                app:userData="@{myInfo}"
+                                tools:text="#에스파 #넥스트레벨 #추천 #맞팔 #..."
+                                tools:visibility="visible" />
+
+                            <com.verse.app.widget.views.CustomLinkableTextView
+                                android:id="@+id/tvOriginalTag"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom|end"
+                                android:background="@color/color_00000000"
+                                android:bufferType="spannable"
+                                android:clickable="false"
+                                android:focusable="false"
+                                android:fontFamily="@font/font_noto_sans_kr_light"
+                                android:includeFontPadding="false"
+                                android:lineSpacingExtra="@dimen/size_5"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/size_15"
+                                android:visibility="@{data.more,default=gone}"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="#에스파 #넥스트레벨 #추천 #맞팔 #..."
+                                tools:visibility="visible" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.core.widget.NestedScrollView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.verse.app.widget.views.CustomTextView
+            android:id="@+id/more_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/size_20"
+            android:layout_marginBottom="@dimen/size_20"
+            android:fontFamily="@font/font_noto_sans_kr_medium"
+            android:includeFontPadding="false"
+            android:text="@{data.more ? @string/fmt_feed_contents_hide : @string/fmt_feed_contents_more}"
+            android:textSize="@dimen/size_15"
+            android:visibility="@{data.noteLineCount > 2, default=gone}"
+            app:layout_constraintBottom_toTopOf="@+id/cl_play_bar"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:textViewBgColor="@color/color_00000000"
+            app:textViewClickEffect="false"
+            app:textViewFlags="@{Paint.UNDERLINE_TEXT_FLAG}"
+            app:textViewTxtColor="@color/white"
+            tools:text="더보기"
+            tools:visibility="visible" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/ll_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/size_8"
+            android:layout_marginBottom="@dimen/size_30"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/iv_album"
+            app:layout_constraintRight_toRightOf="parent">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="@{data.isDuetOrBattle &amp;&amp; !data.paTpCd.equalsIgnoreCase(SingType.AD.code) }">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/size_17"
+                    android:visibility="@{data.partAmemCd.length() > 0}"
+                    tools:visibility="visible">
+
+                    <!--파트A-->
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/user_a_image_view"
+                        android:layout_width="@dimen/size_44"
+                        android:layout_height="@dimen/size_44"
+                        android:scaleType="centerCrop"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:profileImage="@{data.partApfImgPath}"
+                        app:requestManager="@{requestManager}"
+                        app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+                        app:strokeColor="@null"
+                        tools:src="@drawable/ic_album_default"
+                        tools:visibility="visible" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/iv_part_a"
+                        android:layout_width="@dimen/size_20"
+                        android:layout_height="@dimen/size_20"
+                        android:src="@drawable/ic_add_profile"
+                        android:visibility="@{!data.followApartYn &amp;&amp; !data.partAmemCd.equalsIgnoreCase(myInfo.memCd) ? View.VISIBLE : View.GONE , default=gone}"
+                        app:layout_constraintBottom_toBottomOf="@+id/user_a_image_view"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/user_a_image_view"
+                        app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+                        tools:visibility="visible" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!--파트 B-->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/size_18"
+                    android:visibility="@{data.partBmemCd.length() > 0}"
+                    tools:visibility="visible">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/user_b_image_view"
+                        android:layout_width="@dimen/size_44"
+                        android:layout_height="@dimen/size_44"
+                        android:scaleType="centerCrop"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:profileImage="@{data.partBpfImgPath}"
+                        app:requestManager="@{requestManager}"
+                        app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+                        app:strokeColor="@null"
+                        tools:src="@drawable/ic_album_default"
+                        tools:visibility="visible" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/iv_part_b"
+                        android:layout_width="@dimen/size_20"
+                        android:layout_height="@dimen/size_20"
+                        android:src="@drawable/ic_add_profile"
+                        android:visibility="@{!data.followBpartYn &amp;&amp; !data.partBmemCd.equalsIgnoreCase(myInfo.memCd) ? View.VISIBLE : View.GONE , default=gone}"
+                        app:layout_constraintBottom_toBottomOf="@+id/user_b_image_view"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/user_b_image_view"
+                        app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+                        tools:visibility="visible" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/size_18"
+                android:visibility="@{!data.isDuetOrBattle &amp;&amp; !data.paTpCd.equalsIgnoreCase(SingType.AD.code)}"
+                tools:visibility="visible">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/iv_solo_user"
+                    android:layout_width="@dimen/size_44"
+                    android:layout_height="@dimen/size_44"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:profileImage="@{data.ownerFrImgPath}"
+                    app:requestManager="@{requestManager}"
+                    app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+                    app:strokeColor="@null"
+                    tools:src="@drawable/ic_album_default"
+                    tools:visibility="visible" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_solo_user_f"
+                    android:layout_width="@dimen/size_20"
+                    android:layout_height="@dimen/size_20"
+                    android:src="@drawable/ic_add_profile"
+                    android:visibility="@{!data.isOwerFollow &amp;&amp; !data.ownerMemCd.equalsIgnoreCase(myInfo.memCd) ? View.VISIBLE : View.GONE , default=gone}"
+                    app:layout_constraintBottom_toBottomOf="@+id/iv_solo_user"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_solo_user"
+                    app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+                    tools:visibility="visible" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_like"
+                android:layout_width="@dimen/size_30"
+                android:layout_height="@dimen/size_30"
+                android:src="@drawable/selector_like"
+                android:visibility="@{data.paTpCd.equalsIgnoreCase(SingType.AD.code) ? View.GONE : View.VISIBLE, default = gone}"
+                app:isSelected="@{data.isLike}"
+                tools:text="0"
+                tools:visibility="visible" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_like_count"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/size_20"
+                android:fontFamily="@font/noto_sans_kr_medium"
+                android:includeFontPadding="false"
+                android:textColor="@color/white"
+                android:textSize="@dimen/size_10"
+                android:visibility="@{data.paTpCd.equalsIgnoreCase(SingType.AD.code) ? View.GONE : View.VISIBLE, default = gone}"
+                app:intText="@{data.likeCnt}"
+                tools:text="0"
+                tools:visibility="visible" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_comment"
+                android:layout_width="@dimen/size_30"
+                android:layout_height="@dimen/size_30"
+                android:src="@drawable/ic_comment"
+                android:visibility="@{data.paTpCd.equalsIgnoreCase(SingType.AD.code) ? View.GONE : View.VISIBLE, default = gone}"
+                tools:visibility="visible" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvReplyCount"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/size_20"
+                android:fontFamily="@font/noto_sans_kr_medium"
+                android:includeFontPadding="false"
+                android:textColor="@color/white"
+                android:textSize="@dimen/size_10"
+                android:visibility="@{data.paTpCd.equalsIgnoreCase(SingType.AD.code) ? View.GONE : View.VISIBLE, default = gone}"
+                app:intText="@{data.replyCount}"
+                tools:text="0"
+                tools:visibility="visible" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_book_mark"
+                android:layout_width="@dimen/size_30"
+                android:layout_height="@dimen/size_30"
+                android:layout_marginBottom="@dimen/size_28"
+                android:src="@drawable/selector_favorites"
+                android:visibility="@{data.paTpCd.equalsIgnoreCase(SingType.AD.code) ? View.GONE : View.VISIBLE, default = gone}"
+                app:isSelected="@{data.isBookMark}"
+                tools:visibility="visible" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_more"
+                android:layout_width="@dimen/size_30"
+                android:layout_height="@dimen/size_30"
+                android:src="@drawable/ic_more_white"
+                android:visibility="@{data.paTpCd.equalsIgnoreCase(SingType.AD.code) ? View.GONE : View.VISIBLE, default = gone}"
+                tools:visibility="visible" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_album"
+            android:layout_width="@dimen/size_44"
+            android:layout_height="@dimen/size_44"
+            android:layout_marginRight="@dimen/size_12"
+            android:layout_marginBottom="@dimen/size_30"
+            android:scaleType="centerCrop"
+            app:albumUrl="@{data.albImgPath}"
+            app:inVisibility="@{data.isFeedContents}"
+            app:layout_constraintBottom_toTopOf="@+id/cl_play_bar"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_goneMarginBottom="@dimen/size_40"
+            app:placeholder="@{@drawable/ic_album_default}"
+            app:requestManager="@{requestManager}"
+            app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+            app:strokeColor="@null"
+            tools:src="@drawable/ic_album_default" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_play_bar"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginTop="@dimen/size_5"
+            android:background="@color/color_80000000_50"
+            android:visibility="@{isDetail,default=gone}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:visibility="visible">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_bt_play"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:src="@drawable/selector_playing"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_playing_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/noto_sans_kr_light"
+                android:includeFontPadding="false"
+                android:text="00:00"
+                android:textColor="@color/white"
+                android:textSize="@dimen/size_14"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/iv_bt_play"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="00:00" />
+
+            <SeekBar
+                android:id="@+id/sb_bar"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:max="100"
+                android:progress="0"
+                android:progressDrawable="@drawable/seekbar_style"
+                android:thumb="@drawable/seek_thumb"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/tv_playing_time"
+                app:layout_constraintRight_toLeftOf="@+id/tv_total_time" />
+
+            <TextView
+                android:id="@+id/tv_total_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/size_14"
+                android:fontFamily="@font/noto_sans_kr_light"
+                android:includeFontPadding="false"
+                android:text="00:00"
+                android:textColor="@color/white"
+                android:textSize="@dimen/size_14"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="00:00" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!--삭제된 컨텐츠-->
+        <com.verse.app.widget.views.CustomTextView
+            android:id="@+id/tv_feed_deleted"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:paddingLeft="@dimen/size_10"
+            android:paddingRight="@dimen/size_10"
+            android:text="@string/str_deleted_detail_feed"
+            android:textSize="@dimen/size_19"
+            android:visibility="@{data.isDeleted,default=gone}"
+            app:fontFamily="@font/font_noto_sans_kr_medium"
+            app:textViewBgColor="@color/color_B3000000_70"
+            app:textViewClickEffect="false"
+            app:textViewTxtColor="@color/white"
+            tools:visibility="gone" />
+
+        <!--사용 제한된 컨텐츠-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_feed_stop"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/color_B3000000_70"
+            android:clickable="true"
+            android:focusable="true"
+            android:visibility="@{!data.isDeleted &amp;&amp; data.isSongDelYn,default=gone}"
+            tools:visibility="gone">
+
+            <com.verse.app.widget.views.CustomTextView
+                android:id="@+id/tv_song_del_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:paddingLeft="@dimen/size_20"
+                android:paddingRight="@dimen/size_20"
+                android:text="@string/str_service_stop_song"
+                android:textSize="@dimen/size_19"
+                app:fontFamily="@font/font_noto_sans_kr_medium"
+                app:layout_constraintBottom_toTopOf="@+id/tv_btn_song_del"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed"
+                app:textViewBgColor="@color/color_00000000"
+                app:textViewClickEffect="false"
+                app:textViewTxtColor="@color/white" />
+
+            <com.verse.app.widget.views.CustomTextView
+                android:id="@+id/tv_btn_song_del"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_36"
+                android:fontFamily="@font/noto_sans_kr_medium"
+                android:includeFontPadding="false"
+                android:paddingLeft="@dimen/size_45"
+                android:paddingTop="@dimen/size_10"
+                android:paddingRight="@dimen/size_45"
+                android:paddingBottom="@dimen/size_10"
+                android:text="@string/str_delete"
+                android:textSize="@dimen/size_15"
+                android:visibility="@{data.ownerMemCd.equalsIgnoreCase(myInfo.memCd) ? View.VISIBLE : View.GONE, default=visible}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_song_del_desc"
+                app:textViewBgColor="@color/color_2fc2ff"
+                app:textViewCorner="@dimen/size_20"
+                app:textViewTxtColor="@color/white" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.verse.app.widget.views.CustomConstraintLayout>
+
+</layout>

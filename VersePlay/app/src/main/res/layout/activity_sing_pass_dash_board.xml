@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.verse.app.contants.FragmentType" />
+
+        <import type="com.verse.app.widget.pagertablayout.PagerTabType" />
+
+        <import type="com.verse.app.contants.ListPagedItemType" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.singpass.viewmodel.SingPassDashBoardViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <RelativeLayout
+            android:id="@+id/rl_header"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_52"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="@dimen/size_20"
+                android:layout_height="@dimen/size_20"
+                android:layout_marginStart="@dimen/size_20"
+                android:layout_marginTop="@dimen/size_16"
+                android:background="@null"
+                android:scaleType="centerCrop"
+                android:src="@drawable/btn_close_left_black"
+                app:turtleClick="@{()-> viewModel.close()}" />
+
+            <com.verse.app.widget.views.CustomTextView
+                android:id="@+id/rank_title_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/noto_sans_kr_medium"
+                android:text="@string/season_sing_pass_dash_board_title"
+                android:textSize="@dimen/size_18"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:textViewBgColor="@color/color_00000000"
+                app:textViewTxtColor="@color/color_222222" />
+        </RelativeLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/white"
+            app:inVisibility="@{viewModel.isLoading() == false}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rl_header">
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/size_12">
+
+                    <LinearLayout
+                        android:id="@+id/ll_season_info"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/size_20"
+                        android:paddingRight="@dimen/size_20"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:id="@+id/iv_level"
+                            android:layout_width="@dimen/size_80"
+                            android:layout_height="@dimen/size_80"
+                            android:adjustViewBounds="true"
+                            android:scaleType="fitXY"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+                            app:strokeColor="@null"
+                            tools:src="@drawable/ic_album_default" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/size_15"
+                            android:orientation="vertical">
+
+                            <com.verse.app.widget.views.CustomTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:fontFamily="@font/noto_sans_kr_medium"
+                                android:includeFontPadding="false"
+                                android:lineSpacingExtra="5dp"
+                                android:maxLines="2"
+                                android:text="@{viewModel.seasonInfo.svcSeaMngNm}"
+                                android:textSize="@dimen/size_23"
+                                android:visibility="@{viewModel.seasonInfo != null,default=gone}"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:textViewBgColor="@color/color_00000000"
+                                app:textViewTxtColor="@color/color_222222"
+                                tools:text="시즌 1. 나무"
+                                tools:visibility="visible" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <com.verse.app.widget.views.CustomTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/noto_sans_kr_light"
+                                    android:includeFontPadding="false"
+                                    android:text="@{@string/season_period_text(viewModel.seasonInfo.svcStDt, viewModel.seasonInfo.svcFnDt, viewModel.seasonInfo.seaRemainDate, viewModel.seasonInfo.seaRemainTime)}"
+                                    android:textSize="@dimen/size_13"
+                                    android:visibility="@{viewModel.seasonInfo != null,default=gone}"
+                                    app:layout_constraintLeft_toLeftOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:textViewBgColor="@color/color_00000000"
+                                    app:textViewTxtColor="@color/color_222222"
+                                    tools:text="남은기간 ~~"
+                                    tools:visibility="visible" />
+
+                                <com.verse.app.widget.views.CustomTextView
+                                    android:id="@+id/sing_pass_hours_text_view"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/noto_sans_kr_light"
+                                    android:includeFontPadding="false"
+                                    android:text="@{@string/season_hours_text(viewModel.seasonInfo.seaRemainTime)}"
+                                    android:textSize="@dimen/size_13"
+                                    android:visibility="@{viewModel.seasonInfo.seaRemainTime > 0 ? View.VISIBLE : View.GONE, default = gone}"
+                                    app:layout_constraintBottom_toBottomOf="@+id/sing_pass_date_text_view"
+                                    app:layout_constraintLeft_toRightOf="@+id/sing_pass_date_text_view"
+                                    app:layout_constraintTop_toTopOf="@+id/sing_pass_date_text_view"
+                                    app:textViewBgColor="@color/color_00000000"
+                                    app:textViewTxtColor="@color/color_222222"
+                                    tools:text="1시간"
+                                    tools:visibility="visible" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/size_6"
+                                android:orientation="horizontal"
+                                android:weightSum="2">
+
+                                <RelativeLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1">
+
+                                    <com.verse.app.widget.views.CustomTextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/size_8"
+                                        android:fontFamily="@font/noto_sans_kr_medium"
+                                        android:gravity="center"
+                                        android:includeFontPadding="false"
+                                        android:lineSpacingExtra="5dp"
+                                        android:paddingLeft="@dimen/size_26"
+                                        android:paddingTop="@dimen/size_7"
+                                        android:paddingRight="@dimen/size_26"
+                                        android:paddingBottom="@dimen/size_7"
+                                        android:text="@{viewModel.seasonInfo.norSkCnt}"
+                                        android:textSize="@dimen/size_13"
+                                        android:visibility="@{viewModel.seasonInfo != null,default=visible}"
+                                        app:textViewBgColor="@color/color_2fc2ff"
+                                        app:textViewCorner="@dimen/size_16"
+                                        app:textViewTxtColor="@color/white"
+                                        tools:text="1,000"
+                                        tools:visibility="visible" />
+
+                                    <com.verse.app.widget.views.CustomTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="@dimen/size_16"
+                                        android:layout_marginLeft="@dimen/size_5"
+                                        android:fontFamily="@font/noto_sans_kr_medium"
+                                        android:includeFontPadding="false"
+                                        android:lineSpacingExtra="5dp"
+                                        android:gravity="center"
+                                        android:paddingLeft="@dimen/size_7"
+                                        android:paddingRight="@dimen/size_7"
+                                        android:text="@string/season_sing_pass_normal_skip"
+                                        android:textSize="@dimen/size_10"
+                                        android:visibility="visible"
+                                        app:textViewBgColor="@color/color_222222"
+                                        app:textViewCorner="@dimen/size_8"
+                                        app:textViewTxtColor="@color/white" />
+
+                                </RelativeLayout>
+
+                                <RelativeLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginStart="@dimen/size_10"
+                                    android:layout_weight="1">
+
+                                    <com.verse.app.widget.views.CustomTextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/size_8"
+                                        android:fontFamily="@font/noto_sans_kr_medium"
+                                        android:gravity="center"
+                                        android:includeFontPadding="false"
+                                        android:lineSpacingExtra="5dp"
+                                        android:paddingLeft="@dimen/size_26"
+                                        android:paddingTop="@dimen/size_7"
+                                        android:paddingRight="@dimen/size_26"
+                                        android:paddingBottom="@dimen/size_7"
+                                        android:text="@{viewModel.seasonInfo.seaSkCnt}"
+                                        android:textSize="@dimen/size_13"
+                                        android:visibility="@{viewModel.seasonInfo != null,default=visible}"
+                                        app:textViewBgColor="@color/color_ff8a01"
+                                        app:textViewCorner="@dimen/size_16"
+                                        app:textViewTxtColor="@color/white"
+                                        tools:text="1,000"
+                                        tools:visibility="visible" />
+
+                                    <com.verse.app.widget.views.CustomTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="@dimen/size_16"
+                                        android:layout_marginLeft="@dimen/size_5"
+                                        android:fontFamily="@font/noto_sans_kr_medium"
+                                        android:includeFontPadding="false"
+                                        android:lineSpacingExtra="5dp"
+                                        android:gravity="center"
+                                        android:paddingLeft="@dimen/size_7"
+                                        android:paddingRight="@dimen/size_7"
+                                        android:text="@string/season_sing_pass_season_skip"
+                                        android:textSize="@dimen/size_10"
+                                        android:visibility="visible"
+                                        app:textViewBgColor="@color/color_222222"
+                                        app:textViewCorner="@dimen/size_8"
+                                        app:textViewTxtColor="@color/white" />
+
+                                </RelativeLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_mission_item"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/size_36"
+                        android:orientation="vertical"
+                        android:visibility="@{viewModel.singPassDashBoardData.seasonItemList.size() > 0 ? View.VISIBLE : View.GONE, default = visible}"
+                        app:layout_constraintTop_toBottomOf="@+id/ll_season_info">
+
+                        <com.verse.app.widget.views.CustomTextView
+                            android:id="@+id/tv_item_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/size_20"
+                            android:fontFamily="@font/noto_sans_kr_medium"
+                            android:includeFontPadding="false"
+                            android:lineSpacingExtra="5dp"
+                            android:text="@string/season_sing_pass_mission_item_title"
+                            android:textSize="@dimen/size_18"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:textViewBgColor="@color/color_00000000"
+                            app:textViewTxtColor="@color/color_222222" />
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rv"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/size_51"
+                                android:paddingLeft="@dimen/size_20"
+                                android:layout_marginTop="@dimen/size_20"
+                                android:clipToPadding="false"
+                                android:orientation="horizontal"
+                                app:layout_constraintLeft_toLeftOf="@+id/tv_item_title"
+                                app:layout_constraintTop_toBottomOf="@+id/tv_item_title"
+                                app:dataList="@{viewModel.seasonItemData}"
+                                app:isScrollTop="@{true}"
+                                app:itemType="@{ListPagedItemType.MAIN_SING_PASS_SEASON_ITEM_LIST}"
+                                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                app:viewModel="@{viewModel}"
+                                tools:itemCount="4"
+                                tools:listitem="@layout/item_season_item_list" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_tab_bar"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginTop="@dimen/size_23"
+                        android:background="@color/white"
+                        android:orientation="vertical"
+                        app:layout_constraintTop_toBottomOf="@+id/ll_mission_item">
+
+                        <com.verse.app.widget.pagertablayout.LinePagerTabLayout
+                            android:id="@+id/tab_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/size_56"
+                            app:fixedSize="@{viewModel.tabList.size}"
+                            app:menuList="@{viewModel.tabList}"
+                            app:tab_bottom_line_height="@dimen/size_1"
+                            app:tab_disable_txt_color="@color/color_8c8c8c"
+                            app:tab_indicator_bg_color="@color/white"
+                            app:tab_indicator_color="@color/color_2fc2ff"
+                            app:tab_indicator_height="@dimen/size_2"
+                            app:tab_txt_color="@color/color_222222"
+                            app:tab_txt_size="@dimen/size_17"
+                            app:tab_type="fixed"
+                            app:viewPager="@{vpMission}" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_progress"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/size_81"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingLeft="@dimen/size_20"
+                        android:paddingRight="@dimen/size_20"
+                        app:layout_constraintTop_toBottomOf="@+id/ll_tab_bar">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:orientation="horizontal">
+
+                            <com.verse.app.widget.views.CustomTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="left"
+                                android:layout_marginBottom="@dimen/size_5"
+                                android:fontFamily="@font/noto_sans_kr_medium"
+                                android:includeFontPadding="false"
+                                android:lineSpacingExtra="5dp"
+                                android:lines="1"
+                                android:text="@{@string/season_sing_pass_mission_percent(viewModel.singPassDashBoardData.singPointInfo.progressPer)}"
+                                android:textSize="@dimen/size_10"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:textViewBgColor="@color/color_00000000"
+                                app:textViewTxtColor="@color/color_222222" />
+
+                            <com.verse.app.widget.views.CustomTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="left"
+                                android:layout_marginBottom="@dimen/size_5"
+                                android:fontFamily="@font/noto_sans_kr_medium"
+                                android:includeFontPadding="false"
+                                android:lineSpacingExtra="5dp"
+                                android:lines="1"
+                                android:text="%"
+                                android:textSize="@dimen/size_10"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:textViewBgColor="@color/color_00000000"
+                                app:textViewTxtColor="@color/color_222222" />
+                        </LinearLayout>
+
+                        <ProgressBar
+                            android:id="@+id/pb_mission"
+                            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/size_8"
+                            android:max="100"
+                            android:progress="@{viewModel.singPassDashBoardData.singPointInfo.progressPer}"
+                            android:progressDrawable="@drawable/bg_progress_bar_mission" />
+
+                        <com.verse.app.widget.views.CustomTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:fontFamily="@font/noto_sans_kr_light"
+                            android:includeFontPadding="false"
+                            android:lineSpacingExtra="5dp"
+                            android:lines="1"
+                            android:text="@{@string/season_sing_pass_point_desc(viewModel.singPassDashBoardData.singPointInfo.memSingPoint, viewModel.singPassDashBoardData.singPointInfo.seaPossibleSingPoint)}"
+                            android:textSize="@dimen/size_12"
+                            app:textViewBgColor="@color/color_00000000"
+                            app:textViewTxtColor="@color/color_222222" />
+                    </LinearLayout>
+
+                    <androidx.viewpager2.widget.ViewPager2
+                        android:id="@+id/vp_mission"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:orientation="horizontal"
+                        app:dataList="@{viewModel.tabList}"
+                        app:itemType="@{FragmentType.SING_PASS_MISSION}"
+                        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/ll_progress"
+                        app:limitSize="@{viewModel.tabList.size()}"
+                        app:onPageState="@{(state) -> viewModel.pageTabState(state)}"
+                        app:position="@={viewModel.vpTabPosition}"
+                        app:viewModel="@{viewModel}" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.core.widget.NestedScrollView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

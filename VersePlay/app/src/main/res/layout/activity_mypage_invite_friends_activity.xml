@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.mypage.viewmodel.MypageInviteFriendsViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mypage_setting_activity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <RelativeLayout
+            android:id="@+id/layout_mypage_setting_topbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_52"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageButton
+                android:layout_width="@dimen/size_20"
+                android:layout_height="20dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/size_20"
+                android:background="@null"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_top_arrow_left"
+                app:turtleClick="@{()->viewModel.back()}" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/font_noto_sans_medium"
+                android:includeFontPadding="false"
+                android:lineSpacingExtra="2dp"
+                android:text="@string/invite_my_friend"
+                android:textColor="@color/color_222222"
+                android:textSize="18dp"
+                android:textStyle="normal" />
+
+        </RelativeLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:fillViewport="true"
+            android:overScrollMode="never"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_mypage_setting_topbar">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/size_20"
+                android:paddingRight="@dimen/size_20"
+                android:paddingBottom="@dimen/size_50">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_12"
+                    android:fontFamily="@font/noto_sans_kr_medium"
+                    android:includeFontPadding="false"
+                    android:lineSpacingExtra="7dp"
+                    android:text="@string/my_recommend_nickname"
+                    android:textColor="@color/color_8c8c8c"
+                    android:textSize="13dp"
+                    android:textStyle="normal" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_48"
+                    android:layout_marginTop="@dimen/size_14"
+                    android:orientation="horizontal">
+
+                    <com.verse.app.widget.views.CustomLinearLayout
+                        android:id="@+id/layout_edit_email_border"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/size_48"
+                        android:layout_marginRight="@dimen/size_5"
+                        android:layout_weight="255"
+                        android:background="@drawable/edit_complete_border"
+                        android:orientation="horizontal"
+                        app:linearLayoutBgColor="@color/white"
+                        app:linearLayoutBorder="@dimen/size_1"
+                        app:linearLayoutBorderColor="@color/color_2fc2ff"
+                        app:linearLayoutCorner="@dimen/size_10">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="@dimen/size_16"
+                            android:layout_marginTop="@dimen/size_1"
+                            android:layout_marginRight="@dimen/size_16"
+                            android:layout_marginBottom="@dimen/size_1"
+                            android:focusableInTouchMode="true"
+                            android:fontFamily="@font/font_noto_sans_medium"
+                            android:gravity="center"
+                            android:maxLines="1"
+                            android:text="@{viewModel.myNk}"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/size_15"
+                            tools:text="똘똘이스머프는나야나나야나" />
+
+                    </com.verse.app.widget.views.CustomLinearLayout>
+
+                    <com.verse.app.widget.views.CustomTextView
+                        android:id="@+id/tvConfirm"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="75"
+                        android:backgroundTint="@color/color_2fc2ff"
+                        android:fontFamily="@font/noto_sans_kr_medium"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:text="@string/str_copy"
+                        android:textSize="@dimen/size_15"
+                        app:textViewCorner="@dimen/size_10"
+                        app:textViewTxtColor="@color/white"
+                        app:turtleClick="@{()->viewModel.onClickClipBoard()}" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_invalid_invite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_5"
+                    android:fontFamily="@font/noto_sans_kr_light"
+                    android:includeFontPadding="false"
+                    android:lineSpacingExtra="@dimen/size_5"
+                    android:textColor="@color/color_222222"
+                    android:textSize="13dp"
+                    app:data="@{viewModel.myInvitableCnt}"
+                    app:fmtHtmlText="@{@string/mypage_invite_notice_count_noti}"
+                    tools:text="초대 가능한 횟수 9회 남았습니다." />
+
+                <com.verse.app.widget.views.CustomLinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_28"
+                    android:gravity="center"
+                    android:minHeight="295dp"
+                    android:orientation="vertical"
+                    android:padding="@dimen/size_20"
+                    app:linearLayoutBgColor="@color/color_f9f9f9"
+                    app:linearLayoutBorder="@dimen/size_0_5"
+                    app:linearLayoutBorderColor="@color/color_eaeaea"
+                    app:linearLayoutCorner="@dimen/size_20">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/noto_sans_kr_medium"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:text="@string/str_invite_title"
+                        android:textColor="@color/color_222222"
+                        android:textSize="17dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="20dp"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/str_invite_subtitle_count1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/noto_sans_kr_light"
+                            android:gravity="left"
+                            android:includeFontPadding="false"
+                            android:text="1."
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/size_15" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/str_invite_subtitle_1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/noto_sans_kr_light"
+                            android:gravity="left"
+                            android:includeFontPadding="false"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/size_15"
+                            app:htmlText="@{@string/str_invite_subtitle_1}"
+                            tools:text="친구에게 자신의 콘텐츠를 공유하고, 이를 통해 초대받은 친구가 어플을 다운로드한 뒤에 회원 가입을 합니다. 추천 코드를 하단의 초대 닉네임 입력하기에서 입력 시 친구와 초대한 본인 모두 노래 3곡 이용권이 지급됩니다." />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/size_12"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/str_invite_subtitle_count2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/noto_sans_kr_light"
+                            android:gravity="left"
+                            android:includeFontPadding="false"
+                            android:text="2."
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/size_15" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/str_invite_subtitle_2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/noto_sans_kr_light"
+                            android:gravity="left"
+                            android:includeFontPadding="false"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/size_15"
+                            app:htmlText="@{@string/str_invite_subtitle_2}"
+                            tools:text="초대 받은 친구가 이용권을 구매 시에도 모두 노래 3곡 이용권이 지급됩니다." />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/size_12"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/str_invite_subtitle_count3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/noto_sans_kr_light"
+                            android:gravity="left"
+                            android:includeFontPadding="false"
+                            android:text="3."
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/size_15" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/str_invite_subtitle_3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/noto_sans_kr_light"
+                            android:gravity="left"
+                            android:includeFontPadding="false"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/size_15"
+                            app:htmlText="@{@string/str_invite_subtitle_3}"
+                            tools:text="친구 초대는 최대 10회까지 가능하며, 11회 부터는 초대가 불가능 합니다" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/size_12"
+                        android:orientation="horizontal">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/str_invite_subtitle_count4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="5dp"
+                            android:fontFamily="@font/noto_sans_kr_light"
+                            android:gravity="left"
+                            android:includeFontPadding="false"
+                            android:text="4."
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/size_15" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/str_invite_subtitle_4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/noto_sans_kr_light"
+                            android:gravity="left"
+                            android:includeFontPadding="false"
+                            android:textColor="@color/color_222222"
+                            android:textSize="@dimen/size_15"
+                            app:htmlText="@{@string/str_invite_subtitle_4}"
+                            tools:text="초대된 회원이 탈퇴 후 재가입 하여도 초대 리워드 보상은 10회를 초과할 수 없습니다." />
+                    </LinearLayout>
+
+                </com.verse.app.widget.views.CustomLinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_20"
+                    android:layout_marginTop="@dimen/size_20"
+                    android:fontFamily="@font/noto_sans_kr_medium"
+                    android:includeFontPadding="false"
+                    android:lineSpacingExtra="7dp"
+                    android:text="@string/my_recommend_nickname_input"
+                    android:textColor="@color/color_8c8c8c"
+                    android:textSize="@dimen/size_13"
+                    android:textStyle="normal" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_14"
+                    android:orientation="horizontal">
+
+                    <com.verse.app.widget.views.CustomLinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/size_48"
+                        android:layout_marginRight="@dimen/size_5"
+                        android:layout_weight="255"
+                        android:background="@drawable/edit_complete_border"
+                        android:orientation="horizontal"
+                        app:linearLayoutBgColor="@color/white"
+                        app:linearLayoutBorder="@dimen/size_1"
+                        app:linearLayoutBorderColor="@color/color_2fc2ff"
+                        app:linearLayoutCorner="@dimen/size_10">
+
+                        <EditText
+                            android:id="@+id/edit_reccommend_nickname"
+                            style="@style/EditSettingTextStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/size_16"
+                            android:layout_marginRight="@dimen/size_16"
+                            android:focusableInTouchMode="true"
+                            android:fontFamily="@font/font_noto_sans_medium"
+                            android:gravity="center"
+                            android:hint="@string/mypage_edit_my_invite_hint"
+                            android:imeOptions="actionDone"
+                            android:includeFontPadding="false"
+                            android:lineSpacingExtra="@dimen/size_3"
+                            android:maxLines="1"
+                            android:textSize="@dimen/size_15"
+                            android:textStyle="normal"
+                            app:isSelected="@{false}"
+                            app:theme="@style/EditSettingTextStyle" />
+
+                    </com.verse.app.widget.views.CustomLinearLayout>
+
+                    <com.verse.app.widget.views.CustomTextView
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/size_48"
+                        android:layout_weight="75"
+                        android:backgroundTint="@color/color_2fc2ff"
+                        android:fontFamily="@font/noto_sans_kr_medium"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:text="@string/str_enter"
+                        android:textSize="@dimen/size_15"
+                        app:textViewCorner="@dimen/size_10"
+                        app:textViewTxtColor="@color/white"
+                        app:turtleClick="@{()->viewModel.requestRecommendNickName()}" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

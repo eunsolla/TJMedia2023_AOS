@@ -1,0 +1,286 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'kotlinx-serialization'
+    id 'kotlin-parcelize'
+    id 'dagger.hilt.android.plugin'
+    id 'com.google.gms.google-services'
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
+    id 'com.google.firebase.crashlytics'
+}
+
+//Superpowered SDK Path
+def superpowered_sdk_path = new File(projectDir,'../SuperpoweredAndroid')
+
+def Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+android {
+    signingConfigs {
+        release {
+            storeFile file(project.rootProject.file('/keystore/TjKeyStore'))
+            storePassword 'TjMedia2020_0205'
+            keyAlias = 'TjMedia'
+            keyPassword 'TjMedia2020_0205'
+        }
+
+        debug {
+            storeFile file(project.rootProject.file('/keystore/TjKeyStore'))
+            storePassword 'TjMedia2020_0205'
+            keyAlias = 'TjMedia'
+            keyPassword 'TjMedia2020_0205'
+        }
+    }
+
+    compileSdkVersion build_versions.compile_sdk
+    buildToolsVersion build_versions.build_tools
+
+    defaultConfig {
+        applicationId "com.verse.app"
+        minSdk build_versions.min_sdk
+        targetSdk build_versions.target_sdk
+        versionCode 130
+        versionName "2.0.0"
+
+        archivesBaseName = "VERSEPLAY_" + versionName + "_" + versionCode
+        multiDexEnabled true
+        testInstrumentationRunner "com.verse.app.HiltTestRunner"
+
+        //[s]SuperPowered SDK Config
+          ndk {
+            abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
+        }
+
+        compileOptions {
+            incremental false
+        }
+
+      externalNativeBuild {
+            cmake {
+                arguments '-DANDROID_PLATFORM=android-24', '-DANDROID_TOOLCHAIN=clang', '-DANDROID_ARM_NEON=TRUE', '-DANDROID_STL=c++_static', "-DPATH_TO_SUPERPOWERED:STRING=${superpowered_sdk_path}"
+                cFlags '-O3', '-fsigned-char' // full optimization, char data type is signed
+                cppFlags '-fsigned-char', "-I${superpowered_sdk_path}"
+            }
+        }
+        //[e]SuperPowered SDK Config
+
+        //[s] KEYS
+        //kakao
+        buildConfigField "String", "SNS_LOGIN_KAKAO_API_KEY", properties["SNS_LOGIN_KAKAO_API_KEY"]
+        buildConfigField "String", "SNS_LOGIN_KAKAO_HOST_SCHEME", properties["SNS_LOGIN_KAKAO_HOST_SCHEME"]
+        resValue "string", "SNS_LOGIN_KAKAO_HOST_SCHEME", properties["SNS_LOGIN_KAKAO_HOST_SCHEME"]
+        //naver
+        buildConfigField "String", "SNS_LOGIN_NAVER_CLIENT_ID", properties["SNS_LOGIN_NAVER_CLIENT_ID"]
+        buildConfigField "String", "SNS_LOGIN_NAVER_CLIENT_SECRET", properties["SNS_LOGIN_NAVER_CLIENT_SECRET"]
+        //google
+        buildConfigField "String", "SNS_LOGIN_GOOGLE_REQUEST_TOKEN", properties["SNS_LOGIN_GOOGLE_REQUEST_TOKEN"]
+        //facebook
+        buildConfigField "String", "SNS_LOGIN_FACE_BOOK_APP_ID", properties["SNS_LOGIN_FACE_BOOK_APP_ID"]
+        buildConfigField "String", "SNS_LOGIN_FACE_BOOK_CLIENT_TOKEN", properties["SNS_LOGIN_FACE_BOOK_CLIENT_TOKEN"]
+        buildConfigField "String", "SNS_LOGIN_FACE_BOOK_LOGIN_SCHEME", properties["SNS_LOGIN_FACE_BOOK_LOGIN_SCHEME"]
+        resValue "string", "SNS_LOGIN_FACE_BOOK_APP_ID", properties["SNS_LOGIN_FACE_BOOK_APP_ID"]
+        resValue "string", "SNS_LOGIN_FACE_BOOK_CLIENT_TOKEN", properties["SNS_LOGIN_FACE_BOOK_CLIENT_TOKEN"]
+        resValue "string", "SNS_LOGIN_FACE_BOOK_LOGIN_SCHEME", properties["SNS_LOGIN_FACE_BOOK_LOGIN_SCHEME"]
+
+        //superpowered
+        buildConfigField "String", "SUPER_POWERED_LICENSE_KEY", properties["SUPER_POWERED_LICENSE_KEY"]
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+            minifyEnabled false
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        release {
+            debuggable false
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            // signingConfig signingConfigs.release
+        }
+    }
+
+    buildFeatures {
+        viewBinding true
+        dataBinding true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+    kapt {
+        correctErrorTypes = true
+    }
+
+    //[s]SuperPowered SDK CMakeLists
+    externalNativeBuild {
+        cmake {
+            path "src/main/cpp/CMakeLists.txt"
+            version "3.22.1"
+        }
+    }
+    ndkVersion '25.1.8937393'
+    //[e]SuperPowered CMakeLists
+
+    packagingOptions {
+        exclude  'build-data.properties'
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(dir: 'libs', include: ['*.aar'])
+    implementation deps.kotlin.stdlib
+    implementation deps.kotlin.core
+
+    // [s] AndroidX Common
+    implementation deps.common.appCompat
+    implementation deps.common.constraint_layout
+    implementation deps.common.material
+    implementation deps.common.multidex
+    implementation deps.common.legacy
+    implementation deps.common.viewpager
+    implementation deps.common.cardview
+    implementation deps.common.activity
+    implementation deps.common.fragment
+    // [e] AndroidX Common
+
+    // [s] Android Lifecycle
+    implementation deps.lifecycle.base
+    implementation deps.lifecycle.viewmodel
+    implementation deps.lifecycle.livedata
+    implementation deps.lifecycle.savedState
+    // [e] Android Lifecycle
+
+    // [s] Rx
+    implementation deps.rxjava.base
+    implementation deps.rxjava.android
+    implementation deps.rxjava.kotlin
+    // [e] Rx
+
+    // [s] Retrofit2
+    implementation deps.okhttp
+    implementation deps.retrofit.base
+    implementation deps.retrofit.rxjava
+    implementation deps.retrofit.moshi
+    implementation deps.retrofit.kotlinx_serialization
+    implementation deps.kotlinx_serialization
+    // [e] Retrofit2
+
+    // [s] Hilt
+    implementation(deps.hilt.android)
+    kapt(deps.hilt.compiler)
+    // [e] Hilt
+
+    // [s] Paging
+    implementation deps.paging.base
+    implementation deps.paging.rxjava
+    implementation deps.paging.testBase
+    // [e] Paging
+
+    // [s] Glide
+    implementation deps.glide.base
+    implementation deps.glide.okhttp
+    implementation deps.glide.compiler
+    implementation deps.glide.transformations
+    implementation deps.glide.gpuimage
+    // [e] Glide
+
+    // [s] Exoplayer
+    implementation deps.exoplayer.core
+    implementation deps.exoplayer.dash
+    implementation deps.exoplayer.ui
+    // [e] Exoplayer
+
+    // [s] WorkManager
+    implementation deps.work.runtime
+    implementation deps.work.workHilt
+    // [e] WorkManager
+
+    /* [s] Unit Test dependencies */
+    testImplementation(deps.testCommon.junit)
+    androidTestImplementation(deps.testCommon.junit)
+    androidTestImplementation(deps.testCommon.core)
+    androidTestImplementation(deps.testCommon.ext)
+    androidTestImplementation(deps.testCommon.rules)
+    androidTestImplementation(deps.testCommon.espresso)
+    androidTestImplementation(deps.testHilt.android)
+    kaptAndroidTest(deps.testHilt.compiler)
+    /* [e] Unit Test dependencies */
+
+    /* Google Flexbox */
+    implementation deps.google.flexbox
+
+    /* SNS Login Google+ */
+    implementation deps.google.play_services_auth
+
+    /* SNS Login Kakao-SDK  카카오 로그인 */
+    implementation deps.kakao.sdk_v2_user
+ 
+    /* SNS Login FaceBook 로그인 */
+    implementation deps.facebook.core
+    implementation deps.facebook.login
+
+    /* SNS Login 네이버 */
+    implementation deps.naver.navercorp_nid_oauth
+
+    /* 구글인앱결제 */
+    implementation deps.billing.core
+
+    // =============================================================================================
+    // google login
+    // =============================================================================================
+    implementation platform('com.google.firebase:firebase-bom:31.3.0')
+    implementation 'com.google.firebase:firebase-auth-ktx'
+    implementation 'com.google.android.gms:play-services-auth:18.1.0'
+    implementation "com.google.firebase:firebase-analytics"
+    implementation "com.google.firebase:firebase-crashlytics"
+    implementation "com.google.firebase:firebase-database"
+    implementation 'com.google.firebase:firebase-messaging'
+    implementation 'com.google.firebase:firebase-dynamic-links:21.1.0'
+
+    implementation 'com.google.firebase:firebase-auth'
+
+    //include only the necessary dependencies to avoid the Android dex limit
+    implementation 'com.twitter.sdk.android:twitter-core:3.1.1'
+
+    //dependency to load image url over image view
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+//    implementation platform('com.google.firebase:firebase-bom:26.0.0')
+//    implementation 'com.google.firebase:firebase-auth-ktx'
+//    implementation 'com.google.android.gms:play-services-auth:18.1.0'
+//    implementation 'com.google.firebase:firebase-auth:20.0.0'
+
+    // =============================================================================================
+    // ffmpeg
+    // =============================================================================================
+    implementation 'com.arthenica:mobile-ffmpeg-full:4.4'
+
+    // Loading Dialog
+    implementation 'com.airbnb.android:lottie:3.5.0'
+
+    // jsoup
+    implementation("org.jsoup:jsoup:1.15.3")
+
+    implementation("com.apradanas.simplelinkabletext:library:1.0.3@aar")
+    implementation(deps.netty)
+
+    // Image View Zoom In / Out
+    implementation 'com.github.chrisbanes:PhotoView:2.0.0'
+
+}

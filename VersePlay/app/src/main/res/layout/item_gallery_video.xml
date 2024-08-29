@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="requestManager"
+            type="com.bumptech.glide.RequestManager" />
+
+        <variable
+            name="overrideSize"
+            type="java.lang.Integer" />
+
+        <variable
+            name="item"
+            type="com.verse.app.gallery.ui.GalleryItem.Video" />
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.gallery.ui.GalleryBottomSheetDialogViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:background="@color/white">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivThumb"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:localUrl="@{item.imagePath}"
+            app:overrideSize="@{overrideSize}"
+            app:requestManager="@{requestManager}"
+            tools:src="@tools:sample/avatars" />
+
+        <com.verse.app.widget.views.CustomConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:visibility="@{item.selected}"
+            app:layoutBgColor="@color/color_80000000_50"
+            app:layoutBorder="@dimen/size_2"
+            app:layoutBorderColor="@color/color_2fc2ff"
+            app:layout_constraintBottom_toBottomOf="@+id/ivThumb"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            tools:layout_editor_absoluteX="16dp" />
+
+        <com.verse.app.widget.views.CustomConstraintLayout
+            android:id="@+id/clSelectNum"
+            android:layout_width="@dimen/size_20"
+            android:layout_height="@dimen/size_20"
+            android:layout_marginTop="@dimen/size_10"
+            android:layout_marginRight="@dimen/size_10"
+            android:visibility="@{!item.isSelectCheck, default=gone}"
+            app:isSelected="@{item.selected}"
+            app:layoutBgColor="@color/color_2fc2ff"
+            app:layoutCorner="@dimen/size_10"
+            app:layoutDefState="false"
+            app:layoutDisableBgColor="#7DFFFFFF"
+            app:layoutDisableBorder="2dp"
+            app:layoutDisableBorderColor="@color/color_707070"
+            app:layout_constraintRight_toRightOf="@+id/ivThumb"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:fontFamily="@font/font_noto_sans_kr_medium"
+                android:includeFontPadding="false"
+                android:text="@{item.selectedNum}"
+                android:textColor="@color/white"
+                android:visibility="@{item.selected, default=gone}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="1"
+                tools:visibility="visible" />
+
+        </com.verse.app.widget.views.CustomConstraintLayout>
+
+        <com.verse.app.widget.views.CustomConstraintLayout
+            android:id="@+id/clSelectCheck"
+            android:layout_width="@dimen/size_20"
+            android:layout_height="@dimen/size_20"
+            android:layout_marginTop="@dimen/size_10"
+            android:layout_marginRight="@dimen/size_10"
+            android:visibility="@{item.isSelectCheck, default=gone}"
+            app:isSelected="@{item.selected}"
+            app:layoutBgColor="@color/color_2fc2ff"
+            app:layoutCorner="@dimen/size_10"
+            app:layoutDefState="false"
+            app:layoutDisableBgColor="#7DFFFFFF"
+            app:layoutDisableBorder="2dp"
+            app:layoutDisableBorderColor="@color/color_707070"
+            app:layout_constraintRight_toRightOf="@+id/ivThumb"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:src="@drawable/ic_check"
+                android:visibility="@{item.selected, default=gone}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:visibility="gone" />
+
+        </com.verse.app.widget.views.CustomConstraintLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/size_10"
+            android:layout_marginBottom="@dimen/size_10"
+            android:fontFamily="@font/font_noto_sans_kr_medium"
+            android:includeFontPadding="false"
+            android:shadowColor="#40000000"
+            android:shadowDx="1.0"
+            android:shadowDy="1.0"
+            android:shadowRadius="3.0"
+            android:text="@{item.timeText}"
+            android:textColor="@color/white"
+            android:textSize="@dimen/size_13"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:text="0:33" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

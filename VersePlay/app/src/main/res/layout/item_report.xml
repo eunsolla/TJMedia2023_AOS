@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.report.ReportViewModel" />
+
+        <variable
+            name="data"
+            type="com.verse.app.model.report.ReportData" />
+
+    </data>
+
+    <com.verse.app.widget.views.CustomConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layoutBgColor="@color/white"
+        app:turtleClick="@{()->viewModel.onMoveToSubReport(data)}">
+
+        <com.verse.app.widget.views.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            app:textViewClickEffect="false"
+            android:paddingTop="@dimen/size_20"
+            android:paddingBottom="@dimen/size_20"
+            android:paddingLeft="@dimen/size_20"
+            android:paddingRight="@dimen/size_20"
+            android:text="@{data.repCtgMngNm}"
+            android:textSize="@dimen/size_18"
+            android:fontFamily="@font/font_noto_sans_kr_light"
+            app:textViewTxtColor="@color/color_222222"
+            tools:text="신고" />
+
+    </com.verse.app.widget.views.CustomConstraintLayout>
+
+
+</layout>

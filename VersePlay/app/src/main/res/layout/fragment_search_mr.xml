@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.verse.app.contants.ListPagedItemType" />
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.search.viewmodel.SearchResultMrViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:background="@color/white"
+        tools:visibility="visible">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:focusable="false"
+            android:paddingTop="@dimen/size_20"
+            android:splitMotionEvents="false"
+            app:pagedList="@{viewModel.pagedList}"
+            app:itemType="@{ListPagedItemType.ITEM_SEARCH_POPULAR_SONG}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toTopOf="parent"
+            app:emptyView="@{vEmpty}"
+            app:viewModel="@{viewModel}"
+            tools:itemCount="4"
+            tools:listitem="@layout/item_search_popular_song" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/v_empty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/size_50"
+                android:layout_height="@dimen/size_50"
+                android:layout_marginTop="@dimen/size_40"
+                android:src="@drawable/search" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_20"
+                android:fontFamily="@font/font_noto_sans_kr_medium"
+                android:includeFontPadding="false"
+                android:text="@string/search_no_result_data"
+                android:textColor="@color/color_707070"
+                android:textSize="@dimen/size_18" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_20"
+                android:fontFamily="@font/font_noto_sans_kr_light"
+                android:gravity="center_horizontal"
+                android:includeFontPadding="false"
+                android:text="@string/search_help_message"
+                android:textColor="@color/color_8c8c8c"
+                android:textSize="@dimen/size_15" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

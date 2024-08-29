@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="requestManager"
+            type="com.bumptech.glide.RequestManager" />
+
+        <variable
+            name="data"
+            type="com.verse.app.model.chat.ChatInitOtherProfileModel" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:background="@color/white">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="@dimen/size_75"
+            android:layout_height="@dimen/size_75"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/size_16"
+            app:strokeColor="@null"
+            android:scaleType="centerCrop"
+            app:imageUrl="@{data.imagePath}"
+            app:placeholder="@{@drawable/profile_empty_small}"
+            app:requestManager="@{requestManager}"
+            app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+            tools:src="@tools:sample/avatars" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/size_15"
+            android:layout_marginTop="@dimen/size_12"
+            android:layout_marginRight="@dimen/size_15"
+            android:fontFamily="@font/font_noto_sans_kr_light"
+            android:gravity="center_horizontal"
+            android:includeFontPadding="false"
+            android:text="@{data.item.targetNickName}"
+            android:textColor="@color/color_222222"
+            android:textSize="@dimen/size_14"
+            tools:text="닉네임닉네임닉네임닉쏼라쏼라링라링" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/size_15"
+            android:layout_marginTop="@dimen/size_8"
+            android:layout_marginRight="@dimen/size_15"
+            android:fontFamily="@font/font_noto_sans_kr_light"
+            android:gravity="center_horizontal"
+            android:includeFontPadding="false"
+            android:text="@{data.desc}"
+            android:textColor="@color/color_8c8c8c"
+            android:visibility="@{data.desc.length() > 0,default=gone}"
+            tools:text="팔로워 3.5만명·게시물 140개 \n2023년부터 이 계정을 팔로우하고 있습니다.\nKing님을 함께 팔로우합니다." />
+
+        <com.verse.app.widget.views.CustomTextView
+            android:id="@+id/tvProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/size_12"
+            android:fontFamily="@font/noto_sans_kr_light"
+            android:includeFontPadding="false"
+            android:paddingLeft="@dimen/size_10"
+            android:paddingTop="@dimen/size_5"
+            android:paddingRight="@dimen/size_10"
+            android:paddingBottom="@dimen/size_5"
+            android:text="@string/chat_show_profile"
+            app:textViewBgColor="@color/color_2fc2ff"
+            app:textViewCorner="@dimen/size_6"
+            app:textViewTxtColor="@color/white" />
+
+        <androidx.legacy.widget.Space
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/size_52" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</layout>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.verse.app.contants.ListPagedItemType" />
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.song.viewmodel.SongMainViewModel" />
+
+        <variable
+            name="data"
+            type="com.verse.app.model.song.SongMainInfo" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_161616">
+
+        <TextView
+            android:id="@+id/title_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/size_20"
+            android:layout_marginTop="@dimen/size_35"
+            android:text="@string/song_main_title_hot"
+            android:fontFamily="@font/font_noto_sans_kr_medium"
+            android:includeFontPadding="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/size_23"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_28"
+            android:clipToPadding="false"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/size_20"
+            android:paddingRight="@dimen/size_10"
+            android:visibility="@{data.nowHotSongList.size() > 0}"
+            app:dataList="@{data.nowHotSongList}"
+            app:itemType="@{ListPagedItemType.ITEM_SONG_HOT_INFO}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toBottomOf="@+id/title_text_view"
+            app:viewModel="@{viewModel}"
+            tools:itemCount="3"
+            tools:listitem="@layout/item_hot_info" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_28"
+            android:text="@string/str_hot_song_no_data"
+            android:fontFamily="@font/font_noto_sans_kr_medium"
+            android:includeFontPadding="false"
+            android:textSize="@dimen/size_15"
+            android:textColor="@color/color_707070"
+            android:visibility="@{data.nowHotSongList.size() == 0 }"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title_text_view" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.intro.viewmodel.TutorialViewModel" />
+
+        <import type="com.verse.app.contants.ListPagedItemType" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@null">
+
+        <RelativeLayout
+            android:id="@+id/layout_mypage_userguide_topbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_52"
+            android:background="@color/white"
+            android:visibility="@{viewModel.isUserGuide == true, default=gone}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible">
+
+            <ImageButton
+                android:layout_width="@dimen/size_20"
+                android:layout_height="@dimen/size_20"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/size_20"
+                android:background="@null"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_top_arrow_left"
+                app:turtleClick="@{()->viewModel.back()}" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/font_noto_sans_medium"
+                android:lineSpacingExtra="2dp"
+                android:text="@string/user_guide"
+                android:textColor="@color/color_222222"
+                android:textSize="18dp"
+                android:textStyle="normal" />
+
+        </RelativeLayout>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/tutorial_view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/layout_mypage_userguide_topbar"
+            android:layout_marginBottom="@dimen/size_52"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:onPageState="@{(state) -> viewModel.pageTutorialState(state)}"
+            app:position="@={viewModel.vpTutorialPosition}"
+            app:setAdapterWithIntList="@{viewModel.imageList}" />
+
+        <com.verse.app.widget.indicator.SingPassIndicatorView
+            android:id="@+id/indicator_view"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_20"
+            android:layout_below="@+id/layout_mypage_userguide_topbar"
+            android:layout_marginTop="@dimen/size_20"
+            app:dotSize="@{6}"
+            app:indicatorBackgroundColor="@color/color_adadad"
+            app:indicatorCnt="@{viewModel.imageList.size()}"
+            app:indicatorColor="@color/color_2fc2ff"
+            app:indicatorGravity="center"
+            app:viewPager="@{tutorialViewPager}" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/tvConfirm"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_52"
+                android:layout_alignParentBottom="true"
+                android:background="@color/color_adadad">
+
+                <com.verse.app.widget.views.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/noto_sans_kr_medium"
+                    android:gravity="center"
+                    android:letterSpacing="0.12"
+                    android:lineSpacingExtra="18dp"
+                    android:onClick="@{()->viewModel.startMain()}"
+                    android:text="@{viewModel.vpTutorialPosition == viewModel.imageList.size() - 1 ? @string/tutorial_start : @string/tutorial_next}"
+                    android:textSize="@dimen/size_16"
+                    android:textStyle="normal"
+                    app:isSelected="@{viewModel.isTextviewSelected}"
+                    app:textViewBgColor="@color/color_2fc2ff"
+                    app:textViewDisableBgColor="@color/black"
+                    app:textViewDisableTxtColor="@color/white"
+                    app:textViewTxtColor="@color/white" />
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+</layout>

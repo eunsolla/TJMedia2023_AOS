@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@android:id/background">
+        <shape android:shape="rectangle">
+            <gradient
+                android:angle="225"
+                android:centerColor="#d9d9d9"
+                android:endColor="#d9d9d9"
+                android:startColor="#ffffff" />
+
+            <corners
+                android:bottomLeftRadius="@dimen/size_10"
+                android:bottomRightRadius="@dimen/size_10"
+                android:topLeftRadius="@dimen/size_10"
+                android:topRightRadius="@dimen/size_10" />
+        </shape>
+    </item>
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape android:shape="rectangle">
+                <gradient
+                    android:angle="360"
+                    android:endColor="#0066ff"
+                    android:startColor="#2fc2ff" />
+
+                <corners
+                    android:bottomLeftRadius="@dimen/size_10"
+                    android:bottomRightRadius="@dimen/size_10"
+                    android:topLeftRadius="@dimen/size_10"
+                    android:topRightRadius="@dimen/size_10" />
+            </shape>
+        </clip>
+    </item>
+    <item android:id="@android:id/accessibilityActionSetProgress">
+        <clip>
+            <shape android:shape="rectangle">
+                <gradient
+                    android:angle="360"
+                    android:endColor="#0066ff"
+                    android:startColor="#2fc2ff" />
+
+                <corners
+                    android:bottomLeftRadius="@dimen/size_10"
+                    android:bottomRightRadius="@dimen/size_10"
+                    android:topLeftRadius="@dimen/size_10"
+                    android:topRightRadius="@dimen/size_10" />
+            </shape>
+        </clip>
+    </item>
+</layer-list>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="requestManager"
+            type="com.bumptech.glide.RequestManager" />
+
+        <import type="com.verse.app.contants.ListPagedItemType" />
+
+        <import type="com.verse.app.contants.GlideCode" />
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.sing.viewmodel.SingViewModel" />
+
+    </data>
+
+    <com.verse.app.widget.views.CustomConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="false">
+
+        <View
+            android:id="@+id/empty_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/color_00000000"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/ll_btn"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_weight="91.96" />
+
+        <SurfaceView
+            android:id="@+id/surfaceView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toTopOf="@+id/ll_btn" />
+
+        <com.verse.app.utility.exo.ExoStyledPlayerView
+            android:id="@+id/exo_join"
+            android:layout_width="@dimen/size_100"
+            android:layout_height="0dp"
+            android:layout_marginRight="@dimen/size_20"
+            android:layout_marginBottom="@dimen/size_20"
+            android:visibility="@{viewModel.isStartRecording  &amp;&amp; !viewModel.isInitContents}"
+            app:layout_constraintBottom_toTopOf="@+id/ll_btn"
+            app:layout_constraintDimensionRatio="3:6"
+            app:layout_constraintRight_toRightOf="parent"
+            app:surface_type="texture_view" />
+
+        <!--녹음 시작-->
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="@dimen/size_3"
+            android:background="@color/color_B3161616_70"
+            android:visibility="@{viewModel.isStartRecording}"
+            app:layout_constraintBottom_toBottomOf="@id/in_remaining"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/v_empty_middle"
+            android:layout_width="@dimen/size_1"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/in_event"
+            app:layout_constraintVertical_weight="91.2" />
+
+        <include
+            android:id="@+id/in_event"
+            layout="@layout/view_singing_event"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/size_5"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/in_header"
+            app:layout_constraintVertical_weight="8.8"
+            app:viewModel="@{viewModel}" />
+
+        <include
+            android:id="@+id/in_singing_lyrics"
+            layout="@layout/view_singing_lyrics"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_5"
+            android:background="@color/white"
+            android:visibility="@{viewModel.isStartRecording}"
+            app:layout_constraintTop_toBottomOf="@+id/in_event"
+            app:pageType="@{ListPagedItemType.ITEM_LYRICS_VIDEO}"
+            app:viewModel="@{viewModel}" />
+
+        <include
+            android:id="@+id/in_remaining"
+            layout="@layout/view_singing_remaining"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="@{viewModel.isStartRecording}"
+            app:layout_constraintTop_toBottomOf="@+id/in_singing_lyrics"
+            app:viewModel="@{viewModel}" />
+
+        <include
+            android:id="@+id/in_header"
+            layout="@layout/view_header_sing"
+            app:layout_constraintTop_toTopOf="parent"
+            app:viewModel="@{viewModel}"
+            tools:visibility="visible" />
+
+        <include
+            android:id="@+id/ll_effects"
+            layout="@layout/view_singing_effects"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/size_10"
+            android:visibility="@{!viewModel.isStartRecording}"
+            app:layout_constraintBottom_toTopOf="@+id/ll_btn"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:viewModel="@{viewModel}"
+            tools:visibility="visible" />
+
+        <include
+            android:id="@+id/ll_btn"
+            layout="@layout/view_singing_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/empty_view"
+            app:layout_constraintVertical_weight="8.04"
+            app:viewModel="@{viewModel}" />
+
+    </com.verse.app.widget.views.CustomConstraintLayout>
+
+</layout>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.mypage.viewmodel.NoticeViewModel" />
+
+        <variable
+            name="data"
+            type="com.verse.app.model.mypage.NoticeData" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- 공지-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_70"
+            android:background="@color/white"
+            app:turtleClick="@{()->viewModel.onMoveToSubNoti(data)}">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="@dimen/size_20"
+                android:layout_marginEnd="@dimen/size_20"
+                android:background="@color/color_eaeaea" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/size_20"
+                android:paddingRight="@dimen/size_20"
+                android:layout_toLeftOf="@+id/arrow_image_view"
+                android:layout_centerVertical="true">
+
+                <TextView
+                    android:id="@+id/tv_notice_sub"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:minHeight="@dimen/size_28"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:includeFontPadding="false"
+                    android:fontFamily="@font/noto_sans_kr_light"
+                    android:gravity="center_vertical"
+                    android:lineSpacingExtra="32dp"
+                    android:layout_marginTop="@dimen/size_10"
+                    android:singleLine="true"
+                    android:text="@{data.notTitle}"
+                    android:textColor="@color/color_222222"
+                    android:textSize="@dimen/size_16"
+                    android:textStyle="normal"
+                    tools:text="공지사항1" />
+
+                <TextView
+                    android:id="@+id/tv_notice_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_notice_sub"
+                    android:fontFamily="@font/noto_sans_kr_light"
+                    android:includeFontPadding="false"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="@dimen/size_5"
+                    android:lineSpacingExtra="37dp"
+                    android:layout_marginBottom="@dimen/size_10"
+                    android:text="@{data.updDt}"
+                    android:textColor="@color/color_8c8c8c"
+                    android:textSize="@dimen/size_13"
+                    android:textStyle="normal"
+                    tools:text="Jul 22,2019" />
+
+            </RelativeLayout>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/arrow_image_view"
+                android:layout_width="@dimen/size_7"
+                android:layout_height="@dimen/size_12"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:background="@null"
+                android:layout_marginEnd="@dimen/size_20"
+                android:scaleType="fitCenter"
+                android:src="@drawable/right_arrow_mini" />
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+</layout>

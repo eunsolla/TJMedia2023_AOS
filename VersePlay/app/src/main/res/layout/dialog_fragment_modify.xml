@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        tools:background="@color/white">
+
+        <com.verse.app.widget.views.CustomTextView
+            android:id="@+id/line_text_view"
+            android:layout_width="@dimen/size_36"
+            android:layout_height="@dimen/size_5"
+            android:layout_marginTop="@dimen/size_12"
+            app:textViewBgColor="@color/color_d9d9d9"
+            app:textViewCorner="@dimen/size_20" />
+
+        <com.verse.app.widget.views.CustomTextView
+            android:id="@+id/tvModify"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_52"
+            android:layout_marginLeft="@dimen/size_40"
+            android:layout_marginTop="@dimen/size_36"
+            android:layout_marginRight="@dimen/size_40"
+            android:fontFamily="@font/font_noto_sans_kr_medium"
+            android:gravity="center"
+            android:text="@string/str_modify"
+            android:textSize="@dimen/size_18"
+            app:textViewBgColor="@color/color_eaeaea"
+            app:textViewCorner="@dimen/size_10"
+            app:textViewTxtColor="@color/color_8c8c8c" />
+
+        <com.verse.app.widget.views.CustomTextView
+            android:id="@+id/tvDelete"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_52"
+            android:layout_marginLeft="@dimen/size_40"
+            android:layout_marginTop="@dimen/size_12"
+            android:layout_marginRight="@dimen/size_40"
+            android:fontFamily="@font/font_noto_sans_kr_medium"
+            android:gravity="center"
+            android:text="@string/str_delete"
+            android:textSize="@dimen/size_18"
+            app:textViewBgColor="@color/color_ff3d33"
+            app:textViewCorner="@dimen/size_10"
+            app:textViewTxtColor="@color/white" />
+
+        <androidx.legacy.widget.Space
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/size_52" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</layout>

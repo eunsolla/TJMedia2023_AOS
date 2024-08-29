@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.verse.app.contants.ListPagedItemType" />
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.community.lounge.CommunityLoungeFragmentViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_lounge"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:focusable="false"
+            android:paddingTop="@dimen/size_20"
+            android:splitMotionEvents="false"
+            app:dataList="@{viewModel.dataList}"
+            app:itemType="@{ListPagedItemType.ITEM_COMMUNITY_LOUNGE}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:onLoadNextPage="@{()->viewModel.onLoadPage()}"
+            app:pagingModel="@{viewModel.pagingModel}"
+            app:viewModel="@{viewModel}"
+            tools:itemCount="3"
+            tools:listitem="@layout/item_community_lounge" />
+
+<!--        <androidx.core.widget.NestedScrollView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:visibility="@{viewModel.isEmpty(),default=gone}">-->
+
+<!--            <androidx.appcompat.widget.AppCompatTextView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="@dimen/size_55"-->
+<!--                android:drawableTop="@drawable/ic_empty"-->
+<!--                android:drawablePadding="@dimen/size_20"-->
+<!--                android:fontFamily="@font/font_noto_sans_kr_medium"-->
+<!--                android:gravity="center_horizontal"-->
+<!--                android:text="@string/feed_no_result_data"-->
+<!--                android:textColor="@color/color_707070"-->
+<!--                android:textSize="@dimen/size_18"-->
+<!--                app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--        </androidx.core.widget.NestedScrollView>-->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

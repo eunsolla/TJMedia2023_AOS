@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.verse.app.contants.VideoUploadPageType" />
+
+        <import type="com.verse.app.contants.ShowContentsType" />
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.videoupload.viewmodel.VideouploadViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_header"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/cl_message"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_weight="9">
+
+            <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="@dimen/size_60"
+                android:layout_height="0dp"
+                android:paddingLeft="@dimen/size_20"
+                android:paddingTop="@dimen/size_16"
+                android:paddingRight="@dimen/size_20"
+                android:paddingBottom="@dimen/size_16"
+                android:src="@drawable/btn_close_left_black"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:turtleClick="@{()-> viewModel.onCancelUpload()}" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font_noto_sans_kr_medium"
+                android:includeFontPadding="false"
+                android:lineSpacingExtra="@dimen/size_5"
+                android:text="@string/videoupload_view_title"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_18"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_back"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/iv_back" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font_noto_sans_kr_medium"
+                android:paddingLeft="@dimen/size_20"
+                android:paddingRight="@dimen/size_20"
+                android:text="@string/videoupload_top_right_menu"
+                android:textColor="@color/color_2fc2ff"
+                android:textSize="@dimen/size_17"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_back"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/iv_back"
+                app:turtleClick="@{()->viewModel.checkProhibitWord(etMessage.getText().toString() + etHash.getText().toString())}" />
+
+            <View
+                android:id="@+id/v_header_line"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_0_5"
+                android:background="@color/color_eaeaea"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_message"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:paddingLeft="@dimen/size_20"
+            android:paddingTop="@dimen/size_24"
+            android:paddingRight="@dimen/size_20"
+            android:paddingBottom="@dimen/size_24"
+            app:layout_constraintBottom_toTopOf="@+id/cl_allow"
+            app:layout_constraintTop_toBottomOf="@+id/cl_header"
+            app:layout_constraintVertical_weight="45">
+
+
+            <com.verse.app.widget.views.CustomConstraintLayout
+                android:id="@+id/cl_profile"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginRight="@dimen/size_7"
+                android:layout_marginBottom="@dimen/size_14"
+                app:layoutCorner="@dimen/size_10"
+                app:layout_constraintBottom_toTopOf="@+id/cl_hash_tag"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintHorizontal_weight="25"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/et_message"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    app:imageUrl="@{viewModel.curThumbnailPath}"
+                    app:placeholder="@{@drawable/ic_album_default}" />
+
+                <com.verse.app.widget.views.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_21"
+                    android:fontFamily="@font/font_noto_sans_kr_medium"
+                    android:gravity="center"
+                    android:lineSpacingExtra="@dimen/size_6"
+                    android:text="@string/videoupload_view_menu_repick"
+                    android:textSize="@dimen/size_12"
+                    android:visibility="@{viewModel.pageType == VideoUploadPageType.ALBUM}"
+                    app:layout_constraintBottom_toBottomOf="@+id/iv_profile"
+                    app:layout_constraintLeft_toLeftOf="@+id/iv_profile"
+                    app:layout_constraintRight_toRightOf="@+id/iv_profile"
+                    app:textViewBgColor="@color/color_80000000_50"
+                    app:textViewTxtColor="@color/white"
+                    app:turtleClick="@{()->viewModel.startGalleryDialog()}" />
+
+            </com.verse.app.widget.views.CustomConstraintLayout>
+
+            <EditText
+                android:id="@+id/et_message"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginLeft="@dimen/size_7"
+                android:layout_marginBottom="@dimen/size_14"
+                android:background="@null"
+                android:fontFamily="@font/font_noto_sans_kr_light"
+                android:gravity="top"
+                android:hint="@string/post_text_hint"
+                android:includeFontPadding="false"
+                android:padding="@dimen/size_2"
+                android:scrollbars="vertical"
+                android:text="@={viewModel.uploadMessage}"
+                android:textColor="@color/color_222222"
+                android:textColorHighlight="@color/color_2fc2ff"
+                android:textColorHint="@color/color_8c8c8c"
+                android:textCursorDrawable="@drawable/editetext_color_cursor"
+                android:textSize="@dimen/size_15"
+                app:layout_constraintBottom_toTopOf="@+id/cl_hash_tag"
+                app:layout_constraintHorizontal_weight="64"
+                app:layout_constraintLeft_toRightOf="@+id/cl_profile"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <com.verse.app.widget.views.CustomConstraintLayout
+                android:id="@+id/cl_hash_tag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/size_10"
+                app:layoutBorder="@dimen/size_0_5"
+                app:layoutBorderColor="@color/color_2fc2ff"
+                app:layoutCorner="@dimen/size_10"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="@id/et_message"
+                app:layout_constraintTop_toBottomOf="@+id/cl_profile">
+
+                <EditText
+                    android:id="@+id/et_hash"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:fontFamily="@font/font_noto_sans_kr_light"
+                    android:gravity="top"
+                    android:hint="@string/post_text_hash_tag_hint"
+                    android:includeFontPadding="false"
+                    android:maxLines="2"
+                    android:scrollbars="vertical"
+                    android:textColor="@color/color_222222"
+                    android:textColorHighlight="@color/color_2fc2ff"
+                    android:textColorHint="@color/color_8c8c8c"
+                    android:textCursorDrawable="@drawable/editetext_color_cursor"
+                    android:textSize="@dimen/size_15"
+                    app:hashText="@={viewModel.hashTag}"
+                    tools:layout_editor_absoluteX="0dp"
+                    tools:layout_editor_absoluteY="0dp" />
+
+            </com.verse.app.widget.views.CustomConstraintLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/cl_allow"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cl_message"
+            app:layout_constraintVertical_weight="55">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_0_5"
+                android:background="@color/color_eaeaea"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/size_20"
+                android:paddingTop="@dimen/size_24"
+                android:paddingRight="@dimen/size_20">
+
+                <TextView
+                    android:id="@+id/tv_board_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font_noto_sans_kr_medium"
+                    android:gravity="center_vertical"
+                    android:includeFontPadding="false"
+                    android:lineSpacingExtra="@dimen/size_5"
+                    android:text="@string/videoupload_post_permit_range_text"
+                    android:textColor="@color/color_222222"
+                    android:textSize="@dimen/size_18"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_reply"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_chainStyle="spread_inside" />
+
+                <TextView
+                    android:id="@+id/tv_reply"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font_noto_sans_kr_light"
+                    android:includeFontPadding="false"
+                    android:lineSpacingExtra="@dimen/size_5"
+                    android:text="@string/videoupload_post_permit_comment_text"
+                    android:textColor="@color/color_222222"
+                    android:textSize="@dimen/size_16"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_contents_title"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_board_title" />
+
+                <TextView
+                    android:id="@+id/tv_contents_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font_noto_sans_kr_medium"
+                    android:gravity="center_vertical"
+                    android:includeFontPadding="false"
+                    android:lineSpacingExtra="@dimen/size_5"
+                    android:text="@string/videoupload_post_permit_share_target_text"
+                    android:textColor="@color/color_222222"
+                    android:textSize="@dimen/size_18"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_only_me"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_reply" />
+
+
+                <TextView
+                    android:id="@+id/tv_only_me"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font_noto_sans_kr_light"
+                    android:includeFontPadding="false"
+                    android:lineSpacingExtra="@dimen/size_5"
+                    android:text="@string/videoupload_post_permit_share_onlyme_text"
+                    android:textColor="@color/color_222222"
+                    android:textSize="@dimen/size_16"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_friends"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_contents_title" />
+
+                <TextView
+                    android:id="@+id/tv_friends"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font_noto_sans_kr_light"
+                    android:includeFontPadding="false"
+                    android:lineSpacingExtra="@dimen/size_5"
+                    android:text="@string/videoupload_post_permit_share_onlifriends_text"
+                    android:textColor="@color/color_222222"
+                    android:textSize="@dimen/size_16"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_everyone"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_only_me" />
+
+                <TextView
+                    android:id="@+id/tv_everyone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/size_35"
+                    android:fontFamily="@font/font_noto_sans_kr_light"
+                    android:includeFontPadding="false"
+                    android:lineSpacingExtra="@dimen/size_5"
+                    android:text="@string/videoupload_post_permit_share_everyone_text"
+                    android:textColor="@color/color_222222"
+                    android:textSize="@dimen/size_16"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_friends" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_reply"
+                    android:layout_width="@dimen/size_70"
+                    android:layout_height="@dimen/size_32"
+                    android:background="@null"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/btn_on_off"
+                    app:isSelected="@{viewModel.postReply}"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_reply"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tv_reply"
+                    app:turtleClick="@{()->viewModel.onClickReply()}" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_only_me"
+                    android:layout_width="@dimen/size_70"
+                    android:layout_height="@dimen/size_32"
+                    android:background="@null"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/btn_on_off"
+                    app:isSelected="@{viewModel.postOnlyme}"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_only_me"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tv_only_me"
+                    app:turtleClick="@{()->viewModel.onClickContents(ShowContentsType.PRIVATE)}" />
+
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_friends"
+                    android:layout_width="@dimen/size_70"
+                    android:layout_height="@dimen/size_32"
+                    android:background="@null"
+                    android:enabled="@{!viewModel.postEveryone}"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/btn_on_off"
+                    app:isSelected="@{viewModel.postFriends}"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_friends"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tv_friends"
+                    app:turtleClick="@{()->viewModel.onClickContents(ShowContentsType.ALLOW_FRIENDS)}"
+                    tools:enabled="true" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:alpha="0.6"
+                    android:background="@color/white"
+                    android:visibility="@{viewModel.postFriends &amp;&amp; viewModel.postEveryone}"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_friends"
+                    app:layout_constraintLeft_toLeftOf="@id/iv_friends"
+                    app:layout_constraintRight_toRightOf="@id/iv_friends"
+                    app:layout_constraintTop_toTopOf="@id/iv_friends" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_all"
+                    android:layout_width="@dimen/size_70"
+                    android:layout_height="@dimen/size_32"
+                    android:background="@null"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/btn_on_off"
+                    app:isSelected="@{viewModel.postEveryone}"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_everyone"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tv_everyone"
+                    app:turtleClick="@{()->viewModel.onClickContents(ShowContentsType.ALLOW_ALL)}" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

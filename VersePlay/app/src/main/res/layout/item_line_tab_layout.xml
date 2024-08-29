@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.verse.app.widget.pagertablayout.PagerTabItem" />
+
+        <variable
+            name="listener"
+            type="com.verse.app.widget.pagertablayout.BaseTabLayout.Listener" />
+
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:visibility="@{item.visible}"
+        android:onClick="@{()->listener.onTabClick(item.pos)}"
+        android:orientation="vertical">
+
+        <com.verse.app.widget.views.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:text="@{item.title}"
+            android:textSize="@{item.txtSize}"
+            android:textStyle='@{item.isChangeTextStyle &amp;&amp; item.isSelected == true ? "bold" : "normal"}'
+            app:disableTxtColor="@{item.disableTxtColor}"
+            app:enableTxtColor="@{item.txtColor}"
+            app:isSelected="@{item.isSelected}" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</layout>

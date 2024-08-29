@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="position"
+            type="java.lang.Integer" />
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.singpass.viewmodel.SingPassViewModel" />
+
+        <variable
+            name="singdata"
+            type="com.verse.app.model.singpass.GenreList" />
+
+        <variable
+            name="data"
+            type="com.verse.app.model.singpass.GenreRankingList" />
+
+        <variable
+            name="myData"
+            type="com.verse.app.model.singpass.MemberRanking" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layoutBgColor="@color/color_00000000">
+
+        <com.verse.app.widget.views.CustomConstraintLayout
+            android:id="@+id/cl_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/size_6"
+            android:paddingBottom="@dimen/size_6"
+            android:orientation="vertical"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layoutBgColor="@color/color_00000000"
+            app:turtleClick="@{()->viewModel.moveToDetailUserInfo(data)}">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_user_profile"
+                android:layout_width="@dimen/size_40"
+                android:layout_height="@dimen/size_40"
+                app:strokeColor="@null"
+                app:profileImage="@{data.pfFrImgPath}"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize10Percent"
+                tools:src="@drawable/ic_profile_default" />
+
+            <com.verse.app.widget.views.CustomTextView
+                android:id="@+id/tv_ranking"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/size_10"
+                android:textSize="@dimen/size_15"
+                android:textStyle="bold"
+                android:text="@{data.ranking}"
+                android:fontFamily="@font/noto_sans_kr_light"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_user_profile"
+                app:layout_constraintLeft_toRightOf="@+id/iv_user_profile"
+                app:layout_constraintTop_toTopOf="@+id/iv_user_profile"
+                app:textViewBgColor="@color/color_00000000"
+                app:textViewClickEffect="false"
+                app:textViewTxtColor="@color/white"
+                tools:text="1" />
+
+            <com.verse.app.widget.views.CustomTextView
+                android:id="@+id/tv_user_id"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/size_10"
+                android:layout_marginRight="@dimen/size_8"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="User ID"
+                android:textSize="@dimen/size_15"
+                android:textStyle="bold"
+                app:layout_constrainedWidth="true"
+                android:fontFamily="@font/noto_sans_kr_medium"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_user_profile"
+                app:layout_constraintLeft_toRightOf="@+id/tv_ranking"
+                app:layout_constraintRight_toLeftOf="@+id/ll_point"
+                app:layout_constraintTop_toTopOf="@+id/iv_user_profile"
+                app:textViewBgColor="@color/color_00000000"
+                app:textViewClickEffect="false"
+                app:textViewTxtColor="@color/white"
+                tools:text="@{data.memNk}" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/ll_point"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:gravity="right|center"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.verse.app.widget.views.CustomTextView
+                    android:id="@+id/tv_sing_point"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{@string/season_sing_pass_point(data.singPoint)}"
+                    android:textSize="@dimen/size_12"
+                    android:fontFamily="@font/noto_sans_kr_light"
+                    android:includeFontPadding="false"
+                    app:textViewBgColor="@color/color_00000000"
+                    app:textViewTxtColor="@color/white" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_2"
+                    android:gravity="right|center"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/size_20"
+                        android:layout_height="@dimen/size_20"
+                        android:layout_marginRight="@dimen/size_5"
+                        app:thumbnailEx="@{data.getTopMissionItem(4)}" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/size_20"
+                        android:layout_height="@dimen/size_20"
+                        android:layout_marginRight="@dimen/size_5"
+                        app:thumbnailEx="@{data.getTopMissionItem(3)}" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/size_20"
+                        android:layout_height="@dimen/size_20"
+                        android:layout_marginRight="@dimen/size_5"
+                        app:thumbnailEx="@{data.getTopMissionItem(2)}" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/size_20"
+                        android:layout_height="@dimen/size_20"
+                        android:layout_marginRight="@dimen/size_5"
+                        app:thumbnailEx="@{data.getTopMissionItem(1)}" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/size_20"
+                        android:layout_height="@dimen/size_20"
+                        app:thumbnailEx="@{data.getTopMissionItem(0)}" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </com.verse.app.widget.views.CustomConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_join_area"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/size_44"
+            android:paddingBottom="@dimen/size_44"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@+id/cl_item"
+            app:layoutBgColor="@color/color_00000000">
+
+            <com.verse.app.widget.views.CustomTextView
+                android:id="@+id/tv_join_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/season_sing_pass_season_join_desc"
+                android:textSize="@dimen/size_18"
+                android:fontFamily="@font/noto_sans_kr_medium"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:textViewBgColor="@color/color_00000000"
+                app:textViewTxtColor="@color/white" />
+
+            <com.verse.app.widget.views.CustomTextView
+                android:id="@+id/tv_join"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/noto_sans_kr_medium"
+                android:lineSpacingExtra="5dp"
+                android:gravity="center"
+                android:paddingLeft="@dimen/size_33"
+                android:paddingRight="@dimen/size_33"
+                android:paddingTop="@dimen/size_10"
+                android:paddingBottom="@dimen/size_10"
+                android:layout_marginTop="@dimen/size_28"
+                android:text="@string/season_sing_pass_season_join"
+                android:textSize="@dimen/size_15"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_join_desc"
+                app:textViewBgColor="@color/color_2fc2ff"
+                app:textViewCorner="@dimen/size_20"
+                app:textViewTxtColor="@color/white"
+                app:turtleClick="@{() -> viewModel.clickJoinSingPassButton()}"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

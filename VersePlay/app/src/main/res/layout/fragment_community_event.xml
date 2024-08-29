@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.community.event.CommunityEventFragmentViewModel" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:background="@color/white">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_40"
+            android:gravity="center_horizontal">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/size_120"
+                android:layout_marginRight="@dimen/size_120"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:weightSum="2">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="bottom"
+                    android:orientation="vertical"
+                    app:turtleClick="@{()->viewModel.moveTabPosition(0)}">
+
+                    <com.verse.app.widget.views.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:ellipsize="end"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:text="@string/community_tab_event_ing"
+                        app:isSelected="@{viewModel.tabPosition == 0}"
+                        app:textViewDisableTextStyle="@style/CommunityEventTabDisable"
+                        app:textViewTextStyle="@style/CommunityEventTabEnable" />
+
+                    <com.verse.app.widget.views.CustomConstraintLayout
+                        android:layout_width="@dimen/size_4"
+                        android:layout_height="@dimen/size_4"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/size_8"
+                        android:layout_marginBottom="@dimen/size_1"
+                        app:isSelected="@{viewModel.tabPosition == 0}"
+                        app:layoutBgColor="@color/color_2fc2ff"
+                        app:layoutCorner="@dimen/size_2"
+                        app:layoutDisableBgColor="@color/white" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <View
+                    android:layout_width="@dimen/size_1"
+                    android:layout_height="@dimen/size_10"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginBottom="@dimen/size_4"
+                    android:layout_marginLeft="@dimen/size_10"
+                    android:layout_marginRight="@dimen/size_10"
+                    android:background="@color/color_d9d9d9" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="bottom"
+                    android:orientation="vertical"
+                    app:turtleClick="@{()->viewModel.moveTabPosition(1)}">
+
+                    <com.verse.app.widget.views.CustomTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:ellipsize="end"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:text="@string/community_tab_event_end"
+                        app:isSelected="@{viewModel.tabPosition == 1}"
+                        app:textViewDisableTextStyle="@style/CommunityEventTabDisable"
+                        app:textViewTextStyle="@style/CommunityEventTabEnable" />
+
+                    <com.verse.app.widget.views.CustomConstraintLayout
+                        android:layout_width="@dimen/size_4"
+                        android:layout_height="@dimen/size_4"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/size_8"
+                        android:layout_marginBottom="@dimen/size_1"
+                        app:isSelected="@{viewModel.tabPosition == 1}"
+                        app:layoutBgColor="@color/color_2fc2ff"
+                        app:layoutCorner="@dimen/size_2"
+                        app:layoutDisableBgColor="@color/white" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            app:position="@={viewModel.tabPosition}" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</layout>

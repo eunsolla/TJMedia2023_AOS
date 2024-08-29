@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="position"
+            type="java.lang.Integer" />
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.intro.viewmodel.SetLanguageViewModel" />
+
+        <variable
+            name="data"
+            type="com.verse.app.model.mypage.GetNationLanguageListResponseData" />
+    </data>
+
+    <com.verse.app.widget.views.CustomConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layoutBgColor="@color/white">
+
+        <com.verse.app.widget.views.CustomTextView
+            android:id="@+id/tvLanguage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/size_20"
+            android:fontFamily="@font/noto_sans_kr_medium"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:minHeight="@dimen/size_60"
+            android:paddingTop="@dimen/size_15"
+            android:paddingBottom="@dimen/size_15"
+            android:text="@{data.name}"
+            android:textSize="@dimen/size_20"
+            app:isSelected="@{data.selected}"
+            app:textViewBgColor="@color/color_2fc2ff"
+            app:textViewBorder="@dimen/size_2"
+            app:textViewBorderColor="@color/color_2fc2ff"
+            app:textViewCorner="@dimen/size_10"
+            app:textViewDisableBgColor="@color/white"
+            app:textViewDisableBorder="@dimen/size_2"
+            app:textViewDisableBorderColor="@color/color_2fc2ff"
+            app:textViewDisableCorner="@dimen/size_10"
+            app:textViewDisableTxtColor="@color/color_222222"
+            app:textViewTxtColor="@color/white"
+            app:turtleClick="@{()->viewModel.selectedLanguage(position)}" />
+    </com.verse.app.widget.views.CustomConstraintLayout>
+</layout>

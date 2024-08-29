@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="requestManager"
+            type="com.bumptech.glide.RequestManager" />
+
+        <variable
+            name="data"
+            type="com.verse.app.model.chat.ChatMemberRoomModel" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_50"
+        android:layout_marginLeft="@dimen/size_20"
+        android:layout_marginTop="@dimen/size_10"
+        android:layout_marginBottom="@dimen/size_10"
+        tools:background="@color/white">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ivThumb"
+            android:layout_width="@dimen/size_50"
+            android:layout_height="@dimen/size_50"
+            android:scaleType="centerCrop"
+            app:imageUrl="@{data.targetProfileImagePath}"
+            app:strokeColor="@null"
+            app:placeholder="@{@drawable/profile_empty_small}"
+            app:requestManager="@{requestManager}"
+            app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+            tools:src="@drawable/profile_empty_small" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llContents"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/size_12"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="@font/font_noto_sans_kr_light"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:text="@{data.targetMemberNk}"
+                android:textColor="@color/color_222222"
+                android:textSize="@dimen/size_15"
+                tools:text="닉네임닉네임닉네임" />
+
+            <!-- font_noto_sans_kr_bold font_noto_sans_kr_light -->
+            <!-- android:src="@{model.isDownload ? @drawable/ic_check_18 : @drawable/ic_more_44}"-->
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="@font/font_noto_sans_kr_light"
+                android:visibility="@{data.readMsg,default=gone}"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:text="@{data.recentMsg}"
+                android:textColor="@color/color_8c8c8c"
+                android:textSize="@dimen/size_13"
+                tools:text="이미지를 보냈습니다."/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="@font/font_noto_sans_kr_bold"
+                android:visibility="@{data.readMsg == false,default=gone}"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:text="@{data.recentMsg}"
+                android:textColor="@color/color_8c8c8c"
+                android:textSize="@dimen/size_13"
+                tools:text="이미지를 보냈습니다."/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivMore"
+            android:layout_width="@dimen/size_37"
+            android:layout_height="match_parent"
+            android:paddingRight="@dimen/size_20"
+            android:src="@drawable/ic_more" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</layout>

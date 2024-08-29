@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.verse.app.contants.SingType" />
+
+        <variable
+            name="curType"
+            type="com.verse.app.contants.SingType" />
+
+    </data>
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.verse.app.widget.views.CustomLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/size_40"
+            android:orientation="vertical"
+            app:linearLayoutCorner="@dimen/size_10"
+            tools:background="@color/white">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/size_20"
+                android:visibility="@{curType == SingType.SOLO}">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:src="@drawable/img_earphone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/size_20"
+                android:visibility="@{curType != SingType.SOLO}"
+                tools:visibility="gone">
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font_noto_sans_kr_medium"
+                    android:includeFontPadding="false"
+                    android:text="@string/singing_popup_recommend_earphones_detail_first_String"
+                    android:textColor="@color/color_222222"
+                    android:textSize="@dimen/size_19"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_earphone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_19"
+                    android:src="@drawable/ic_earphone_s"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+
+                <TextView
+                    android:id="@+id/tv_first"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/size_14"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/font_noto_sans_kr_light"
+                    android:includeFontPadding="false"
+                    android:lineSpacingExtra="@dimen/size_4"
+                    android:maxLines="2"
+                    android:text="@string/singing_popup_recommend_earphones_detail_second_String"
+                    android:textColor="@color/color_222222"
+                    android:textSize="@dimen/size_14"
+                    android:textStyle="normal"
+                    app:layout_constraintLeft_toRightOf="@+id/iv_earphone"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/iv_earphone" />
+
+                <TextView
+                    android:id="@+id/tv_third"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/size_14"
+                    android:layout_marginTop="@dimen/size_5"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/font_noto_sans_kr_light"
+                    android:includeFontPadding="false"
+                    android:lineSpacingExtra="@dimen/size_4"
+                    android:maxLines="3"
+                    android:text="@string/singing_popup_recommend_earphones_detail_third_String"
+                    android:textColor="@color/color_222222"
+                    android:textSize="@dimen/size_14"
+                    android:textStyle="normal"
+                    app:layout_constraintLeft_toRightOf="@+id/iv_earphone"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_first" />
+
+
+                <TextView
+                    android:id="@+id/tv_part_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_20"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/font_noto_sans_kr_medium"
+                    android:includeFontPadding="false"
+                    android:lineSpacingExtra="@dimen/size_4"
+                    android:maxLines="3"
+                    android:text="@string/singing_popup_recommend_earphones_detail_fourth_String"
+                    android:textColor="@color/color_222222"
+                    android:textSize="@dimen/size_19"
+                    android:textStyle="normal"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_third" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_part_a"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_8"
+                    android:src="@drawable/ic_part_a_box"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_part_title" />
+
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_part_b"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_10"
+                    android:src="@drawable/ic_part_b_box"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_part_a" />
+
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_part_c"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_10"
+                    android:src="@drawable/ic_part_c_box"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_part_b" />
+
+
+                <TextView
+                    android:id="@+id/tv_part_a"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/size_14"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/font_noto_sans_kr_light"
+                    android:includeFontPadding="false"
+                    android:lineSpacingExtra="@dimen/size_4"
+                    android:maxLines="2"
+                    android:text="@string/singing_popup_recommend_earphones_detail_fifth_String"
+                    android:textColor="@color/color_222222"
+                    android:textSize="@dimen/size_14"
+                    android:textStyle="normal"
+                    app:layout_constraintLeft_toRightOf="@+id/iv_part_a"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/iv_part_a" />
+
+                <TextView
+                    android:id="@+id/tv_part_b"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/size_14"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/font_noto_sans_kr_light"
+                    android:includeFontPadding="false"
+                    android:lineSpacingExtra="@dimen/size_4"
+                    android:maxLines="2"
+                    android:text="@string/singing_popup_recommend_earphones_detail_sixth_String"
+                    android:textColor="@color/color_222222"
+                    android:textSize="@dimen/size_14"
+                    android:textStyle="normal"
+                    app:layout_constraintLeft_toRightOf="@+id/iv_part_b"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/iv_part_b" />
+
+                <TextView
+                    android:id="@+id/tv_part_c"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/size_14"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/font_noto_sans_kr_light"
+                    android:includeFontPadding="false"
+                    android:lineSpacingExtra="@dimen/size_4"
+                    android:maxLines="2"
+                    android:text="@string/singing_popup_recommend_earphones_detail_seventh_String"
+                    android:textColor="@color/color_222222"
+                    android:textSize="@dimen/size_14"
+                    android:textStyle="normal"
+                    app:layout_constraintLeft_toRightOf="@+id/iv_part_c"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/iv_part_c" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_0_5"
+                android:background="@color/color_f4f4f4" />
+
+            <com.verse.app.widget.views.CustomTextView
+                android:id="@+id/tv_btn_confirm"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_50"
+                android:fontFamily="@font/font_noto_sans_kr_medium"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:letterSpacing="@dimen/letter_spacing_04"
+                android:text="@string/str_confirm"
+                android:textSize="@dimen/size_15"
+                app:textViewBgColor="@color/color_f4f4f4"
+                app:textViewTxtColor="@color/color_222222"
+                tools:visibility="visible" />
+
+        </com.verse.app.widget.views.CustomLinearLayout>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

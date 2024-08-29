@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:clickable="true">
+
+    <data>
+
+        <import type="com.verse.app.contants.ListPagedItemType" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.singpass.viewmodel.SingPassViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/sing_pass_constraint_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        tools:itemType="@layout/item_sing_pass">
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/sing_pass_view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            app:dataList="@{viewModel.singPassDataList.genreList}"
+            app:itemType="@{ListPagedItemType.MAIN_SING_PASS}"
+            app:onPageState="@{(state) -> viewModel.pageState(state)}"
+            app:position="@={viewModel.vpCurPosition}"
+            app:viewModel="@{viewModel}" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/header_constraint_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/size_20"
+            android:layout_marginTop="@dimen/size_12"
+            android:layout_marginRight="@dimen/size_20"
+            app:layout_constraintBottom_toTopOf="@+id/empty_constraint_layout"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_weight="2">
+
+            <ImageView
+                android:id="@+id/iv_level"
+                android:layout_width="@dimen/size_50"
+                android:layout_height="@dimen/size_50"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:turtleClick="@{() -> viewModel.moveToSingPassDashBoard()}" />
+
+            <com.verse.app.widget.views.CustomTextView
+                android:id="@+id/sing_pass_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/noto_sans_kr_medium"
+                android:lineSpacingExtra="5dp"
+                android:shadowColor="#262626"
+                android:shadowDx="1.0"
+                android:shadowDy="1.0"
+                android:shadowRadius="1.0"
+                android:text="@{viewModel.singPassDataList.seasonInfo.svcSeaMngNm}"
+                android:textSize="@dimen/size_23"
+                android:textStyle="bold"
+                android:visibility="@{viewModel.singPassDataList.seasonInfo.svcSeaMngNm.length() > 0 ? View.VISIBLE : View.GONE, default = gone}"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:textViewBgColor="@color/color_00000000"
+                app:textViewTxtColor="@color/white" />
+
+            <com.verse.app.widget.views.CustomTextView
+                android:id="@+id/sing_pass_date_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_4"
+                android:fontFamily="@font/noto_sans_kr_light"
+                android:shadowColor="#262626"
+                android:shadowDx="0.5"
+                android:shadowDy="0.5"
+                android:shadowRadius="1.0"
+                android:lineSpacingExtra="5dp"
+                android:text="@{@string/season_period_text(viewModel.singPassDataList.seasonInfo.svcStDt, viewModel.singPassDataList.seasonInfo.svcFnDt, viewModel.singPassDataList.seasonInfo.seaRemainDate)}"
+                android:textSize="@dimen/size_13"
+                android:visibility="@{viewModel.singPassDataList.seasonInfo.svcSeaMngNm.length() > 0 ? View.VISIBLE : View.GONE, default = gone}"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sing_pass_text_view"
+                app:textViewBgColor="@color/color_00000000"
+                app:textViewTxtColor="@color/white" />
+
+            <com.verse.app.widget.views.CustomTextView
+                android:id="@+id/sing_pass_hours_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/noto_sans_kr_light"
+                android:shadowColor="#262626"
+                android:shadowDx="0.5"
+                android:shadowDy="0.5"
+                android:shadowRadius="1.0"
+                android:includeFontPadding="false"
+                android:text="@{@string/season_hours_text(viewModel.singPassDataList.seasonInfo.seaRemainTime)}"
+                android:textSize="@dimen/size_13"
+                android:visibility="@{viewModel.singPassDataList.seasonInfo.seaRemainTime > 0 ? View.VISIBLE : View.GONE, default = gone}"
+                app:layout_constraintBottom_toBottomOf="@+id/sing_pass_date_text_view"
+                app:layout_constraintLeft_toRightOf="@+id/sing_pass_date_text_view"
+                app:layout_constraintTop_toTopOf="@+id/sing_pass_date_text_view"
+                app:textViewBgColor="@color/color_00000000"
+                app:textViewTxtColor="@color/white" />
+
+            <com.verse.app.widget.indicator.SingPassIndicatorView
+                android:id="@+id/indicator_view"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_3"
+                android:layout_marginTop="@dimen/size_8"
+                app:dotSize="@{3}"
+                app:indicatorBackgroundColor="@color/color_d9d9d9"
+                app:indicatorCnt="@{viewModel.singPassDataList.genreList.size()}"
+                app:indicatorColor="@color/white"
+                app:indicatorGravity="left"
+                app:layout_constraintTop_toBottomOf="@+id/sing_pass_date_text_view"
+                app:viewPager="@{singPassViewPager}" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/empty_constraint_layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/header_constraint_layout"
+            app:layout_constraintVertical_weight="8" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_sing_pass_new_season"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/size_20"
+            android:paddingTop="@dimen/size_12"
+            android:paddingRight="@dimen/size_20"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.verse.app.widget.views.CustomTextView
+                android:id="@+id/sing_pass_first_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/noto_sans_kr_medium"
+                android:includeFontPadding="false"
+                android:lineSpacingExtra="5dp"
+                android:text="@{viewModel.singPassDataList.seasonInfo.svcSeaMngNm}"
+                android:textSize="@dimen/size_23"
+                android:textStyle="bold"
+                android:visibility="@{viewModel.singPassDataList.seasonInfo.svcSeaMngNm.length() > 0 ? View.VISIBLE : View.GONE, default = gone}"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:textViewBgColor="@color/color_00000000"
+                app:textViewTxtColor="@color/color_222222" />
+
+            <com.verse.app.widget.views.CustomTextView
+                android:id="@+id/sing_pass_first_date_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_4"
+                android:fontFamily="@font/noto_sans_kr_light"
+                android:includeFontPadding="false"
+                android:lineSpacingExtra="5dp"
+                android:text="@{@string/season_period_text(viewModel.singPassDataList.seasonInfo.svcStDt, viewModel.singPassDataList.seasonInfo.svcFnDt, viewModel.singPassDataList.seasonInfo.seaRemainDate, viewModel.singPassDataList.seasonInfo.seaRemainTime)}"
+                android:textSize="@dimen/size_13"
+                android:visibility="@{viewModel.singPassDataList.seasonInfo.svcSeaMngNm.length() > 0 ? View.VISIBLE : View.GONE, default = gone}"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sing_pass_first_text_view"
+                app:textViewBgColor="@color/color_00000000"
+                app:textViewTxtColor="@color/color_222222" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.verse.app.widget.views.CustomTextView
+                    android:id="@+id/tv_sing_pass_new_season_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/noto_sans_kr_medium"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:lineSpacingExtra="5dp"
+                    android:text="@string/season_sing_pass_new_season_title"
+                    android:textSize="@dimen/size_23"
+                    android:textStyle="bold"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:textViewBgColor="@color/color_00000000"
+                    app:textViewTxtColor="@color/color_222222" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/ll_season_sing_pass_item"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_36"
+                    android:gravity="right|center"
+                    android:orientation="horizontal"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_sing_pass_new_season_title">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/size_51"
+                        android:layout_height="@dimen/size_51"
+                        android:layout_marginRight="@dimen/size_10"
+                        app:thumbnailEx="@{viewModel.singPassDataList.seasonInfo.getTopMissionItem(4)}" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/size_51"
+                        android:layout_height="@dimen/size_51"
+                        android:layout_marginRight="@dimen/size_10"
+                        app:thumbnailEx="@{viewModel.singPassDataList.seasonInfo.getTopMissionItem(3)}" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/size_51"
+                        android:layout_height="@dimen/size_51"
+                        android:layout_marginRight="@dimen/size_10"
+                        app:thumbnailEx="@{viewModel.singPassDataList.seasonInfo.getTopMissionItem(2)}" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/size_51"
+                        android:layout_height="@dimen/size_51"
+                        android:layout_marginRight="@dimen/size_10"
+                        app:thumbnailEx="@{viewModel.singPassDataList.seasonInfo.getTopMissionItem(1)}" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/size_51"
+                        android:layout_height="@dimen/size_51"
+                        app:thumbnailEx="@{viewModel.singPassDataList.seasonInfo.getTopMissionItem(0)}" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <LinearLayout
+                    android:id="@+id/ll_sing_pass_new_season_sub_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_36"
+                    android:orientation="horizontal"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ll_season_sing_pass_item">
+
+                    <com.verse.app.widget.views.CustomTextView
+                        android:id="@+id/tv_sing_pass_new_season_sub_title1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/noto_sans_kr_medium"
+                        android:gravity="bottom"
+                        android:includeFontPadding="false"
+                        android:lineSpacingExtra="5dp"
+                        android:text="@string/season_sing_pass_new_season_sub_title1"
+                        android:textSize="@dimen/size_18"
+                        android:textStyle="bold"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:textViewBgColor="@color/color_00000000"
+                        app:textViewTxtColor="@color/color_222222" />
+
+                    <com.verse.app.widget.views.CustomTextView
+                        android:id="@+id/tv_sing_pass_new_season_sub_title2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/noto_sans_kr_light"
+                        android:gravity="bottom"
+                        android:includeFontPadding="false"
+                        android:lineSpacingExtra="5dp"
+                        android:text="@string/season_sing_pass_new_season_sub_title2"
+                        android:textSize="@dimen/size_18"
+                        android:textStyle="bold"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:textViewBgColor="@color/color_00000000"
+                        app:textViewTxtColor="@color/color_222222" />
+                </LinearLayout>
+
+                <com.verse.app.widget.views.CustomTextView
+                    android:id="@+id/tv_join"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_36"
+                    android:fontFamily="@font/noto_sans_kr_medium"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:lineSpacingExtra="5dp"
+                    android:paddingLeft="@dimen/size_33"
+                    android:paddingTop="@dimen/size_10"
+                    android:paddingRight="@dimen/size_33"
+                    android:paddingBottom="@dimen/size_10"
+                    android:text="@string/season_sing_pass_season_join"
+                    android:textSize="@dimen/size_15"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ll_sing_pass_new_season_sub_title"
+                    app:textViewBgColor="@color/color_2fc2ff"
+                    app:textViewCorner="@dimen/size_20"
+                    app:textViewTxtColor="@color/white"
+                    app:turtleClick="@{() -> viewModel.clickJoinSingPassButton()}" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_sing_pass_empty_season"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/size_20"
+            android:paddingTop="@dimen/size_12"
+            android:paddingRight="@dimen/size_20"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="4" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="6">
+
+                <ImageView
+                    android:id="@+id/iv_logo"
+                    android:layout_width="@dimen/size_275"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:src="@drawable/img_opa_logo" />
+
+                <com.verse.app.widget.views.CustomTextView
+                    android:id="@+id/tv_sing_pass_empty_season_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/iv_logo"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/size_36"
+                    android:fontFamily="@font/noto_sans_kr_medium"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:lineSpacingExtra="5dp"
+                    android:text="@string/season_sing_pass_empty_season_title"
+                    android:textSize="@dimen/size_23"
+                    android:textStyle="bold"
+                    app:textViewBgColor="@color/color_00000000"
+                    app:textViewTxtColor="@color/color_222222" />
+
+                <LinearLayout
+                    android:id="@+id/ll_sing_pass_empty_season_sub_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_sing_pass_empty_season_title"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/size_36"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_sing_pass_empty_season_title">
+
+                    <com.verse.app.widget.views.CustomTextView
+                        android:id="@+id/tv_sing_pass_empty_season_sub_title1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/noto_sans_kr_light"
+                        android:gravity="bottom"
+                        android:includeFontPadding="false"
+                        android:lineSpacingExtra="5dp"
+                        android:text="@string/season_sing_pass_empty_season_sub_title1"
+                        android:textSize="@dimen/size_18"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:textViewBgColor="@color/color_00000000"
+                        app:textViewTxtColor="@color/color_222222" />
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

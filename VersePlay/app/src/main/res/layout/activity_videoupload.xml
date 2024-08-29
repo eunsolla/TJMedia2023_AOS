@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:keepScreenOn="true">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.videoupload.viewmodel.VideouploadViewModel" />
+
+    </data>
+
+    <com.verse.app.widget.views.CustomConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black">
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/videoupload_container_frame_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <include
+            layout="@layout/view_videoupload_progress"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="@{viewModel.showUploadProgress}"
+            app:viewModel="@{viewModel}"
+            tools:visibility="gone" />
+
+        <include
+            layout="@layout/fragment_upload_complete"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="@{viewModel.isUploadComplete}"
+            app:viewModel="@{viewModel}"
+            tools:visibility="gone" />
+
+    </com.verse.app.widget.views.CustomConstraintLayout>
+
+</layout>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.verse.app.model.lounge.LoungeModifyTextData" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/etContents"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/size_20"
+            android:layout_marginTop="@dimen/size_12"
+            android:layout_marginRight="@dimen/size_20"
+            android:background="@null"
+            android:fontFamily="@font/noto_sans_kr_light"
+            android:gravity="top|left"
+            android:includeFontPadding="false"
+            android:lineSpacingExtra="4dp"
+            android:padding="15dp"
+            android:text="@{data.contents}"
+            android:textColor="@color/black"
+            android:textSize="@dimen/size_15"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:hint="하히히이형 일을 너무 많이 준거 아니오?" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -1,0 +1,789 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <string name="app_name">VersePlay</string>
+    <string name="str_verse_play">VERSE PLAY</string>
+    <string name="str_back_press_info">\'뒤로\'버튼을 한번 더 누르시면 종료됩니다.</string>
+
+    <string name="str_common_finish_app_notice">VERSE PLAY 앱을\n종료하시겠습니까?</string>
+
+    <!--[s] Common String -->
+    <string name="str_finish">종료</string>
+    <string name="str_cancel">취소</string>
+    <string name="str_confirm">확인</string>
+    <string name="str_follow">팔로우</string>
+    <string name="str_following">팔로잉</string>
+    <string name="str_follower">팔로워</string>
+    <string name="str_share">공유</string>
+    <string name="str_report">신고</string>
+    <string name="str_blocking">차단</string>
+    <string name="str_no_interested">관심없음</string>
+    <string name="str_already_no_interested">이미 관심 없음 처리된 콘텐츠 입니다.</string>
+    <string name="str_singing">부르기</string>
+    <string name="str_more">더 보기</string>
+    <string name="str_solo">솔로</string>
+    <string name="str_duet">듀엣</string>
+    <string name="str_battle">배틀</string>
+    <string name="str_group">그룹</string>
+    <string name="str_normal">일반</string>
+    <string name="str_ad">광고</string>
+    <string name="str_start">시작</string>
+    <string name="str_comment">댓글</string>
+    <string name="str_delete">삭제</string>
+    <string name="str_modify">수정</string>
+    <string name="str_logout">로그아웃</string>
+    <string name="str_next">다음</string>
+    <string name="str_prev">이전</string>
+    <string name="str_hash_tag"># 해시태그</string>
+    <string name="str_counsel">문의하기</string>
+    <string name="str_re_join">재가입하기</string>
+    <string name="str_join_battle">배틀하기</string>
+    <string name="str_join_duet">듀엣하기</string>
+    <string name="str_permission_denied">권한이 거부되었습니다.</string>
+    <string name="str_show_config">노출 설정</string>
+    <string name="str_announcement">안내</string>
+    <!--[e] Common String -->
+
+
+
+
+
+    <!--[s] 메인 탭 Tab -->
+    <string name="str_tab_feed">팔로잉</string>
+    <string name="str_tab_recommend">추천</string>
+    <!--[e] 메인 탭  Tab -->
+
+    <!--[s] 메인 하단 Navi -->
+    <string name="str_navi_main">메인</string>
+    <string name="str_navi_sing_pass">씽패스</string>
+    <string name="str_navi_community">커뮤니티</string>
+    <string name="str_navi_mypage">마이페이지</string>
+    <!--[e] 메인 탭  Navi -->
+
+    <!--[s] Error String -->
+    <string name="network_popup_default">문제가 발생하였습니다.\n일시적인 현상이거나 네트워크 문제일 수 있으니\n잠시 후 다시 시도해 주세요.\n\n이 현상이 지속된다면\n“마이페이지> 설정> 의견 보내기”를\n통해 관리자에게 문의해 주세요.</string>
+    <string name="network_status_rs001">정상 처리되었습니다.</string>
+    <string name="network_popup_undefined">예상하지 못한 문제가 발생하였습니다.\n잠시 후 다시 시도 해주세요.</string>
+    <string name="network_status_rs002">요청 처리에 실패하였습니다.</string>
+    <string name="network_status_rs003">인증 정보가 유효하지 않습니다.</string>
+    <string name="network_status_rs004">필수 인자가 전달되지 않았습니다.</string>
+    <string name="network_status_rs005">서버 상태가 비정상입니다.</string>
+
+    <!--[e] Error String -->
+
+    <!--[s] 이벤트 야간 알림 수신 동의 팝업 -->
+    <string name="event_night_time_agree_title">이벤트 혜택 알림 수신 동의</string>
+    <string name="event_night_time_agree_contents">핫한 콘텐츠와 최신 이벤트 소식을 가장 먼저 알려드립니다.</string>
+    <string name="event_night_time_agree_switch_title">야간에도 알림 받기</string>
+    <string name="event_night_time_agree_switch_sub_title">오후 9시 ~ 오전 8시</string>
+    <!--[e] 이벤트 야간 알림 수신 동의 팝업 -->
+
+    <!-- [s] login -->
+    <string name="common_login_popup_title_text_string">VERSE PLAY 로그인 또는\n회원가입을 해주세요.</string>
+    <string name="common_login_popup_signing_up_info_text_string1">가입하면 VERSE PLAY&#160;</string>
+    <string name="common_login_popup_signing_up_info_text_string2">&#160;및&#160;</string>
+    <string name="common_login_popup_signing_up_info_text_string3">에</string>
+    <string name="common_login_popup_signing_up_info_text_string4">동의하신 것으로 간주됩니다.</string>
+    <string name="common_login_popup_signing_up_info_text_agree"><u>이용약관</u></string>
+    <string name="common_login_popup_signing_up_info_text_privacy"><u>개인정보 처리방침</u></string>
+    <string name="common_login_popup_sign_in_with_kakao">카카오 로그인</string>
+    <string name="common_login_popup_sign_in_with_naver">네이버 로그인</string>
+    <string name="common_login_popup_sign_in_with_google">구글 로그인</string>
+    <string name="common_login_popup_sign_in_with_facebook">페이스북 로그인</string>
+    <string name="common_login_popup_sign_in_with_Twitter">트위터 로그인</string>
+    <string name="common_login_popup_sign_in_with_Snapchat">스냅챗 로그인</string>
+    <!-- [e] login -->
+
+    <!--[s] intro -->
+    <string name="start_verseplay">VERSE PLAY 시작하기</string>
+    <string name="permission_notice_title">VERSE PLAY 서비스 이용을 위해\n다음과 같은 접근 권한이 필요합니다.</string>
+    <string name="permission_notice_selection">선택적 접근권한</string>
+    <string name="permission_notice_essential">필수적 접근권한</string>
+    <string name="str_permission_internet">인터넷</string>
+    <string name="str_permissions_internet_contents">네트워크(인터넷) 상태 확인</string>
+    <string name="str_permission_network">네트워크</string>
+    <string name="str_permission_network_contents">네트워크 상태 확인</string>
+    <string name="str_permission_wifi">WiFi</string>
+    <string name="str_permission_wifi_contents">와이파이 네트워크 상태 확인</string>
+    <string name="str_permission_call">전화</string>
+    <string name="str_permission_call_contents">노래 부르기 시, 전화 수신 상태 확인</string>
+    <string name="str_permission_mic">마이크</string>
+    <string name="str_permission_mic_contents">노래 부르기 시, 녹음 및 녹화 사용</string>
+    <string name="str_permission_camera">카메라</string>
+    <string name="str_permission_camera_contents">노래 부르기 시, 동영상 녹화 및 사용자 프로필 촬영</string>
+    <string name="str_permission_storage">저장소</string>
+    <string name="str_permission_storage_contents">갤러리 접근, 사용자 프로필 이미지 변경, \n개인 동영상 업로드, 게시판 이미지 업로드</string>
+    <string name="str_permission_bluetooth">블루투스</string>
+    <string name="str_permission_bluetooth_contents">노래 부르기 시, 녹음 및 녹화 사용</string>
+    <string name="permission_notice_selectable_access_description">
+        <![CDATA[<font color="#222222" style="bold">선택적 접근권한</font><font color="#666666">은 해당 기능을 사용할 때, 허용이 필요하며,<br/>비 허용시에도 해당 기능 외 서비스 이용만 가능합니다.</font>]]>
+    </string>
+    <!--[e] intro -->
+
+    <string name="social_login_info_naver_client_name">네이버 아이디 로그인</string>
+    <string name="setting_verse_country">활동 국가를 선택해주세요.</string>
+    <string name="setting_verse_lan1">VERSE PLAY에서 사용할</string>
+    <string name="setting_verse_lan2">언어를 선택해주세요.</string>
+    <string name="str_intro_help_country">VERSE PLAY 서비스는 각 나라의 노래 저작권 정책에 따라 서비스가 적용됨을 알려드립니다.</string>
+    <string name="str_intro_help_language">VERSE PLAY 언어 지원은 메뉴 및 설정, 기타 버튼, 이용가이드만 지원하고 가사 번역은 지원하지 않음을 알려드립니다.</string>
+    <string name="str_help_nickname">닉네임은 VERSE PLAY에서 사용될 ID입니다. 설정 후 변경이 불가능하오니 이 점 유의하시길 바랍니다. 건너뛰기 시 SNS ID 또는 기본 아이디로 설정됩니다.</string>
+    <string name="start_sign_up_or_sign_in">로그인 / 회원가입</string>
+    <string name="tutorial_next">다음</string>
+    <string name="tutorial_start">시작</string>
+    <string name="tutorial_singpass_sub_title">PLAY의 왕좌가 될 쟁탈전</string>
+    <string name="tutorial_singpass_title">씽패스</string>
+    <string name="tutorial_sing_sub_title">내 손안의 노래방이 열린다</string>
+    <string name="tutorial_sing_title">노래 부르기</string>
+    <string name="tutorial_album_sub_title">내 특별한 영상 공유</string>
+    <string name="tutorial_album_title">개인 앨범 업로드</string>
+    <string name="tutorial_community_sub_title">자유로운 표현과 소통의 장</string>
+    <string name="tutorial_community_title">커뮤니티</string>
+    <string name="tutorial_mypage_sub_title">나만의 개성을 표현하는</string>
+    <string name="tutorial_mypage_title">마이페이지</string>
+    <!-- SNS Login -->
+
+    <!--[s] feed -->
+    <string name="fmt_feed_contents_more"><u>더보기</u></string>
+    <string name="fmt_feed_contents_hide"><u>숨기기</u></string>
+    <string name="str_song_contents_upload">노래 콘텐츠 업로드</string>
+    <string name="str_album_contents_upload">앨범 동영상 업로드</string>
+    <string name="str_ad_detail">자세히보기</string>
+    <string name="str_block_user">%s님을 차단하시겠습니까?</string>
+    <string name="str_block_feed">현재 피드를 차단할까요?</string>
+    <string name="str_block_complete">차단되었습니다.</string>
+    <string name="str_block_user_complete">차단되었습니다.\n마이페이지에서 차단을 해제할 수 있습니다.</string>
+    <string name="str_uninterested_feed">비슷한 동영상이 적게 표시됩니다.</string>
+    <string name="str_deleted_detail_feed">해당 콘텐츠는 삭제되었거나\n비공개 처리된 콘텐츠입니다.</string>
+    <string name="str_can_not_like_my_feed">나의 콘텐츠는 좋아요할 수 없습니다.</string>
+    <string name="str_can_not_like_my_book_mark">나의 콘텐츠는 즐겨찾기할 수 없습니다.</string>
+    <string name="str_can_remove_my_page">삭제는 마이페이지에서 할 수 있습니다.</string>
+    <string name="str_block_feed_msg">차단된 피드는 향후 노출되지 않습니다.</string>
+    <string name="str_not_interested_feed">이와 비슷한 피드는 향후 적게 표시됩니다.</string>
+    <!--[e] feed -->
+
+    <!-- [s] Login -->
+    <string name="setting_mypage_logout_string">로그아웃</string>
+    <string name="Would_like_to_log_out">로그아웃 하시겠습니까?</string>
+    <string name="sign_nickname_explain1">VERSE PLAY에서 사용할</string>
+    <string name="sign_nickname_explain2">닉네임을 설정해주세요.</string>
+    <string name="sign_hint_enter_nickname">예) 노래하는고라니</string>
+    <string name="sign_nickname_error_already">이미 사용중인 닉네임입니다.</string>
+    <string name="sign_location_back_message">회원가입을 중단하시겠습니까? \n지금 중단하면 진행된 내용이 \n모두 삭제됩니다.</string>
+    <string name="sign_location_back_help">닉네임은 VERSE PLAY에서 사용될 ID입니다. 설정 후 변경이 불가능하오니 이 점 유의하시길 바랍니다. 건너뛰기 시 SNS ID 또는 기본 아이디로 설정됩니다.</string>
+    <string name="sign_nickname_auto_creating">닉네임 자동 생성하기</string>
+    <string name="sign_nickname_check_duplication">중복 확인</string>
+    <string name="sign_nickname_signup">가입 완료</string>
+    <!-- [e]Login -->
+
+    <!-- [s] Upload -->
+    <string name="video_encode_check_mypage">업로드가 완료되면 알림이 도착합니다.</string>
+    <string name="videoupload_picker_title">동영상 업로드</string>
+    <string name="video_upload_max_duration" formatted="false">%d분 %d초 이하의 동영상만 업로드\n할 수 있습니다.</string>
+    <string name="videoupload_view_title">새 콘텐츠 등록</string>
+    <string name="upload_completed">업로드가 완료되었습니다.</string>
+    <string name="upload_completed_star">업로드하신 콘텐츠의 별점은 아래와 같습니다.</string>
+    <string name="upload_completed_star_off_sing">부르신 콘텐츠의 별점은 아래와 같습니다.</string>
+    <string name="upload_completed_nick1"><![CDATA[<font color=#2fc2ff><b>%s</b></font>]]>님께서 업로드하신 콘텐츠의 별점은 아래와 같습니다.</string>
+    <string name="upload_completed_nick2"><![CDATA[<font color=#2fc2ff><b>%s</b></font>]]>님께서 부르신 콘텐츠의 별점은 아래와 같습니다.</string>
+    <string name="upload_completed_nick3"><![CDATA[<font color=#2fc2ff><b>%s</b></font>]]>님께서 업로드하신 콘텐츠가 정상 게시되었습니다.</string>
+    <string name="upload_completed_star_grade">참 잘했어요 :)</string>
+    <string name="upload_completed_star_1">숨소리만 들려요 ;ㅁ;</string>
+    <string name="upload_completed_star_2">공기반 소리반 ;ㅅ;</string>
+    <string name="upload_completed_star_3">내 목소리가 우주에 닿을듯 !!</string>
+    <string name="upload_completed_star_desc">한 곡을 모두 다 부르시면 별 3개를 획득하실 수 있습니다.</string>
+    <string name="upload_album_completed">업로드하신 콘텐츠가 정상 게시되었습니다.</string>
+    <!-- [e] Upload -->
+
+    <!--[s] filter String -->
+    <string name="filter_order_by_recommend">추천순</string>
+    <string name="filter_order_by_latest">최신순</string>
+    <string name="filter_order_by_old">오래된순</string>
+    <!--[e] filter String -->
+
+    <!--[s] search -->
+    <string name="search_hint">검색어를 입력해주세요.</string>
+    <string name="search_help_message">찾으시는 정보(사용자, 아티스트 명, 곡 명)\n확인 후 다시 시도해 주세요.</string>
+    <string name="search_recent_keywords_empty">최근 검색어가 없습니다.</string>
+    <string name="search_result_invalid_msg">현재 화면이 더 이상 유효하지 않습니다. 다시 실행해주세요.</string>
+    <string name="search_delete_recent_keywords">최근 검색어를 모두 삭제하시겠습니까?</string>
+    <string name="search_result_tab_popular">인기</string>
+    <string name="search_result_tab_video">동영상</string>
+    <string name="search_result_tab_accompaniment">반주음</string>
+    <string name="search_result_tab_tag">태그</string>
+    <string name="search_result_tab_user">사용자</string>
+    <string name="search_result_popular_song_title">노래</string>
+    <string name="search_result_related_posts_title">관련 게시물</string>
+    <string name="search_result_more_title">더보기</string>
+    <!--[e] search -->
+
+    <!--[s] 업로드 콘텐츠  song list main-->
+    <string name="song_main_title_hot">지금 뜨는 노래</string>
+    <string name="song_main_title_recently">최근 불렀던 노래</string>
+    <string name="song_main_title_genre">장르</string>
+    <string name="song_main_title_chart">노래 차트</string>
+    <string name="str_song_popular">인기곡</string>
+    <string name="str_song_recent">신곡</string>
+    <string name="str_recent_song_no_data">최근에 불렀던 노래가 없습니다.</string>
+    <string name="str_hot_song_no_data">지금 뜨는 노래가 없습니다.</string>
+    <string name="str_genre_no_data">해당 장르의 음악이 없습니다.</string>
+    <string name="str_related_sound_source_title">연관음원</string>
+    <!--[s] 업로드 콘텐츠  song list main-->
+
+    <!--[s] sing -->
+    <string name="str_audio_recording">녹음</string>
+    <string name="str_video_recording">녹화</string>
+    <string name="str_off">OFF</string>
+    <string name="str_section">구간 부르기</string>
+    <string name="str_section_change_confirm">구간 변경 완료</string>
+    <string name="str_section_setting_confirm">구간 설정 완료</string>
+    <string name="str_recording_all">전곡</string>
+    <string name="str_part_a">A 파트</string>
+    <string name="str_part_b">B 파트</string>
+    <string name="str_challenge_sing_pass">씽패스로 도전하기</string>
+    <string name="str_challenge_sing_pass_a">씽패스 A파트로 도전하기</string>
+    <string name="str_challenge_sing_pass_b">씽패스 B파트로 도전하기</string>
+    <string name="str_inst">INST.</string>
+    <string name="str_mic">MIC.</string>
+    <string name="download_fail_mr">MR 다운로드 실패!</string>
+    <string name="download_fail_xtf">가사 정보 다운로드 실패!</string>
+    <string name="download_fail_song_info">곡 정보 다운로드 실패!</string>
+    <string name="str_stop_recording">중지</string>
+    <string name="str_song_info_title">곡 정보</string>
+    <string name="str_song_info_lyricist">작사</string>
+    <string name="str_song_info_composer">작곡</string>
+    <string name="str_song_info_alb_div_nm">소속사</string>
+    <string name="str_song_info_alb_dis_nm">유통사</string>
+    <string name="str_filter_sound">사운드</string>
+    <string name="str_filter_volume">볼륨</string>
+    <string name="str_filter_ar">필터</string>
+    <string name="str_filter_section_change">구간 변경</string>
+    <string name="str_filter_sync">싱크</string>
+    <string name="str_filter_preview">프리뷰</string>
+    <string name="str_preview_setting">프리뷰 설정</string>
+    <string name="singing_popup_pause_message">그만 부르시겠습니까?</string>
+    <string name="singing_popup_sing_again">새로 부르기</string>
+    <string name="singing_popup_sing_different">저장없이 끝내기</string>
+    <string name="singing_popup_sing_continue">이어 부르기</string>
+    <string name="singing_popup_sing_stop_and_save">편집 후 저장</string>
+    <string name="singing_popup_sing_part_change">파트 변경</string>
+    <string name="singing_popup_preview_message">업로드를 취소하시겠습니까?</string>
+    <string name="singing_popup_preview_other_sing">다른 노래 부르기</string>
+    <string name="singing_popup_preview_exit">끝내기</string>
+    <string name="singing_file_download_error">파일 다운로드 실패!</string>
+    <string name="singing_section_complete">구간 설정 완료</string>
+    <string name="singing_section_change_complete">구간 변경 완료</string>
+    <string name="singing_section_valid_minimum_ms">15초 미만으로는 설정 할 수 없습니다.</string>
+    <string name="singing_permission_need_all">카메라,마이크 접근 권한을 허용하지 않으면, 노래 부르는 동영상을 녹화하거나, 재미있는 AR 스티커를 적용할 수 없습니다.</string>
+    <string name="str_sync_info_desc">좌/우 버튼을 눌러 반주음과 보컬 시작점을 맞춰주세요.</string>
+    <string name="str_preview_info_desc">프리뷰(메인화면)에 노출되고 싶은 시작 시간을 선택하세요.</string>
+    <string name="fmt_time" formatted="false">%,02d:%,02d</string>
+    <string name="fmt_time_preview" formatted="false">%,02d:%,02d ~ %,02d:%,02d</string>
+    <string name="fmt_sync_ms" formatted="false">%,2d ms</string>
+    <string name="str_download_ing">콘텐츠 다운로드 중입니다.</string>
+    <string name="str_download_ing_wait">잠시만 기다려주세요.</string>
+    <string name="str_singing_need_part_select">미디어 유형 또는 파트를 선택해주세요.</string>
+    <!--[s] sing -->
+
+    <!-- [s] earphone popup-->
+    <string name="singing_popup_recommend_earphones_detail_first_String">이어폰 사용 권장 안내</string>
+    <string name="singing_popup_recommend_earphones_detail_second_String">이어폰 사용을\n권장합니다.</string>
+    <string name="singing_popup_recommend_earphones_detail_third_String">최상의 사운드를 위해서는\n이어폰을 사용하세요.</string>
+    <string name="singing_popup_recommend_earphones_detail_fourth_String">파트안내</string>
+    <string name="singing_popup_recommend_earphones_detail_fifth_String">파랑색으로 표시된\n파트를 불러주세요.</string>
+    <string name="singing_popup_recommend_earphones_detail_sixth_String">분홍색으로 표시된\n파트를 불러주세요.</string>
+    <string name="singing_popup_recommend_earphones_detail_seventh_String">초록색으로 표시된\n파트를 불러주세요.</string>
+    <string name="singing_popup_recommend_earphones_detail_A_String">A</string>
+    <string name="singing_popup_recommend_earphones_detail_B_String">B</string>
+    <string name="singing_popup_recommend_earphones_detail_C_String">C</string>
+    <string name="singing_popup_not_whole_song">회원권을 구매하시면 콘텐츠 생성 및 다양한 혜택을 누리실 수 있습니다.</string>
+    <string name="singing_popup_vip">회원권을 구매하시면 SOLO, DUET, BATTLE 콘텐츠 생성 및 다양한 혜택을 누리실 수 있습니다.\n※ 회원권 구매는 \'마이페이지 > 설정 > 멤버십 관리\'에서 구매하실 수 있습니다.</string>
+    <!--[e] earphone popup -->
+
+    <!-- 마이페이지 설정-->
+    <string name="mypage_setting">설정</string>
+    <string name="mypage_setting_account">계정</string>
+    <string name="change_my_info">개인정보 변경</string>
+    <string name="mypage_setting_security">보안</string>
+    <string name="mypage_setting_service_control">서비스 제어</string>
+    <string name="setting_push_noti">Push 알림설정</string>
+    <string name="setting_email">이메일 수신설정</string>
+    <string name="setting_service_lan_country">서비스 지역&amp;언어 설정</string>
+    <string name="setting_player">재생 설정</string>
+    <string name="delete_cache">캐시 삭제</string>
+    <string name="setting_faq">FAQ</string>
+    <string name="one_on_one_qna">1:1 문의</string>
+    <string name="user_guide">이용 가이드</string>
+    <string name="setting_announcement">공지사항</string>
+    <string name="setting_terms_n_police">서비스 약관(정책) 및 고지</string>
+    <string name="setting_open_source_license">오픈소스 라이선스</string>
+    <string name="setting_coupon">쿠폰 번호 입력</string>
+    <string name="manage_my_follower">친구 관리(차단한 계정)</string>
+    <string name="setting_information">정보</string>
+    <string name="setting_version_information">버전정보</string>
+    <string name="login">로그인</string>
+    <string name="mypage_setting_email">이메일</string>
+    <string name="mypage_setting_email_description">이메일을 입력해주세요.</string>
+    <string name="mypage_setting_bio">상태메시지</string>
+    <string name="mypage_setting_bio_description">상태메시지를 입력해주세요.</string>
+    <string name="mypage_setting_links">외부 링크 추가</string>
+    <string name="mypage_setting_links_description">외부의 프로필링크를 넣어주세요.</string>
+    <string name="mypage_setting_private_account">비공개 계정 설정</string>
+    <string name="mypage_setting_account_recommend">내 계정을 다른 사람에게 추천</string>
+    <string name="mypage_setting_message_only_follower">친구에게만 메시지 알림 받기</string>
+    <string name="verseplay_withdrawal">회원탈퇴</string>
+    <string name="str_is_withdrawal">탈퇴 하시겠습니까?</string>
+    <string name="str_withdrawal_complete">탈퇴가 완료되었습니다.</string>
+    <string name="save_stirng">저장</string>
+    <string name="mypage_edit_my_email_hint">이메일을 입력해주세요.</string>
+    <string name="mypage_edit_my_link_hint">외부의 프로필 링크를 넣어주세요.</string>
+    <string name="mypage_edit_link_registerable">등록가능한 외부 프로필 타입은 인스타, 유튜브, 틱톡입니다.</string>
+    <string name="mypage_edit_email_invalid">올바른 이메일을 입력해주세요.</string>
+    <string name="no_block_user">차단한 사용자가 없습니다.</string>
+    <string name="enter_characters_limit">최대 60글자까지 입력 가능합니다.</string>
+    <string name="nickname_enter_characters_limit">최대 50글자까지 입력 가능합니다.</string>
+    <string name="mypage_setting_login_devices">로그인한 디바이스</string>
+    <string name="mypage_setting_login_devices_notice">이전 로그인 이력에 본인의 활동이 아닌 경우 간편 로그인으로 \n사용된 SNS 계정의 보안 상태 값을 확인하시기 바랍니다.</string>
+    <string name="mypage_setting_pre_login_devices">%s (이전)</string>
+    <string name="mypage_setting_cur_login_devices">%s (현재)</string>
+    <string name="mypage_setting_push_manner_mode_description">야간 푸시 알림 동의</string>
+    <string name="mypage_setting_player_auto">자동 볼륨 조절</string>
+    <string name="mypage_setting_push_volume_off">앱 실행 시 소리 OFF</string>
+    <string name="setting_country">지역</string>
+    <string name="setting_language">언어</string>
+    <string name="setting_coupon_1">제휴회원에게 지급된 \n쿠폰번호를 입력해주세요.</string>
+    <string name="str_help_setting_popup">해당 쿠폰으로 지급된 이용권은 VERSE PLAY의 모든 기능을 명시된 기간에만 사용할 수 있음을 알려드립니다.</string>
+    <string name="mypage_setting_coupon_hint">예) TJM1230500</string>
+    <string name="mypage_edit_coupon_invalid">유효한 쿠폰번호를 입력해주세요.</string>
+    <string name="filter_order_by_mypage_setting">설정</string>
+    <string name="filter_order_by_my_private_song">비공개 콘텐츠 보관함</string>
+    <string name="str_success_copy">복사되었습니다.</string>
+    <string name="setting_title_privacy_policy">개인정보 처리방침</string>
+    <string name="mypagemessage_list_title">메시지함</string>
+    <string name="mypagemessage_list_sort">최근 날짜순</string>
+    <string name="mypagemessage_list_delete_string">삭제</string>
+    <string name="mypage_noti">알림</string>
+    <string name="delete_cached_files">캐시 데이터를 삭제하시겠습니까?</string>
+    <string name="complete_delete_cache_file">캐시 데이터를 삭제하였습니다.</string>
+    <!-- 마이페이지 설정-->
+
+    <!--[s] sound filter -->
+    <string-array name="sound_filter">
+        <item>오토튠^selector_sp_auto_tune</item>
+        <item>레코드판^selector_sp_record</item>
+        <item>콘서트홀^selector_sp_concert_hall</item>
+        <item>노래방^selector_sp_singing_room</item>
+        <item>메가폰^selector_sp_megaphone</item>
+        <item>동굴^selector_sp_cave</item>
+        <item>다람쥐^selector_sp_squirrel</item>
+        <item>녹음실^selector_sp_recording_studio</item>
+        <item>헬륨^selector_sp_helium</item>
+        <item>로봇^selector_sp_robot</item>
+        <item>고스트^selector_sp_ghost</item>
+        <item>에코^selector_so_echo</item>
+        <item>리버브^selector_sp_reverb</item>
+        <item>음성변조^selector_sp_voicechanger</item>
+    </string-array>
+    <!--[e] sound filter -->
+
+    <!--[s] 앨범 올리기 -->
+    <string name="videoupload_top_right_menu">업로드</string>
+    <string name="video_files_upload_ing">콘텐츠 업로드 진행 중입니다.</string>
+    <string name="post_text_hint">150자까지 쓸 수 있어요.</string>
+    <string name="str_post_text_popup">콘텐츠 소개글은 150자까지 입력 할수 있습니다.</string>
+    <string name="post_text_hash_tag_hint">#여의도 #한강 #벚꽃 태그와 함께 오늘 하루를 기록해보세요.</string>
+    <string name="post_text_empty">내용을 입력해 주세요.</string>
+    <string name="post_show_contents_need_select">콘텐츠 노출 설정을 선택해주세요.</string>
+    <string name="videoupload_post_more_text">더보기</string>
+    <string name="videoupload_post_permit_range_text">게시물 허용 범위</string>
+    <string name="videoupload_post_permit_comment_text">댓글 허용</string>
+    <string name="videoupload_post_un_permit_comment_text">댓글 비허용</string>
+    <string name="videoupload_post_permit_share_target_text">콘텐츠 노출 설정</string>
+    <string name="videoupload_post_permit_share_onlyme_text">나만 허용</string>
+    <string name="videoupload_post_permit_share_onlifriends_text">친구 허용</string>
+    <string name="videoupload_post_permit_share_everyone_text">전체 허용</string>
+    <string name="videoupload_top_right_menu_send">완료</string>
+    <string name="videoupload_view_title_upload">동영상 업로드</string>
+    <string name="videoupload_view_menu_repick">다시선택</string>
+    <string name="mypage_message_send_text_string">전송</string>
+    <!--[e] 앨범 올리기 -->
+
+    <!-- mypage send feedback -->
+    <string name="mypage_send_feedback_attach_image_text_string">첨부파일</string>
+    <string name="mypage_send_feedback_contact_type_text_string">문의 유형</string>
+    <string name="mypage_send_feedback_format_info_text_string">파일 형식은 jpg, png만 가능합니다</string>
+    <string name="mypage_send_feedback_email_address_info_text_string">답변 받을 이메일 주소</string>
+
+    <string name="send_an_inquiry">의견을 남겨주세요.</string>
+    <string name="edit_profile_email_null_string">이메일을 입력해주세요.</string>
+    <!-- mypage send feedback -->
+
+
+    <string name="str_network_error_msg">네트워크 연결 상태가 불안정합니다.\n네트워크 상태를 확인해주세요.</string>
+    <string name="str_network_disconnect_msg">네트워크 상태를 확인해주세요.</string>
+    <string name="notification_channel_id" translatable="false">Verse_Default</string>
+
+    <string name="videoupload_picker_title_gallery">갤러리</string>
+    <string name="videoupload_picker_cancle_gallery">편집된 내용을 취소하시겠습니까?</string>
+    <!--[s] main -->
+    <string name="main_notice_popup_option_1">다시 보지 않기</string>
+    <string name="main_notice_popup_option_2">3일 동안 보지 않기</string>
+    <string name="main_notice_popup_option_3">오늘 하루 보지 않기</string>
+    <string name="main_notice_popup_link">바로가기 >></string>
+    <string name="main_recommend_user_des_1">인기 아티스트를 팔로우하고</string>
+    <string name="main_recommend_user_des_2">최신 업데이트 되는 소식을 받아보세요.</string>
+    <string name="main_recommend_user_empty">추천 유저가 없습니다</string>
+    <string name="main_following_contents_more_desc">새롭게 올라온 모든 콘텐츠를 확인했습니다.</string>
+    <string name="main_following_contents_more">게시물 다시보기  ></string>
+
+    <!--[s] search -->
+    <string name="search_main_title_beloved_song">지금 사랑 받는 노래</string>
+    <string name="search_filter_order_by_latest">최신순</string>
+    <string name="search_filter_order_by_oldest">오래된순</string>
+    <string name="search_filter_order_by_contents">콘텐츠</string>
+    <string name="search_filter_order_by_official_partner">공식파트너</string>
+    <string name="search_filter_order_by_follower">팔로워</string>
+    <string name="set_update_follow_by_followers">팔로우</string>
+    <string name="set_update_follow_by_following">팔로잉</string>
+    <string name="search_recent_keyword_all_dekete">전체 삭제</string>
+    <string name="search_recent_keyword_all_dekete_2">최근 검색어를 모두 삭제하시겠습니까?</string>
+    <string name="search_recent_keyword_view_detail">자세히 보기</string>
+    <string name="search_recent_keywords">최근 검색어</string>
+    <string name="search_popular_keyword">인기 검색어</string>
+    <string name="str_message">메세지</string>
+    <string name="mypage_str_recommend_user">추천 유저</string>
+    <string name="mypage_singpass_seasonclear_status">씽패스 시즌클리어 현황</string>
+    <string name="mypage_profile_edit">프로필 편집</string>
+    <string name="mypage_profile_edit_fail">프로필 이미지 업로드에 실패하였습니다.</string>
+    <string name="mypage_bg_profile_edit_fail">프로필 배경 이미지 업로드에 실패하였습니다.</string>
+    <string name="str_content">콘텐츠</string>
+
+    <string name="search_no_result_data">검색 결과가 없습니다.</string>
+    <!--[e] search -->
+
+    <!--[s] comment -->
+    <string name="str_comment_hint">댓글을 남겨보세요.</string>
+    <string name="str_comment_re_hint">%s님에게 답글 남기는 중.</string>
+    <string name="str_comment_write">게시</string>
+    <string name="str_comment_show">답글 보기</string>
+    <string name="str_comment_re_show">답글 더보기</string>
+    <string name="str_comment_re_hide">답글 숨기기</string>
+    <string name="str_dialog_comment_report">댓글 신고</string>
+    <string name="str_dialog_comment_report_msg">댓글을 신고하시겠습니까?</string>
+    <string name="str_dialog_comment_report_delete">댓글 삭제</string>
+    <string name="str_dialog_comment_report_delete_msg">댓글을 삭제하시겠습니까?\n삭제한 댓글은 다시 복구할 수 없습니다.</string>
+    <string name="str_comment_empty">댓글이 없습니다.</string>
+    <string name="str_dialog_comment_un_acceptable">댓글이 제한된 콘텐츠입니다.</string>
+    <!--[e] comment -->
+
+    <!-- [s] 씽패스 -->
+    <string name="season_period_text" formatted="false">%1s ~ %2s 종료까지%3s일</string>
+    <string name="season_hours_text"> %4s시간</string>
+    <string name="season_search_date_time">%1s 기준</string>
+    <string name="season_ranking_title">%1s랭킹</string>
+    <string name="season_ranking_more">전체보기</string>
+    <string name="season_sing_pass_point">씽포인트 %,2d</string>
+    <string name="season_sing_pass_user_info_title">정보</string>
+    <string name="season_sing_pass_ranking">랭킹</string>
+    <string name="season_sing_pass_sing_point_name">씽포인트</string>
+    <string name="season_sing_pass_sing_point">%,2dP</string>
+    <string name="season_sing_pass_day_mission_sing_point">일일미션 포인트</string>
+    <string name="season_sing_pass_period_mission_sing_point">기간미션 포인트</string>
+    <string name="season_sing_pass_season_mission_sing_point">시즌미션 포인트</string>
+    <string name="season_sing_pass_ect_point">추가적립 포인트</string>
+    <string name="season_sing_pass_have_mission_item">획득 아이템</string>
+    <string name="season_sing_pass_dash_board_title">씽패스 진행 현황</string>
+    <string name="season_sing_pass_mission_item_title">획득 가능한 아이템</string>
+    <string name="season_sing_pass_daily_mission_title">일일미션</string>
+    <string name="season_sing_pass_period_mission_title">기간미션</string>
+    <string name="season_sing_pass_season_mission_title">시즌미션</string>
+    <string name="season_sing_pass_point_desc" formatted="false">시즌 기간 획득 가능한 포인트(%,2d/%,2d)</string>
+    <string name="season_sing_pass_mission_item" formatted="false">%1s (%,2dP)</string>
+    <string name="season_sing_pass_mission_percent">%1d</string>
+    <string name="season_sing_pass_normal_skip">일반</string>
+    <string name="season_sing_pass_season_skip">시즌</string>
+    <string name="season_sing_pass_normal_skip_count">%,2d</string>
+    <string name="season_sing_pass_season_skip_count">%,2d</string>
+    <string name="season_sing_pass_use_mission_skip">선택하신 <![CDATA[<font color=#007eff><b>"%s"</b></font>]]>\n미션에 대하여 스킵권을 사용하시겠습니까?</string>
+    <string name="season_sing_pass_season_join_desc">대량의 포인트와 아이템 획득의\n기회는 바로 지금입니다.</string>
+    <string name="season_sing_pass_season_join">참여하기</string>
+    <string name="season_sing_pass_new_season_title">새로운 시즌이\n시작되었습니다.</string>
+    <string name="season_sing_pass_new_season_sub_title1">시즌 한정 아이템</string>
+    <string name="season_sing_pass_new_season_sub_title2">을 차지하세요!</string>
+    <string name="season_sing_pass_mission_join_completed">이미 참여 완료하신 미션입니다.</string>
+    <string name="season_sing_pass_empty_season_title">지금은 새로운 시즌을\n준비중입니다.</string>
+    <string name="season_sing_pass_empty_season_sub_title1">보다 흥미로운 시즌에서 만나요~</string>
+    <!-- [e] 씽패스 -->
+
+    <string name="str_post">게시물</string>
+    <string name="str_tag_post">게시물 %s개</string>
+
+    <!-- [s] tab fragment -->
+    <string name="tab_type_my_concert_contents">공연</string>
+    <string name="tab_type_my_personal_contents">개인소장</string>
+    <string name="tab_type_user_personal_contents">유저일반영상</string>
+    <string name="tab_type_user_common_concert_contents">유저공연</string>
+    <string name="tab_type_feed_contents">피드영상</string>
+    <string name="tab_type_feed_only_accompanient">반주음</string>
+    <string name="sort_asc">ASC</string>
+    <string name="sort_desc">DESC</string>
+    <string name="str_like">좋아요</string>
+    <string name="str_favorite">즐겨찾기</string>
+    <string name="change_profile_my_album">앨범에서 선택</string>
+    <string name="change_profile_take_picture">사진 촬영</string>
+    <string name="change_profile_empty">이미지 삭제</string>
+    <string name="change_profile">프로필 이미지 변경</string>
+    <string name="change_bg_profile">배경 이미지 변경</string>
+    <string name="popup_camera_permission">카메라 권한을 승인해 주세요.</string>
+    <string name="popup_storage_permission">저장소 권한을 승인해 주세요.</string>
+    <string name="str_service_stop_song">서비스 음원의 계약 만료로 영상 사용이 제한되었습니다.</string>
+    <!-- [e] tab fragment -->
+    
+    <!-- [s] 인코딩 -->
+    <string name="encode_ing">콘텐츠 제작 및 업로드 진행이 시작되었습니다.\n완료될 때 다시 알려드릴게요!</string>
+    <string name="encode_success">업로드가 완료되었습니다.</string>
+    <string name="encode_fail">업로드가 실패되었습니다.</string>
+    <string name="encode_ing_msg">업로드 중인 콘텐츠가 있습니다. 잠시 후 다시 시도해 주세요.</string>
+    <string name="video_upload_fail">콘텐츠 업로드에 실패하였습니다. \n 네트워크가 불안정한 경우 업로드에 실패할 수 있습니다. 다시 시도하시겠습니까?</string>
+    <string name="mypage_setting_push_comment_by_my_follower">내가 팔로우 하는 사람이 댓글</string>
+    <string name="mypage_setting_push_comment_by_everyone">모든 사람의 댓글</string>
+    <string name="feed_no_result_data">해당 정보가 없습니다.</string>
+    <string name="push_toast_msg">모두 중단 상태를 해제해주세요.</string>
+    <string name="mypage_setting_all_push">모든 알림</string>
+    <string name="mypage_setting_upload_push">기능 알림</string>
+    <string name="mypage_setting_push_uploading">업로드 진행</string>
+    <string name="mypage_setting_push_upload_fail">업로드 실패</string>
+    <string name="mypage_setting_push_upload_complete">업로드 완료</string>
+    <string name="video_upload_fail_reload">재전송</string>
+    <string name="mypage_setting_service_push">서비스 알림</string>
+    <string name="mypage_setting_push_dormant_user">휴면 알림</string>
+    <string name="mypage_setting_push_stop_user">정지 알림</string>
+    <string name="mypage_setting_push_marketing">마케팅 수신 재동의</string>
+    <string name="mypage_setting_push_my_activity">활동 알림</string>
+    <string name="mypage_setting_push_event">이벤트 광고성 알림</string>
+    <string name="mypage_setting_push_new_event">새로운 이벤트 알림</string>
+    <string name="mypage_setting_push_vote">투표 시작/마감 알림</string>
+    <string name="mypage_setting_push_season">시즌 시작/종료 알림</string>
+    <string name="mypage_setting_push_follow_me">다른 회원이 나를 팔로우</string>
+    <string name="mypage_setting_like_my_contents">다른 회원이 내 콘텐츠에 좋아요</string>
+    <string name="mypage_setting_like_my_post">다른 회원이 내 게시글에 좋아요</string>
+    <string name="mypage_setting_like_my_comments">다른 회원이 내 댓글/답글에 좋아요</string>
+    <string name="mypage_setting_complete_my_duet">다른 회원이 나의 듀엣 참여 완료</string>
+    <string name="mypage_setting_complete_my_battle">다른 회원이 나의 배틀 참여 완료</string>
+    <string name="mypage_setting_my_follower_new_contents">나의 팔로우 회원 새 콘텐츠 게시</string>
+    <string name="mypage_setting_my_follower_new_post">나의 팔로우 회원 새 글 게시</string>
+    <string name="mypage_setting_get_message">모든 메시지 알림 받기</string>
+    <string name="mypage_setting_marketing">마케팅</string>
+    <string name="mypage_setting_push_message">메시지</string>
+    <!-- [e] 인코딩 -->
+
+    <!-- [s] 모아보기 -->
+    <string name="feed_count_default">관련 콘텐츠 -개</string>
+    <string name="collection_feed_relate_count">관련 콘텐츠 %,2d개</string>
+    <string name="collection_feed_notice">(신고 및 차단된 컨텐츠 제외)</string>
+    <string name="singpass_is_empty">현재 획득한 시즌 배지가 없습니다.</string>
+    <string name="collection_move_to_sing">이 노래 부르기</string>
+    <!-- [e] 모아보기 -->
+
+    <!-- [s] 갤러리 -->
+    <string name="gallery_max_count_message">최대 %d장까지만 등록 가능합니다.</string>
+    <string name="str_unblock">차단해제</string>
+    <string name="gallery_invalid_confirm_message">최소 1장은 선택하셔야 합니다.</string>
+    <string name="gallery_invalid_file_confirm_message">최소 파일 1개는 선택하셔야 합니다.</string>
+    <string name="gallery_invalid_file_max_confirm_message">최대 파일 %d개까지만 등록 가능합니다.</string>
+    <!-- [e] 갤러리 -->
+
+    <!-- [s] 커뮤니티 -->
+    <string name="community_tab_lounge">라운지</string>
+    <string name="community_tab_event">이벤트</string>
+    <string name="community_tab_vote">투표</string>
+    <string name="mypage_setting_unblocking_complete">사용자를 차단 해제하였습니다.</string>
+    <string name="mypage_setting_unblocking_fail">사용자 차단 해제에 실패하였습니다.</string>
+    <string name="community_tab_event_ing">진행</string>
+    <string name="community_tab_event_end">종료</string>
+    <string name="community_tab_vote_ing">참여</string>
+    <string name="community_tab_vote_end">마감</string>
+    <string name="community_vote_end_title">결과 보기</string>
+    <!-- [e] 커뮤니티 -->
+
+    <!--[s] update -->
+    <string name="str_update">업데이트하기</string>
+    <string name="str_update_later">나중에</string>
+    <!--[e] update -->
+
+    <!-- [s] 라운지 -->
+    <string name="lounge_write_title">라운지 글쓰기</string>
+    <string name="lounge_modify_title">라운지 글수정</string>
+    <string name="lounge_write_register">등록</string>
+    <string name="lounge_write_modify">수정</string>
+    <string name="invite_my_friend">친구 초대 리워드</string>
+    <string name="manage_my_membership">멤버십 관리</string>
+    <string name="str_support">지원</string>
+    <string name="my_recommend_nickname">나의 추천 닉네임</string>
+    <string name="mypage_edit_my_invite_hint">닉네임을 입력해주세요.</string>
+    <string name="mypage_invite_notice_count_noti">초대 가능한 횟수 <![CDATA[<font color=#ff3d33><b>"%s"</b></font>]]>회 남았습니다.</string>
+    <string name="str_copy">복사</string>
+    <string name="str_invite_title">* 초대 안내사항 및 혜택 *</string>
+    <string name="str_invite_subtitle_1">VERSE PLAY를 공유받은 친구가 하단의 추천 닉네임 입력란에 <![CDATA[<font color=#2fc2ff><b>추천닉네임 입력 시 양쪽 모두 3곡 이용권이 지급 됩니다.</b></font>]]></string>
+    <string name="str_invite_subtitle_2">초대 받은 친구가 이용권 구매 시에도 <![CDATA[<font color="#2fc2ff"><b>양쪽 모두 3곡 이용권이 지급됩니다.</b></font>]]></string>
+    <string name="str_invite_subtitle_3">초대 및 초대 하는 행위에 대한 <![CDATA[<font color=#ff3d33><b>모든 보상은 최대 10회까지 가능하며, 11회 부터는 지급이 불가합니다.</b></font>]]></string>
+    <string name="str_invite_subtitle_4">초대된 회원이 <![CDATA[<font color=#ff3d33><b>탈퇴 후 재가입 하여도 초대 리워드 보상은 10회를 초과할 수 없습니다.</b></font>]]></string>
+    <string name="my_recommend_nickname_input">추천 닉네임 입력</string>
+    <string name="str_enter">입력</string>
+    <string name="lounge_write_link_hint">연결할 URL을 입력해주세요.</string>
+    <string name="lounge_write_link_invalid">올바른 형식의 url을 입력해주세요.</string>
+    <string name="lounge_write_hint">글을 입력해주세요. (최대 1000자)</string>
+    <string name="lounge_write_invalid_message">최소 1자 이상 작성해주세요.</string>
+    <string name="lounge_write_back_press_info">라운지 글 작성을 취소하시겠습니까?</string>
+    <string name="lounge_modify_back_press_info">라운지 글 수정을 취소하시겠습니까?</string>
+    <string name="lounge_modify_completed">라운지 글 수정이 완료되었습니다.</string>
+    <string name="lounge_delete_completed">라운지 글 삭제가 완료되었습니다.</string>
+    <string name="lounge_register_completed">라운지 글 등록이 완료되었습니다.</string>
+    <!-- [e] 라운지 -->
+
+    <!-- [s] 이벤트 상세 -->
+    <string name="event_end_message">이벤트가 종료되었습니다.</string>
+    <string name="event_participate_title">이벤트 참여하기</string>
+    <!-- [e] 이벤트 상세 -->
+
+    <!-- [s] 멤버십 -->
+    <string name="membership_title">멤버십 관리</string>
+    <string name="membership_empty_notice">이용중인 이용권이 없습니다.</string>
+    <string name="membership_notice"><Data><![CDATA[<font color=#00e7ff><b>%1s</b></font><br><font color=#ffffff><b>%2s</b></font>]]></Data></string>
+    <string name="membership_notice1">노래 부르는 즐거움,\nVERSE PLAY에서 경험해보세요.</string>
+    <string name="membership_notice2"><Data>비용 부담 없이 즐길 수 있는 <![CDATA[<font color=#222222><b>곡 이용권</b></font>과 제약 없이<br>모든 서비스를 이용할 수 있는 <font color=#222222><b>기간 이용권</b></font>까지!<br>VERSE PLAY에서 준비한 회원 혜택까지 만나보세요.]]></Data></string>
+    <string name="membership_item1">무제한 노래부르기</string>
+    <string name="membership_item2">시즌 한정 아이템</string>
+    <string name="membership_item3">audio FX</string>
+    <string name="membership_item4">Face filter</string>
+    <string name="membership_item5">미션 스킵 카드</string>
+    <string name="membership_tab_period">기간 이용권</string>
+    <string name="membership_tab_song">곡 이용권</string>
+    <string name="membership_footer_title"><Data><![CDATA[<font color=#222222><b>이용권 간단 안내</b></font>]]></Data></string>
+    <string name="membership_footer"><Data><![CDATA[
+    <br>- <font color=#222222><b>기간 이용권</b></font>은 각 이용권에 부여된 혜택을 정해진 기간에만 사용할 수 있는 이용권입니다.<br>
+    <br>- <font color=#222222><b>곡 이용권</b></font>은 이용권에 표시된 숫자의 수 만큼 노래 반주음을 사용할 수 있는 이용권입니다.<br>
+    <br>- 결제를 취소할 경우,구글 앱스토어의 구독 결제 취소 정책을 따르게 됩니다.<br>
+    <br>- 결제 내역은 구글 앱스토어에서 확인할 수 있습니다.<br>
+    <br>- 결제 중,소지하고 있는 스마트폰의 OS가 변경 되어 APP 사용 문제가 있는 경우 verseplay.com으로 문의해주세요.<br>
+    <br>※ 모든 이용권은 보유 중에도 다른 이용권을 추가로 구매할 수 있으며, 기간 이용권 우선 사용 후 곡 이용권 순으로 소진됩니다.<br>
+    ]]></Data></string>
+    <string name="membership_tj_footer_title">티제이미디어(주)</string>
+    <string name="membership_tj_footer"><Data><![CDATA[
+    <p>대표 : 윤나라<br>
+    사업자등록번호 : 130-81-44332<br>
+    통신판매업신고번호 : 2022-서울마포-0937<br>
+    주소 : 서울시 마포구 월드컵북로 434 상암 IT Tower 8층<br>
+    이메일 : cs@verseplay.com</p>
+    ]]></Data></string>
+    <string name="membership_nick_name">%s 님</string>
+    <string name="membership_fail_load_purchase_info">결제 상품 목록을 불러오는데 실패하였습니다.\n잠시 후 다시 시도해주세요.</string>
+    <string name="membership_song_count"><Data><![CDATA[<font color=#ffffff><b>%d</b></font>]]></Data>곡 남음</string>
+    <string name="membership_period_date"><Data><![CDATA[유효 기간<br><font color=#ffffff><b>%s</b></font>]]></Data></string>
+    <string name="membership_buy_ing_message">이미 구매 완료한 기간 이용권이 있습니다.\n\"%s\"을 추가로 구매하시겠습니까?</string>
+    <string name="membership_additional_purchases">추가구매</string>
+    <!-- [e] 멤버십 -->
+
+    <!-- [s] 투표 -->
+    <string name="vote_comment_send">게시</string>
+    <string name="str_poopup_success">정상적으로 등록되었습니다.</string>
+    <string name="str_vote_comment_page_move">댓글보기</string>
+    <string name="str_vote_selected_confirm_message">투표를 진행 하시겠습니까?\n(이후 변경 할 수 없습니다.)</string>
+    <string name="str_try_vote">투표 참여하기</string>
+    <string name="str_vote_disable_message">이미 투표 했습니다.</string>
+    <!-- [e] 투표 -->
+
+    <!-- [s] 회원 상태 알림 메시지 -->
+    <string name="member_status_dormant_notice">사용 중이신 계정은 휴면 상태입니다.\n휴면 해제를 원하시면 고객센터로 문의주세요</string>
+    <string name="member_status_suspend_notice">사용하신 계정은 정지 처리 된 계정입니다.\n자세한 사항은 고객센터로 문의주세요.</string>
+    <string name="member_status_one_day_suspend_notice">사용하신 계정은 1일 동안 정지 처리 된 상태입니다.\n자세한 사항은 고객센터로 문의주세요.</string>
+    <string name="member_status_one_month_suspend_notice">사용하신 계정은 1개월 동안 정지 처리 된 상태입니다.\n자세한 사항은 고객센터로 문의주세요.</string>
+    <string name="member_status_three_month_suspend_notice">사용하신 계정은 3개월 동안 정지 처리 된 상태입니다.\n자세한 사항은 고객센터로 문의주세요.</string>
+    <string name="member_status_six_month_suspend_notice">사용하신 계정은 6개월 동안 정지 처리 된 상태입니다.\n자세한 사항은 고객센터로 문의주세요.</string>
+    <string name="member_status_one_year_suspend_notice">사용하신 계정은 1년 동안 정지 처리 된 상태입니다.\n자세한 사항은 고객센터로 문의주세요.</string>
+    <string name="str_popup_session_re_join">사용하신 계정은 이미 탈퇴 처리 된 계정입니다.\n재가입 하시겠습니까?</string>
+    <string name="change_status_fail">데이터 변경에 실패하였습니다.</string>
+    <!-- [e] 회원 상태 알림 메시지 -->
+
+    <string name="member_contents_title">콘텐츠</string>
+    <string name="member_followers_title">팔로워</string>
+    <string name="member_following_title">팔로잉</string>
+
+    <string name="popup_purchase_membership_firstInfo_String">회원권을 구매하시면 SOLO, DUET, BATTLE 콘텐츠 생성 및 다양한 혜택을 누리실 수 있습니다.</string>
+    <string name="popup_purchase_membership_secondInfo_String">※ 회원권 구매는 \'마이페이지 > 설정 > 멤버십 관리\'에서 구매하실 수 있습니다.</string>
+
+    <string name="popup_allow_comments">댓글을 허용하시겠습니까?</string>
+    <string name="popup_disallow_comments">댓글을 비허용하시겠습니까?</string>
+    <string name="popup_feed_delete">피드를 삭제하시겠습니까?</string>
+    <string name="popup_change_contents">해당 콘텐츠를\n전환하시겠습니까?</string>
+    <string name="singing_now">지금 부르기</string>
+    <string name="coupon_success">등록이 완료되었습니다.</string>
+    <string name="str_report_success">신고되었습니다.</string>
+    <string name="str_prohibit_notice">불건전한 말들이 포함되어있습니다. 해당 표현은 VERSE PLAY에서 금지한 표현입니다. 반복 사용 시 서비스 이용이 제한 될 수 있습니다.</string>
+
+    <!-- [s] 채팅 -->
+    <string name="chat_room_title">메시지함</string>
+    <string name="chat_room_sub_title">최근 날짜순</string>
+    <string name="chat_send_message_hint">메시지 보내기...(최대 250자)</string>
+    <string name="chat_send_message_hint_private">상대방이 비공개 상태입니다.</string>
+    <string name="chat_send_message_hint_block">차단중인 사용자입니다.</string>
+    <string name="chat_send_message">보내기</string>
+    <string name="chat_show_profile">프로필 보기</string>
+    <string name="chat_not_read">읽지않음</string>
+    <string name="chat_server_error_msg">서버와의 연결이 끊어졌습니다.\n재접속 하시겠습니까?</string>
+    <string name="chat_server_retry">재접속</string>
+    <!-- [e] 채팅 -->
+
+    <string name="str_nickname_validation">공백 입력은 허용되지 않습니다.</string>
+    <string name="memberShip_footer_terms1">※ 자세한 내용은&#160;</string>
+    <string name="memberShip_footer_terms2">에서 확인하세요.</string>
+    <string name="community_private_account_popup">비공개 계정은 콘텐츠를 생성할 수 없습니다.</string>
+    <string name="comment_private_account_popup">비공개 계정은 타인의 콘텐츠에 댓글 및 좋아요를 할 수 없습니다.</string>
+    <string name="contents_private_account">이 계정은 비공개입니다.</string>
+    <string name="contents_private_account_sub">비공개 계정의 콘텐츠를 볼 수 없습니다.</string>
+    <string name="contents_block_account">해당 계정을 차단했습니다.</string>
+    <string name="contents_block_account_sub">회원님은 이 계정의 콘텐츠를 볼 수 없습니다.</string>
+    <string name="message_block_account">사용자 차단 상태입니다. \n메시지를 전송하시려면 설정 - 친구 관리(차단한 계정)에서 차단을 해제하여 주세요.</string>
+    <string name="message_private_account">비공개 상태의 사용자에게는 메시지를 보낼 수 없습니다.</string>
+
+    <string name="str_invalid_register_nick_name">특수문자, 공백, 이모지 제외하고 입력해주세요.</string>
+
+    <!-- [s] 서비스 점검 및 업데이트 -->
+    <string name="service_popup_check_title1">서비스 점검 안내\n(정기점검)</string>
+    <string name="service_popup_check_title2">서비스 점검 안내\n(긴급점검)</string>
+    <string name="service_popup_check_title3">서비스 점검 안내\n(시스템점검)</string>
+    <string name="service_popup_update_title1">업데이트 안내\n(긴급업데이트)</string>
+    <string name="service_popup_update_title2">업데이트 안내\n(기능업데이트)</string>
+    <string name="service_popup_update_title3">업데이트 안내</string>
+    <string name="service_popup_check_sub_title">더 좋은 서비스 제공을 위해 서버 점검을\n시행합니다. 점검 시간 동안 잠시\n앱 사용이 어려운 점 양해 부탁드립니다.</string>
+    <string name="service_popup_update_sub_title">더 좋은 서비스 제공을 위해\n앱 업데이트를 시행합니다.\n앱 스토어에서 업데이트를 진행해주세요.</string>
+    <string name="service_popup_check_bottom_notice">예정된 시간내 점검이 완료될 수 있도록\n최선을 다하겠습니다.</string>
+    <string name="service_popup_update_bottom_notice">보다 안정된 서비스를 제공할 수 있도록\n최선을 다하겠습니다.</string>
+    <string name="service_popup_check_date">점검 일시</string>
+    <string name="service_popup_update_date">업데이트</string>
+    <string name="service_popup_check_content">점검 내용</string>
+    <string name="service_popup_update_content">반영 내용</string>
+    <!-- [e] 서비스 점검 및 업데이트 -->
+
+    <!-- [s] 멤버십 이용권 콘텐츠 문구-->
+    <string name="memberShip_contents_sc">부르기 이용권</string>
+    <string name="memberShip_contents_sc001">3곡</string>
+    <string name="memberShip_contents_sc002">30곡</string>
+    <string name="memberShip_contents_sc003">100곡</string>
+    <string name="memberShip_contents_sc004">월간패스</string>
+    <string name="memberShip_contents_sc005">1주일</string>
+    <string name="memberShip_contents_sc006">1개월</string>
+    <string name="memberShip_contents_sc007">6개월</string>
+    <string name="memberShip_contents_sc008">12개월</string>
+    <string name="memberShip_contents_sc009">VP쿠폰</string>
+    <string name="memberShip_contents_monthly_pass">이용권</string>
+    <string name="memberShip_contents_useTicket">이용권</string>
+    <string name="memberShip_contents_useVipTicket">VIP이용권</string>
+    <string name="get_push_set_popup">앱 설정에 알림 권한이 꺼져 있습니다.\n설정으로 이동하시겠습니까?</string>
+    <string name="get_push_set_popup_deny_str">알림 권한이 없으면 해당 기능을 사용할 수 없습니다.</string>
+    <string name="change_myaccount_block">비공개 계정으로 전환하시겠습니까?\n비공개 계정 전환 시 씽패스에서 획득한 아이템 및 포인트가 초기화되며 랭킹에서도 제외됩니다.\n원하시는 경우 확인을 눌러 주세요.</string>
+    <!-- [e] 멤버십 이용권 콘텐츠 문구-->
+
+    <string name="str_lounge_cancle">등록취소</string>
+
+
+</resources>

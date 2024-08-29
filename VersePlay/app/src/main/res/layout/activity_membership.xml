@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.verse.app.contants.EtcTermsType" />
+
+        <import type="com.verse.app.widget.pagertablayout.PagerTabType" />
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.mypage.viewmodel.MemberShipViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_membership"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/layout_support_center_loading"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/size_12"
+            android:orientation="vertical"
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rl_header">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/iv_bg_membership"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/size_20"
+                    android:layout_marginEnd="@dimen/size_20"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_bg_membership"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:strokeColor="@null" />
+
+                <ImageView
+                    android:id="@+id/iv_help"
+                    android:layout_width="@dimen/size_30"
+                    android:layout_height="@dimen/size_30"
+                    android:layout_marginRight="@dimen/size_20"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_membership_help"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_nick_name"
+                    app:layout_constraintRight_toRightOf="@+id/iv_bg_membership"
+                    app:layout_constraintTop_toTopOf="@+id/tv_nick_name"
+                    app:turtleClick="@{()->viewModel.requestDetailTerms(EtcTermsType.MEMBERSHIP)}" />
+
+                <com.verse.app.widget.views.CustomTextView
+                    android:id="@+id/tv_nick_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/size_20"
+                    android:layout_marginTop="@dimen/size_15"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/noto_sans_kr_bold"
+                    android:maxLines="3"
+                    android:text="@{@string/membership_nick_name(viewModel.loginManager.userLoginData.memNk)}"
+                    android:textSize="@dimen/size_14"
+                    app:layout_constraintLeft_toLeftOf="@id/iv_bg_membership"
+                    app:layout_constraintRight_toLeftOf="@+id/iv_help"
+                    app:layout_constraintTop_toTopOf="@id/iv_bg_membership"
+                    app:textViewBgColor="@color/color_00000000"
+                    app:textViewTxtColor="@color/white"
+                    tools:text="닉네임" />
+
+                <com.verse.app.widget.views.CustomTextView
+                    android:id="@+id/tv_membership_empty_contents"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/noto_sans_kr_bold"
+                    android:includeFontPadding="false"
+                    android:text="@string/membership_empty_notice"
+                    android:textSize="@dimen/size_20"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_bg_membership"
+                    app:layout_constraintLeft_toLeftOf="@id/iv_bg_membership"
+                    app:layout_constraintRight_toRightOf="@id/iv_bg_membership"
+                    app:layout_constraintTop_toTopOf="@id/iv_bg_membership"
+                    app:textViewBgColor="@color/color_00000000"
+                    app:textViewTxtColor="@color/white"
+                    tools:text="이용중"
+                    tools:visibility="visible" />
+
+                <com.verse.app.widget.views.CustomTextView
+                    android:id="@+id/tv_membership_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/size_20"
+                    android:layout_marginBottom="@dimen/size_15"
+                    android:fontFamily="@font/noto_sans_kr_light"
+                    android:gravity="left"
+                    android:textSize="@dimen/size_14"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_bg_membership"
+                    app:layout_constraintLeft_toLeftOf="@id/iv_bg_membership"
+                    app:textViewBgColor="@color/color_00000000"
+                    app:textViewTxtColor="@color/white" />
+
+                <com.verse.app.widget.views.CustomTextView
+                    android:id="@+id/tv_membership_contents"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/size_20"
+                    android:layout_marginBottom="@dimen/size_15"
+                    android:fontFamily="@font/noto_sans_kr_bold"
+                    android:gravity="right"
+                    android:textSize="@dimen/size_24"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_bg_membership"
+                    app:layout_constraintRight_toRightOf="@id/iv_bg_membership"
+                    app:textViewBgColor="@color/color_00000000"
+                    app:textViewTxtColor="@color/white"
+                    tools:text="1주일\nVIP이용권"
+                    tools:visibility="visible" />
+
+                <com.verse.app.widget.views.CustomTextView
+                    android:id="@+id/tv_membership_notice1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_20"
+                    android:fontFamily="@font/noto_sans_kr_medium"
+                    android:gravity="center"
+                    android:text="@string/membership_notice1"
+                    android:textSize="@dimen/size_20"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/iv_bg_membership"
+                    app:textViewBgColor="@color/color_00000000"
+                    app:textViewTxtColor="@color/color_222222" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_membership_notice2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_15"
+                    android:fontFamily="@font/noto_sans_kr_light"
+                    android:gravity="center"
+                    android:textSize="@dimen/size_15"
+                    app:htmlText="@{@string/membership_notice2}"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_membership_notice1"
+                    app:textViewBgColor="@color/color_00000000"
+                    app:textViewTxtColor="@color/color_222222"
+                    tools:text="@string/membership_notice2" />
+
+                <com.verse.app.widget.views.CustomConstraintLayout
+                    android:id="@+id/cl_membership_item"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_20"
+                    app:layoutCorner="@dimen/size_10"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_membership_notice2">
+
+                    <com.verse.app.widget.views.CustomConstraintLayout
+                        android:id="@+id/cl_membership_item_bg"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="@dimen/size_20"
+                        android:layout_marginEnd="@dimen/size_20"
+                        android:alpha="0.1"
+                        app:layoutBgColor="@color/color_2fc2ff"
+                        app:layoutCorner="@dimen/size_10"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_membership_item_line_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/size_14"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        app:layout_constraintTop_toTopOf="@+id/cl_membership_item_bg">
+
+                        <com.verse.app.widget.views.CustomTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:fontFamily="@font/noto_sans_kr_medium"
+                            android:gravity="center"
+                            android:paddingLeft="@dimen/size_10"
+                            android:paddingTop="@dimen/size_4"
+                            android:paddingRight="@dimen/size_10"
+                            android:paddingBottom="@dimen/size_4"
+                            android:text="@string/membership_item1"
+                            android:textSize="@dimen/size_14"
+                            app:textViewBgColor="@color/color_2fc2ff"
+                            app:textViewCorner="@dimen/size_30"
+                            app:textViewTxtColor="@color/white" />
+
+                        <com.verse.app.widget.views.CustomTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_marginLeft="@dimen/size_10"
+                            android:fontFamily="@font/noto_sans_kr_medium"
+                            android:gravity="center"
+                            android:paddingLeft="@dimen/size_10"
+                            android:paddingTop="@dimen/size_4"
+                            android:paddingRight="@dimen/size_10"
+                            android:paddingBottom="@dimen/size_4"
+                            android:text="@string/membership_item2"
+                            android:textSize="@dimen/size_14"
+                            app:textViewBgColor="@color/color_2fc2ff"
+                            app:textViewCorner="@dimen/size_30"
+                            app:textViewTxtColor="@color/white" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_membership_item_line_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/size_14"
+                        android:layout_marginBottom="@dimen/size_14"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="@+id/cl_membership_item_bg"
+                        app:layout_constraintTop_toBottomOf="@+id/ll_membership_item_line_1">
+
+                        <com.verse.app.widget.views.CustomTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:fontFamily="@font/noto_sans_kr_medium"
+                            android:gravity="center"
+                            android:paddingLeft="@dimen/size_10"
+                            android:paddingTop="@dimen/size_4"
+                            android:paddingRight="@dimen/size_10"
+                            android:paddingBottom="@dimen/size_4"
+                            android:text="@string/membership_item3"
+                            android:textSize="@dimen/size_14"
+                            app:textViewBgColor="@color/color_2fc2ff"
+                            app:textViewCorner="@dimen/size_30"
+                            app:textViewTxtColor="@color/white" />
+
+                        <com.verse.app.widget.views.CustomTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_marginLeft="@dimen/size_10"
+                            android:fontFamily="@font/noto_sans_kr_medium"
+                            android:gravity="center"
+                            android:paddingLeft="@dimen/size_10"
+                            android:paddingTop="@dimen/size_4"
+                            android:paddingRight="@dimen/size_10"
+                            android:paddingBottom="@dimen/size_4"
+                            android:text="@string/membership_item4"
+                            android:textSize="@dimen/size_14"
+                            app:textViewBgColor="@color/color_2fc2ff"
+                            app:textViewCorner="@dimen/size_30"
+                            app:textViewTxtColor="@color/white" />
+
+                        <com.verse.app.widget.views.CustomTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_marginLeft="@dimen/size_10"
+                            android:fontFamily="@font/noto_sans_kr_medium"
+                            android:gravity="center"
+                            android:paddingLeft="@dimen/size_10"
+                            android:paddingTop="@dimen/size_4"
+                            android:paddingRight="@dimen/size_10"
+                            android:paddingBottom="@dimen/size_4"
+                            android:text="@string/membership_item5"
+                            android:textSize="@dimen/size_14"
+                            app:textViewBgColor="@color/color_2fc2ff"
+                            app:textViewCorner="@dimen/size_30"
+                            app:textViewTxtColor="@color/white" />
+                    </LinearLayout>
+                </com.verse.app.widget.views.CustomConstraintLayout>
+
+                <LinearLayout
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_56"
+                    android:layout_marginTop="@dimen/size_24"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    app:layout_constraintTop_toBottomOf="@+id/cl_membership_item">
+
+                    <com.verse.app.widget.pagertablayout.LinePagerTabLayout
+                        android:id="@+id/tab_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/size_56"
+                        app:fixedSize="@{viewModel.tabList.size}"
+                        app:menuList="@{viewModel.tabList}"
+                        app:tab_bottom_line_height="@dimen/size_1"
+                        app:tab_disable_txt_color="@color/color_8c8c8c"
+                        app:tab_indicator_color="@color/color_2fc2ff"
+                        app:tab_indicator_height="@dimen/size_2"
+                        app:tab_txt_color="@color/color_222222"
+                        app:tab_type="fixed"
+                        app:viewPager="@{vp}" />
+                </LinearLayout>
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/vp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:isAni="@{viewModel.isSwipeEnable}"
+                    app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/toolbar"
+                    app:limitSize="@{viewModel.tabList.size()}"
+                    app:position="@={viewModel.tabPosition}"
+                    app:swipeEnable="@{viewModel.isSwipeEnable}" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <RelativeLayout
+            android:id="@+id/rl_header"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_52"
+            android:background="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageButton
+                android:layout_width="@dimen/size_20"
+                android:layout_height="@dimen/size_20"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/size_20"
+                android:background="@null"
+                android:scaleType="fitCenter"
+                android:src="@drawable/btn_close_left_black"
+                app:turtleClick="@{()->viewModel.back()}" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/font_noto_sans_medium"
+                android:lineSpacingExtra="2dp"
+                android:text="@string/membership_title"
+                android:textColor="@color/color_222222"
+                android:textSize="@dimen/size_18"
+                android:textStyle="normal" />
+        </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

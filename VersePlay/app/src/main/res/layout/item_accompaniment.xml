@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.verse.app.model.feed.CommonAccompanimentData" />
+
+        <variable
+            name="viewmodel"
+            type="com.verse.app.ui.mypage.bookmark.MyPageBookmarkAccompanimentViewModel" />
+
+        <variable
+            name="isUser"
+            type="java.lang.Boolean" />
+
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/size_20"
+        android:paddingTop="@dimen/size_10"
+        android:paddingRight="@dimen/size_20"
+        android:paddingBottom="@dimen/size_10"
+        tools:background="@color/white">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="@dimen/size_50"
+            android:layout_height="@dimen/size_50"
+            app:imageUrl="@{data.albImgPath}"
+            app:layout_constraintDimensionRatio="1:1"
+            app:strokeColor="@null"
+            android:scaleType="centerCrop"
+            app:placeholder="@{@drawable/ic_album_default}"
+            app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+            tools:src="@drawable/ic_album_default" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/size_12"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="@font/font_noto_sans_kr_light"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:text="@{data.songNm}"
+                android:textColor="@color/color_222222"
+                android:textSize="@dimen/size_15"
+                tools:text="NEXTNEXT" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="@font/font_noto_sans_kr_light"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:text="@{data.artNm}"
+                android:textColor="@color/color_8c8c8c"
+                android:textSize="@dimen/size_13"
+                tools:text="에스파" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivFavorite"
+            android:layout_width="@dimen/size_50"
+            android:layout_height="match_parent"
+            android:paddingLeft="@dimen/size_15"
+            android:paddingTop="@dimen/size_9"
+            android:paddingRight="@dimen/size_15"
+            android:paddingBottom="@dimen/size_9"
+            android:scaleType="centerInside"
+            android:src="@drawable/selector_favorites_blue"
+            android:visibility="@{!isUser, default=visible}"
+            app:isSelected="@{data.isBookMark}" />
+
+        <com.verse.app.widget.views.CustomTextView
+            android:id="@+id/tvSong"
+            android:layout_width="@dimen/size_68"
+            android:layout_height="@dimen/size_36"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:fontFamily="@font/noto_sans_kr_medium"
+            android:includeFontPadding="false"
+            android:text="@string/str_singing"
+            android:textSize="@dimen/size_15"
+            app:textViewBgColor="@color/color_2fc2ff"
+            app:textViewClickEffect="false"
+            app:textViewCorner="@dimen/size_5"
+            app:textViewTxtColor="@color/white" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</layout>

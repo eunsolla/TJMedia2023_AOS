@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.verse.app.contants.MediaType" />
+
+        <import type="com.verse.app.contants.SingPageType" />
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.sing.viewmodel.SingViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_singing_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_close"
+            android:layout_width="@dimen/size_60"
+            android:layout_height="@dimen/size_52"
+            android:paddingLeft="@dimen/size_20"
+            android:paddingTop="@dimen/size_16"
+            android:paddingRight="@dimen/size_16"
+            android:paddingBottom="@dimen/size_16"
+            android:src="@{@drawable/ic_sing_close_w}"
+            app:inVisibility="@{!viewModel.isStartRecording}"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:turtleClick="@{()->viewModel.onClose()}"
+            tools:src="@drawable/ic_sing_close_w"
+            tools:visibility="visible" />
+
+        <com.verse.app.widget.views.CustomTextView
+            android:id="@+id/tv_song_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="@font/font_noto_sans_kr_medium"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:text="@{viewModel.songMainData.songNm}"
+            android:textSize="@dimen/size_18"
+            app:curMediaType="@{viewModel.curMediaType}"
+            app:isRecording="@{viewModel.isStartRecording}"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_close"
+            app:layout_constraintLeft_toRightOf="@+id/iv_close"
+            app:layout_constraintRight_toLeftOf="@+id/iv_switch_camera"
+            app:layout_constraintTop_toTopOf="@+id/iv_close"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:textViewBgColor="@color/color_00000000"
+            app:textViewTxtColor="@color/white"
+            tools:text="Easy Ft." />
+
+        <com.verse.app.widget.views.CustomTextView
+            android:id="@+id/tv_singer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/size_32"
+            android:layout_marginTop="@dimen/size_2"
+            android:layout_marginRight="@dimen/size_32"
+            android:ellipsize="end"
+            android:fontFamily="@font/font_noto_sans_kr_light"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:text="@{viewModel.songMainData.artNm}"
+            android:textSize="@dimen/size_15"
+            app:curMediaType="@{viewModel.curMediaType}"
+            app:isRecording="@{viewModel.isStartRecording}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/iv_close"
+            app:layout_constraintRight_toLeftOf="@+id/iv_switch_camera"
+            app:layout_constraintTop_toBottomOf="@+id/tv_song_name"
+            app:textViewBgColor="@color/color_00000000"
+            app:textViewTxtColor="@color/color_8c8c8c"
+            tools:text="Easy Ft." />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_switch_camera"
+            android:layout_width="@dimen/size_60"
+            android:layout_height="@dimen/size_52"
+            android:paddingLeft="@dimen/size_16"
+            android:paddingTop="@dimen/size_16"
+            android:paddingRight="@dimen/size_16"
+            android:paddingBottom="@dimen/size_11"
+            android:src="@drawable/ic_camera_turn"
+            android:visibility="gone"
+            tools:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_close"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/iv_close" />
+
+        <com.verse.app.widget.views.CustomTextView
+            android:id="@+id/tvNext"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/size_11"
+            android:layout_marginRight="@dimen/size_11"
+            android:layout_marginBottom="@dimen/size_11"
+            android:fontFamily="@font/font_noto_sans_kr_medium"
+            android:gravity="center"
+            android:paddingLeft="@dimen/size_16"
+            android:paddingRight="@dimen/size_16"
+            android:text="@string/str_next"
+            android:textColor="@color/color_222222"
+            android:textSize="@dimen/size_16"
+            android:visibility="@{viewModel.singPageType == SingPageType.SYNC_SING}"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_close"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/iv_close"
+            app:textViewBgColor="@color/color_2fc2ff"
+            app:textViewCorner="@dimen/size_5"
+            app:textViewTxtColor="@color/white"
+            app:turtleClick="@{()-> viewModel.moveToPage(SingPageType.UPLOAD_FEED)}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Create by Changgi, Hong. on 2019. 11. 8.
+  ~ Copyright (c) 2019. boomto7@hotmail.co.kr. All rights reserved.
+  -->
+
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+
+        <domain includeSubdomains="true">http://dev-api.verseplay.com</domain>
+        <domain includeSubdomains="true">http://stg-api.verseplay.com</domain>
+        <domain includeSubdomains="true">http://prd-api.verseplay.com</domain>
+        <domain includeSubdomains="true">http://dev-web.verseplay.com</domain>
+        <domain includeSubdomains="true">http://stg.verseplay.com</domain>
+        <domain includeSubdomains="true">http://prd.verseplay.com</domain>
+
+        <domain includeSubdomains="true">http://20.221.202.148</domain>
+        <domain includeSubdomains="true">http://20.221.202.148:8080</domain>
+        <domain includeSubdomains="true">20.221.202.148</domain>
+        <domain includeSubdomains="true">20.221.202.148:8080</domain>
+
+        <domain includeSubdomains="true">http://192.168.0.27</domain>
+        <domain includeSubdomains="true">http://192.168.0.27:9080</domain>
+        <domain includeSubdomains="true">192.168.0.27</domain>
+        <domain includeSubdomains="true">192.168.0.27:9080</domain>
+
+        <domain includeSubdomains="true">http://192.168.0.29</domain>
+        <domain includeSubdomains="true">http://192.168.0.29:9080</domain>
+        <domain includeSubdomains="true">192.168.0.29</domain>
+        <domain includeSubdomains="true">192.168.0.29:9080</domain>
+    </domain-config>
+</network-security-config>
+
+
+
+<!--<network-security-config>-->
+<!--<domain-config cleartextTrafficPermitted="true">-->
+    <!--<domain includeSubdomains="true">api.xxx.com</domain>-->
+<!--</domain-config>-->
+<!--</network-security-config>-->

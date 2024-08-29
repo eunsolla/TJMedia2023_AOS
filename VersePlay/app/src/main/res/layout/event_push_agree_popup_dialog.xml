@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="275dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@android:color/transparent">
+
+        <LinearLayout
+            android:layout_width="275dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="51dp"
+            android:background="@drawable/bg_dialog_help_bolder_corner_20"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/size_20"
+                android:layout_marginTop="@dimen/size_45"
+                android:layout_marginEnd="@dimen/size_20"
+                android:fontFamily="@font/noto_sans_kr_medium"
+                android:gravity="left|center_horizontal"
+                android:includeFontPadding="false"
+                android:text="@string/event_night_time_agree_title"
+                android:textColor="@color/color_222222"
+                android:textSize="@dimen/size_19" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_0_5"
+                android:layout_marginLeft="@dimen/size_20"
+                android:layout_marginRight="@dimen/size_20"
+                android:layout_marginTop="@dimen/size_20"
+                android:background="@color/color_eaeaea" />
+
+            <RelativeLayout
+                android:id="@+id/layout_descript"
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/size_20"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvContents"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="@dimen/size_20"
+                    android:layout_marginRight="@dimen/size_20"
+                    android:fontFamily="@font/noto_sans_kr_light"
+                    android:text="@string/event_night_time_agree_contents"
+                    android:gravity="left|center_horizontal"
+                    android:includeFontPadding="false"
+                    android:textColor="@color/color_222222"
+                    android:textSize="@dimen/size_14"
+                    android:textStyle="normal" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout_switch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/size_20"
+                android:layout_marginRight="@dimen/size_20"
+                android:layout_marginTop="@dimen/size_10" >
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvSwitchTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:fontFamily="@font/noto_sans_kr_medium"
+                    android:text="@string/event_night_time_agree_switch_title"
+                    android:gravity="left|center_horizontal"
+                    android:includeFontPadding="false"
+                    android:textColor="@color/color_222222"
+                    android:textSize="@dimen/size_14" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvSwitchSubTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvSwitchTitle"
+                    android:layout_gravity="left"
+                    android:layout_marginTop="@dimen/size_4"
+                    android:fontFamily="@font/noto_sans_kr_light"
+                    android:text="@string/event_night_time_agree_switch_sub_title"
+                    android:gravity="left|center_horizontal"
+                    android:includeFontPadding="false"
+                    android:textColor="@color/color_8c8c8c"
+                    android:textSize="@dimen/size_12" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivAgreeSwitch"
+                    android:layout_width="@dimen/size_65"
+                    android:layout_height="@dimen/size_32"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:background="@null"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/btn_on_off" />
+            </RelativeLayout>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/llButton"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_50"
+                android:layout_weight="1"
+                android:layout_marginTop="@dimen/size_36"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:visibility="visible"
+                android:background="@drawable/bg_dialog_one_bottom_corner_20"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvContents">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvPositive"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/noto_sans_kr_medium"
+                    android:gravity="center"
+                    android:text="@string/str_confirm"
+                    android:includeFontPadding="false"
+                    android:paddingTop="@dimen/size_15"
+                    android:paddingBottom="@dimen/size_15"
+                    android:textSize="@dimen/size_15"
+                    app:textViewTxtColor="@color/color_222222"
+                    tools:visibility="visible" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_icon"
+            android:layout_width="@dimen/size_44"
+            android:layout_height="@dimen/size_44"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="@dimen/size_26"
+            android:layout_centerHorizontal="true"
+            android:visibility="visible"
+            android:src="@drawable/ic_bell" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

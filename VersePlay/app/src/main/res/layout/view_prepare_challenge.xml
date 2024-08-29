@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.verse.app.contants.ChallengeType" />
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.sing.viewmodel.SingViewModel" />
+
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <com.verse.app.widget.views.CustomTextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/font_noto_sans_kr_medium"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:text="@string/str_recording_all"
+            android:textSize="@dimen/size_18"
+            app:textViewBgColor="@color/white"
+            app:textViewBorder="@dimen/size_0_5"
+            app:textViewBorderColor="@color/color_eaeaea"
+            app:textViewCorner="@dimen/size_10"
+            app:textViewTxtColor="@color/color_222222"
+            app:turtleClick="@{()->viewModel.onChallengeType(ChallengeType.ALL)}" />
+
+        <View
+            android:layout_width="@dimen/size_1"
+            android:layout_height="@dimen/size_12" />
+
+        <com.verse.app.widget.views.CustomConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/font_noto_sans_kr_medium"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:text="@string/str_challenge_sing_pass"
+            android:textSize="@dimen/size_18"
+            app:layoutCorner="@dimen/size_10">
+
+            <com.verse.app.widget.views.CustomTextView
+                android:id="@+id/tv_sing_pass"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/font_noto_sans_kr_medium"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:text="@string/str_challenge_sing_pass"
+                android:textSize="@dimen/size_18"
+                app:textViewBgColor="@color/white"
+                app:textViewBorder="@dimen/size_0_5"
+                app:textViewBorderColor="@color/color_eaeaea"
+                app:textViewCorner="@dimen/size_10"
+                app:textViewDisableBgColor="@color/color_eaeaea"
+                app:textViewDisableBorder="@dimen/size_0_5"
+                app:textViewDisableBorderColor="@color/color_eaeaea"
+                app:textViewDisableCorner="@dimen/size_10"
+                app:textViewDisableTxtColor="@color/color_eaeaea"
+                app:textViewTxtColor="@color/color_222222"
+                app:turtleClick="@{()->viewModel.onChallengeType(ChallengeType.CHALLENGE_SING_PASS)}" />
+
+            <com.verse.app.widget.views.CustomConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:alpha="0.7"
+                android:clickable="true"
+                android:visibility="@{!viewModel.songMainData.isSingPass}"
+                app:layoutBgColor="@color/color_eaeaea"
+                app:layoutCorner="@dimen/size_10"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_sing_pass"
+                app:layout_constraintLeft_toLeftOf="@+id/tv_sing_pass"
+                app:layout_constraintRight_toRightOf="@+id/tv_sing_pass"
+                app:layout_constraintTop_toTopOf="@+id/tv_sing_pass"
+                app:textViewCorner="@dimen/size_10"
+                tools:visibility="gone" />
+
+        </com.verse.app.widget.views.CustomConstraintLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</layout>

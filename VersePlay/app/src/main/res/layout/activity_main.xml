@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:keepScreenOn="true">
+
+    <data>
+
+        <import type="com.verse.app.contants.FragmentType" />
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.main.viewmodel.MainViewModel" />
+
+    </data>
+
+    <com.verse.app.widget.views.CustomSwipeRefreshLayout
+        android:id="@+id/swipe_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:enabled="@{viewModel.isSwipeEnable}"
+        app:onRefresh="@{() ->viewModel.onStartRefresh()}">
+
+        <com.verse.app.widget.views.CustomConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="@{viewModel.startMain,default=gone}"
+            app:layoutBgColor="@color/black">
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/vp_main"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                app:dataList="@{viewModel.mainStructureList}"
+                app:isAni="@{viewModel.isVpMainAni}"
+                app:itemType="@{FragmentType.BASE_MAIN}"
+                app:onPageState="@{(state) -> viewModel.pageMainState(state)}"
+                app:position="@={viewModel.vpMainPosition}"
+                app:swipeEnable="@{viewModel.vpMainSwipeState}"
+                app:viewModel="@{viewModel}" />
+
+
+        </com.verse.app.widget.views.CustomConstraintLayout>
+
+    </com.verse.app.widget.views.CustomSwipeRefreshLayout>
+
+</layout>

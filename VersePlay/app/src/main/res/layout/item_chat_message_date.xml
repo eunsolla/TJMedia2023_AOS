@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.verse.app.model.chat.ChatMessageDateModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_16"
+        android:layout_marginBottom="@dimen/size_16">
+
+        <com.verse.app.widget.views.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/font_noto_sans_kr_light"
+            android:paddingLeft="@dimen/size_12"
+            android:paddingTop="@dimen/size_6"
+            android:paddingRight="@dimen/size_12"
+            android:paddingBottom="@dimen/size_6"
+            android:text="@{data.date}"
+            android:textSize="@dimen/size_12"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:textViewBgColor="@color/color_8c8c8c"
+            app:textViewCorner="@dimen/size_14"
+            app:textViewTxtColor="@color/white"
+            tools:text="2023년 03월 31일 금요일" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

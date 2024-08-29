@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.sing.viewmodel.SingViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:padding="@dimen/size_4">
+
+
+        <include
+            android:id="@+id/ll_media_type"
+            layout="@layout/item_prepare_media_info"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/v_line_2"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_weight="32"
+            app:viewModel="@{viewModel}" />
+
+        <View
+            android:id="@+id/v_line_2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/ll_part_type"
+            app:layout_constraintTop_toBottomOf="@+id/ll_media_type"
+            app:layout_constraintVertical_weight="4" />
+
+        <include
+            android:id="@+id/ll_part_type"
+            layout="@layout/item_prepare_duet_battle"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintVertical_weight="64"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/v_line_2"
+            app:viewModel="@{viewModel}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

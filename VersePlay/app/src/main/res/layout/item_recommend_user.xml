@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="requestManager"
+            type="com.bumptech.glide.RequestManager" />
+
+        <variable
+            name="data"
+            type="com.verse.app.model.mypage.RecommendUserData" />
+
+        <variable
+            name="position"
+            type="java.lang.Integer" />
+
+    </data>
+
+    <com.verse.app.widget.views.CustomConstraintLayout
+        android:layout_width="@dimen/size_110"
+        android:layout_height="@dimen/size_115"
+        app:layoutBorder="@dimen/size_0_5"
+        app:layoutBorderColor="@color/color_adadad"
+        app:layoutCorner="@dimen/size_5">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ivProfile"
+            android:layout_width="@dimen/size_60"
+            android:layout_height="@dimen/size_60"
+            android:layout_marginTop="@dimen/size_18"
+            android:scaleType="centerCrop"
+            app:imageUrl="@{data.profileImageUrl}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="@null"
+            app:placeholder="@{@drawable/profile_empty_small}"
+            app:requestManager="@{requestManager}"
+            app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+            tools:src="@drawable/profile_empty_small" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/size_8"
+            android:layout_marginTop="@dimen/size_10"
+            android:layout_marginRight="@dimen/size_8"
+            android:layout_marginBottom="@dimen/size_10"
+            android:ellipsize="end"
+            android:fontFamily="@font/noto_sans_kr_light"
+            android:gravity="center_horizontal"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:text="@{data.memNk}"
+            android:textColor="@color/color_222222"
+            android:textSize="@dimen/size_13"
+            app:layout_constraintTop_toBottomOf="@+id/ivProfile"
+            tools:text="박하선" />
+
+
+    </com.verse.app.widget.views.CustomConstraintLayout>
+
+</layout>

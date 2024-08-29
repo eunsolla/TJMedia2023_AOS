@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.verse.app.model.search.SearchResultTagData" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_48"
+        android:paddingLeft="@dimen/size_20"
+        android:paddingRight="@dimen/size_20"
+        tools:background="@color/white">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/font_noto_sans_kr_medium"
+            android:gravity="center_vertical"
+            android:includeFontPadding="false"
+            android:text="@{data.tagName}"
+            android:textSize="@dimen/size_17"
+            android:textColor="@color/color_222222"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/tvFeedCount"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="안녕하세요 안녕하세요 >" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvFeedCount"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/font_noto_sans_kr_light"
+            android:gravity="center_vertical"
+            android:includeFontPadding="false"
+            android:text="@{@string/str_tag_post(data.relateFeedCount)}"
+            android:textColor="@color/color_707070"
+            android:textSize="@dimen/size_14"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="게시물 28,7만개" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

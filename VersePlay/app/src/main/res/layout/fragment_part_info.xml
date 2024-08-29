@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.verse.app.contants.SingType" />
+
+        <variable
+            name="singType"
+            type="com.verse.app.contants.SingType" />
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.sing.viewmodel.SingViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:paddingLeft="@dimen/size_38"
+        android:paddingRight="@dimen/size_38"
+        android:paddingBottom="@dimen/size_20">
+
+        <include
+            layout="@layout/view_prepare_solo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="@{singType.code == SingType.SOLO.code ? View.VISIBLE : View.GONE}"
+            app:viewModel="@{viewModel}"
+            tools:visibility="visible" />
+
+        <include
+            layout="@layout/view_prepare_duet"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="@{singType.code == SingType.DUET.code ? View.VISIBLE : View.GONE, default=gone}"
+            app:viewModel="@{viewModel}"
+            tools:visibility="gone" />
+
+        <include
+            layout="@layout/view_prepare_battle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="@{singType.code == SingType.BATTLE.code ? View.VISIBLE : View.GONE, default=gone}"
+            app:viewModel="@{viewModel}"
+            tools:visibility="gone" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

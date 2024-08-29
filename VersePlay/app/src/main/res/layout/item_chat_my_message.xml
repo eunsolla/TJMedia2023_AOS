@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.verse.app.model.chat.ChatMyMessageModel" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_5"
+        android:layout_marginRight="@dimen/size_10"
+        android:gravity="right"
+        tools:background="@color/white">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginRight="@dimen/size_4"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:fontFamily="@font/font_noto_sans_kr_light"
+                android:includeFontPadding="false"
+                android:text="@string/chat_not_read"
+                android:textColor="@color/color_2fc2ff"
+                android:textSize="@dimen/size_11"
+                android:visibility="@{data.readMessage == false,default=gone}"
+                tools:visibility="visible" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/font_noto_sans_kr_light"
+                android:includeFontPadding="false"
+                android:text="@{data.sendTime}"
+                android:textColor="@color/color_707070"
+                android:textSize="@dimen/size_12"
+                app:inVisibility="@{data.sendTime.length() > 0}"
+                tools:text="오후 03:26"
+                tools:visibility="visible" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <com.verse.app.widget.views.CustomTextView
+            android:id="@+id/tvMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/font_noto_sans_kr_medium"
+            android:maxWidth="260dp"
+            android:paddingLeft="@dimen/size_14"
+            android:paddingTop="@dimen/size_9"
+            android:paddingRight="@dimen/size_14"
+            android:paddingBottom="@dimen/size_9"
+            android:text="@{data.msgText}"
+            app:textViewBgColor="@color/color_2fc2ff"
+            app:textViewCorner="@dimen/size_19"
+            app:textViewTxtColor="@color/white"
+            tools:text="하이롱하이롱하이롱하이롱이롱하이롱하이롱하이롱하이롱하이롱하이롱하이롱하이롱하이롱" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

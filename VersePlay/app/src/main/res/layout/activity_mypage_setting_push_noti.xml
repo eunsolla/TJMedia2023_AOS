@@ -1,0 +1,966 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.verse.app.model.mypage.UploadSettingBody" />
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.mypage.viewmodel.SettingPushNotiViewModel" />
+
+        <import type="com.verse.app.contants.PushType" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mypage_setting_push_activity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:paddingBottom="@dimen/size_20">
+
+        <RelativeLayout
+            android:id="@+id/layout_mypage_setting_topbar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_52"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageButton
+                android:layout_width="@dimen/size_20"
+                android:layout_height="@dimen/size_20"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/size_20"
+                android:background="@null"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_top_arrow_left"
+                app:turtleClick="@{()->viewModel.back()}" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/font_noto_sans_medium"
+                android:lineSpacingExtra="2dp"
+                android:text="@string/setting_push_noti"
+                android:textColor="@color/color_222222"
+                android:textSize="@dimen/size_18"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/save_setting_data"
+                isSelected="@{true}"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/size_20"
+                android:fontFamily="@font/font_noto_sans_medium"
+                android:gravity="center"
+                android:lineSpacingExtra="2dp"
+                android:text="@string/save_stirng"
+                android:textColor="@color/complete_text_color"
+                android:textSize="18dp"
+                android:textStyle="normal"
+                app:turtleClick="@{()->viewModel.onComplete()}" />
+
+        </RelativeLayout>
+
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_mypage_setting_topbar"
+            android:overScrollMode="never"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_6"
+                    android:minHeight="@dimen/size_50"
+                    android:paddingStart="@dimen/size_20">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:fontFamily="@font/noto_sans_kr_light"
+                        android:gravity="left"
+                        android:includeFontPadding="false"
+                        android:minHeight="@dimen/size_27"
+                        android:text="@string/mypage_setting_all_push"
+                        android:textColor="@color/color_222222"
+                        android:textSize="18dp"
+                        android:textStyle="normal" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/allpush"
+                        android:layout_width="@dimen/size_70"
+                        android:layout_height="@dimen/size_32"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/size_20"
+                        android:background="@null"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/btn_on_off"
+                        app:isSelected="@{viewModel.all_push}"
+                        app:turtleClick="@{()->viewModel.onClickPush(PushType.PUSH_ALLOW_ALL)}" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/size_20"
+                    android:background="@color/color_eaeaea" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="@dimen/size_36"
+                    android:fontFamily="@font/font_noto_sans_medium"
+                    android:lineSpacingExtra="7dp"
+                    android:paddingStart="@dimen/size_20"
+                    android:text="@string/mypage_setting_upload_push"
+                    android:textColor="@color/color_8c8c8c"
+                    android:textSize="13dp"
+                    android:textStyle="normal" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_6"
+                    android:minHeight="@dimen/size_50"
+                    android:paddingStart="@dimen/size_20">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/size_90"
+                        android:fontFamily="@font/noto_sans_kr_light"
+                        android:gravity="left"
+                        android:includeFontPadding="false"
+                        android:maxLines="2"
+                        android:minHeight="@dimen/size_27"
+                        android:text="@string/mypage_setting_push_uploading"
+                        android:textColor="@color/color_222222"
+                        android:textSize="18dp"
+                        android:textStyle="normal" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/pushUploading"
+                        android:layout_width="@dimen/size_70"
+                        android:layout_height="@dimen/size_32"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/size_20"
+                        android:background="@null"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/btn_on_off"
+                        app:isSelected="@{viewModel.push_uploading}"
+                        app:turtleClick="@{()->viewModel.onClickPush(PushType.PUSH_UPLOADING)}" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_6"
+                    android:minHeight="@dimen/size_50"
+                    android:paddingStart="@dimen/size_20">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/size_90"
+                        android:fontFamily="@font/noto_sans_kr_light"
+                        android:gravity="left"
+                        android:includeFontPadding="false"
+                        android:maxLines="2"
+                        android:minHeight="@dimen/size_27"
+                        android:text="@string/mypage_setting_push_upload_fail"
+                        android:textColor="@color/color_222222"
+                        android:textSize="18dp"
+                        android:textStyle="normal" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/uploadFail"
+                        android:layout_width="@dimen/size_70"
+                        android:layout_height="@dimen/size_32"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/size_20"
+                        android:background="@null"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/btn_on_off"
+                        app:isSelected="@{viewModel.push_upload_fail}"
+                        app:turtleClick="@{()->viewModel.onClickPush(PushType.PUSH_UPLOAD_FAIL)}" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_6"
+                    android:minHeight="@dimen/size_50"
+                    android:paddingStart="@dimen/size_20">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/size_90"
+                        android:fontFamily="@font/noto_sans_kr_light"
+                        android:gravity="left"
+                        android:includeFontPadding="false"
+                        android:maxLines="2"
+                        android:minHeight="@dimen/size_27"
+
+                        android:text="@string/mypage_setting_push_upload_complete"
+                        android:textColor="@color/color_222222"
+                        android:textSize="18dp"
+                        android:textStyle="normal" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/uploadComplete"
+                        android:layout_width="@dimen/size_70"
+                        android:layout_height="@dimen/size_32"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/size_20"
+                        android:background="@null"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/btn_on_off"
+                        app:isSelected="@{viewModel.push_upload_complete}"
+                        app:turtleClick="@{()->viewModel.onClickPush(PushType.PUSH_UPLOAD_COMPLETE)}" />
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="@dimen/size_36"
+                    android:fontFamily="@font/font_noto_sans_medium"
+                    android:lineSpacingExtra="7dp"
+                    android:paddingStart="@dimen/size_20"
+                    android:text="@string/mypage_setting_service_push"
+                    android:textColor="@color/color_8c8c8c"
+                    android:textSize="13dp"
+                    android:textStyle="normal" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_6"
+                    android:minHeight="@dimen/size_50"
+                    android:paddingStart="@dimen/size_20">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/size_90"
+                        android:fontFamily="@font/noto_sans_kr_light"
+                        android:gravity="left"
+                        android:includeFontPadding="false"
+                        android:maxLines="2"
+                        android:minHeight="@dimen/size_27"
+                        android:text="@string/mypage_setting_push_dormant_user"
+                        android:textColor="@color/color_222222"
+                        android:textSize="18dp"
+                        android:textStyle="normal" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/DormantUser"
+                        android:layout_width="@dimen/size_70"
+                        android:layout_height="@dimen/size_32"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/size_20"
+                        android:background="@null"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/btn_on_off"
+                        app:isSelected="@{viewModel.push_dormant_user}"
+                        app:turtleClick="@{()->viewModel.onClickPush(PushType.PUSH_DORMANT_USER)}" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_6"
+                    android:minHeight="@dimen/size_50"
+                    android:paddingStart="@dimen/size_20">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/size_90"
+                        android:fontFamily="@font/noto_sans_kr_light"
+                        android:gravity="left"
+                        android:includeFontPadding="false"
+                        android:maxLines="2"
+                        android:minHeight="@dimen/size_27"
+                        android:text="@string/mypage_setting_push_stop_user"
+                        android:textColor="@color/color_222222"
+                        android:textSize="18dp"
+                        android:textStyle="normal" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/stopUser"
+                        android:layout_width="@dimen/size_70"
+                        android:layout_height="@dimen/size_32"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/size_20"
+                        android:background="@null"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/btn_on_off"
+                        app:isSelected="@{viewModel.push_stop_user}"
+                        app:turtleClick="@{()->viewModel.onClickPush(PushType.PUSH_STOP_USER)}" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_6"
+                    android:minHeight="@dimen/size_50"
+                    android:paddingStart="@dimen/size_20">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/size_90"
+                        android:fontFamily="@font/noto_sans_kr_light"
+                        android:gravity="left"
+                        android:includeFontPadding="false"
+                        android:maxLines="2"
+                        android:minHeight="@dimen/size_27"
+                        android:text="@string/mypage_setting_push_marketing"
+                        android:textColor="@color/color_222222"
+                        android:textSize="18dp"
+                        android:textStyle="normal" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/pushMarketing"
+                        android:layout_width="@dimen/size_70"
+                        android:layout_height="@dimen/size_32"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/size_20"
+                        android:background="@null"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/btn_on_off"
+                        app:isSelected="@{viewModel.push_marketing}"
+                        app:turtleClick="@{()->viewModel.onClickPush(PushType.PUSH_MARKETING_ALLOW)}" />
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="@dimen/size_36"
+                    android:fontFamily="@font/font_noto_sans_medium"
+                    android:lineSpacingExtra="7dp"
+                    android:paddingStart="@dimen/size_20"
+                    android:text="@string/mypage_setting_push_event"
+                    android:textColor="@color/color_8c8c8c"
+                    android:textSize="13dp"
+                    android:textStyle="normal" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_6"
+                    android:minHeight="@dimen/size_50"
+                    android:paddingStart="@dimen/size_20">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/size_90"
+                        android:fontFamily="@font/noto_sans_kr_light"
+                        android:gravity="left"
+                        android:includeFontPadding="false"
+                        android:maxLines="2"
+                        android:minHeight="@dimen/size_27"
+                        android:text="@string/mypage_setting_push_new_event"
+                        android:textColor="@color/color_222222"
+                        android:textSize="18dp"
+                        android:textStyle="normal" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/newEvent"
+                        android:layout_width="@dimen/size_70"
+                        android:layout_height="@dimen/size_32"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/size_20"
+                        android:background="@null"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/btn_on_off"
+                        app:isSelected="@{viewModel.push_new_event}"
+                        app:turtleClick="@{()->viewModel.onClickPush(PushType.PUSH_NEW_EVENT)}" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_6"
+                    android:minHeight="@dimen/size_50"
+                    android:paddingStart="@dimen/size_20">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/size_90"
+                        android:fontFamily="@font/noto_sans_kr_light"
+                        android:gravity="left"
+                        android:includeFontPadding="false"
+                        android:maxLines="2"
+                        android:minHeight="@dimen/size_27"
+                        android:text="@string/mypage_setting_push_vote"
+                        android:textColor="@color/color_222222"
+                        android:textSize="18dp"
+                        android:textStyle="normal" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/pushVote"
+                        android:layout_width="@dimen/size_70"
+                        android:layout_height="@dimen/size_32"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/size_20"
+                        android:background="@null"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/btn_on_off"
+                        app:isSelected="@{viewModel.push_vote}"
+                        app:turtleClick="@{()->viewModel.onClickPush(PushType.PUSH_VOTE)}" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_6"
+                    android:minHeight="@dimen/size_50"
+                    android:paddingStart="@dimen/size_20">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:fontFamily="@font/noto_sans_kr_light"
+                        android:gravity="left"
+                        android:includeFontPadding="false"
+                        android:minHeight="@dimen/size_27"
+                        android:text="@string/mypage_setting_push_season"
+                        android:textColor="@color/color_222222"
+                        android:textSize="18dp"
+                        android:textStyle="normal" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/pushSeason"
+                        android:layout_width="@dimen/size_70"
+                        android:layout_height="@dimen/size_32"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/size_20"
+                        android:background="@null"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/btn_on_off"
+                        app:isSelected="@{viewModel.push_season}"
+                        app:turtleClick="@{()->viewModel.onClickPush(PushType.PUSH_SEASON)}" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/size_20"
+                    android:background="@color/color_eaeaea" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="@dimen/size_36"
+                    android:fontFamily="@font/font_noto_sans_medium"
+                    android:lineSpacingExtra="7dp"
+                    android:paddingStart="@dimen/size_20"
+                    android:text="@string/mypage_setting_push_my_activity"
+                    android:textColor="@color/color_8c8c8c"
+                    android:textSize="13dp"
+                    android:textStyle="normal" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_6"
+                    android:minHeight="@dimen/size_50"
+                    android:paddingStart="@dimen/size_20">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/size_90"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/noto_sans_kr_light"
+                        android:gravity="left"
+                        android:includeFontPadding="false"
+                        android:maxLines="2"
+                        android:minHeight="@dimen/size_27"
+                        android:text="@string/mypage_setting_push_follow_me"
+                        android:textColor="@color/color_222222"
+                        android:textSize="18dp"
+                        android:textStyle="normal" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/followMe"
+                        android:layout_width="@dimen/size_70"
+                        android:layout_height="@dimen/size_32"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/size_20"
+                        android:background="@null"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/btn_on_off"
+                        app:isSelected="@{viewModel.push_follow_me}"
+                        app:turtleClick="@{()->viewModel.onClickPush(PushType.PUSH_FOLLOW_ME)}" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_6"
+                    android:minHeight="@dimen/size_50"
+                    android:paddingStart="@dimen/size_20">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/size_90"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/noto_sans_kr_light"
+                        android:gravity="left"
+                        android:includeFontPadding="false"
+                        android:maxLines="2"
+                        android:minHeight="@dimen/size_27"
+                        android:text="@string/mypage_setting_like_my_contents"
+                        android:textColor="@color/color_222222"
+                        android:textSize="18dp"
+                        android:textStyle="normal" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/likeMyContents"
+                        android:layout_width="@dimen/size_70"
+                        android:layout_height="@dimen/size_32"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/size_20"
+                        android:background="@null"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/btn_on_off"
+                        app:isSelected="@{viewModel.like_my_contents}"
+                        app:turtleClick="@{()->viewModel.onClickPush(PushType.PUSH_LIKE_MY_CONTENTS)}" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_6"
+                    android:minHeight="@dimen/size_50"
+                    android:paddingStart="@dimen/size_20">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/size_90"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/noto_sans_kr_light"
+                        android:gravity="left"
+                        android:includeFontPadding="false"
+                        android:maxLines="2"
+                        android:minHeight="@dimen/size_27"
+                        android:text="@string/mypage_setting_like_my_post"
+                        android:textColor="@color/color_222222"
+                        android:textSize="18dp"
+                        android:textStyle="normal" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/likeMyPost"
+                        android:layout_width="@dimen/size_70"
+                        android:layout_height="@dimen/size_32"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/size_20"
+                        android:background="@null"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/btn_on_off"
+                        app:isSelected="@{viewModel.like_my_post}"
+                        app:turtleClick="@{()->viewModel.onClickPush(PushType.PUSH_LIKE_MY_POSTS)}" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_6"
+                    android:minHeight="@dimen/size_50"
+                    android:paddingStart="@dimen/size_20">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/size_90"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/noto_sans_kr_light"
+                        android:gravity="left"
+                        android:includeFontPadding="false"
+                        android:maxLines="2"
+                        android:minHeight="@dimen/size_27"
+                        android:text="@string/mypage_setting_like_my_comments"
+                        android:textColor="@color/color_222222"
+                        android:textSize="18dp"
+                        android:textStyle="normal" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/likeMyComments"
+                        android:layout_width="@dimen/size_70"
+                        android:layout_height="@dimen/size_32"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/size_20"
+                        android:background="@null"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/btn_on_off"
+                        app:isSelected="@{viewModel.like_my_comments}"
+                        app:turtleClick="@{()->viewModel.onClickPush(PushType.PUSH_LIKE_MY_COMMENT)}" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_6"
+                    android:minHeight="@dimen/size_50"
+                    android:paddingStart="@dimen/size_20">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/size_90"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/noto_sans_kr_light"
+                        android:gravity="left"
+                        android:includeFontPadding="false"
+                        android:maxLines="2"
+                        android:minHeight="@dimen/size_27"
+                        android:text="@string/mypage_setting_complete_my_duet"
+                        android:textColor="@color/color_222222"
+                        android:textSize="18dp"
+                        android:textStyle="normal" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/completeMyDuet"
+                        android:layout_width="@dimen/size_70"
+                        android:layout_height="@dimen/size_32"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/size_20"
+                        android:background="@null"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/btn_on_off"
+                        app:isSelected="@{viewModel.complete_my_duet}"
+                        app:turtleClick="@{()->viewModel.onClickPush(PushType.PUSH_COMPLETE_MY_DUET)}" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_6"
+                    android:minHeight="@dimen/size_50"
+                    android:paddingStart="@dimen/size_20">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/size_90"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/noto_sans_kr_light"
+                        android:gravity="left"
+                        android:includeFontPadding="false"
+                        android:maxLines="2"
+                        android:minHeight="@dimen/size_27"
+                        android:text="@string/mypage_setting_complete_my_battle"
+                        android:textColor="@color/color_222222"
+                        android:textSize="18dp"
+                        android:textStyle="normal" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/completeMyBattle"
+                        android:layout_width="@dimen/size_70"
+                        android:layout_height="@dimen/size_32"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/size_20"
+                        android:background="@null"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/btn_on_off"
+                        app:isSelected="@{viewModel.complete_my_battle}"
+                        app:turtleClick="@{()->viewModel.onClickPush(PushType.PUSH_COMPLETE_MY_BATTLE)}" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_6"
+                    android:minHeight="@dimen/size_50"
+                    android:paddingStart="@dimen/size_20">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/size_90"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/noto_sans_kr_light"
+                        android:gravity="left"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:minHeight="@dimen/size_27"
+                        android:text="@string/mypage_setting_my_follower_new_contents"
+                        android:textColor="@color/color_222222"
+                        android:textSize="18dp"
+                        android:textStyle="normal" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/myFollowerNewContents"
+                        android:layout_width="@dimen/size_70"
+                        android:layout_height="@dimen/size_32"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/size_20"
+                        android:background="@null"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/btn_on_off"
+                        app:isSelected="@{viewModel.my_follower_new_contents}"
+                        app:turtleClick="@{()->viewModel.onClickPush(PushType.PUSH_MY_FOLLOWERS_NEW_CONTENTS)}" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_6"
+                    android:minHeight="@dimen/size_50"
+                    android:paddingStart="@dimen/size_20">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/size_90"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/noto_sans_kr_light"
+                        android:gravity="left"
+                        android:includeFontPadding="false"
+                        android:maxLines="2"
+                        android:minHeight="@dimen/size_27"
+                        android:text="@string/mypage_setting_my_follower_new_post"
+                        android:textColor="@color/color_222222"
+                        android:textSize="18dp"
+                        android:textStyle="normal" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/myFollowerNewPost"
+                        android:layout_width="@dimen/size_70"
+                        android:layout_height="@dimen/size_32"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/size_20"
+                        android:background="@null"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/btn_on_off"
+                        app:isSelected="@{viewModel.my_follower_new_post}"
+                        app:turtleClick="@{()->viewModel.onClickPush(PushType.PUSH_MY_FOLLOWERS_NEW_POSTS)}" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/size_20"
+                    android:background="@color/color_eaeaea" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="@dimen/size_36"
+                    android:fontFamily="@font/font_noto_sans_medium"
+                    android:lineSpacingExtra="7dp"
+                    android:paddingStart="@dimen/size_20"
+                    android:text="@string/mypage_setting_push_message"
+                    android:textColor="@color/color_8c8c8c"
+                    android:textSize="13dp"
+                    android:textStyle="normal" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="@dimen/size_50"
+                    android:paddingStart="@dimen/size_20"
+                    android:paddingEnd="@dimen/size_20">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/size_90"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/noto_sans_kr_light"
+                        android:gravity="center_vertical"
+                        android:includeFontPadding="false"
+                        android:maxLines="2"
+                        android:minHeight="@dimen/size_27"
+                        android:text="@string/mypage_setting_message_only_follower"
+                        android:textColor="@color/color_222222"
+                        android:textSize="18dp"
+                        android:textStyle="normal" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imgDMOnlyMyFollower"
+                        android:layout_width="@dimen/size_70"
+                        android:layout_height="@dimen/size_32"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:adjustViewBounds="true"
+                        android:background="@null"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/btn_on_off"
+                        app:isSelected="@{viewModel.receive_my_follower}"
+                        app:turtleClick="@{()->viewModel.onClickPush(PushType.PUSH_RECEIVE_MY_FOLLOWER)}" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_6"
+                    android:minHeight="@dimen/size_50"
+                    android:paddingStart="@dimen/size_20">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/size_90"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/noto_sans_kr_light"
+                        android:gravity="left"
+                        android:includeFontPadding="false"
+                        android:maxLines="2"
+                        android:minHeight="@dimen/size_27"
+                        android:text="@string/mypage_setting_get_message"
+                        android:textColor="@color/color_222222"
+                        android:textSize="18dp"
+                        android:textStyle="normal" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/getMyMessage"
+                        android:layout_width="@dimen/size_70"
+                        android:layout_height="@dimen/size_32"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/size_20"
+                        android:background="@null"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/btn_on_off"
+                        app:isSelected="@{viewModel.get_message}"
+                        app:turtleClick="@{()->viewModel.onClickPush(PushType.PUSH_GET_DM)}" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/size_20"
+                    android:background="@color/color_eaeaea" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_marginTop="@dimen/size_36"
+                    android:fontFamily="@font/font_noto_sans_medium"
+                    android:lineSpacingExtra="7dp"
+                    android:paddingStart="@dimen/size_20"
+                    android:text="@string/mypage_setting_marketing"
+                    android:textColor="@color/color_8c8c8c"
+                    android:textSize="13dp"
+                    android:textStyle="normal" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_6"
+                    android:minHeight="@dimen/size_50"
+                    android:paddingStart="@dimen/size_20">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/size_90"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/noto_sans_kr_light"
+                        android:gravity="left"
+                        android:includeFontPadding="false"
+                        android:maxLines="2"
+                        android:minHeight="@dimen/size_27"
+                        android:text="@string/mypage_setting_push_manner_mode_description"
+                        android:textColor="@color/color_222222"
+                        android:textSize="18dp"
+                        android:textStyle="normal" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/mannerMode"
+                        android:layout_width="@dimen/size_70"
+                        android:layout_height="@dimen/size_32"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/size_20"
+                        android:background="@null"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/btn_on_off"
+                        app:isSelected="@{viewModel.manner_mode_description}"
+                        app:turtleClick="@{()->viewModel.onClickPush(PushType.PUSH_MANNER_MODE_ALLOW)}" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

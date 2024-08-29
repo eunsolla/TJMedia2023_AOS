@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.verse.app.contants.MediaType" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="pageType"
+            type="com.verse.app.contants.ListPagedItemType" />
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.sing.viewmodel.SingViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_00000000"
+        android:orientation="vertical">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_singing"
+            android:layout_width="match_parent"
+            app:layout_constraintVertical_bias="0"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:dataList="@{viewModel.curXtfData.sections.get(0).lyrics}"
+            app:itemType="@{pageType}"
+            app:scrollPosition="@{viewModel.scrollPosition}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:viewModel="@{viewModel}" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

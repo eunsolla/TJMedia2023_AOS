@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.verse.app.contants.ListPagedItemType" />
+
+        <variable
+            name="requestManager"
+            type="com.bumptech.glide.RequestManager" />
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.chat.message.ChatMessageActivityViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_f9f9f9">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clHeader"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_52"
+            android:background="@color/white"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivBack"
+                android:layout_width="@dimen/size_60"
+                android:layout_height="match_parent"
+                android:paddingTop="@dimen/size_17"
+                android:paddingBottom="@dimen/size_17"
+                android:src="@drawable/ic_arrow_right"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:turtleClick="@{()->viewModel.onBack()}" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                app:layout_constraintLeft_toRightOf="@+id/ivBack"
+                app:layout_constraintRight_toRightOf="parent">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:layout_width="@dimen/size_32"
+                    android:layout_height="@dimen/size_32"
+                    android:scaleType="centerCrop"
+                    app:imageUrl="@{viewModel.targetImagePath}"
+                    app:placeholder="@{@drawable/profile_empty_small}"
+                    app:requestManager="@{requestManager}"
+                    app:strokeColor="@null"
+                    app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+                    tools:src="@drawable/profile_empty_small" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/size_10"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/font_noto_sans_kr_light"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:text="@{viewModel.targetNickname}"
+                        android:textColor="@color/color_222222"
+                        android:textSize="@dimen/size_15"
+                        tools:text="닉네임닉네임닉네임닉쏼라쏼라링라링쏼라링라링쏼라링라링쏼라링라링쏼라링라링" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/font_noto_sans_kr_light"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:text="@{viewModel.targetDesc}"
+                        android:textColor="@color/color_8c8c8c"
+                        android:textSize="@dimen/size_13"
+                        android:visibility="@{viewModel.targetDesc.length > 0,default=gone}"
+                        tools:text="바람과함께사라지다. 사라져버렸어 나의 주말..." />
+
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clHeader">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvContents"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                android:focusable="false"
+                android:itemAnimator="@{null}"
+                android:overScrollMode="never"
+                android:paddingBottom="@dimen/size_58"
+                android:splitMotionEvents="false"
+                app:dataList="@{viewModel.uiList}"
+                app:itemType="@{ListPagedItemType.NONE}"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:onLoadNextPage="@{()->viewModel.onLoadPage()}"
+                app:pagingModel="@{viewModel.pagingModel}"
+                app:reverseLayout="true"
+                app:viewModel="@{viewModel}"
+                tools:itemCount="10"
+                tools:listitem="@layout/item_chat_my_message" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <!-- 메시지 보내기 -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clBottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/size_58"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <com.verse.app.widget.views.CustomConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/size_10"
+                android:layout_marginRight="@dimen/size_10"
+                android:minHeight="@dimen/size_38"
+                app:layoutBgColor="@color/white"
+                app:layoutBorder="@dimen/size_2"
+                app:layoutBorderColor="@color/color_eaeaea"
+                app:layoutCorner="@dimen/size_19"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivGallery"
+                    android:layout_width="@dimen/size_28"
+                    android:layout_height="@dimen/size_28"
+                    android:layout_marginLeft="@dimen/size_5"
+                    android:src="@drawable/ic_gallery_b"
+                    android:enabled="@{viewModel.setChatEnable}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:turtleClick="@{()->viewModel.showGalleryDialog()}" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/size_8"
+                    android:background="@null"
+                    android:fontFamily="@font/font_noto_sans_kr_medium"
+                    android:hint="@{viewModel.hintText}"
+                    android:includeFontPadding="false"
+                    android:inputType="textMultiLine"
+                    android:maxLength="250"
+                    android:maxLines="4"
+                    android:enabled="@{viewModel.setChatEnable}"
+                    android:minHeight="@dimen/size_38"
+                    android:text="@={viewModel.messageText}"
+                    android:textColor="@color/color_222222"
+                    android:textColorHint="@color/color_adadad"
+                    android:textSize="@dimen/size_15"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toRightOf="@+id/ivGallery"
+                    app:layout_constraintRight_toLeftOf="@+id/tvSend"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvSend"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:fontFamily="@font/font_noto_sans_kr_medium"
+                    android:gravity="center_vertical"
+                    android:enabled="@{viewModel.setChatEnable}"
+                    android:includeFontPadding="false"
+                    android:paddingRight="@dimen/size_14"
+                    android:text="@string/chat_send_message"
+                    android:textColor="@color/color_2fc2ff"
+                    app:isEnabled="@{viewModel.isSendReady()}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:turtleClick="@{()->viewModel.sendMessage()}" />
+
+            </com.verse.app.widget.views.CustomConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

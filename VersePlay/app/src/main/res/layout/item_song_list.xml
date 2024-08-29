@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="requestManager"
+            type="com.bumptech.glide.RequestManager" />
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.song.viewmodel.SongListViewModel" />
+
+        <variable
+            name="data"
+            type="com.verse.app.model.song.SongMainData" />
+
+
+    </data>
+
+    <com.verse.app.widget.views.CustomConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/size_10"
+        android:paddingBottom="@dimen/size_10"
+        app:layoutBgColor="@color/color_00000000"
+        app:turtleClick="@{()->viewModel.onMoveToSing(data)}">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/song_image_view"
+            android:layout_width="@dimen/size_52"
+            android:layout_height="0dp"
+            android:scaleType="fitXY"
+            app:imageUrl="@{data.albImgPath}"
+            app:requestManager="@{requestManager}"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:placeholder="@{@drawable/ic_album_default}"
+            app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize10Percent"
+            app:strokeColor="@null"
+            tools:src="@drawable/ic_album_default" />
+
+        <TextView
+            android:id="@+id/song_name_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/size_15"
+            android:layout_marginRight="@dimen/size_15"
+            android:ellipsize="end"
+            android:fontFamily="@font/font_noto_sans_kr_medium"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:text="@{data.songNm}"
+            android:textColor="@color/white"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintBottom_toTopOf="@+id/singer_name_text_view"
+            app:layout_constraintLeft_toRightOf="@+id/song_image_view"
+            app:layout_constraintRight_toLeftOf="@+id/singing_text_view"
+            app:layout_constraintTop_toTopOf="@+id/song_image_view"
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="도깨비불"
+            tools:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/singer_name_text_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/size_15"
+            android:layout_marginTop="@dimen/size_7"
+            android:layout_marginRight="@dimen/size_15"
+            android:ellipsize="end"
+            android:fontFamily="@font/font_noto_sans_kr_light"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:text="@{data.artNm}"
+            android:textColor="@color/color_8c8c8c"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintBottom_toBottomOf="@+id/song_image_view"
+            app:layout_constraintLeft_toRightOf="@+id/song_image_view"
+            app:layout_constraintRight_toLeftOf="@+id/singing_text_view"
+            app:layout_constraintTop_toBottomOf="@+id/song_name_text_view"
+            tools:text="에스파" />
+
+
+        <com.verse.app.widget.views.CustomTextView
+            android:id="@+id/singing_text_view"
+            android:layout_width="@dimen/size_68"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/size_8"
+            android:layout_marginBottom="@dimen/size_8"
+            android:gravity="center"
+            android:fontFamily="@font/font_noto_sans_kr_medium"
+            android:includeFontPadding="false"
+            app:textViewClickEffect="false"
+            android:text="@string/str_singing"
+            android:textSize="@dimen/size_13"
+            app:layout_constraintBottom_toBottomOf="@+id/song_image_view"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/song_image_view"
+            app:textViewBgColor="@color/black"
+            app:textViewCorner="@dimen/size_5"
+            app:textViewTxtColor="@color/white" />
+    </com.verse.app.widget.views.CustomConstraintLayout>
+
+</layout>

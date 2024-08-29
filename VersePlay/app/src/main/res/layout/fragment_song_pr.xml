@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.verse.app.contants.ListPagedItemType" />
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.song.viewmodel.SongMainViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:paddingRight="@dimen/size_18"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:dataList="@{viewModel.songDataList}"
+            app:itemType="@{ListPagedItemType.ITEM_SONG_POPULAR_RECENT}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:dividerColor="@{@color/color_424242}"
+            app:dividerHeight="@{@dimen/size_0_5}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:viewModel="@{viewModel}"
+            tools:itemCount="3"
+            tools:listitem="@layout/item_song_h" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

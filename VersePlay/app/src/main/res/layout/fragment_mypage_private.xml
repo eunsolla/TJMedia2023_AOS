@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.verse.app.contants.ListPagedItemType" />
+
+        <import type="com.verse.app.contants.SortType" />
+
+        <import type="com.verse.app.contants.FragmentType" />
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.mypage.viewmodel.MypagePrivateViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mypage_setting_activity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/size_5"
+        android:background="@color/white">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_header"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_52"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingLeft="@dimen/size_20"
+                android:paddingTop="@dimen/size_16"
+                android:paddingRight="@dimen/size_20"
+                android:paddingBottom="@dimen/size_16"
+                android:src="@drawable/ic_top_arrow_left"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="15:13"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:turtleClick="@{()->viewModel.onFinish()}" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/font_noto_sans_medium"
+                android:lineSpacingExtra="2dp"
+                android:text="@string/filter_order_by_my_private_song"
+                android:textColor="@color/color_222222"
+                android:textSize="18dp"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/ll_tab"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_66"
+            android:background="@color/white"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/cl_header">
+
+            <com.verse.app.widget.views.CustomConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:turtleClick="@{()->viewModel.onTabClick(0)}">
+
+                <com.verse.app.widget.views.CustomTextView
+                    android:id="@+id/one_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:enabled="@{viewModel.vpPosition == 0 ? true : false}"
+                    android:fontFamily="@font/noto_sans_kr_medium"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:text="@string/tab_type_my_concert_contents"
+                    android:textSize="@dimen/size_16"
+                    app:layout_constraintBottom_toTopOf="@+id/one_dot_text_view"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_chainStyle="packed"
+                    app:textViewClickEffect="false"
+                    app:textViewDisableTxtColor="@color/color_8c8c8c"
+                    app:textViewTxtColor="@color/color_2fc2ff"
+                    tools:text="NAME" />
+
+                <com.verse.app.widget.views.CustomTextView
+                    android:id="@+id/one_dot_text_view"
+                    android:layout_width="@dimen/size_4"
+                    android:layout_height="@dimen/size_4"
+                    android:layout_marginTop="@dimen/size_8"
+                    android:gravity="center"
+                    android:visibility="@{viewModel.vpPosition == 0 ? View.VISIBLE : View.INVISIBLE}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/one_text_view"
+                    app:textViewBgColor="@color/color_2fc2ff"
+                    app:textViewClickEffect="false"
+                    app:textViewCorner="@dimen/size_20" />
+
+            </com.verse.app.widget.views.CustomConstraintLayout>
+
+            <View
+                android:layout_width="@dimen/size_1"
+                android:layout_height="@dimen/size_10"
+                android:layout_gravity="center_vertical"
+                android:background="@color/color_d9d9d9" />
+
+            <com.verse.app.widget.views.CustomConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:turtleClick="@{()->viewModel.onTabClick(1)}">
+
+                <com.verse.app.widget.views.CustomTextView
+                    android:id="@+id/two_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:enabled="@{viewModel.vpPosition == 1 ? true : false}"
+                    android:fontFamily="@font/noto_sans_kr_medium"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:text="@string/tab_type_my_personal_contents"
+                    android:textSize="@dimen/size_16"
+                    app:layout_constraintBottom_toTopOf="@+id/two_dot_text_view"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_chainStyle="packed"
+                    app:textViewClickEffect="false"
+                    app:textViewDisableTxtColor="@color/color_8c8c8c"
+                    app:textViewTxtColor="@color/color_2fc2ff"
+                    tools:text="NAME" />
+
+                <com.verse.app.widget.views.CustomTextView
+                    android:id="@+id/two_dot_text_view"
+                    android:layout_width="@dimen/size_4"
+                    android:layout_height="@dimen/size_4"
+                    android:layout_marginTop="@dimen/size_8"
+                    android:gravity="center"
+                    android:visibility="@{viewModel.vpPosition == 1 ? View.VISIBLE : View.INVISIBLE}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/two_text_view"
+                    app:textViewBgColor="@color/color_2fc2ff"
+                    app:textViewClickEffect="false"
+                    app:textViewCorner="@dimen/size_20" />
+
+            </com.verse.app.widget.views.CustomConstraintLayout>
+
+            <View
+                android:layout_width="@dimen/size_1"
+                android:layout_height="@dimen/size_10"
+                android:layout_gravity="center_vertical"
+                android:background="@color/color_d9d9d9" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:turtleClick="@{()->viewModel.onFilterClick()}">
+
+                <ImageView
+                    android:layout_width="@dimen/size_17"
+                    android:layout_height="@dimen/size_21"
+                    android:src="@{(viewModel.vpPosition == 0 &amp;&amp; viewModel.privateFeedSortType != SortType.NONE ) || (viewModel.vpPosition == 1 &amp;&amp; viewModel.privateCollectionSortType != SortType.NONE)  ? @drawable/ic_filter_on : @drawable/ic_filter_off, default=@drawable/ic_filter_off}" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vpPrivate"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ll_tab"
+            app:onPageState="@{(state) -> viewModel.privatePageState(state)}"
+            app:position="@={viewModel.vpPosition}"
+            app:vpDataList="@{viewModel.privateFeedData}"
+            app:vpViewModel="@{viewModel}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

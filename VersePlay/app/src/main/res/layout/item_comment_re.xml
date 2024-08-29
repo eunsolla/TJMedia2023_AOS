@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="position"
+            type="java.lang.Integer" />
+
+        <import type="com.verse.app.contants.ListPagedItemType" />
+
+        <import type="com.verse.app.contants.LikeType" />
+
+        <import type="com.verse.app.contants.ReportType" />
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.comment.CommentViewModel" />
+
+        <variable
+            name="data"
+            type="com.verse.app.model.comment.CommentReData" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/size_16"
+        tools:background="@color/white">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_profile"
+            android:layout_width="@dimen/size_44"
+            android:layout_height="@dimen/size_44"
+            android:layout_marginLeft="@dimen/size_20"
+            android:layout_marginTop="@dimen/size_16"
+            app:imageUrl="@{data.profileImgPath}"
+            android:scaleType="centerCrop"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:placeholder="@{@drawable/ic_profile_c_default}"
+            app:turtleClick="@{()->viewModel.moveToUserDetail(data.writerMemCd)}"
+            app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+            app:strokeColor="@null"
+            tools:src="@drawable/ic_album_default" />
+
+
+        <com.verse.app.widget.views.CustomTextView
+            android:id="@+id/tv_user_nick_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/size_8"
+            android:layout_marginTop="@dimen/size_4"
+            android:ellipsize="end"
+            android:fontFamily="@font/font_noto_sans_kr_medium"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:paddingLeft="@dimen/size_5"
+            android:text="@{data.writerMemNk}"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintBottom_toTopOf="@+id/tv_comment"
+            app:layout_constraintLeft_toRightOf="@+id/iv_profile"
+            app:layout_constraintRight_toLeftOf="@+id/iv_more"
+            app:layout_constraintTop_toTopOf="@id/iv_profile"
+            app:layout_constraintVertical_bias="0"
+            app:textViewBgColor="@color/color_00000000"
+            app:textViewTxtColor="@color/color_222222"
+            tools:text="123213123" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_more"
+            android:layout_width="@dimen/size_56"
+            android:layout_height="0dp"
+            android:paddingLeft="@dimen/size_20"
+            android:paddingRight="@dimen/size_20"
+            android:src="@drawable/ic_more_black"
+            android:textSize="@dimen/size_14"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_user_nick_name"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_user_nick_name"
+            app:turtleClick="@{()->viewModel.onCommentReReport(position,data)}" />
+
+        <TextView
+            android:id="@+id/tv_comment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/size_8"
+            android:layout_marginRight="@dimen/size_20"
+            android:ellipsize="end"
+            android:fontFamily="@font/font_noto_sans_kr_light"
+            android:includeFontPadding="false"
+            android:lineSpacingExtra="@dimen/size_6"
+            android:paddingLeft="@dimen/size_5"
+            android:text="@{data.comment}"
+            android:textColor="@color/color_222222"
+            android:textSize="@dimen/size_13"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintBottom_toTopOf="@+id/iv_like"
+            app:layout_constraintLeft_toRightOf="@+id/iv_profile"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_more"
+            tools:text="계gjgjgjgj계gjgjgjgj계gjgjgjgj계gjgjgjgj" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_like"
+            android:layout_width="@dimen/size_20"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/size_10"
+            android:src="@drawable/selector_like_comment"
+            app:isSelected="@{data.isLike}"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintLeft_toLeftOf="@+id/tv_comment"
+            app:layout_constraintRight_toLeftOf="@+id/tv_like_count"
+            app:layout_constraintTop_toBottomOf="@+id/tv_comment"
+            app:turtleClick="@{()->viewModel.onLikeReComment(position,data)}" />
+
+
+        <TextView
+            android:id="@+id/tv_like_count"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginLeft="@dimen/size_5"
+            android:ellipsize="end"
+            android:fontFamily="@font/font_noto_sans_kr_medium"
+            android:gravity="center_vertical"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:textColor="@color/color_707070"
+            android:textSize="@dimen/size_13"
+            app:intText="@{data.likeCount}"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_like"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintLeft_toRightOf="@+id/iv_like"
+            app:layout_constraintRight_toLeftOf="@+id/tv_date"
+            app:layout_constraintTop_toTopOf="@+id/iv_like"
+            tools:text="150" />
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginRight="@dimen/size_20"
+            android:ellipsize="end"
+            android:fontFamily="@font/font_noto_sans_kr_light"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:text="@{data.dateText}"
+            android:textColor="@color/color_707070"
+            android:textSize="@dimen/size_12"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_like"
+            app:layout_constraintLeft_toRightOf="@+id/tv_like_count"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/iv_like"
+            tools:text="2023년 04월 17일" />
+
+
+        <com.verse.app.widget.views.CustomTextView
+            android:id="@+id/tv_show_comment_re"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_10"
+            android:ellipsize="end"
+            android:fontFamily="@font/noto_sans_kr_medium"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:text="@string/str_comment_re_show"
+            android:textSize="@dimen/size_13"
+            android:visibility="@{data.isMore, default=gone}"
+            app:layout_constraintLeft_toLeftOf="@+id/iv_like"
+            app:layout_constraintTop_toBottomOf="@+id/iv_like"
+            app:textViewBgColor="@color/color_00000000"
+            app:textViewClickEffect="false"
+            app:textViewTxtColor="@color/color_222222"
+            app:turtleClick="@{(v)->viewModel.onShowReComments(v,data.parentCommentData,data.parentPosition,ListPagedItemType.ITEM_COMMENT_RE)}"
+            tools:text="답글 더 보기"
+            tools:visibility="visible" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

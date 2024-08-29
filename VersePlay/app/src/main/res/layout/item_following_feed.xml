@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="requestManager"
+            type="com.bumptech.glide.RequestManager" />
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.main.viewmodel.FeedViewModel" />
+
+        <variable
+            name="data"
+            type="com.verse.app.model.mypage.RecommendUserData" />
+
+        <variable
+            name="position"
+            type="java.lang.Integer" />
+
+    </data>
+
+    <com.verse.app.widget.views.CustomConstraintLayout
+        android:layout_width="match_parent"
+        app:layoutClickEffect="false"
+        android:layout_height="match_parent"
+        app:layoutBgColor="@color/color_00000000">
+
+        <com.verse.app.widget.views.CustomConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layoutBgColor="@color/color_00000000"
+            app:layoutClickEffect="false"
+            app:layoutCorner="@dimen/size_10"
+            app:layout_constraintBottom_toTopOf="@+id/empty_bottom_view"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                app:requestManager="@{requestManager}"
+                app:imageUrl="@{data.pfFrImgPath}"
+                app:placeholder="@{@drawable/ic_profile_default}" />
+
+        </com.verse.app.widget.views.CustomConstraintLayout>
+
+        <View
+            android:id="@+id/empty_left_view"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/size_40"
+            android:background="@color/color_00000000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_weight="2.15"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/follow_text_view" />
+
+        <View
+            android:id="@+id/empty_right_view"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/size_40"
+            android:background="@color/color_00000000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_weight="2.15"
+            app:layout_constraintLeft_toRightOf="@+id/follow_text_view"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/size_16"
+            android:fontFamily="@font/font_noto_sans_kr_bold"
+            android:includeFontPadding="false"
+            android:lineSpacingExtra="@dimen/size_6"
+            android:shadowColor="#40000000"
+            android:shadowDx="0"
+            android:gravity="center"
+            android:shadowDy="1"
+            android:shadowRadius="4"
+            android:paddingLeft="@dimen/size_10"
+            android:paddingRight="@dimen/size_10"
+            tools:text="USER"
+            android:text="@{data.memNk}"
+            android:textColor="@color/white"
+            android:textSize="@dimen/size_14"
+            app:layout_constraintBottom_toTopOf="@+id/follow_text_view"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+
+        <com.verse.app.widget.views.CustomTextView
+            android:id="@+id/follow_text_view"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/size_40"
+            android:fontFamily="@font/font_noto_sans_kr_medium"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:text="@{data.isFollow ? @string/str_following :  @string/str_follow}"
+            android:textSize="@dimen/size_15"
+            app:isSelected="@{data.isFollow}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_weight="5.7"
+            app:layout_constraintLeft_toRightOf="@+id/empty_left_view"
+            app:layout_constraintRight_toLeftOf="@+id/empty_right_view"
+            app:textViewBgColor="@color/color_333333"
+            app:textViewCorner="@dimen/size_50"
+            app:textViewTxtColor="@color/white"
+            app:textViewDisableBgColor="@color/color_2fc2ff"
+            app:textViewDisableCorner="@dimen/size_50"
+            app:textViewDisableTxtColor="@color/white"
+            app:turtleClick="@{()->viewModel.onFollow(position,data)}"
+            tools:text="팔로우" />
+
+        <View
+            android:id="@+id/empty_bottom_view"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/size_20"
+            android:background="@color/color_00000000"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </com.verse.app.widget.views.CustomConstraintLayout>
+
+</layout>

@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="requestManager"
+            type="com.bumptech.glide.RequestManager" />
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.vote.viewmodel.VoteParticipationFragmentViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clHeader"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_52"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/icBack"
+                android:layout_width="@dimen/size_60"
+                android:layout_height="match_parent"
+                android:paddingTop="@dimen/size_17"
+                android:paddingBottom="@dimen/size_17"
+                android:src="@drawable/ic_arrow_right"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:turtleClick="@{()->viewModel.onFinish()}" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:ellipsize="end"
+                android:fontFamily="@font/font_noto_sans_kr_medium"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:text="@{viewModel.title}"
+                android:textColor="@color/color_222222"
+                android:textSize="@dimen/size_18"
+                app:layout_constraintLeft_toRightOf="@+id/icBack"
+                app:layout_constraintRight_toLeftOf="@+id/ivShare"
+                tools:text="아나 왜캐 많냐" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivShare"
+                android:layout_width="@dimen/size_60"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_more_share_b"
+                app:layout_constraintRight_toRightOf="parent"
+                app:turtleClick="@{()->viewModel.onShare()}" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/clBottom"
+            app:layout_constraintTop_toBottomOf="@+id/clHeader">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    app:imageUrl="@{viewModel.imagePath}"
+                    app:requestManager="@{requestManager}"
+                    tools:src="@tools:sample/avatars" />
+
+                <!-- 첫번째 선택 레이아웃 -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_80"
+                    android:layout_marginLeft="@dimen/size_20"
+                    android:layout_marginTop="@dimen/size_20"
+                    android:layout_marginRight="@dimen/size_20"
+                    android:background="@drawable/selector_vote_participation"
+                    android:visibility="@{viewModel.selectOneTitle.length() > 0,default=gone}"
+                    app:isSelected="@{viewModel.selectedPos == 1}"
+                    app:turtleClick="@{()->viewModel.onSelectVote(1)}"
+                    tools:visibility="visible">
+
+                    <com.verse.app.widget.views.CustomTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/size_14"
+                        android:layout_marginTop="@dimen/size_15"
+                        android:layout_marginRight="@dimen/size_14"
+                        android:layout_marginBottom="@dimen/size_15"
+                        android:ellipsize="end"
+                        android:gravity="center_vertical"
+                        android:maxLines="2"
+                        android:text="@{viewModel.selectOneTitle}"
+                        app:isSelected="@{viewModel.selectedPos == 1}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@+id/ivOneCheck"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:textViewBgColor="@android:color/transparent"
+                        app:textViewClickEffect="false"
+                        app:textViewDefState="false"
+                        app:textViewDisableBgColor="@android:color/transparent"
+                        app:textViewDisableTextStyle="@style/VoteParticipationNotSelect"
+                        app:textViewTextStyle="@style/VoteParticipationSelect"
+                        tools:text="하히히이형은 일은 참 잘해" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivOneCheck"
+                        android:layout_width="@dimen/size_28"
+                        android:layout_height="@dimen/size_28"
+                        android:layout_marginRight="@dimen/size_24"
+                        android:src="@drawable/ic_check_white"
+                        app:inVisibility="@{viewModel.selectedPos == 1}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!-- 두번째 선택 레이아웃 -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_80"
+                    android:layout_marginLeft="@dimen/size_20"
+                    android:layout_marginTop="@dimen/size_20"
+                    android:layout_marginRight="@dimen/size_20"
+                    android:background="@drawable/selector_vote_participation"
+                    android:visibility="@{viewModel.selectTwoTitle.length() > 0,default=gone}"
+                    app:isSelected="@{viewModel.selectedPos == 2}"
+                    app:turtleClick="@{()->viewModel.onSelectVote(2)}"
+                    tools:visibility="visible">
+
+                    <com.verse.app.widget.views.CustomTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/size_14"
+                        android:layout_marginTop="@dimen/size_15"
+                        android:layout_marginRight="@dimen/size_14"
+                        android:layout_marginBottom="@dimen/size_15"
+                        android:ellipsize="end"
+                        android:gravity="center_vertical"
+                        android:maxLines="2"
+                        android:text="@{viewModel.selectTwoTitle}"
+                        app:isSelected="@{viewModel.selectedPos == 2}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@+id/ivTwoCheck"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:textViewBgColor="@android:color/transparent"
+                        app:textViewClickEffect="false"
+                        app:textViewDefState="false"
+                        app:textViewDisableBgColor="@android:color/transparent"
+                        app:textViewDisableTextStyle="@style/VoteParticipationNotSelect"
+                        app:textViewTextStyle="@style/VoteParticipationSelect"
+                        tools:text="하히히이형 열심히 일하겠습니다!" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivTwoCheck"
+                        android:layout_width="@dimen/size_28"
+                        android:layout_height="@dimen/size_28"
+                        android:layout_marginRight="@dimen/size_24"
+                        android:src="@drawable/ic_check_white"
+                        app:inVisibility="@{viewModel.selectedPos == 2}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!-- 세번쨰 선택 레이아웃 -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_80"
+                    android:layout_marginLeft="@dimen/size_20"
+                    android:layout_marginTop="@dimen/size_20"
+                    android:layout_marginRight="@dimen/size_20"
+                    android:background="@drawable/selector_vote_participation"
+                    android:visibility="@{viewModel.selectThreeTitle.length() > 0,default=gone}"
+                    app:isSelected="@{viewModel.selectedPos == 3}"
+                    app:turtleClick="@{()->viewModel.onSelectVote(3)}"
+                    tools:visibility="visible">
+
+                    <com.verse.app.widget.views.CustomTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/size_14"
+                        android:layout_marginTop="@dimen/size_15"
+                        android:layout_marginRight="@dimen/size_14"
+                        android:layout_marginBottom="@dimen/size_15"
+                        android:ellipsize="end"
+                        android:gravity="center_vertical"
+                        android:maxLines="2"
+                        android:text="@{viewModel.selectThreeTitle}"
+                        app:isSelected="@{viewModel.selectedPos == 3}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@+id/ivThreeCheck"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:textViewBgColor="@android:color/transparent"
+                        app:textViewClickEffect="false"
+                        app:textViewDefState="false"
+                        app:textViewDisableBgColor="@android:color/transparent"
+                        app:textViewDisableTextStyle="@style/VoteParticipationNotSelect"
+                        app:textViewTextStyle="@style/VoteParticipationSelect"
+                        tools:text="하히히: 열심히가 아니라 잘해야 한다" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivThreeCheck"
+                        android:layout_width="@dimen/size_28"
+                        android:layout_height="@dimen/size_28"
+                        android:layout_marginRight="@dimen/size_24"
+                        android:src="@drawable/ic_check_white"
+                        app:inVisibility="@{viewModel.selectedPos == 3}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!-- 네번째 선택 레이아웃 -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_80"
+                    android:layout_marginLeft="@dimen/size_20"
+                    android:layout_marginTop="@dimen/size_20"
+                    android:layout_marginRight="@dimen/size_20"
+                    android:background="@drawable/selector_vote_participation"
+                    android:visibility="@{viewModel.selectFourTitle.length() > 0,default=gone}"
+                    app:isSelected="@{viewModel.selectedPos == 4}"
+                    app:turtleClick="@{()->viewModel.onSelectVote(4)}"
+                    tools:visibility="visible">
+
+                    <com.verse.app.widget.views.CustomTextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/size_14"
+                        android:layout_marginTop="@dimen/size_15"
+                        android:layout_marginRight="@dimen/size_14"
+                        android:layout_marginBottom="@dimen/size_15"
+                        android:ellipsize="end"
+                        android:gravity="center_vertical"
+                        android:maxLines="2"
+                        android:text="@{viewModel.selectFourTitle}"
+                        app:isSelected="@{viewModel.selectedPos == 4}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@+id/ivFourCheck"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:textViewBgColor="@android:color/transparent"
+                        app:textViewClickEffect="false"
+                        app:textViewDefState="false"
+                        app:textViewDisableBgColor="@android:color/transparent"
+                        app:textViewDisableTextStyle="@style/VoteParticipationNotSelect"
+                        app:textViewTextStyle="@style/VoteParticipationSelect"
+                        tools:text="하히히: 열심히도하고 잘해야하고" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivFourCheck"
+                        android:layout_width="@dimen/size_28"
+                        android:layout_height="@dimen/size_28"
+                        android:layout_marginRight="@dimen/size_24"
+                        android:src="@drawable/ic_check_white"
+                        app:inVisibility="@{viewModel.selectedPos == 4}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.legacy.widget.Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/size_20" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        </androidx.core.widget.NestedScrollView>
+
+        <com.verse.app.widget.views.CustomTextView
+            android:id="@+id/clBottom"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_52"
+            android:fontFamily="@font/font_noto_sans_kr_medium"
+            android:gravity="center"
+            android:text="@string/str_vote_comment_page_move"
+            android:textSize="@dimen/size_16"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:textViewBgColor="@color/color_2fc2ff"
+            app:textViewTxtColor="@color/white"
+            app:turtleClick="@{()->viewModel.moveToComment()}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

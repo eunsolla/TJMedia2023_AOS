@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.mypage.viewmodel.MypageSettingOnlyViewerViewModel" />
+
+        <variable
+            name="data"
+            type="com.verse.app.model.mypage.GetRecentLoginHistoryData" />
+
+        <variable
+            name="position"
+            type="java.lang.Integer" />
+
+    </data>
+
+    <com.verse.app.widget.views.CustomConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/size_90"
+        android:paddingTop="@dimen/size_20"
+        android:paddingBottom="@dimen/size_10"
+        app:layoutBgColor="@color/white">
+
+        <TextView
+            android:id="@+id/login_device_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:paddingStart="@dimen/size_20"
+            android:text="@{position == 0 ? @string/mypage_setting_cur_login_devices(data.conModel) : @string/mypage_setting_pre_login_devices(data.conModel)}"
+            android:fontFamily="@font/noto_sans_kr_medium"
+            android:includeFontPadding="false"
+            android:textColor="@color/color_222222"
+            android:textSize="@dimen/size_16"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="갤럭시 a50"
+            tools:textColor="@color/color_222222" />
+
+        <TextView
+            android:id="@+id/login_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="@font/noto_sans_kr_medium"
+            android:includeFontPadding="false"
+            android:paddingEnd="@dimen/size_20"
+            android:text="@{data.changeLoginName}"
+            android:maxLines="1"
+            android:textColor="@color/color_222222"
+            android:textSize="@dimen/size_16"
+            android:layout_marginStart="@dimen/size_5"
+            app:layout_constraintStart_toEndOf="@+id/login_device_name"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="구글 로그인"
+            tools:textColor="@color/color_222222" />
+
+        <TextView
+            android:id="@+id/lonin_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/size_13"
+            android:maxLines="1"
+            android:text="@{data.dateText}"
+            android:paddingStart="@dimen/size_20"
+            android:paddingEnd="@dimen/size_20"
+            android:fontFamily="@font/noto_sans_kr_light"
+            android:includeFontPadding="false"
+            android:textColor="@color/color_8c8c8c"
+            android:layout_marginTop="@dimen/size_8"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/login_device_name"
+            tools:text="2023.03.14" />
+
+        <View
+            android:id="@+id/view_dividing"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_1"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="@dimen/size_20"
+            android:background="#eaeaea"
+            app:layout_constraintTop_toBottomOf="@+id/lonin_date" />
+
+    </com.verse.app.widget.views.CustomConstraintLayout>
+
+
+
+</layout>

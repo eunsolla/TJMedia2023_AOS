@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.verse.app.contants.SingType" />
+
+        <import type="com.verse.app.contants.MediaType" />
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.sing.viewmodel.SingViewModel" />
+
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/ll_media_type"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <com.verse.app.widget.views.CustomConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:isSelected="@{viewModel.curMediaType != MediaType.AUDIO.code}"
+            app:layoutBgColor="@color/white"
+            app:layoutBorder="@dimen/size_0_5"
+            app:layoutBorderColor="@color/color_eaeaea"
+            app:layoutClickEffect="false"
+            app:layoutCorner="@dimen/size_10"
+            app:layoutDisableBgColor="@color/color_2fc2ff"
+            app:turtleClick="@{()->viewModel.onMediaType(MediaType.AUDIO)}">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_record_sound"
+                android:layout_width="@dimen/size_27"
+                android:layout_height="@dimen/size_27"
+                android:src="@{viewModel.curMediaType != MediaType.AUDIO.code ? @drawable/ic_record_sound : @drawable/ic_record_sound_w, default=@drawable/ic_record_sound}"
+                app:layout_constraintBottom_toTopOf="@+id/tv_record_sound"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+            <com.verse.app.widget.views.CustomTextView
+                android:id="@+id/tv_record_sound"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_10"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:enabled="@{viewModel.curMediaType != MediaType.AUDIO.code}"
+                android:fontFamily="@font/font_noto_sans_kr_medium"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:text="@string/str_audio_recording"
+                android:textSize="@dimen/size_16"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_record_sound"
+                app:textViewBgColor="@color/white"
+                app:textViewClickEffect="false"
+                app:textViewDisableBgColor="@color/color_00000000"
+                app:textViewDisableTxtColor="@color/white"
+                app:textViewTxtColor="@color/color_222222" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:alpha="0.6"
+                android:background="@color/color_eaeaea"
+                android:clickable="true"
+                android:visibility="@{!viewModel.isInitContents &amp;&amp; viewModel.curMediaType != MediaType.AUDIO.code || viewModel.curSingType == SingType.BATTLE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:visibility="gone" />
+
+        </com.verse.app.widget.views.CustomConstraintLayout>
+
+        <View
+            android:layout_width="@dimen/size_10"
+            android:layout_height="@dimen/size_1" />
+
+        <com.verse.app.widget.views.CustomConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:isSelected="@{viewModel.curMediaType != MediaType.VIDEO.code}"
+            app:layoutBgColor="@color/white"
+            app:layoutBorder="@dimen/size_0_5"
+            app:layoutBorderColor="@color/color_eaeaea"
+            app:layoutClickEffect="false"
+            app:layoutCorner="@dimen/size_10"
+            app:layoutDisableBgColor="@color/color_2fc2ff">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_video"
+                android:layout_width="@dimen/size_29"
+                android:layout_height="@dimen/size_25"
+                android:src="@drawable/ic_video"
+                app:layout_constraintBottom_toTopOf="@+id/tv_video"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+            <com.verse.app.widget.views.CustomTextView
+                android:id="@+id/tv_video"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_10"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:enabled="@{viewModel.curMediaType != MediaType.VIDEO.code}"
+                android:fontFamily="@font/font_noto_sans_kr_medium"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:text="@string/str_video_recording"
+                android:textSize="@dimen/size_16"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_video"
+                app:textViewBgColor="@color/white"
+                app:textViewClickEffect="false"
+                app:textViewDisableBgColor="@color/color_00000000"
+                app:textViewDisableTxtColor="@color/white"
+                app:textViewTxtColor="@color/color_222222" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:alpha="0.6"
+                android:background="@color/color_eaeaea"
+                android:clickable="true"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </com.verse.app.widget.views.CustomConstraintLayout>
+
+        <View
+            android:layout_width="@dimen/size_10"
+            android:layout_height="@dimen/size_1" />
+
+
+        <com.verse.app.widget.views.CustomConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:isSelected="@{!viewModel.off}"
+            app:layoutBgColor="@color/white"
+            app:layoutBorder="@dimen/size_0_5"
+            app:layoutBorderColor="@color/color_eaeaea"
+            app:layoutClickEffect="false"
+            app:layoutCorner="@dimen/size_10"
+            app:layoutDisableBgColor="@color/color_2fc2ff">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_off"
+                android:layout_width="@dimen/size_27"
+                android:layout_height="@dimen/size_27"
+                android:src="@{!viewModel.off ? @drawable/ic_record_off : @drawable/ic_off_w, default=@drawable/ic_record_off}"
+                app:layout_constraintBottom_toTopOf="@+id/tv_off"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+            <com.verse.app.widget.views.CustomTextView
+                android:id="@+id/tv_off"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_10"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:enabled="@{!viewModel.off}"
+                android:fontFamily="@font/font_noto_sans_kr_medium"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:text="@string/str_off"
+                android:textSize="@dimen/size_16"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_off"
+                app:textViewBgColor="@color/white"
+                app:textViewClickEffect="false"
+                app:textViewDisableBgColor="@color/color_00000000"
+                app:textViewDisableTxtColor="@color/white"
+                app:textViewTxtColor="@color/color_222222" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:alpha="0.6"
+                android:background="@color/color_eaeaea"
+                android:clickable="true"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </com.verse.app.widget.views.CustomConstraintLayout>
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+</layout>

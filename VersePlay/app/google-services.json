@@ -1,0 +1,208 @@
+{
+  "project_info": {
+    "project_number": "958043729476",
+    "firebase_url": "https://tj-verse.firebaseio.com",
+    "project_id": "tj-verse",
+    "storage_bucket": "tj-verse.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:958043729476:android:26709018b1ac91eadf9611",
+        "android_client_info": {
+          "package_name": "com.verse.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "958043729476-1ud9vdsm4bc1vda3k6lomn1l1sjibqtk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.verse.app",
+            "certificate_hash": "de0e67366ad042c849d7c0a4906f63ffcde8b163"
+          }
+        },
+        {
+          "client_id": "958043729476-2idnit57ddgoqmp4v5pijrefrit5frk8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.verse.app",
+            "certificate_hash": "34eafc03c520b88a49eefb0485534fca714b1d1e"
+          }
+        },
+        {
+          "client_id": "958043729476-3kbm5cqpbo2ff8fstncsgcoslse48he6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.verse.app",
+            "certificate_hash": "8615500710b280b584dfc4e55cf08a9a247908de"
+          }
+        },
+        {
+          "client_id": "958043729476-41okb6pnvrg8qm1ec5bfb2hrjn3q19o2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.verse.app",
+            "certificate_hash": "cf8ba8bdc90d28b67084237b40297130a882ca0c"
+          }
+        },
+        {
+          "client_id": "958043729476-6oep4jb8pfguj3f2l400gur6llk6d9bv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.verse.app",
+            "certificate_hash": "10aa1d03dcf3f552348deaca10596275628f6a2e"
+          }
+        },
+        {
+          "client_id": "958043729476-btivkv29al0n48hdprltthndj0lrc86f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.verse.app",
+            "certificate_hash": "862c6791ed04dcacb3d598cc79a1b9cfb3fbdc04"
+          }
+        },
+        {
+          "client_id": "958043729476-dn37gen6q4k0o424rqn9pv0k4m4leghv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.verse.app",
+            "certificate_hash": "2fc27df30097d8e12cdbddc81ca7e24474e34d37"
+          }
+        },
+        {
+          "client_id": "958043729476-do319qddeq6unnan4533b0tnb41sjeg6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.verse.app",
+            "certificate_hash": "4e4f471da4f486e33d5f796e09523712e6227bfe"
+          }
+        },
+        {
+          "client_id": "958043729476-e66qubma1lk9h0ckke1h4qm0ulq8kt3f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.verse.app",
+            "certificate_hash": "83c2f1d76ad6b75480c92e4fd4a1d0e91378395e"
+          }
+        },
+        {
+          "client_id": "958043729476-fvgcq2tjpknm34p7ifeak6940bscfige.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.verse.app",
+            "certificate_hash": "70b06e3e0611704422ef4981db4bdb0c0d67bfe8"
+          }
+        },
+        {
+          "client_id": "958043729476-gj7e2abqfveg4o5r1lk9f757o7bbpb4a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.verse.app",
+            "certificate_hash": "7fdd8e3f2335522fdddc8db6a7908e5ccd91b500"
+          }
+        },
+        {
+          "client_id": "958043729476-i6t8g06fodrcan7937mu8hcvlj9ejhk0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.verse.app",
+            "certificate_hash": "91fd280fe3e5c167a11204f4d104756d2d550b76"
+          }
+        },
+        {
+          "client_id": "958043729476-im94cohroqf99qrdmqheoi628h2vt0gj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.verse.app",
+            "certificate_hash": "e4fdaedbfe72c9acd4f79d10ce98e9b9569555c1"
+          }
+        },
+        {
+          "client_id": "958043729476-lt6m4sh288cvjanjfrtbos03asabulk2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.verse.app",
+            "certificate_hash": "6e9366a2bc5176fda2368f7d51f6f565ad217fd4"
+          }
+        },
+        {
+          "client_id": "958043729476-ndobsia5990gtod73ka9b6gqbbebrotr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.verse.app",
+            "certificate_hash": "f6d58e00aa2f66e5641f9800528a2a0a57672d10"
+          }
+        },
+        {
+          "client_id": "958043729476-orebpj6cujbmk1sqmsnlb0r1banja6es.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.verse.app",
+            "certificate_hash": "a1eaa0ea1d4e757da65617feba70285427894507"
+          }
+        },
+        {
+          "client_id": "958043729476-ornq4g8gpi52valugaff98u0dddrudvp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.verse.app",
+            "certificate_hash": "92bd18a68c44b57730e2dc82f182f5491bdd090c"
+          }
+        },
+        {
+          "client_id": "958043729476-pd7pnotgnvp9iglif6s2c26j3nacafum.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.verse.app",
+            "certificate_hash": "8c9f71854f11d833d065d2958e6d5f6acb4598cc"
+          }
+        },
+        {
+          "client_id": "958043729476-r87fp8ub498ke665gdp53fvmn9otlaf8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.verse.app",
+            "certificate_hash": "637512f5d9071dea050cff2dd60a3ca68d198672"
+          }
+        },
+        {
+          "client_id": "958043729476-vgbq1aj87d6rcbvo3uaq6vg3pm7a8l83.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.verse.app",
+            "certificate_hash": "73a79a70d2739977d758495979a68272ad108215"
+          }
+        },
+        {
+          "client_id": "958043729476-bkanvjc0kgfnqfcvrfd1062e0cfdt96p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7Kpy-pMq7pKMpiOgQv9WD3_iralq7FNU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "958043729476-bkanvjc0kgfnqfcvrfd1062e0cfdt96p.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "958043729476-4pgto5nvlohlgaqah5perr8eifsulfmb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.tjmedia.Tjlalala",
+                "app_store_id": "1487739513"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

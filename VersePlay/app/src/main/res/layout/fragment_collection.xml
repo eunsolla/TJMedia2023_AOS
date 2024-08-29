@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.verse.app.contants.ListPagedItemType" />
+
+        <import type="com.verse.app.contants.AppData" />
+
+        <import type="com.verse.app.contants.CollectionType" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.feed.viewmodel.CollectionFeedViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_161616">
+
+        <RelativeLayout
+            android:id="@+id/rl_header"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_52"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btn_block_user_list_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:paddingLeft="@dimen/size_20"
+                android:paddingTop="@dimen/size_16"
+                android:paddingRight="@dimen/size_20"
+                android:paddingBottom="@dimen/size_16"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_top_arrow_left_white"
+                app:turtleClick="@{()->viewModel.close()}" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/btn_favorite"
+                    android:layout_width="@dimen/size_22"
+                    android:layout_height="@dimen/size_21"
+                    android:layout_gravity="center_vertical"
+                    android:background="@null"
+                    android:src="@{viewModel.isBookMark ?  @drawable/ic_favorite_on : @drawable/ic_favorite_off, default = @drawable/ic_favorite_off}"
+                    android:visibility="@{viewModel.collectionType.equalsIgnoreCase(CollectionType.FEED.code) || viewModel.feedContentsDataParam.isFeedContents ? View.VISIBLE : View.GONE, default = gone}"
+                    app:turtleClick="@{(v) -> viewModel.updateFavorite(v)}"
+                    tools:visibility="visible" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/btn_sort"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:paddingLeft="@dimen/size_20"
+                    android:paddingTop="@dimen/size_16"
+                    android:paddingRight="@dimen/size_10"
+                    android:paddingBottom="@dimen/size_16"
+                    android:src="@drawable/btn_sort_w"
+                    app:turtleClick="@{() -> viewModel.onFilterClick()}" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/empty_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_40"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cl_collection_info"
+            app:layout_constraintVertical_bias="0">
+
+            <ImageView
+                android:layout_width="@dimen/size_50"
+                android:layout_height="@dimen/size_50"
+                android:src="@drawable/ic_empty" />
+
+            <com.verse.app.widget.views.CustomTextView
+                android:id="@+id/tv_empty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_20"
+                android:fontFamily="@font/noto_sans_kr_medium"
+                android:text="@string/feed_no_result_data"
+                android:textSize="@dimen/size_18"
+                app:textViewBgColor="@color/color_00000000"
+                app:textViewTxtColor="@color/color_707070" />
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_collection_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_12"
+            android:layout_marginBottom="@dimen/size_28"
+            android:paddingLeft="@dimen/size_20"
+            android:paddingRight="@dimen/size_20"
+            app:layout_constraintTop_toBottomOf="@+id/rl_header">
+
+            <RelativeLayout
+                android:id="@+id/rl_collection"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:layout_width="@dimen/size_100"
+                    android:layout_height="@dimen/size_100"
+                    android:visibility="@{viewModel.collectionType.equalsIgnoreCase(CollectionType.FEED.code) ? View.VISIBLE : View.GONE, default = gone}"
+                    app:imageUrl="@{viewModel.feedContentsDataParam.albImgPath}"
+                    app:placeholder="@{@drawable/ic_album_default}"
+                    android:scaleType="centerCrop"
+                    app:strokeColor="@null"
+                    app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+                    tools:src="@drawable/ic_album_default"
+                    tools:visibility="visible" />
+
+                <ImageView
+                    android:layout_width="@dimen/size_100"
+                    android:layout_height="@dimen/size_100"
+                    android:src="@drawable/ic_hash_tag"
+                    android:visibility="@{viewModel.collectionType.equalsIgnoreCase(CollectionType.FEED.code) ? View.GONE : View.VISIBLE, default = gone}" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/size_20"
+                android:layout_marginRight="@dimen/size_20"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="@+id/rl_collection"
+                app:layout_constraintLeft_toRightOf="@+id/rl_collection"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/rl_collection">
+
+                <com.verse.app.widget.views.CustomTextView
+                    android:id="@+id/tv_song_nm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="TEXT"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/font_noto_sans_kr_medium"
+                    android:includeFontPadding="false"
+                    android:lines="2"
+                    android:minLines="1"
+                    android:text="@{viewModel.collectionType.equalsIgnoreCase(CollectionType.FEED.code) ? viewModel.feedContentsDataParam.songNm : viewModel.collectionParam}"
+                    android:textSize="@dimen/size_18"
+                    app:textViewBgColor="@color/color_00000000"
+                    app:textViewClickEffect="false"
+                    app:textViewTxtColor="@color/white" />
+
+                <com.verse.app.widget.views.CustomTextView
+                    android:id="@+id/tv_artist_nm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/font_noto_sans_kr_medium"
+                    android:includeFontPadding="false"
+                    tools:text="TEXT"
+                    tools:visibility="visible"
+                    android:lines="1"
+                    android:text="@{viewModel.feedContentsDataParam.artNm}"
+                    android:textSize="@dimen/size_13"
+                    android:visibility="@{viewModel.collectionType.equalsIgnoreCase(CollectionType.FEED.code) &amp;&amp; viewModel.feedContentsDataParam.artNm.length() > 0 ? View.VISIBLE : View.GONE, default = gone}"
+                    app:textViewBgColor="@color/color_00000000"
+                    app:textViewClickEffect="false"
+                    app:textViewTxtColor="@color/color_8c8c8c" />
+
+                <com.verse.app.widget.views.CustomTextView
+                    android:id="@+id/tv_total_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_8"
+                    tools:text="TEXT"
+                    android:fontFamily="@font/noto_sans_kr_medium"
+                    android:text="@{viewModel.collectionContentsCount != null ? @string/collection_feed_relate_count(viewModel.collectionContentsCount) : @string/feed_count_default}"
+                    android:textSize="@dimen/size_14"
+                    app:textViewBgColor="@color/color_00000000"
+                    app:textViewClickEffect="false"
+                    app:textViewTxtColor="@color/white" />
+
+                <com.verse.app.widget.views.CustomTextView
+                    android:id="@+id/tv_notice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:includeFontPadding="false"
+                    android:fontFamily="@font/font_noto_sans_kr_light"
+                    android:text="@string/collection_feed_notice"
+                    android:textSize="@dimen/size_13"
+                    app:textViewBgColor="@color/color_00000000"
+                    app:textViewClickEffect="false"
+                    app:textViewTxtColor="@color/color_8c8c8c" />
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/size_28"
+            android:background="@color/color_161616"
+            android:orientation="vertical"
+            app:emptyView="@{emptyView}"
+            app:itemType="@{ListPagedItemType.COLLECTION_FEED}"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cl_collection_info"
+            app:pagedList="@{viewModel.feedListPaging}"
+            app:spanCount="3"
+            app:viewModel="@{viewModel}"
+            tools:itemCount="6"
+            tools:listitem="@layout/item_collection_feed" />
+
+        <com.verse.app.widget.views.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:paddingLeft="@dimen/size_50"
+            android:paddingRight="@dimen/size_50"
+            android:paddingTop="@dimen/size_12"
+            android:paddingBottom="@dimen/size_12"
+            android:fontFamily="@font/noto_sans_kr_medium"
+            android:text="@string/collection_move_to_sing"
+            android:textSize="@dimen/size_15"
+            android:layout_marginBottom="@dimen/size_36"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:textViewCorner="@dimen/size_10"
+            app:textViewBgColor="@color/color_2fc2ff"
+            app:textViewClickEffect="false"
+            app:textViewTxtColor="@color/white"
+            android:visibility="@{viewModel.collectionType.equalsIgnoreCase(CollectionType.FEED.code) || viewModel.feedContentsDataParam.isFeedContents ? View.VISIBLE : View.GONE, default = gone}"
+            app:turtleClick="@{() -> viewModel.onMoveToSing(viewModel.feedContentsDataParam)}"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

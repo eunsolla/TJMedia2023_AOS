@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/mypage_send_feedback_background_color">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.mypage.viewmodel.QNAViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white">
+
+            <RelativeLayout
+                android:id="@+id/layout_mypage_setting_topbar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_52">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/btn_send_feedback_back"
+                    android:layout_width="@dimen/size_20"
+                    android:layout_height="@dimen/size_20"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/size_20"
+                    android:background="@null"
+                    android:src="@drawable/ic_top_arrow_left"
+                    app:turtleClick="@{()->viewModel.back()}" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="28dp"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/noto_sans_kr_medium"
+                    android:includeFontPadding="false"
+                    android:lineSpacingExtra="2dp"
+                    android:text="@string/one_on_one_qna"
+                    android:textColor="@color/color_222222"
+                    android:textSize="18dp"
+                    android:textStyle="normal" />
+
+                <com.verse.app.widget.views.CustomTextView
+                    android:id="@+id/btn_send"
+                    android:layout_width="wrap_content"
+                    android:layout_height="27dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20dp"
+                    android:fontFamily="@font/font_noto_sans_medium"
+                    android:includeFontPadding="false"
+                    android:text="@string/mypage_message_send_text_string"
+                    android:textSize="17dp"
+                    android:textStyle="normal"
+                    app:textViewDisableTxtColor="@color/mypage_edit_email_complete_text_color_disable"
+                    app:textViewTxtColor="@color/color_2fc2ff"
+                    app:turtleClick="@{()->viewModel.onComplete()}" />
+
+            </RelativeLayout>
+
+            <ScrollView
+                android:id="@+id/scrollview_send_feedback"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/layout_mypage_setting_topbar"
+
+                android:fillViewport="true"
+                android:overScrollMode="never"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:id="@+id/layout_send_feedback_loading"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:id="@+id/btn_send_feedback_select_contact_type"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/size_48"
+                        android:layout_marginLeft="@dimen/size_20"
+                        android:layout_marginTop="@dimen/size_12"
+                        android:layout_marginRight="@dimen/size_20"
+                        android:background="@drawable/send_feedback_border"
+                        app:turtleClick="@{()->viewModel.showSelectBox()}">
+
+                        <TextView
+                            android:id="@+id/tv_send_feedback_comments_place"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="@dimen/size_20"
+                            android:fontFamily="@font/noto_sans_kr_light"
+                            android:includeFontPadding="false"
+                            android:lineSpacingExtra="3dp"
+                            android:text="@string/mypage_send_feedback_contact_type_text_string"
+                            android:textColor="@color/color_222222"
+                            android:textSize="17dp"
+                            android:textStyle="normal" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/btn_select_contact_type"
+                            android:layout_width="@dimen/size_20"
+                            android:layout_height="@dimen/size_20"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="@dimen/size_20"
+                            android:background="@null"
+                            android:src="@drawable/ic_down" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/layout_send_feedback"
+                        android:layout_width="match_parent"
+                        android:layout_height="275dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="@dimen/size_10"
+                        android:layout_marginRight="20dp"
+                        android:background="@drawable/send_feedback_border">
+
+                        <EditText
+                            android:id="@+id/editText_send_feedback_comment"
+                            style="@style/EditTextStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="@dimen/size_20"
+                            android:layout_marginTop="@dimen/size_15"
+                            android:layout_marginRight="@dimen/size_20"
+                            android:layout_marginBottom="@dimen/size_15"
+                            android:fontFamily="@font/noto_sans_kr_light"
+                            android:gravity="start"
+                            android:hint="@string/send_an_inquiry"
+                            android:inputType="none"
+                            android:includeFontPadding="false"
+                            android:lineSpacingExtra="7dp"
+                            android:padding="0dp"
+                            android:textColor="@color/color_222222"
+                            android:textSize="16dp"
+                            android:textStyle="normal"
+                            app:theme="@style/EditTextStyle" />
+
+                        <View
+                            android:id="@+id/view_edit_text_comment"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="19dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginRight="19dp"
+                            android:layout_marginBottom="15dp"
+                            android:gravity="start"
+                            android:padding="0dp"
+                            android:visibility="gone" />
+
+
+                    </RelativeLayout>
+
+                    <!-- before attach image-->
+                    <RelativeLayout
+                        android:id="@+id/btn_attach_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginRight="20dp"
+                        android:background="@drawable/send_feedback_border"
+                        android:backgroundTint="@color/color_eaeaea"
+                        android:visibility="visible"
+                        app:turtleClick="@{()->viewModel.callAlbum()}">
+
+                        <LinearLayout
+                            android:id="@+id/layout_before_attach_image"
+                            android:layout_width="wrap_content"
+                            android:layout_height="27dp"
+                            android:layout_centerInParent="true"
+                            android:orientation="horizontal">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="24dp"
+                                android:layout_height="20dp"
+                                android:layout_gravity="center_vertical"
+                                android:src="@drawable/ic_img_attach" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="27dp"
+                                android:layout_marginLeft="10dp"
+                                android:fontFamily="@font/noto_sans_kr_light"
+                                android:gravity="center_vertical"
+                                android:includeFontPadding="false"
+                                android:text="@string/mypage_send_feedback_attach_image_text_string"
+                                android:textColor="@color/color_222222"
+                                android:textSize="16dp" />
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
+
+                    <!-- after attach image-->
+                    <RelativeLayout
+                        android:id="@+id/layout_after_attach_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginRight="20dp"
+                        android:backgroundTint="@color/color_2fc2ff"
+                        android:background="@drawable/send_feedback_border"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:id="@+id/tv_attached_image_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="25dp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="20dp"
+                            android:layout_toLeftOf="@+id/btn_delete_attached_image"
+                            android:fontFamily="@font/noto_sans_kr_light"
+                            android:gravity="center_vertical"
+                            android:includeFontPadding="false"
+                            android:lineSpacingExtra="5dp"
+                            android:text="@{viewModel.attUri}"
+                            tools:text="2019.08.22.png"
+                            android:textColor="@color/mypage_send_feedback_uploaded_file_name_text_color"
+                            android:textSize="@dimen/size_15"
+                            android:textStyle="normal" />
+
+                        <ImageButton
+                            android:id="@+id/btn_delete_attached_image"
+                            android:layout_width="57dp"
+                            android:layout_height="48dp"
+                            android:layout_alignParentRight="true"
+                            android:backgroundTint="@color/color_2fc2ff"
+                            android:src="@drawable/btn_img_del"
+                            app:turtleClick="@{()->viewModel.delete()}" />
+
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:layout_marginLeft="21dp"
+                        android:layout_marginTop="9dp"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginRight="6dp"
+                            android:src="@drawable/ic_notice" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="25dp"
+                            android:fontFamily="@font/noto_sans_kr_light"
+                            android:gravity="center_vertical"
+                            android:includeFontPadding="false"
+                            android:lineSpacingExtra="5dp"
+                            android:text="@string/mypage_send_feedback_format_info_text_string"
+                            android:textColor="@color/mypage_send_feedback_format_info_text_color"
+                            android:textSize="15dp"
+                            android:textStyle="normal" />
+
+
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:layout_width="146dp"
+                        android:layout_height="23dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="22dp"
+                        android:fontFamily="@font/noto_sans_kr_light"
+                        android:includeFontPadding="false"
+                        android:lineSpacingExtra="37dp"
+                        android:text="@string/mypage_send_feedback_email_address_info_text_string"
+                        android:textColor="#8c8c8c"
+                        android:textSize="13dp"
+                        android:textStyle="normal" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginBottom="5dp"
+                        android:background="@drawable/send_feedback_border">
+
+                        <EditText
+                            android:id="@+id/editText_send_feedback_email"
+                            style="@style/EditTextStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="19dp"
+                            android:layout_marginRight="19dp"
+                            android:fontFamily="@font/noto_sans_kr_light"
+                            android:hint="@string/edit_profile_email_null_string"
+                            android:imeOptions="flagNoFullscreen"
+                            android:includeFontPadding="false"
+                            android:lineSpacingExtra="3dp"
+                            android:padding="0dp"
+                            android:inputType="textEmailAddress"
+                            android:singleLine="true"
+                            android:textColor="@color/color_222222"
+                            android:textSize="16dp"
+                            android:textStyle="normal"
+                            app:theme="@style/EditTextStyle" />
+
+                        <View
+                            android:id="@+id/view_edit_text_email"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:visibility="gone" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+            </ScrollView>
+
+        </RelativeLayout>
+
+        <!--    <include-->
+        <!--        layout="@layout/view_verse_progress"/>-->
+
+        <!--</RelativeLayout>-->
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

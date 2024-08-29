@@ -1,0 +1,672 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="requestManager"
+            type="com.bumptech.glide.RequestManager" />
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.singpass.viewmodel.SingPassUserInfoViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white">
+
+                <RelativeLayout
+                    android:id="@+id/rl_header"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_52"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:layout_width="@dimen/size_20"
+                        android:layout_height="@dimen/size_20"
+                        android:layout_marginStart="@dimen/size_20"
+                        android:layout_marginTop="@dimen/size_16"
+                        android:background="@null"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/btn_close_left_black"
+                        app:turtleClick="@{()-> viewModel.close()}" />
+
+                    <com.verse.app.widget.views.CustomTextView
+                        android:id="@+id/rank_title_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:fontFamily="@font/noto_sans_kr_medium"
+                        android:text="@string/season_sing_pass_user_info_title"
+                        android:textSize="@dimen/size_18"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:textViewBgColor="@color/color_00000000"
+                        app:textViewTxtColor="@color/color_222222" />
+                </RelativeLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/size_12"
+                    android:paddingLeft="@dimen/size_20"
+                    android:paddingRight="@dimen/size_20"
+                    app:layout_constraintTop_toBottomOf="@+id/rl_header">
+
+                    <LinearLayout
+                        android:id="@+id/ll_profile"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:id="@+id/iv_user_profile"
+                            android:layout_width="@dimen/size_121"
+                            android:layout_height="@dimen/size_121"
+                            android:layout_weight="38"
+                            android:adjustViewBounds="true"
+                            android:scaleType="centerCrop"
+                            app:imageUrl="@{viewModel.profileFrImagePath}"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:placeholder="@{@drawable/ic_profile_default}"
+                            app:requestManager="@{requestManager}"
+                            app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize20Percent"
+                            app:strokeColor="@null"
+                            app:turtleClick="@{() -> viewModel.moveToProfileImageDetail()}"
+                            tools:src="@drawable/ic_profile_default" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="@dimen/size_204"
+                            android:layout_height="@dimen/size_121"
+                            android:layout_marginLeft="@dimen/size_10"
+                            android:layout_weight="62">
+
+                            <com.google.android.material.imageview.ShapeableImageView
+                                android:id="@+id/iv_ranking_bg"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:adjustViewBounds="true"
+                                android:scaleType="centerCrop"
+                                app:imageUrl="@{viewModel.profileBgImagePath}"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:placeholder="@{@drawable/ic_album_default}"
+                                app:requestManager="@{requestManager}"
+                                app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize20Percent"
+                                app:strokeColor="@null"
+                                tools:src="@drawable/ic_album_default" />
+
+                            <com.google.android.material.imageview.ShapeableImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:alpha="0.7"
+                                android:background="@color/black"
+                                app:layout_constraintBottom_toBottomOf="@+id/iv_ranking_bg"
+                                app:layout_constraintLeft_toLeftOf="@+id/iv_ranking_bg"
+                                app:layout_constraintRight_toRightOf="@+id/iv_ranking_bg"
+                                app:layout_constraintTop_toTopOf="@+id/iv_ranking_bg"
+                                app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize20Percent"
+                                app:strokeColor="@null" />
+
+                            <LinearLayout
+                                android:id="@+id/ll_ranking"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintHorizontal_bias="0.25"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="parent">
+
+                                <com.verse.app.widget.views.CustomTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:fontFamily="@font/noto_sans_kr_medium"
+                                    android:text="@string/season_sing_pass_ranking"
+                                    android:textSize="@dimen/size_14"
+                                    app:layout_constraintLeft_toLeftOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:textViewBgColor="@color/color_00000000"
+                                    app:textViewTxtColor="@color/white" />
+
+                                <com.verse.app.widget.views.CustomTextView
+                                    android:id="@+id/tv_ranking"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/noto_sans_kr_bold"
+                                    android:text="@{viewModel.userRanking}"
+                                    android:textSize="@dimen/size_23"
+                                    app:layout_constraintLeft_toLeftOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:textViewBgColor="@color/color_00000000"
+                                    app:textViewTxtColor="@color/white"
+                                    tools:text="1" />
+                            </LinearLayout>
+
+                            <View
+                                android:layout_width="@dimen/size_1"
+                                android:layout_height="@dimen/size_36"
+                                android:background="@color/color_707070"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintHorizontal_bias="0.5"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <ImageView
+                                android:id="@+id/iv_level"
+                                android:layout_width="@dimen/size_50"
+                                android:layout_height="@dimen/size_50"
+                                android:src="@{viewModel.singPassLevelIcon}"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintHorizontal_bias="0.75"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </LinearLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/ly_nickname"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/size_20"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/ll_profile">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_nick_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/noto_sans_kr_bold"
+                            android:gravity="left"
+                            android:includeFontPadding="false"
+                            android:maxWidth="@dimen/size_300"
+                            android:maxLines="2"
+                            android:text="@{viewModel.userNickName}"
+                            android:textSize="@dimen/size_20"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:textViewBgColor="@color/color_00000000"
+                            app:textViewTxtColor="@color/color_222222"
+                            tools:text="안녕하세요안녕하세요안녕하세요안녕하세요" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/iv_purchase_level"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/size_31"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="@dimen/size_4"
+                            android:adjustViewBounds="true"
+                            android:minWidth="@dimen/size_23"
+                            android:scaleType="fitCenter"
+                            android:src="@{viewModel.userLevelIcon}"
+                            android:visibility="@{viewModel.isUserInfo(), default = gone}"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toRightOf="@+id/tv_nick_name"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:src="@drawable/ic_influencer"
+                            tools:visibility="visible" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_point_info"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/size_52"
+                        android:layout_marginTop="@dimen/size_20"
+                        app:layout_constraintTop_toBottomOf="@+id/ly_nickname">
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@color/color_2fc2ff"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize10Percent"
+                            app:strokeColor="@null" />
+
+                        <LinearLayout
+                            android:id="@+id/ll_sing_point_info"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:paddingLeft="@dimen/size_20"
+                            android:paddingRight="@dimen/size_20">
+
+                            <com.verse.app.widget.views.CustomTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:fontFamily="@font/noto_sans_kr_medium"
+                                android:gravity="left"
+                                android:text="@string/season_sing_pass_sing_point_name"
+                                android:textSize="@dimen/size_13"
+                                app:textViewBgColor="@color/color_00000000"
+                                app:textViewTxtColor="@color/white" />
+
+                            <com.verse.app.widget.views.CustomTextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_centerInParent="true"
+                                android:layout_marginStart="@dimen/size_10"
+                                android:layout_marginEnd="@dimen/size_25"
+                                android:autoSizeMaxTextSize="@dimen/size_28"
+                                android:autoSizeMinTextSize="@dimen/size_20"
+                                android:autoSizeStepGranularity="1dp"
+                                android:autoSizeTextType="uniform"
+                                android:ellipsize="end"
+                                android:fontFamily="@font/noto_sans_kr_bold"
+                                android:gravity="center"
+                                android:maxLines="1"
+                                android:text="@{@string/season_sing_pass_sing_point(viewModel.singPassUserInfoData.singPassUserInfo.totSingPoint)}"
+                                app:textViewBgColor="@color/color_00000000"
+                                app:textViewTxtColor="@color/white"
+                                tools:text="18289040387783912039581284994234262648129509" />
+                        </LinearLayout>
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:layout_width="@dimen/size_20"
+                            android:layout_height="@dimen/size_20"
+                            android:layout_marginEnd="@dimen/size_16"
+                            android:src="@drawable/circle_fill"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintHorizontal_bias="1"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize10Percent"
+                            app:strokeColor="@null"
+                            app:turtleClick="@{() -> viewModel.moveToWebView()}" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/cllPointInfo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/size_31"
+                        android:orientation="vertical"
+                        app:layout_constraintTop_toBottomOf="@+id/cl_point_info">
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:weightSum="2">
+
+                            <androidx.appcompat.widget.LinearLayoutCompat
+                                android:id="@+id/ll_mission_day"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:background="@drawable/bg_round_border_sing_point"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:paddingLeft="@dimen/size_12"
+                                android:paddingTop="@dimen/size_4"
+                                android:paddingRight="@dimen/size_12"
+                                android:paddingBottom="@dimen/size_4">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="@dimen/size_44"
+                                    android:layout_height="@dimen/size_44"
+                                    android:src="@drawable/ic_mission_d" />
+
+                                <androidx.appcompat.widget.LinearLayoutCompat
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/size_10"
+                                    android:orientation="vertical">
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_centerInParent="true"
+                                        android:fontFamily="@font/noto_sans_kr_light"
+                                        android:gravity="left"
+                                        android:includeFontPadding="false"
+                                        android:text="@string/season_sing_pass_day_mission_sing_point"
+                                        android:textColor="@color/color_222222"
+                                        android:textSize="@dimen/size_12" />
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_centerInParent="true"
+                                        android:fontFamily="@font/noto_sans_kr_bold"
+                                        android:gravity="left"
+                                        android:includeFontPadding="false"
+                                        android:text="@{@string/season_sing_pass_sing_point(viewModel.singPassUserInfoData.singPointList.get(0).singPoint)}"
+                                        android:textColor="@color/color_222222"
+                                        android:textSize="@dimen/size_15"
+                                        tools:text="5,000P" />
+                                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                            </androidx.appcompat.widget.LinearLayoutCompat>
+
+                            <androidx.legacy.widget.Space
+                                android:layout_width="@dimen/size_10"
+                                android:layout_height="wrap_content" />
+
+                            <androidx.appcompat.widget.LinearLayoutCompat
+                                android:id="@+id/ll_mission_period"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:background="@drawable/bg_round_border_sing_point"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:paddingLeft="@dimen/size_12"
+                                android:paddingTop="@dimen/size_4"
+                                android:paddingRight="@dimen/size_12"
+                                android:paddingBottom="@dimen/size_4">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="@dimen/size_44"
+                                    android:layout_height="@dimen/size_44"
+                                    android:src="@drawable/ic_mission_p" />
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/size_10"
+                                    android:orientation="vertical">
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_centerInParent="true"
+                                        android:fontFamily="@font/noto_sans_kr_light"
+                                        android:gravity="left"
+                                        android:includeFontPadding="false"
+                                        android:text="@string/season_sing_pass_period_mission_sing_point"
+                                        android:textColor="@color/color_222222"
+                                        android:textSize="@dimen/size_12" />
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_centerInParent="true"
+                                        android:fontFamily="@font/noto_sans_kr_bold"
+                                        android:gravity="left"
+                                        android:includeFontPadding="false"
+                                        android:text="@{@string/season_sing_pass_sing_point(viewModel.singPassUserInfoData.singPointList.get(1).singPoint)}"
+                                        android:textColor="@color/color_222222"
+                                        android:textSize="@dimen/size_15"
+                                        tools:text="5,000P" />
+                                </LinearLayout>
+                            </androidx.appcompat.widget.LinearLayoutCompat>
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:weightSum="2">
+
+                            <androidx.appcompat.widget.LinearLayoutCompat
+                                android:id="@+id/ll_mission_season"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/size_10"
+                                android:layout_weight="1"
+                                android:background="@drawable/bg_round_border_sing_point"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:paddingLeft="@dimen/size_12"
+                                android:paddingTop="@dimen/size_4"
+                                android:paddingRight="@dimen/size_12"
+                                android:paddingBottom="@dimen/size_4">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="@dimen/size_44"
+                                    android:layout_height="@dimen/size_44"
+                                    android:src="@drawable/ic_mission_s" />
+
+                                <androidx.appcompat.widget.LinearLayoutCompat
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/size_10"
+                                    android:orientation="vertical">
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/noto_sans_kr_light"
+                                        android:includeFontPadding="false"
+                                        android:text="@string/season_sing_pass_season_mission_sing_point"
+                                        android:textColor="@color/color_222222"
+                                        android:textSize="@dimen/size_12" />
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_centerInParent="true"
+                                        android:fontFamily="@font/noto_sans_kr_bold"
+                                        android:includeFontPadding="false"
+                                        android:text="@{@string/season_sing_pass_sing_point(viewModel.singPassUserInfoData.singPointList.get(2).singPoint)}"
+                                        android:textColor="@color/color_222222"
+                                        android:textSize="@dimen/size_15"
+                                        tools:text="15,000P" />
+                                </androidx.appcompat.widget.LinearLayoutCompat>
+                            </androidx.appcompat.widget.LinearLayoutCompat>
+
+                            <androidx.legacy.widget.Space
+                                android:layout_width="@dimen/size_10"
+                                android:layout_height="wrap_content" />
+
+                            <androidx.appcompat.widget.LinearLayoutCompat
+                                android:id="@+id/ll_mission_ect"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="@dimen/size_10"
+                                android:layout_weight="1"
+                                android:background="@drawable/bg_round_border_sing_point"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:paddingLeft="@dimen/size_12"
+                                android:paddingTop="@dimen/size_4"
+                                android:paddingRight="@dimen/size_12"
+                                android:paddingBottom="@dimen/size_4">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="@dimen/size_44"
+                                    android:layout_height="@dimen/size_44"
+                                    android:src="@drawable/ic_etc_p" />
+
+                                <androidx.appcompat.widget.LinearLayoutCompat
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/size_10"
+                                    android:orientation="vertical">
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/noto_sans_kr_light"
+                                        android:includeFontPadding="false"
+                                        android:text="@string/season_sing_pass_ect_point"
+                                        android:textColor="@color/color_222222"
+                                        android:textSize="@dimen/size_12" />
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_centerInParent="true"
+                                        android:fontFamily="@font/noto_sans_kr_bold"
+                                        android:includeFontPadding="false"
+                                        android:text="@{@string/season_sing_pass_sing_point(viewModel.singPassUserInfoData.singPassUserInfo.etcSingPoint)}"
+                                        android:textColor="@color/color_222222"
+                                        android:textSize="@dimen/size_15"
+                                        tools:text="15,000P" />
+                                </androidx.appcompat.widget.LinearLayoutCompat>
+                            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/size_28"
+                        android:visibility="@{viewModel.singPassUserInfoData.singPassUserInfo.topItemPicPath.length() > 0, default = gone}"
+                        app:layout_constraintTop_toBottomOf="@+id/cllPointInfo"
+                        tools:visibility="visible">
+
+                        <com.verse.app.widget.views.CustomTextView
+                            android:id="@+id/tv_item_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:fontFamily="@font/noto_sans_kr_medium"
+                            android:gravity="left"
+                            android:text="@string/season_sing_pass_have_mission_item"
+                            android:textSize="@dimen/size_18"
+                            android:visibility="@{viewModel.singPassUserInfoData.singPassUserInfo.topItemPicPath.length() > 0, default = gone}"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:textViewBgColor="@color/color_00000000"
+                            app:textViewTxtColor="@color/color_222222"
+                            tools:visibility="visible" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/size_51"
+                            android:layout_marginTop="@dimen/size_20"
+                            android:orientation="horizontal"
+                            app:layout_constraintLeft_toLeftOf="@+id/tv_item_title"
+                            app:layout_constraintTop_toBottomOf="@+id/tv_item_title">
+
+                            <com.google.android.material.imageview.ShapeableImageView
+                                android:id="@+id/iv_item_1"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                android:scaleType="centerCrop"
+                                android:visibility="invisible"
+                                app:isInvisible="@{true}"
+                                app:layout_constraintDimensionRatio="1:1"
+                                app:layout_constraintHorizontal_bias="0"
+                                app:layout_constraintHorizontal_weight="1"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+                                app:strokeColor="@null"
+                                app:thumbnailEx="@{viewModel.singPassUserInfoData.singPassUserInfo.getTopMissionItem(0)}"
+                                tools:src="@tools:sample/avatars"
+                                tools:visibility="visible" />
+
+                            <com.google.android.material.imageview.ShapeableImageView
+                                android:id="@+id/iv_item_2"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                android:scaleType="centerCrop"
+                                android:visibility="invisible"
+                                app:isInvisible="@{true}"
+                                app:layout_constraintDimensionRatio="1:1"
+                                app:layout_constraintHorizontal_weight="1"
+                                app:layout_constraintLeft_toRightOf="@+id/iv_item_1"
+                                app:layout_constraintRight_toLeftOf="@+id/iv_item_3"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+                                app:strokeColor="@null"
+                                app:thumbnailEx="@{viewModel.singPassUserInfoData.singPassUserInfo.getTopMissionItem(1)}"
+                                tools:src="@tools:sample/avatars"
+                                tools:visibility="visible" />
+
+                            <com.google.android.material.imageview.ShapeableImageView
+                                android:id="@+id/iv_item_3"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                android:scaleType="centerCrop"
+                                android:visibility="invisible"
+                                app:isInvisible="@{true}"
+                                app:layout_constraintDimensionRatio="1:1"
+                                app:layout_constraintHorizontal_weight="1"
+                                app:layout_constraintLeft_toRightOf="@+id/iv_item_2"
+                                app:layout_constraintRight_toLeftOf="@+id/iv_item_4"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+                                app:strokeColor="@null"
+                                app:thumbnailEx="@{viewModel.singPassUserInfoData.singPassUserInfo.getTopMissionItem(2)}"
+                                tools:src="@tools:sample/avatars"
+                                tools:visibility="visible" />
+
+                            <com.google.android.material.imageview.ShapeableImageView
+                                android:id="@+id/iv_item_4"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                android:scaleType="centerCrop"
+                                android:visibility="invisible"
+                                app:isInvisible="@{true}"
+                                app:layout_constraintDimensionRatio="1:1"
+                                app:layout_constraintHorizontal_weight="1"
+                                app:layout_constraintLeft_toRightOf="@+id/iv_item_3"
+                                app:layout_constraintRight_toLeftOf="@+id/iv_item_5"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+                                app:strokeColor="@null"
+                                app:thumbnailEx="@{viewModel.singPassUserInfoData.singPassUserInfo.getTopMissionItem(3)}"
+                                tools:src="@tools:sample/avatars"
+                                tools:visibility="visible" />
+
+                            <com.google.android.material.imageview.ShapeableImageView
+                                android:id="@+id/iv_item_5"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                android:scaleType="centerCrop"
+                                android:visibility="invisible"
+                                app:isInvisible="@{true}"
+                                app:layout_constraintDimensionRatio="1:1"
+                                app:layout_constraintHorizontal_weight="1"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+                                app:strokeColor="@null"
+                                app:thumbnailEx="@{viewModel.singPassUserInfoData.singPassUserInfo.getTopMissionItem(4)}"
+                                tools:src="@tools:sample/avatars"
+                                tools:visibility="visible" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

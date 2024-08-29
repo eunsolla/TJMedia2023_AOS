@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="requestManager"
+            type="com.bumptech.glide.RequestManager" />
+
+        <import type="com.verse.app.contants.MediaType" />
+
+        <import type="com.verse.app.contants.ListPagedItemType" />
+
+        <import type="com.verse.app.contants.GlideCode" />
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.sing.viewmodel.SingViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="@{viewModel.isLoading() == false ,default=gone}"
+        android:background="@color/color_00000000">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_root_sync"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <!--오디오-->
+            <include
+                android:id="@+id/cl_ready"
+                layout="@layout/view_sing_prepare_audio"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:visibility="@{viewModel.curMediaType == MediaType.AUDIO.code}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_weight="91.96"
+                app:requestManager="@{requestManager}"
+                app:viewModel="@{viewModel}"
+                tools:visibility="visible" />
+
+            <com.verse.app.widget.views.CustomConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:visibility="@{viewModel.curMediaType == MediaType.VIDEO.code}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.verse.app.utility.exo.ExoStyledPlayerView
+                    android:id="@+id/exo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bg_gradient_l"
+                    app:surface_type="texture_view" />
+
+            </com.verse.app.widget.views.CustomConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <include
+            android:id="@+id/in_header"
+            layout="@layout/view_header_sing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/size_10"
+            app:layout_constraintTop_toTopOf="parent"
+            app:viewModel="@{viewModel}" />
+
+        <include
+            android:id="@+id/ll_effects_sync"
+            layout="@layout/view_singing_effects"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/size_10"
+            app:layout_constraintBottom_toTopOf="@+id/ll_btn_sync"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:viewModel="@{viewModel}"
+            tools:visibility="visible" />
+
+        <include
+            android:id="@+id/ll_btn_sync"
+            layout="@layout/view_singing_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_52"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintVertical_weight="8.04"
+            app:viewModel="@{viewModel}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

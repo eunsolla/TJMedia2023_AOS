@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.search.viewmodel.SearchMainViewModel" />
+
+        <variable
+            name="data"
+            type="com.verse.app.model.search.PopularKeywordModel" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:background="@color/white">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_52"
+            android:visibility="@{data.oneTitle.length() > 0,default=gone}"
+            app:turtleClick="@{()->viewModel.onMoveToSearch(data.list[0])}"
+            tools:visibility="visible">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/noto_sans_kr_medium"
+                android:paddingLeft="20dp"
+                android:text="@{data.oneRank}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_18"
+                tools:text="1" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/size_14"
+                android:ellipsize="end"
+                android:fontFamily="@font/font_noto_sans_kr_light"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:text="@{data.oneTitle}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_18"
+                tools:text="NewJeans" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/color_eaeaea"
+            android:visibility="@{data.twoTitle.length() > 0,default=gone}"
+            tools:visibility="visible" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_52"
+            android:visibility="@{data.twoTitle.length() > 0,default=gone}"
+            app:turtleClick="@{()->viewModel.onMoveToSearch(data.list[1])}"
+            tools:visibility="visible">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/noto_sans_kr_medium"
+                android:paddingLeft="20dp"
+                android:text="@{data.twoRank}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_18"
+                tools:text="2" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/size_14"
+                android:ellipsize="end"
+                android:fontFamily="@font/font_noto_sans_kr_light"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:text="@{data.twoTitle}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_18"
+                tools:text="NewJeans" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/color_eaeaea"
+            android:visibility="@{data.threeTitle.length() > 0,default=gone}"
+            tools:visibility="visible" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_52"
+            android:visibility="@{data.threeTitle.length() > 0,default=gone}"
+            app:turtleClick="@{()->viewModel.onMoveToSearch(data.list[2])}"
+            tools:visibility="visible">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/noto_sans_kr_medium"
+                android:paddingLeft="20dp"
+                android:text="@{data.threeRank}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_18"
+                tools:text="3" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/size_14"
+                android:ellipsize="end"
+                android:fontFamily="@font/font_noto_sans_kr_light"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:text="@{data.threeTitle}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_18"
+                tools:text="NewJeans" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/color_eaeaea"
+            android:visibility="@{data.fourTitle.length() > 0,default=gone}"
+            tools:visibility="visible" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_52"
+            android:visibility="@{data.fourTitle.length() > 0,default=gone}"
+            app:turtleClick="@{()->viewModel.onMoveToSearch(data.list[3])}"
+            tools:visibility="visible">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/noto_sans_kr_medium"
+                android:paddingLeft="20dp"
+                android:text="@{data.fourRank}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_18"
+                tools:text="4" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/size_14"
+                android:ellipsize="end"
+                android:fontFamily="@font/font_noto_sans_kr_light"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:text="@{data.fourTitle}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_18"
+                tools:text="NewJeans" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/color_eaeaea"
+            android:visibility="@{data.fiveTitle.length() > 0,default=gone}"
+            tools:visibility="visible" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_52"
+            android:visibility="@{data.fiveTitle.length() > 0,default=gone}"
+            app:turtleClick="@{()->viewModel.onMoveToSearch(data.list[4])}"
+            tools:visibility="visible">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/noto_sans_kr_medium"
+                android:paddingLeft="20dp"
+                android:text="@{data.fiveRank}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_18"
+                tools:text="5" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/size_14"
+                android:ellipsize="end"
+                android:fontFamily="@font/font_noto_sans_kr_light"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:text="@{data.fiveTitle}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/size_18"
+                tools:text="NewJeans" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/color_eaeaea"
+            android:visibility="@{data.fiveTitle.length() > 0,default=gone}"
+            tools:visibility="visible" />
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</layout>

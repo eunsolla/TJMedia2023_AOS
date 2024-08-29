@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.search.viewmodel.SearchResultFragmentViewModel" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_52">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clBack"
+                android:layout_width="@dimen/size_60"
+                android:layout_height="match_parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:turtleClick="@{()->viewModel.onFinish()}">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/size_10"
+                    android:layout_height="@dimen/size_18"
+                    android:src="@drawable/ic_top_arrow_left"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/etKeyword"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/size_7"
+                android:layout_marginBottom="@dimen/size_7"
+                android:background="@drawable/bg_round_border_bule"
+                android:fontFamily="@font/font_noto_sans_kr_medium"
+                android:gravity="center_vertical"
+                android:includeFontPadding="false"
+                android:paddingLeft="@dimen/size_16"
+                android:paddingRight="@dimen/size_30"
+                android:textSize="@dimen/size_15"
+                android:text="@{viewModel.searchKeyword}"
+                app:layout_constraintLeft_toRightOf="@+id/clBack"
+                app:layout_constraintRight_toLeftOf="@+id/clSort"
+                app:turtleClick="@{()->viewModel.moveToSearchKeyword()}"
+                tools:text="안녕하세요 안녕하세요입니다." />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginRight="@dimen/size_10"
+                android:background="@drawable/close"
+                app:layout_constraintBottom_toBottomOf="@+id/etKeyword"
+                app:layout_constraintRight_toRightOf="@+id/etKeyword"
+                app:layout_constraintTop_toTopOf="@+id/etKeyword"
+                app:turtleClick="@{()->viewModel.moveToSearchKeyword()}" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clSort"
+                android:layout_width="@dimen/size_60"
+                android:layout_height="match_parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:turtleClick="@{()->viewModel.onShowSortDialog()}">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/btn_sort"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.verse.app.widget.pagertablayout.LinePagerTabLayout
+            android:id="@+id/tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_44"
+            app:fixedSize="@{viewModel.tabList.size}"
+            app:menuList="@{viewModel.tabList}"
+            app:tab_disable_txt_color="@color/color_8c8c8c"
+            app:tab_indicator_color="@color/color_2fc2ff"
+            app:tab_indicator_height="@dimen/size_2"
+            app:tab_bottom_line_height="@dimen/size_1"
+            app:tab_txt_color="@color/color_222222"
+            app:tab_type="fixed"
+            app:viewPager="@{vp}" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            app:position="@={viewModel.tabPosition}" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+</layout>

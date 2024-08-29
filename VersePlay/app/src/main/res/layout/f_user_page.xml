@@ -1,0 +1,638 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.verse.app.model.user.UserData" />
+
+        <import type="com.verse.app.contants.ListPagedItemType" />
+
+        <variable
+            name="requestManager"
+            type="com.bumptech.glide.RequestManager" />
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.mypage.user.UserPageFragmentViewModel" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/abl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:disableBottomLine="@{false}"
+            app:inVisibility="@{viewModel.isLoading() == false}"
+            app:layout_behavior=".widget.behavior.AppBarLayoutBehavior">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+                <androidx.core.widget.NestedScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fillViewport="true"
+                    android:scrollbars="none">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/ivBgProfile"
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:minHeight="392dp"
+                                app:layout_constraintDimensionRatio="375:392"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:turtleClick="@{() -> viewModel.moveToProfileBgImageDetail()}"
+                                tools:src="@tools:sample/avatars" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:background="@drawable/rectangle_2030"
+                                android:visibility="visible"
+                                app:layout_constraintBottom_toBottomOf="@+id/ivBgProfile"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <com.google.android.material.imageview.ShapeableImageView
+                                android:id="@+id/ivProfile"
+                                android:layout_width="@dimen/size_120"
+                                android:layout_height="@dimen/size_120"
+                                android:layout_marginLeft="@dimen/size_20"
+                                android:layout_marginTop="@dimen/size_60"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+                                app:strokeColor="@null"
+                                app:turtleClick="@{() -> viewModel.moveToProfileImageDetail()}"
+                                tools:src="@tools:sample/avatars" />
+
+                            <!-- 사용자 정보 -->
+                            <androidx.appcompat.widget.LinearLayoutCompat
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/size_18"
+                                android:orientation="vertical"
+                                app:layout_constraintTop_toBottomOf="@+id/ivProfile">
+
+                                <!-- 회원 명, 회원 등급 -->
+                                <androidx.appcompat.widget.LinearLayoutCompat
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="bottom"
+                                    android:paddingLeft="@dimen/size_20"
+                                    android:paddingRight="@dimen/size_20">
+
+                                    <androidx.constraintlayout.widget.ConstraintLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content">
+
+                                        <androidx.appcompat.widget.AppCompatTextView
+                                            android:id="@+id/tv_nick_name"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:ellipsize="end"
+                                            android:fontFamily="@font/font_noto_sans_kr_bold"
+                                            android:includeFontPadding="false"
+                                            android:maxWidth="@dimen/size_290"
+                                            android:maxLines="2"
+                                            android:text="@{viewModel.memberName}"
+                                            android:textColor="@color/white"
+                                            android:textSize="@dimen/size_23"
+                                            app:layout_constraintTop_toTopOf="parent"
+                                            app:layout_constraintLeft_toLeftOf="parent"
+                                            tools:text="안녕하세요!!!!!!!! 안녕안녕하세요!!!!!!!! 안녕안녕하세요!!!!!!!! 안녕" />
+
+                                        <androidx.appcompat.widget.AppCompatImageView
+                                            android:id="@+id/iv_influencer"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="@dimen/size_14"
+                                            android:layout_marginLeft="@dimen/size_5"
+                                            android:adjustViewBounds="true"
+                                            android:scaleType="fitCenter"
+                                            android:visibility="@{viewModel.isInfluencer, default=gone}"
+                                            android:src="@drawable/ic_influencer"
+                                            app:layout_constraintTop_toTopOf="parent"
+                                            app:layout_constraintBottom_toBottomOf="parent"
+                                            app:layout_constraintLeft_toRightOf="@+id/tv_nick_name"
+                                            tools:src="@drawable/ic_influencer" />
+                                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                                <androidx.appcompat.widget.LinearLayoutCompat
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/size_18"
+                                    android:paddingLeft="@dimen/size_20">
+
+                                    <androidx.appcompat.widget.LinearLayoutCompat
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center_horizontal"
+                                        android:orientation="vertical"
+                                        app:turtleClick="@{()->viewModel.moveToContents()}">
+
+                                        <androidx.appcompat.widget.AppCompatTextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:fontFamily="@font/font_noto_sans_kr_medium"
+                                            android:includeFontPadding="false"
+                                            android:maxLines="1"
+                                            android:text="@{viewModel.memberContentsCntTxt}"
+                                            android:textColor="@color/white"
+                                            android:textSize="@dimen/size_14"
+                                            tools:text="0" />
+
+                                        <androidx.appcompat.widget.AppCompatTextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:fontFamily="@font/font_noto_sans_kr_medium"
+                                            android:includeFontPadding="false"
+                                            android:text="@string/member_contents_title"
+                                            android:textColor="@color/white"
+                                            android:textSize="@dimen/size_14" />
+
+                                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                                    <androidx.legacy.widget.Space
+                                        android:layout_width="@dimen/size_24"
+                                        android:layout_height="wrap_content" />
+
+                                    <androidx.appcompat.widget.LinearLayoutCompat
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center_horizontal"
+                                        android:orientation="vertical"
+                                        app:turtleClick="@{()->viewModel.moveToFollowersPage()}">
+
+                                        <androidx.appcompat.widget.AppCompatTextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:fontFamily="@font/font_noto_sans_kr_medium"
+                                            android:includeFontPadding="false"
+                                            android:maxLines="1"
+                                            android:text="@{viewModel.memberFollowerCntTxt}"
+                                            android:textColor="@color/white"
+                                            android:textSize="@dimen/size_14"
+                                            tools:text="0" />
+
+                                        <androidx.appcompat.widget.AppCompatTextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:fontFamily="@font/font_noto_sans_kr_medium"
+                                            android:includeFontPadding="false"
+                                            android:text="@string/member_followers_title"
+                                            android:textColor="@color/white"
+                                            android:textSize="@dimen/size_14" />
+
+                                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                                    <androidx.legacy.widget.Space
+                                        android:layout_width="@dimen/size_24"
+                                        android:layout_height="wrap_content" />
+
+                                    <androidx.appcompat.widget.LinearLayoutCompat
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center_horizontal"
+                                        android:orientation="vertical"
+                                        app:turtleClick="@{()->viewModel.moveToFollowingPage()}">
+
+                                        <androidx.appcompat.widget.AppCompatTextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:fontFamily="@font/font_noto_sans_kr_medium"
+                                            android:includeFontPadding="false"
+                                            android:maxLines="1"
+                                            android:text="@{viewModel.memberFollowingCnTxt}"
+                                            android:textColor="@color/white"
+                                            android:textSize="@dimen/size_14"
+                                            tools:text="0" />
+
+                                        <androidx.appcompat.widget.AppCompatTextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:fontFamily="@font/font_noto_sans_kr_medium"
+                                            android:includeFontPadding="false"
+                                            android:text="@string/member_following_title"
+                                            android:textColor="@color/white"
+                                            android:textSize="@dimen/size_14" />
+
+                                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                                <HorizontalScrollView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/size_36"
+                                    android:layout_marginTop="@dimen/size_28"
+                                    android:scrollbars="none">
+
+                                    <androidx.appcompat.widget.LinearLayoutCompat
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="match_parent"
+                                        android:orientation="horizontal">
+
+                                        <androidx.legacy.widget.Space
+                                            android:layout_width="@dimen/size_20"
+                                            android:layout_height="wrap_content" />
+
+                                        <com.verse.app.widget.views.CustomTextView
+                                            android:id="@+id/ivProfile2"
+                                            android:layout_width="113dp"
+                                            android:layout_height="@dimen/size_36"
+                                            android:fontFamily="@font/font_noto_sans_kr_light"
+                                            android:gravity="center"
+                                            android:includeFontPadding="false"
+                                            android:maxLines="1"
+                                            android:paddingLeft="@dimen/size_20"
+                                            android:paddingRight="@dimen/size_20"
+                                            android:textSize="@dimen/size_15"
+                                            app:isSelected="@{viewModel.isFollowing}"
+                                            app:text="@{viewModel.followText}"
+                                            app:textViewBgColor="@color/white"
+                                            app:textViewBorder="@dimen/size_0_5"
+                                            app:textViewBorderColor="@color/color_adadad"
+                                            app:textViewClickEffect="false"
+                                            app:textViewCorner="@dimen/size_18"
+                                            app:textViewDisableBgColor="@color/color_2fc2ff"
+                                            app:textViewDisableBorder="@dimen/size_0_5"
+                                            app:textViewDisableBorderColor="@color/color_2fc2ff"
+                                            app:textViewDisableCorner="@dimen/size_18"
+                                            app:textViewDisableTxtColor="@color/white"
+                                            app:textViewTxtColor="@color/color_222222"
+                                            app:turtleClick="@{()->viewModel.onFollowingEvent()}"
+                                            tools:text="팔로잉" />
+
+                                        <androidx.legacy.widget.Space
+                                            android:layout_width="@dimen/size_12"
+                                            android:layout_height="wrap_content" />
+
+                                        <com.verse.app.widget.views.CustomTextView
+                                            android:layout_width="113dp"
+                                            android:layout_height="@dimen/size_36"
+                                            android:fontFamily="@font/font_noto_sans_kr_light"
+                                            android:gravity="center"
+                                            android:includeFontPadding="false"
+                                            android:maxLines="1"
+                                            android:paddingLeft="@dimen/size_20"
+                                            android:paddingRight="@dimen/size_20"
+                                            android:text="@string/mypage_setting_push_message"
+                                            android:textColor="@color/color_222222"
+                                            android:textSize="@dimen/size_15"
+                                            app:textViewBgColor="@color/white"
+                                            app:textViewBorder="@dimen/size_0_5"
+                                            app:textViewBorderColor="@color/color_adadad"
+                                            app:textViewClickEffect="false"
+                                            app:textViewCorner="@dimen/size_18"
+                                            app:textViewDisableBorder="@dimen/size_0_5"
+                                            app:turtleClick="@{()->viewModel.moveToMessage()}" />
+
+                                        <androidx.legacy.widget.Space
+                                            android:layout_width="@dimen/size_12"
+                                            android:layout_height="wrap_content" />
+
+                                        <com.google.android.material.imageview.ShapeableImageView
+                                            android:id="@+id/link_icon"
+                                            android:layout_width="@dimen/size_36"
+                                            android:layout_height="match_parent"
+                                            android:adjustViewBounds="true"
+                                            app:strokeColor="@null"
+                                            android:visibility="@{viewModel.linkIconUrl != null, default = gone}"
+                                            app:imageUrl="@{viewModel.linkIconUrl}"
+                                            app:requestManager="@{requestManager}"
+                                            app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+                                            app:turtleClick="@{()->viewModel.moveToInstar()}"
+                                            tools:src="@drawable/ic_link"
+                                            tools:visibility="visible" />
+
+                                        <androidx.legacy.widget.Space
+                                            android:layout_width="@dimen/size_12"
+                                            android:layout_height="wrap_content" />
+
+                                        <androidx.appcompat.widget.AppCompatImageView
+                                            android:layout_width="@dimen/size_36"
+                                            android:layout_height="@dimen/size_36"
+                                            android:adjustViewBounds="true"
+                                            android:src="@{viewModel.isRecommendUserVisible() ? @drawable/recommend_on : @drawable/recommend_off}"
+                                            android:visibility="gone"
+                                            app:turtleClick="@{()->viewModel.showAndHiddenRecommendUser()}" />
+
+                                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                                </HorizontalScrollView>
+
+                            </androidx.appcompat.widget.LinearLayoutCompat>
+
+                            <!-- 상태 메시지 -->
+                            <com.verse.app.widget.views.CustomConstraintLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/size_20"
+                                android:layout_marginTop="@dimen/size_42"
+                                android:layout_marginRight="@dimen/size_20"
+                                android:visibility="@{viewModel.memberStatusMessage.length() > 0,default=gone}"
+                                app:layoutBgColor="#CC222222"
+                                app:layoutClickEffect="false"
+                                app:layoutCorner="@dimen/size_18"
+                                app:layout_constraintLeft_toRightOf="@+id/ivProfile"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="@+id/ivProfile"
+                                app:turtleClick="@{()->viewModel.onMemberStatusMessageShowAndHidden()}"
+                                tools:visibility="visible">
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/size_12"
+                                    android:layout_marginRight="@dimen/size_4"
+                                    android:fontFamily="@font/font_noto_sans_kr_medium"
+                                    android:includeFontPadding="false"
+                                    android:maxLines="1"
+                                    android:paddingTop="@dimen/size_9"
+                                    android:paddingBottom="@dimen/size_9"
+                                    android:text="@{viewModel.memberStatusMessage}"
+                                    android:textColor="@color/white"
+                                    android:visibility="@{viewModel.isMemberStatusLongMessageOpen() == false,default=gone}"
+                                    app:layout_constraintLeft_toLeftOf="parent"
+                                    app:layout_constraintRight_toLeftOf="@+id/ivArrow"
+                                    tools:text="으아아아! 하히히이형"
+                                    tools:visibility="visible" />
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/size_12"
+                                    android:layout_marginRight="@dimen/size_4"
+                                    android:fontFamily="@font/font_noto_sans_kr_medium"
+                                    android:includeFontPadding="false"
+                                    android:maxLines="10"
+                                    android:paddingTop="@dimen/size_9"
+                                    android:paddingBottom="@dimen/size_9"
+                                    android:text="@{viewModel.memberStatusMessage}"
+                                    android:textColor="@color/white"
+                                    android:visibility="@{viewModel.isMemberStatusLongMessageOpen(),default=gone}"
+                                    app:layout_constraintLeft_toLeftOf="parent"
+                                    app:layout_constraintRight_toLeftOf="@+id/ivArrow"
+                                    tools:text="으아아아! 하히히이형"
+                                    tools:visibility="gone" />
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:id="@+id/ivArrow"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="@dimen/size_7"
+                                    android:layout_marginTop="@dimen/size_16"
+                                    android:layout_marginRight="@dimen/size_13"
+                                    android:adjustViewBounds="true"
+                                    android:src="@drawable/ic_arrow_s_down"
+                                    android:visibility="@{viewModel.memberStatusMessage.length() > 8}"
+                                    app:aniRotation="@{viewModel.isMemberStatusLongMessageOpen() ? 180F : 0F}"
+                                    app:layout_constraintRight_toRightOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                            </com.verse.app.widget.views.CustomConstraintLayout>
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/size_5"
+                            android:background="@color/color_eaeaea" />
+
+                        <!-- 추천 유저 영역 -->
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:visibility="gone"
+                            tools:visibility="gone">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/size_20"
+                                android:layout_marginTop="@dimen/size_28"
+                                android:fontFamily="@font/font_noto_sans_kr_light"
+                                android:includeFontPadding="false"
+                                android:text="@string/mypage_str_recommend_user"
+                                android:textColor="@color/color_222222" />
+
+                            <com.verse.app.widget.views.FocusingRecyclerView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/size_14"
+                                android:layout_marginBottom="@dimen/size_22"
+                                android:clipToPadding="false"
+                                android:focusable="false"
+                                android:orientation="horizontal"
+                                android:paddingLeft="@dimen/size_20"
+                                android:paddingRight="@dimen/size_20"
+                                app:dataList="@{viewModel.recommendUserList}"
+                                app:itemType="@{ListPagedItemType.MY_PAGE_RECOMMEND}"
+                                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                app:viewModel="@{viewModel}"
+                                tools:itemCount="4"
+                                tools:listitem="@layout/item_recommend_user" />
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                        <!-- 씽패스 시즌 클리어 현황 -->
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/size_22"
+                            android:orientation="vertical"
+                            android:visibility="@{!viewModel.memberPrivateYN, default=visible}">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/size_20"
+                                android:fontFamily="@font/font_noto_sans_kr_medium"
+                                android:includeFontPadding="false"
+                                android:text="@string/mypage_singpass_seasonclear_status"
+                                android:textColor="@color/color_222222"
+                                android:textSize="@dimen/size_18" />
+
+                            <com.verse.app.widget.views.CustomConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/size_100"
+                                android:layout_marginLeft="@dimen/size_20"
+                                android:layout_marginTop="@dimen/size_20"
+                                android:layout_marginRight="@dimen/size_20"
+                                android:layout_marginBottom="@dimen/size_22"
+                                app:layoutBorder="@dimen/size_0_5"
+                                app:layoutBorderColor="@color/color_adadad"
+                                app:layoutCorner="@dimen/size_10">
+
+                                <com.verse.app.widget.views.FocusingRecyclerView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:nestedScrollingEnabled="false"
+                                    android:orientation="horizontal"
+                                    android:visibility="@{viewModel.singPassList.size() > 0,default=gone}"
+                                    app:dataList="@{viewModel.singPassList}"
+                                    app:isAutoVisible="@{false}"
+                                    app:itemType="@{ListPagedItemType.MY_PAGE_SINGPASS}"
+                                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                    app:viewModel="@{viewModel}"
+                                    tools:listitem="@layout/item_mypage_sing_pass" />
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/font_noto_sans_kr_medium"
+                                    android:text="@string/singpass_is_empty"
+                                    android:textColor="@color/color_adadad"
+                                    android:textSize="@dimen/size_15"
+                                    android:visibility="@{viewModel.singPassList.size() == 0,default=gone}"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintLeft_toLeftOf="parent"
+                                    app:layout_constraintRight_toRightOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                            </com.verse.app.widget.views.CustomConstraintLayout>
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                </androidx.core.widget.NestedScrollView>
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_52"
+                    android:alpha="0"
+                    android:background="@color/color_2fc2ff"
+                    app:layout_collapseMode="pin" />
+
+                <!-- 헤더 네비게이션바 -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_52"
+                    app:layout_collapseMode="pin">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/appCompatImageView"
+                        android:layout_width="@dimen/size_60"
+                        android:layout_height="match_parent"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/ic_left_w"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:turtleClick="@{()->viewModel.onBack()}" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/size_60"
+                        android:layout_height="match_parent"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/ic_f_b"
+                        android:visibility="visible"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:turtleClick="@{()->viewModel.blockUser()}" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+            <com.verse.app.widget.pagertablayout.LinePagerTabLayout
+                android:id="@+id/tab_layout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_54"
+                app:fixedSize="@{3}"
+                app:menuList="@{viewModel.tabList}"
+                app:tab_bottom_line_height="@dimen/size_1"
+                app:tab_disable_txt_color="@color/color_8c8c8c"
+                android:enabled="@{!viewModel.setTabPrivate}"
+                app:tab_indicator_color="@color/color_2fc2ff"
+                app:tab_indicator_height="@dimen/size_2"
+                app:tab_txt_color="@color/color_222222"
+                app:tab_type="fixed"
+                app:viewPager="@{vp}" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/user_private_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:gravity="center"
+                tools:visibility="visible"
+                android:layout_marginTop="@dimen/size_40"
+                android:visibility="@{viewModel.setTabPrivate, default=gone}"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_five_text_view"
+                    android:layout_width="@dimen/size_42"
+                    android:layout_height="@dimen/size_50"
+                    android:src="@drawable/ic_mypage_private" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_20"
+                    android:fontFamily="@font/font_noto_sans_kr_medium"
+                    android:gravity="center_horizontal"
+                    android:text="@{viewModel.userStateText}"
+                    android:includeFontPadding="false"
+                    tools:text="이 계정은 비공개입니다."
+                    android:textColor="@color/color_707070"
+                    android:textSize="@dimen/size_18" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font_noto_sans_kr_light"
+                    android:layout_marginTop="@dimen/size_20"
+                    android:includeFontPadding="false"
+                    android:gravity="center_horizontal"
+                    android:text="@{viewModel.userStateSubText}"
+                    tools:text="비공개 계정의 콘텐츠를 볼 수 없습니다."
+                    android:textColor="@color/color_8c8c8c"
+                    android:textSize="@dimen/size_15" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <com.verse.app.widget.views.FocusingViewPager
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            app:inVisibility="@{viewModel.isLoading() == false}"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/vp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:visibility="@{!viewModel.setTabPrivate, default=visible}"
+                app:position="@={viewModel.tabPosition}"
+                tools:visibility="visible" />
+
+        </com.verse.app.widget.views.FocusingViewPager>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>

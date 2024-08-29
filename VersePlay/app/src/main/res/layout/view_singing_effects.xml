@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.verse.app.contants.MediaType" />
+
+        <import type="com.verse.app.contants.SingPageType" />
+
+        <import type="com.verse.app.contants.SingEffectType" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.sing.viewmodel.SingViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_00000000"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/in_filter"
+            layout="@layout/view_sound_filter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/size_10"
+            android:visibility="@{viewModel.showSoundFilter}"
+            app:layout_constraintBottom_toTopOf="@+id/ll_btn"
+            app:viewModel="@{viewModel}"
+            tools:visibility="gone" />
+
+     <!--   <include
+            android:id="@+id/in_sticker"
+            layout="@layout/view_sticker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/size_10"
+            android:visibility="@{viewModel.showArEffect}"
+            app:layout_constraintBottom_toTopOf="@+id/ll_btn"
+            app:viewModel="@{viewModel}"
+            tools:visibility="gone" />-->
+
+        <include
+            android:id="@+id/ll_volume"
+            layout="@layout/view_volume"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/size_10"
+            android:visibility="@{viewModel.showVolume}"
+            app:layout_constraintBottom_toTopOf="@+id/ll_btn"
+            app:viewModel="@{viewModel}"
+            tools:visibility="gone" />
+
+        <include
+            layout="@layout/view_sync_preview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/size_10"
+            android:visibility="@{viewModel.showSync}"
+            app:layout_constraintBottom_toTopOf="@+id/ll_btn"
+            app:viewModel="@{viewModel}"
+            tools:visibility="gone" />
+
+        <include
+            layout="@layout/view_preview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/size_10"
+            android:visibility="@{viewModel.showPreview}"
+            app:layout_constraintBottom_toTopOf="@+id/ll_btn"
+            app:viewModel="@{viewModel}"
+            tools:visibility="visible" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/ll_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/size_40"
+            android:paddingTop="@dimen/size_16"
+            android:paddingRight="@dimen/size_40"
+            android:paddingBottom="@dimen/size_16"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <!--SP 사운드-->
+            <com.verse.app.widget.views.CustomConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                app:layoutBgColor="@color/color_00000000"
+                app:layoutClickEffect="false"
+                app:turtleClick="@{()->viewModel.onEffects(!viewModel.showSoundFilter, SingEffectType.SOUND)}">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_sound"
+                    android:layout_width="@dimen/size_20"
+                    android:layout_height="@dimen/size_20"
+                    android:src="@drawable/ic_sing_sound"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_chainStyle="packed" />
+
+                <com.verse.app.widget.views.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_9"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/font_noto_sans_kr_medium"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:maxLines="1"
+                    android:text="@string/str_filter_sound"
+                    android:textSize="@dimen/size_11"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_sound"
+                    app:textViewBgColor="@color/color_00000000"
+                    app:textViewTxtColor="@color/white" />
+            </com.verse.app.widget.views.CustomConstraintLayout>
+
+            <!--볼륨-->
+            <com.verse.app.widget.views.CustomConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                app:layoutBgColor="@color/color_00000000"
+                app:layoutClickEffect="false"
+                app:turtleClick="@{()->viewModel.onEffects(!viewModel.showVolume, SingEffectType.VOLUME)}">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_volume"
+                    android:layout_width="@dimen/size_22"
+                    android:layout_height="@dimen/size_20"
+                    android:src="@drawable/ic_sing_volume"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_chainStyle="packed" />
+
+                <com.verse.app.widget.views.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_9"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/font_noto_sans_kr_medium"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:maxLines="1"
+                    android:text="@string/str_filter_volume"
+                    android:textSize="@dimen/size_11"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_volume"
+                    app:textViewBgColor="@color/color_00000000"
+                    app:textViewTxtColor="@color/white" />
+            </com.verse.app.widget.views.CustomConstraintLayout>
+
+            <!--구간 변경-->
+            <com.verse.app.widget.views.CustomConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:visibility="@{viewModel.isSection &amp;&amp; viewModel.singPageType == SingPageType.SING_ING}"
+                app:layoutBgColor="@color/color_00000000"
+                app:layoutClickEffect="false"
+                app:turtleClick="@{()->viewModel.onEffects(!viewModel.showSection, SingEffectType.SECTION)}">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_section"
+                    android:layout_width="@dimen/size_22"
+                    android:layout_height="@dimen/size_20"
+                    android:src="@drawable/ic_section_change"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_chainStyle="packed" />
+
+                <com.verse.app.widget.views.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_9"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/font_noto_sans_kr_medium"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:maxLines="1"
+                    android:text="@string/str_filter_section_change"
+                    android:textSize="@dimen/size_11"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_section"
+                    app:textViewBgColor="@color/color_00000000"
+                    app:textViewTxtColor="@color/white" />
+
+            </com.verse.app.widget.views.CustomConstraintLayout>
+
+
+            <com.verse.app.widget.views.CustomConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:visibility="@{viewModel.singPageType ==  SingPageType.SYNC_SING}"
+                app:layoutBgColor="@color/color_00000000"
+                app:layoutClickEffect="false"
+                app:turtleClick="@{()->viewModel.onEffects(!viewModel.showSync, SingEffectType.SYNC)}">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_sync"
+                    android:layout_width="@dimen/size_20"
+                    android:layout_height="@dimen/size_20"
+                    android:src="@drawable/ic_sync"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_chainStyle="packed" />
+
+                <com.verse.app.widget.views.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_9"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/font_noto_sans_kr_medium"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:maxLines="1"
+                    android:text="@string/str_filter_sync"
+                    android:textSize="@dimen/size_11"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_sync"
+                    app:textViewBgColor="@color/color_00000000"
+                    app:textViewTxtColor="@color/white" />
+
+            </com.verse.app.widget.views.CustomConstraintLayout>
+
+            <com.verse.app.widget.views.CustomConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:visibility="@{viewModel.singPageType ==  SingPageType.SYNC_SING &amp;&amp; viewModel.curTotalMs >= viewModel.ONE_MINUTE}"
+                app:layoutBgColor="@color/color_00000000"
+                app:layoutClickEffect="false"
+                app:turtleClick="@{()->viewModel.onEffects(!viewModel.showPreview, SingEffectType.PREVIEW)}">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_preview"
+                    android:layout_width="@dimen/size_20"
+                    android:layout_height="@dimen/size_20"
+                    android:src="@drawable/ic_preview"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_chainStyle="packed" />
+
+                <com.verse.app.widget.views.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_9"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/font_noto_sans_kr_medium"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:maxLines="1"
+                    android:text="@string/str_filter_preview"
+                    android:textSize="@dimen/size_11"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_preview"
+                    app:textViewBgColor="@color/color_00000000"
+                    app:textViewTxtColor="@color/white" />
+
+            </com.verse.app.widget.views.CustomConstraintLayout>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

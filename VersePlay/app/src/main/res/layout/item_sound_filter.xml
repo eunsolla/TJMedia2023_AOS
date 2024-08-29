@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.sing.viewmodel.SingViewModel" />
+
+        <variable
+            name="data"
+            type="com.verse.app.model.sp.SoundFilterData" />
+
+        <variable
+            name="position"
+            type="java.lang.Integer" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_icon"
+            android:layout_width="@dimen/size_80"
+            android:layout_height="@dimen/size_60"
+            app:isSelected="@{data.isSelected}"
+            android:scaleType="fitXY"
+            app:spResId="@{data.icon}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:turtleClick="@{()->viewModel.onSoundFilterSelected(position)}"
+            tools:src="@drawable/ic_album_default" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/font_noto_sans_kr_light"
+            android:includeFontPadding="false"
+            android:text="@{data.name}"
+            android:textColor="@color/white"
+            android:textSize="@dimen/size_13"
+            android:visibility="gone"
+            app:layout_constraintLeft_toLeftOf="@+id/iv_icon"
+            app:layout_constraintRight_toRightOf="@+id/iv_icon"
+            app:layout_constraintTop_toBottomOf="@+id/iv_icon"
+            tools:text="고스트" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

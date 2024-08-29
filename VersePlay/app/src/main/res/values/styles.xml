@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="CommonDialog" parent="Theme.AppCompat.Dialog.Alert">
+        <item name="android:windowMinWidthMajor">100%</item>
+        <item name="android:windowMinWidthMinor">100%</item>
+    </style>
+
+    <style name="CommonOneBtnDialog" parent="Theme.AppCompat.DayNight.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+    </style>
+
+
+    <style name="CommonVerticalDialog" parent="Theme.AppCompat.Dialog.Alert">
+        <item name="android:windowMinWidthMajor">100%</item>
+        <item name="android:windowMinWidthMinor">100%</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+    </style>
+
+    <style name="EarPhoneDialog" parent="Theme.AppCompat.Dialog.Alert">
+        <item name="android:windowMinWidthMajor">100%</item>
+        <item name="android:windowMinWidthMinor">100%</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+    </style>
+
+
+    <style name="IntroHelpDialog" parent="Theme.AppCompat.DayNight.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+    </style>
+
+    <style name="FullScreenDialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowTitleStyle">@null</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="PushRouterStyle" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@null</item>
+    </style>
+
+    <style name="AppTheme.BlueRipple">
+        <item name="colorControlHighlight">@color/color_2fc2ff</item>
+    </style>
+
+    <style name="EditTextStyle" parent="Widget.AppCompat.EditText">
+        <!-- 커서-->
+        <item name="android:textCursorDrawable">@drawable/yellow_cursor</item>
+
+        <!-- 힌트 색-->
+        <item name="android:textColorHint">@color/color_8c8c8c</item>
+
+        <!-- 포커스 되어있지 않은 경우 밑줄 부분-->
+        <item name="colorControlNormal">@android:color/transparent</item>
+
+        <!-- 포커스시의 밑줄 부분-->
+        <item name="colorControlActivated">@android:color/transparent</item>
+
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="EditSettingTextStyle" parent="Widget.AppCompat.EditText">
+        <!-- 커서-->
+        <item name="android:textCursorDrawable">@drawable/edit_cursor</item>
+
+        <!-- 힌트 색-->
+        <item name="android:textColorHint">@color/color_adadad</item>
+
+        <!-- 포커스 되어있지 않은 경우 밑줄 부분-->
+        <item name="colorControlNormal">@android:color/transparent</item>
+
+        <!-- 포커스시의 밑줄 부분-->
+        <item name="colorControlActivated">@android:color/transparent</item>
+
+        <item name="android:textColor">@color/color_222222</item>
+    </style>
+
+    <style name="Theme.Transparent.SPermissions" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
+
+        <item name="android:windowActionBar">false</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="CommunityEventTabEnable">
+        <item name="android:fontFamily">@font/noto_sans_kr_medium</item>
+        <item name="android:textColor">@color/color_2fc2ff</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="CommunityEventTabDisable">
+        <item name="android:fontFamily">@font/font_noto_sans_kr_light</item>
+        <item name="android:textColor">@color/color_8c8c8c</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="LoungeLinkDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowTitleStyle">@null</item>
+        <item name="android:windowSoftInputMode">adjustResize</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="BaseBottomSheet" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/bg_round_bottom_sheet</item>
+    </style>
+
+    <style name="BottomSheetStyle" parent="Theme.MaterialComponents.Light.BottomSheetDialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="bottomSheetStyle">@style/BaseBottomSheet</item>
+        <item name="android:colorEdgeEffect">#CCCCCC</item>
+    </style>
+
+    <style name="VoteParticipationSelect">
+        <item name="android:fontFamily">@font/font_noto_sans_kr_bold</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="VoteParticipationNotSelect">
+        <item name="android:fontFamily">@font/font_noto_sans_kr_light</item>
+        <item name="android:textColor">@color/color_222222</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="TestDialog" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+<!--        <item name="android:windowFullscreen">true</item>-->
+        <item name="android:windowAnimationStyle">@style/SlideRightToLeftDialogAnimation</item>
+    </style>
+
+    <style name="SlideRightToLeftDialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/slide_left</item>
+        <item name="android:windowExitAnimation">@anim/slide_right</item>
+    </style>
+
+</resources>

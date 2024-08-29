@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="requestManager"
+            type="com.bumptech.glide.RequestManager" />
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.events.EventDetailActivityViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clHeader"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_52"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivBack"
+                android:layout_width="@dimen/size_60"
+                android:layout_height="match_parent"
+                android:paddingTop="@dimen/size_17"
+                android:paddingBottom="@dimen/size_17"
+                android:src="@drawable/ic_arrow_right"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:turtleClick="@{()->viewModel.onFinish()}" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:ellipsize="end"
+                android:fontFamily="@font/font_noto_sans_kr_medium"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:text="@{viewModel.title}"
+                android:textColor="@color/color_222222"
+                android:textSize="@dimen/size_18"
+                app:layout_constraintLeft_toRightOf="@+id/ivBack"
+                app:layout_constraintRight_toLeftOf="@+id/ivShare"
+                tools:text="이벤트 제목" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivShare"
+                android:layout_width="@dimen/size_60"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_more_share_b"
+                app:layout_constraintRight_toRightOf="parent"
+                app:turtleClick="@{()->viewModel.onShare()}" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/tvParticipate"
+            app:layout_constraintTop_toBottomOf="@+id/clHeader">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scaleType="fitCenter"
+                    android:adjustViewBounds="true"
+                    app:imageUrl="@{viewModel.imageUrl}"
+                    app:requestManager="@{requestManager}"
+                    tools:src="@tools:sample/avatars" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvParticipate"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_57"
+            android:background="@color/color_2fc2ff"
+            android:fontFamily="@font/font_noto_sans_kr_medium"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:text="@string/event_participate_title"
+            android:textColor="@color/white"
+            android:textSize="@dimen/size_16"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:turtleClick="@{()->viewModel.onParticipateEvent()}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

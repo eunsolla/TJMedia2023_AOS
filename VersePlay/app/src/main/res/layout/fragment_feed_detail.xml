@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.verse.app.contants.ListPagedItemType" />
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.feed.viewmodel.FeedDetailFragmentViewModel" />
+    </data>
+
+    <com.verse.app.widget.views.CustomConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutBgColor="@color/color_161616">
+
+        <com.verse.app.utility.NestedScrollableHost
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/color_161616"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/vp_feed"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="invisible"
+                app:emptyView="@{llEmpty}"
+                app:isAni="@{viewModel.vpAni}"
+                app:itemType="@{ListPagedItemType.FEED}"
+                app:viewModel="@{viewModel}"
+                app:onPageState="@{(state) -> viewModel.pageState(state)}"
+                app:pagedList="@{viewModel.feedListPaging}"
+                app:position="@={viewModel.vpCurPosition}"
+                />
+
+        </com.verse.app.utility.NestedScrollableHost>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_100"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:src="@drawable/gradation_top_feed"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/ll_empty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="@dimen/size_50"
+                android:layout_height="@dimen/size_50"
+                android:src="@drawable/ic_empty" />
+
+            <com.verse.app.widget.views.CustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_20"
+                android:fontFamily="@font/noto_sans_kr_medium"
+                android:gravity="center"
+                android:text="@string/str_deleted_detail_feed"
+                android:textSize="@dimen/size_18"
+                app:textViewBgColor="@color/color_00000000"
+                app:textViewTxtColor="@color/color_707070" />
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/back_image_view"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/size_52"
+            android:gravity="center"
+            android:paddingLeft="@dimen/size_20"
+            android:paddingTop="@dimen/size_16"
+            android:paddingRight="@dimen/size_20"
+            android:paddingBottom="@dimen/size_16"
+            android:src="@drawable/ic_top_arrow_left_white"
+            app:layout_constraintDimensionRatio="15:13"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:turtleClick="@{()->viewModel.onBack()}" />
+
+    </com.verse.app.widget.views.CustomConstraintLayout>
+</layout>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.verse.app.model.singpass.SeasonItemData" />
+
+        <import type="com.verse.app.contants.AppData" />
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.singpass.viewmodel.SingPassDashBoardViewModel" />
+
+    </data>
+
+    <com.verse.app.widget.views.CustomConstraintLayout
+        android:layout_width="@dimen/size_51"
+        android:layout_height="@dimen/size_51"
+        android:background="@android:color/transparent">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+            app:strokeColor="@null"
+            app:isDashBoard="@{true}"
+            app:thumbnailEx="@{data.topItemPicPath}"
+            tools:src="@drawable/ic_album_default" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:foreground="@drawable/bg_corner_circle_50"
+            android:scaleType="fitXY"
+            android:visibility="@{!data.isItemPossibleYn, default = gone}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+            app:strokeColor="@null"
+            tools:visibility="visible" />
+
+
+    </com.verse.app.widget.views.CustomConstraintLayout>
+
+</layout>

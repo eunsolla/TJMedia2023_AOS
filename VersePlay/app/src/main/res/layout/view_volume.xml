@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.verse.app.contants.SingPageType" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.sing.viewmodel.SingViewModel" />
+
+    </data>
+
+    <com.verse.app.widget.views.CustomConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/size_20"
+        android:paddingTop="@dimen/size_10"
+        android:paddingRight="@dimen/size_20"
+        android:paddingBottom="@dimen/size_10"
+        app:layoutBgColor="@color/color_4D000000_30">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_inst"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/cl_mic"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_inst"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="@dimen/size_40"
+                android:text="@string/str_inst"
+                android:textColor="@color/white"
+                android:includeFontPadding="false"
+                android:fontFamily="@font/font_noto_sans_kr_medium"
+                android:textSize="@dimen/size_12"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/sb_inst"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <SeekBar
+                android:id="@+id/sb_inst"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:max="10"
+                android:progress="@{viewModel.curInstVolume}"
+                android:progressDrawable="@drawable/seekbar_style"
+                android:thumb="@drawable/ic_dial_volume"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_inst"
+                app:layout_constraintLeft_toRightOf="@+id/tv_inst"
+                app:layout_constraintRight_toLeftOf="@+id/tv_inst_count"
+                app:layout_constraintTop_toTopOf="@+id/tv_inst" />
+
+            <TextView
+                android:id="@+id/tv_inst_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:lineSpacingExtra="-3dp"
+                android:includeFontPadding="false"
+                android:fontFamily="@font/font_noto_sans_kr_medium"
+                app:intText="@{viewModel.curInstVolume}"
+                android:textColor="@color/white"
+                android:textSize="@dimen/size_18"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="5" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_mic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_20"
+            android:visibility="@{viewModel.singPageType == SingPageType.SYNC_SING}"
+            app:layout_constraintTop_toBottomOf="@+id/cl_inst">
+
+            <TextView
+                android:id="@+id/tv_mic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="@dimen/size_40"
+                android:text="@string/str_mic"
+                android:includeFontPadding="false"
+                android:fontFamily="@font/font_noto_sans_kr_medium"
+                android:textColor="@color/white"
+                android:textSize="@dimen/size_12"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/sb_mic"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <SeekBar
+                android:id="@+id/sb_mic"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:max="10"
+                android:progress="@{viewModel.curMicVolume}"
+                android:progressDrawable="@drawable/seekbar_style"
+                android:thumb="@drawable/ic_dial_volume"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_mic"
+                app:layout_constraintLeft_toRightOf="@+id/tv_mic"
+                app:layout_constraintRight_toLeftOf="@+id/tv_mic_count"
+                app:layout_constraintTop_toTopOf="@+id/tv_mic" />
+
+            <TextView
+                android:id="@+id/tv_mic_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:lineSpacingExtra="-3dp"
+                app:intText="@{viewModel.curMicVolume}"
+                android:textColor="@color/white"
+                android:includeFontPadding="false"
+                android:fontFamily="@font/font_noto_sans_kr_medium"
+                android:textSize="@dimen/size_18"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="5" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.verse.app.widget.views.CustomConstraintLayout>
+
+</layout>

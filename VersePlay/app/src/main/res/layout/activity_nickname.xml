@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.login.viewmodel.NicknameViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:fitsSystemWindows="true"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+        <RelativeLayout
+            android:id="@+id/layout_intro_topbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="@dimen/size_20"
+                android:layout_height="@dimen/size_20"
+                android:layout_marginStart="@dimen/size_20"
+                android:background="@null"
+                android:scaleType="centerCrop"
+                android:src="@drawable/btn_close_left_black"
+                app:turtleClick="@{()-> viewModel.close()}" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_34"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/size_20"
+            android:paddingRight="@dimen/size_20"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_intro_topbar">
+
+            <com.verse.app.widget.views.CustomTextView
+                android:id="@+id/customTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/noto_sans_kr_medium"
+                android:gravity="center"
+                android:text="@string/sign_nickname_explain1"
+                android:includeFontPadding="false"
+                android:textColor="@color/color_222222"
+                android:textSize="23dp"
+                tools:ignore="MissingConstraints" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <com.verse.app.widget.views.CustomTextView
+                    android:id="@+id/lang_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/noto_sans_kr_medium"
+                    android:gravity="center"
+                    android:text="@string/sign_nickname_explain2"
+                    android:includeFontPadding="false"
+                    android:textColor="@color/color_222222"
+                    android:textSize="23dp"
+                    tools:ignore="MissingConstraints" />
+
+                <ImageView
+                    android:layout_width="@dimen/size_20"
+                    android:layout_height="@dimen/size_20"
+                    android:layout_alignTop="@+id/lang_text_view"
+                    android:layout_alignBottom="@+id/lang_text_view"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/lang_text_view"
+                    android:background="@null"
+                    android:src="@drawable/ic_help"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/size_16"
+                    app:turtleClick="@{()->viewModel.startHelp()}" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/nickname_auto_creating"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/size_20"
+            android:layout_marginTop="@dimen/size_60"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:minWidth="@dimen/size_163"
+                android:layout_height="@dimen/size_28"
+                android:background="@drawable/bg_square_round_butten"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/size_12"
+                android:paddingRight="@dimen/size_12"
+                app:turtleClick="@{()->viewModel.requestCreateNickName()}">
+
+                <ImageButton
+                    android:layout_width="@dimen/size_20"
+                    android:layout_height="@dimen/size_16"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/ic_random_dice" />
+
+                <com.verse.app.widget.views.CustomTextView
+                    android:id="@+id/sing_pass_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/size_5"
+                    android:fontFamily="@font/noto_sans_kr_medium"
+                    android:includeFontPadding="false"
+                    android:lineSpacingExtra="5dp"
+                    android:text="@string/sign_nickname_auto_creating"
+                    android:textSize="@dimen/size_13"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:textViewBgColor="@color/color_00000000"
+                    app:textViewTxtColor="@color/white" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/nickname_enter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/size_20"
+            android:layout_marginTop="@dimen/size_19"
+            android:layout_marginRight="@dimen/size_20"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nickname_auto_creating">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/editText_edit_nickname"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/size_48"
+                    android:layout_centerVertical="true"
+                    android:layout_weight="74"
+                    android:includeFontPadding="false"
+                    android:background="@drawable/bg_square_border_bule"
+                    android:focusableInTouchMode="true"
+                    android:fontFamily="@font/noto_sans_kr_medium"
+                    android:hint="@string/sign_hint_enter_nickname"
+                    android:lineSpacingExtra="@dimen/size_3"
+                    android:maxLength="51"
+                    android:singleLine="true"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/color_adadad"
+                    android:textSize="15dp"
+                    android:textStyle="normal" />
+
+                <LinearLayout
+                    android:id="@+id/llCheckNickName"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/size_48"
+                    android:layout_marginLeft="@dimen/size_5"
+                    android:layout_weight="26"
+                    android:enabled="false"
+                    android:background="@drawable/bg_square_round_butten_gray"
+                    android:orientation="horizontal"
+                    app:turtleClick="@{()->viewModel.startVerifyCheckNickName()}">
+
+                    <TextView
+                        android:id="@+id/tvCheckNickName"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/noto_sans_kr_medium"
+                        android:gravity="center"
+                        android:text="@string/sign_nickname_check_duplication"
+                        android:textColor="@color/color_8c8c8c"
+                        android:includeFontPadding="false"
+                        android:textSize="15dp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/size_20"
+            android:layout_marginTop="@dimen/size_5"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nickname_enter">
+
+            <TextView
+                android:id="@+id/tvCheckNickNameMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/noto_sans_kr_light"
+                android:includeFontPadding="false"
+                android:textColor="@color/color_ff3d33"
+                android:textSize="@dimen/size_13" />
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/tvConfirm"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_52"
+            android:layout_gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:enabled="false"
+            app:turtleClick="@{()->viewModel.joinUser()}">
+
+            <LinearLayout
+                android:id="@+id/tvConfirmBgColor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_eaeaea"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:paddingTop="@dimen/size_14"
+                android:paddingBottom="@dimen/size_14"
+                tools:ignore="MissingConstraints">
+
+                <TextView
+                    android:id="@+id/tvConfirm_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/noto_sans_kr_medium"
+                    android:gravity="center"
+                    android:text="@string/sign_nickname_signup"
+                    android:textAlignment="center"
+                    android:textColor="@color/color_8c8c8c"
+                    android:includeFontPadding="false"
+                    android:textSize="@dimen/size_16"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

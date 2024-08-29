@@ -1,0 +1,372 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.verse.app.contants.EtcTermsType" />
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.login.viewmodel.LoginViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <RelativeLayout
+            android:id="@+id/root_relative_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:id="@+id/layout_parent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:id="@+id/layout_navi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/size_20"
+                    android:layout_marginTop="@dimen/size_16">
+
+                    <ImageView
+                        android:id="@+id/btn_close"
+                        android:layout_width="@dimen/size_20"
+                        android:layout_height="@dimen/size_20"
+                        android:background="@null"
+                        app:turtleClick="@{()->viewModel.back()}"
+                        android:src="@drawable/btn_close_left_black" />
+
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tv_login_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/layout_navi"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="29dp"
+                    android:includeFontPadding="false"
+                    android:layout_marginTop="@dimen/size_34"
+                    android:layout_marginRight="29dp"
+                    android:fontFamily="@font/noto_sans_kr_medium"
+
+                    android:gravity="center_horizontal"
+                    android:lineSpacingExtra="-2dp"
+                    android:text="@string/common_login_popup_title_text_string"
+                    android:textColor="@color/color_222222"
+                    android:textSize="23dp"
+                    android:textStyle="normal" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginLeft="@dimen/size_20"
+                    android:layout_marginRight="@dimen/size_20"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:id="@+id/btn_google"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/size_48"
+                        android:layout_marginTop="@dimen/size_20"
+                        android:background="@drawable/login_google_border"
+                        android:visibility="gone">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true">
+
+                            <ImageView
+                                android:layout_width="@dimen/size_18"
+                                android:layout_height="@dimen/size_18"
+                                android:layout_gravity="center"
+                                android:background="@null"
+                                android:src="@drawable/logo_google" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/size_10"
+                                android:fontFamily="@font/noto_sans_kr_medium"
+                                android:text="@string/common_login_popup_sign_in_with_google"
+                                android:textColor="@color/color_222222"
+                                android:textSize="@dimen/size_18"
+                                android:textStyle="normal" />
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/btn_kakao"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/size_48"
+                        android:layout_marginTop="@dimen/size_20"
+                        android:background="@drawable/login_kakao_border"
+                        android:visibility="gone">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true">
+
+                            <ImageView
+                                android:layout_width="@dimen/size_18"
+                                android:layout_height="@dimen/size_18"
+                                android:layout_gravity="center"
+                                android:background="@null"
+                                android:src="@drawable/logo_kako" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/size_10"
+                                android:fontFamily="@font/noto_sans_kr_medium"
+                                android:text="@string/common_login_popup_sign_in_with_kakao"
+                                android:includeFontPadding="false"
+                                android:textColor="@color/black"
+                                android:textSize="18dp"
+                                android:textStyle="normal" />
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/btn_naver"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/size_48"
+                        android:layout_marginTop="@dimen/size_20"
+                        android:background="@drawable/login_naver_border"
+                        android:visibility="gone">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true">
+
+                            <ImageView
+                                android:layout_width="@dimen/size_18"
+                                android:layout_height="@dimen/size_18"
+                                android:layout_gravity="center"
+                                android:background="@null"
+                                android:src="@drawable/logo_naver" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/size_10"
+                                android:fontFamily="@font/noto_sans_kr_medium"
+                                android:text="@string/common_login_popup_sign_in_with_naver"
+                                android:textColor="@color/white"
+                                android:includeFontPadding="false"
+                                android:textSize="18dp"
+                                android:textStyle="normal" />
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/btn_twitter"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/size_48"
+                        android:layout_marginTop="@dimen/size_20"
+                        android:background="@drawable/login_twitter_border"
+                        android:visibility="gone">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true">
+
+                            <ImageView
+                                android:layout_width="@dimen/size_18"
+                                android:layout_height="@dimen/size_18"
+                                android:layout_gravity="center"
+                                android:background="@null"
+                                android:src="@drawable/twitter" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/size_10"
+                                android:fontFamily="@font/noto_sans_kr_medium"
+                                android:text="@string/common_login_popup_sign_in_with_Twitter"
+                                android:includeFontPadding="false"
+                                android:textColor="@color/white"
+                                android:textSize="18dp"
+                                android:textStyle="normal" />
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/btn_facebook"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/size_48"
+                        android:layout_marginTop="@dimen/size_20"
+                        android:background="@drawable/login_facebook_border"
+                        android:visibility="gone">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true">
+
+                            <ImageView
+                                android:layout_width="@dimen/size_18"
+                                android:layout_height="@dimen/size_18"
+                                android:layout_gravity="center"
+                                android:background="@null"
+                                android:src="@drawable/logo_facebook" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/size_10"
+                                android:includeFontPadding="false"
+                                android:fontFamily="@font/noto_sans_kr_medium"
+                                android:text="@string/common_login_popup_sign_in_with_facebook"
+                                android:textColor="@color/white"
+                                android:textSize="18dp"
+                                android:textStyle="normal" />
+                        </LinearLayout>
+                    </RelativeLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="@dimen/size_20"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_login"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/noto_sans_kr_light"
+                            android:gravity="center_horizontal"
+                            android:lineSpacingExtra="7dp"
+                            android:includeFontPadding="false"
+                            android:text="@string/common_login_popup_signing_up_info_text_string1"
+                            android:textColor="@color/black"
+                            android:textSize="14dp"
+                            android:textStyle="normal" />
+
+                        <TextView
+                            android:id="@+id/tv_terms"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/noto_sans_kr_medium"
+                            android:includeFontPadding="false"
+                            android:gravity="center_horizontal"
+                            android:lineSpacingExtra="7dp"
+                            android:text="@string/common_login_popup_signing_up_info_text_agree"
+                            android:textColor="@color/color_2fc2ff"
+                            app:turtleClick="@{()->viewModel.requestDetailTerms(EtcTermsType.LOGIN_AGREE)}"
+                            android:textSize="14dp"
+                            android:textStyle="normal" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/noto_sans_kr_light"
+                            android:gravity="center_horizontal"
+                            android:lineSpacingExtra="7dp"
+                            android:text="@string/common_login_popup_signing_up_info_text_string2"
+                            android:includeFontPadding="false"
+                            android:textColor="@color/black"
+                            android:textSize="14dp"
+                            android:textStyle="normal" />
+
+                        <TextView
+                            android:id="@+id/tv_privacy_policy"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/noto_sans_kr_medium"
+                            android:includeFontPadding="false"
+                            android:gravity="center_horizontal"
+                            android:lineSpacingExtra="7dp"
+                            android:text="@string/common_login_popup_signing_up_info_text_privacy"
+                            app:turtleClick="@{()->viewModel.requestDetailTerms(EtcTermsType.LOGIN_PERSONAL)}"
+                            android:textColor="@color/color_2fc2ff"
+                            android:textSize="14dp"
+                            android:textStyle="normal" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/noto_sans_kr_light"
+                            android:gravity="center_horizontal"
+                            android:lineSpacingExtra="7dp"
+                            android:includeFontPadding="false"
+                            android:text="@string/common_login_popup_signing_up_info_text_string3"
+                            android:textColor="@color/black"
+                            android:textSize="14dp"
+                            android:textStyle="normal" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_privacy_policy2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/noto_sans_kr_medium"
+                            android:includeFontPadding="false"
+                            android:gravity="center_horizontal"
+                            android:lineSpacingExtra="7dp"
+                            android:visibility="gone"
+                            android:text="@string/common_login_popup_signing_up_info_text_privacy"
+                            android:textColor="@color/color_2fc2ff"
+                            app:turtleClick="@{()->viewModel.requestDetailTerms(EtcTermsType.LOGIN_PERSONAL)}"
+                            android:textSize="14dp"
+                            android:textStyle="normal" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/noto_sans_kr_light"
+                            android:gravity="center_horizontal"
+                            android:lineSpacingExtra="7dp"
+                            android:includeFontPadding="false"
+                            android:text="@string/common_login_popup_signing_up_info_text_string4"
+                            android:textColor="@color/black"
+                            android:textSize="14dp"
+                            android:textStyle="normal" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <com.facebook.login.widget.LoginButton
+                    android:id="@+id/btn_facebook_login"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:visibility="gone" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="#eaeaea" />
+
+            </RelativeLayout>
+        </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

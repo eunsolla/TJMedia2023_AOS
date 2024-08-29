@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.verse.app.contants.ListPagedItemType" />
+
+        <import type="com.verse.app.contants.TabPageType" />
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.song.viewmodel.SongMainViewModel" />
+
+        <variable
+            name="data"
+            type="com.verse.app.model.song.SongMainInfo" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_161616">
+
+        <TextView
+            android:id="@+id/title_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/size_20"
+            android:fontFamily="@font/font_noto_sans_kr_medium"
+            android:includeFontPadding="false"
+            android:layout_marginTop="@dimen/size_44"
+            android:text="@string/song_main_title_recently"
+            android:textColor="@color/white"
+            android:textSize="@dimen/size_18"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.verse.app.widget.views.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/size_20"
+            android:visibility="@{data.recentSingList.size() > 3 }"
+            android:fontFamily="@font/font_noto_sans_kr_medium"
+            android:includeFontPadding="false"
+            android:paddingRight="@dimen/size_20"
+            android:text="@string/str_more"
+            android:textSize="@dimen/size_13"
+            app:layout_constraintBottom_toBottomOf="@+id/title_text_view"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/title_text_view"
+            app:textViewBgColor="@color/color_00000000"
+            app:textViewTxtColor="@color/color_8c8c8c"
+            app:turtleClick="@{()->viewModel.onMore(TabPageType.SONG_RECENTLY,(String)null)}" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_recently_song_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/size_20"
+            android:layout_marginTop="@dimen/size_18"
+            android:layout_marginRight="@dimen/size_20"
+            android:clipToPadding="false"
+            android:visibility="@{data.recentSingList.size() > 0}"
+            android:orientation="vertical"
+            app:dataList="@{data.recentSingList}"
+            app:itemType="@{ListPagedItemType.ITEM_SONG_RECENTLY}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintTop_toBottomOf="@+id/title_text_view"
+            app:viewModel="@{viewModel}"
+            tools:itemCount="2"
+            tools:listitem="@layout/item_song_h" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_28"
+            android:fontFamily="@font/font_noto_sans_kr_medium"
+            android:includeFontPadding="false"
+            android:text="@string/str_recent_song_no_data"
+            android:textColor="@color/color_707070"
+            android:textSize="@dimen/size_15"
+            android:visibility="@{data.recentSingList.size() == 0 }"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/title_text_view" />
+
+        <com.verse.app.widget.views.CustomTextView
+            android:id="@+id/tv_sing_now"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_20"
+            android:background="@null"
+            android:fontFamily="@font/noto_sans_kr_medium"
+            android:includeFontPadding="false"
+            android:gravity="center"
+            android:paddingStart="@dimen/size_20"
+            android:paddingTop="@dimen/size_10"
+            android:paddingEnd="@dimen/size_20"
+            android:paddingBottom="@dimen/size_10"
+            android:text="@string/singing_now"
+            app:textViewCorner="@dimen/size_5"
+            app:textViewTxtColor="@color/color_2fc2ff"
+            app:textViewBgColor="@color/color_222222"
+            android:textSize="@dimen/size_15"
+            android:visibility="@{data.recentSingList.size() == 0 }"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            app:turtleClick="@{()->viewModel.moveToSearchKeyword()}"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

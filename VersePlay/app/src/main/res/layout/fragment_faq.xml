@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.verse.app.contants.ListPagedItemType" />
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.mypage.viewmodel.FAQViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.verse.app.ui.header.HeaderView
+            android:id="@+id/v_header"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            app:headerType="back_title">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:dataList="@{viewModel.faqList}"
+                app:itemType="@{ListPagedItemType.FAQ_LIST}"
+                android:paddingBottom="@dimen/size_20"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                app:viewModel="@{viewModel}"
+                tools:itemCount="4"
+                tools:listitem="@layout/item_faq_list" />
+
+        </com.verse.app.ui.header.HeaderView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

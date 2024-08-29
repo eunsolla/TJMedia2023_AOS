@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.feed.viewmodel.CollectionFeedViewModel" />
+
+        <variable
+            name="data"
+            type="com.verse.app.model.feed.FeedContentsData" />
+
+        <import type="com.verse.app.contants.MediaType" />
+
+        <variable
+            name="position"
+            type="java.lang.Integer" />
+
+    </data>
+
+    <com.verse.app.widget.views.CustomConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_200"
+        android:background="@color/color_161616"
+        app:turtleClick="@{() -> viewModel.clickFeedItem(position,data.feedMngCd)}">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/color_161616"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="@{data.mdTpCd.equalsIgnoreCase(MediaType.AUDIO.code), default = gone}">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                app:imageUrl="@{data.albImgPath}"
+                app:placeholder="@{@drawable/ic_verse_1}" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/color_B3161616_70" />
+
+            <View
+                android:id="@+id/v_ready_empty"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@color/color_00000000"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toTopOf="@+id/cl_album_jacket"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_weight="26" />
+
+            <View
+                android:id="@+id/v_empty_left"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/size_1"
+                android:background="@color/color_00000000"
+                app:layout_constraintHorizontal_weight="13"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/cl_album_jacket"
+                app:layout_constraintTop_toBottomOf="@+id/v_ready_empty" />
+
+            <View
+                android:id="@+id/v_empty_right"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/size_1"
+                android:background="@color/color_00000000"
+                app:layout_constraintHorizontal_weight="13"
+                app:layout_constraintLeft_toRightOf="@+id/cl_album_jacket"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/v_ready_empty" />
+
+            <com.verse.app.widget.views.CustomConstraintLayout
+                android:id="@+id/cl_album_jacket"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layoutCorner="@dimen/size_18"
+                app:layout_constraintBottom_toTopOf="@+id/v_empty_bottom"
+                app:layout_constraintHorizontal_weight="74"
+                app:layout_constraintLeft_toRightOf="@+id/v_empty_left"
+                app:layout_constraintRight_toLeftOf="@id/v_empty_right"
+                app:layout_constraintTop_toBottomOf="@+id/v_ready_empty"
+                app:layoutClickEffect="false"
+                app:layout_constraintVertical_weight="54">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_album_jacket"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    app:imageUrl="@{data.albImgPath}"
+                    app:placeholder="@{@drawable/ic_album_default}"
+                    tools:src="@drawable/ic_album_default" />
+
+            </com.verse.app.widget.views.CustomConstraintLayout>
+
+            <View
+                android:id="@+id/v_empty_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cl_album_jacket"
+                app:layout_constraintVertical_weight="40" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/feed_thumbnail_image_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="@{data.mdTpCd.equalsIgnoreCase(MediaType.VIDEO.code), default = gone}"
+            app:imageUrl="@{data.thumbPicPath}"
+            android:scaleType="centerCrop"
+            android:adjustViewBounds="true"
+            android:background="@color/color_161616"
+            app:placeholder="@{@drawable/ic_feed_default}"
+            app:layout_constraintDimensionRatio="1:1.6"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_feed_default" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/size_10"
+            android:layout_marginBottom="@dimen/size_10"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/size_7"
+                android:layout_height="@dimen/size_10"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="@dimen/size_2"
+                android:src="@drawable/ic_polygon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:fontFamily="@font/noto_sans_kr_medium"
+                android:includeFontPadding="false"
+                android:textSize="@dimen/size_13"
+                app:text="@{data.hitCnt}"
+                tools:text="99999"
+                tools:textColor="@color/color_222222" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    </com.verse.app.widget.views.CustomConstraintLayout>
+
+</layout>

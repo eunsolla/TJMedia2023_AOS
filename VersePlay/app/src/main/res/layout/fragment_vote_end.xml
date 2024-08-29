@@ -1,0 +1,641 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="requestManager"
+            type="com.bumptech.glide.RequestManager" />
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.vote.viewmodel.VoteEndFragmentViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clHeader"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_52"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/icBack"
+                android:layout_width="@dimen/size_60"
+                android:layout_height="match_parent"
+                android:paddingTop="@dimen/size_17"
+                android:paddingBottom="@dimen/size_17"
+                android:src="@drawable/ic_arrow_right"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:turtleClick="@{()->viewModel.onFinish()}" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:ellipsize="end"
+                android:fontFamily="@font/font_noto_sans_kr_medium"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:text="@{viewModel.title}"
+                android:textColor="@color/color_222222"
+                android:textSize="@dimen/size_18"
+                app:layout_constraintLeft_toRightOf="@+id/icBack"
+                app:layout_constraintRight_toLeftOf="@+id/ivShare"
+                tools:text="아나 왜캐 많냐" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivShare"
+                android:layout_width="@dimen/size_60"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_more_share_b"
+                app:layout_constraintRight_toRightOf="parent"
+                app:turtleClick="@{()->viewModel.onShare()}" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/clBottom"
+            app:layout_constraintTop_toBottomOf="@+id/clHeader">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    app:imageUrl="@{viewModel.imagePath}"
+                    app:requestManager="@{requestManager}"
+                    tools:src="@tools:sample/avatars" />
+
+                <!-- TOP 1 -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_80"
+                    android:layout_marginLeft="@dimen/size_12"
+                    android:layout_marginTop="@dimen/size_12"
+                    android:layout_marginRight="@dimen/size_20"
+                    android:visibility="@{viewModel.firstVote != null,default=gone}"
+                    tools:visibility="visible">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/size_8"
+                        android:layout_marginTop="@dimen/size_8"
+                        android:background="@drawable/selector_vote_participation"
+                        app:isSelected="@{viewModel.firstVote.isBlueBg}">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toLeftOf="@+id/clFirstRate"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/size_18"
+                                android:fontFamily="@font/font_noto_sans_kr_bold"
+                                android:includeFontPadding="false"
+                                android:shadowColor="#40000000"
+                                android:shadowDx="1.0"
+                                android:shadowDy="1.0"
+                                android:shadowRadius="3.0"
+                                android:text="@{viewModel.firstVote.title}"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/size_18"
+                                android:visibility="@{viewModel.firstVote.top,default=gone}"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="아오 머니머니 해도 머니"
+                                tools:visibility="visible" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/size_18"
+                                android:fontFamily="@font/font_noto_sans_kr_light"
+                                android:includeFontPadding="false"
+                                android:text="@{viewModel.firstVote.title}"
+                                android:textColor="@color/color_222222"
+                                android:textSize="@dimen/size_18"
+                                android:visibility="@{viewModel.firstVote.top == false,default=gone}"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="아오 머니머니 해도 머니"
+                                tools:visibility="gone" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/clFirstRate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="@dimen/size_16"
+                                android:fontFamily="@font/font_noto_sans_kr_bold"
+                                android:includeFontPadding="false"
+                                android:shadowColor="#40000000"
+                                android:shadowDx="1.0"
+                                android:shadowDy="1.0"
+                                android:shadowRadius="3.0"
+                                android:text="@{viewModel.firstVote.rateTxt}"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/size_21"
+                                android:visibility="@{viewModel.firstVote.top,default=gone}"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="50%" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="@dimen/size_16"
+                                android:fontFamily="@font/font_noto_sans_regular"
+                                android:includeFontPadding="false"
+                                android:text="@{viewModel.firstVote.rateTxt}"
+                                android:textColor="@color/color_222222"
+                                android:textSize="@dimen/size_21"
+                                android:visibility="@{viewModel.firstVote.top == false,default=gone}"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="50%" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <!-- 내가 선택한 선택지 이미지 -->
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/size_28"
+                        android:layout_height="@dimen/size_28"
+                        android:src="@drawable/ic_check_on_blue"
+                        android:visibility="@{viewModel.firstVote.blueCheck,default=gone}"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <!-- 내가 선택하지 않은 선택지 이미지 -->
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/size_20"
+                        android:layout_height="@dimen/size_20"
+                        android:src="@drawable/ic_check_off_gray"
+                        android:visibility="@{viewModel.firstVote.grayCheck,default=gone}"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!-- TOP 2 -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_80"
+                    android:layout_marginLeft="@dimen/size_12"
+                    android:layout_marginTop="@dimen/size_12"
+                    android:layout_marginRight="@dimen/size_20"
+                    android:visibility="@{viewModel.secondVote != null,default=gone}"
+                    tools:visibility="visible">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/size_8"
+                        android:layout_marginTop="@dimen/size_8"
+                        android:background="@drawable/selector_vote_participation"
+                        app:isSelected="@{viewModel.secondVote.isBlueBg}"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toLeftOf="@+id/clSecondRate"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/size_18"
+                                android:ellipsize="end"
+                                android:fontFamily="@font/font_noto_sans_kr_bold"
+                                android:includeFontPadding="false"
+                                android:maxLines="2"
+                                android:shadowColor="#40000000"
+                                android:shadowDx="1.0"
+                                android:shadowDy="1.0"
+                                android:shadowRadius="3.0"
+                                android:text="@{viewModel.secondVote.title}"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/size_18"
+                                android:visibility="@{viewModel.secondVote.top,default=gone}"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="아오 머니머니 해도 머니"
+                                tools:visibility="visible" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/size_18"
+                                android:ellipsize="end"
+                                android:fontFamily="@font/font_noto_sans_kr_light"
+                                android:includeFontPadding="false"
+                                android:maxLines="2"
+                                android:text="@{viewModel.secondVote.title}"
+                                android:textColor="@color/color_222222"
+                                android:textSize="@dimen/size_18"
+                                android:visibility="@{viewModel.secondVote.top == false,default=gone}"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="아오 머니머니 해도 머니"
+                                tools:visibility="gone" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/clSecondRate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="@dimen/size_16"
+                                android:fontFamily="@font/font_noto_sans_kr_bold"
+                                android:includeFontPadding="false"
+                                android:shadowColor="#40000000"
+                                android:shadowDx="1.0"
+                                android:shadowDy="1.0"
+                                android:shadowRadius="3.0"
+                                android:text="@{viewModel.secondVote.rateTxt}"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/size_21"
+                                android:visibility="@{viewModel.secondVote.top,default=gone}"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="50%" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="@dimen/size_16"
+                                android:fontFamily="@font/font_noto_sans_regular"
+                                android:includeFontPadding="false"
+                                android:text="@{viewModel.secondVote.rateTxt}"
+                                android:textColor="@color/color_222222"
+                                android:textSize="@dimen/size_21"
+                                android:visibility="@{viewModel.secondVote.top == false,default=gone}"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="50%"
+                                tools:visibility="visible" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <!-- 내가 선택한 선택지 이미지 -->
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/size_28"
+                        android:layout_height="@dimen/size_28"
+                        android:src="@drawable/ic_check_on_blue"
+                        android:visibility="@{viewModel.secondVote.blueCheck,default=gone}"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <!-- 내가 선택하지 않은 선택지 이미지 -->
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/size_20"
+                        android:layout_height="@dimen/size_20"
+                        android:src="@drawable/ic_check_off_gray"
+                        android:visibility="@{viewModel.secondVote.grayCheck,default=gone}"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!-- TOP 3 -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_80"
+                    android:layout_marginLeft="@dimen/size_12"
+                    android:layout_marginTop="@dimen/size_12"
+                    android:layout_marginRight="@dimen/size_20"
+                    android:visibility="@{viewModel.thirdVote != null,default=gone}"
+                    tools:visibility="visible">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/size_8"
+                        android:layout_marginTop="@dimen/size_8"
+                        android:background="@drawable/selector_vote_participation"
+                        android:minHeight="@dimen/size_80"
+                        app:isSelected="@{viewModel.thirdVote.isBlueBg}"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toLeftOf="@+id/clThirdRate"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/size_18"
+                                android:ellipsize="end"
+                                android:fontFamily="@font/font_noto_sans_kr_bold"
+                                android:includeFontPadding="false"
+                                android:maxLines="2"
+                                android:shadowColor="#40000000"
+                                android:shadowDx="1.0"
+                                android:shadowDy="1.0"
+                                android:shadowRadius="3.0"
+                                android:text="@{viewModel.thirdVote.title}"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/size_18"
+                                android:visibility="@{viewModel.thirdVote.top,default=gone}"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="아오 머니머니 해도 머니"
+                                tools:visibility="visible" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/size_18"
+                                android:ellipsize="end"
+                                android:fontFamily="@font/font_noto_sans_kr_light"
+                                android:includeFontPadding="false"
+                                android:maxLines="2"
+                                android:text="@{viewModel.thirdVote.title}"
+                                android:textColor="@color/color_222222"
+                                android:textSize="@dimen/size_18"
+                                android:visibility="@{viewModel.thirdVote.top == false,default=gone}"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="아오 머니머니 해도 머니"
+                                tools:visibility="gone" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/clThirdRate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="@dimen/size_16"
+                                android:fontFamily="@font/font_noto_sans_kr_bold"
+                                android:includeFontPadding="false"
+                                android:shadowColor="#40000000"
+                                android:shadowDx="1.0"
+                                android:shadowDy="1.0"
+                                android:shadowRadius="3.0"
+                                android:text="@{viewModel.thirdVote.rateTxt}"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/size_21"
+                                android:visibility="@{viewModel.thirdVote.top,default=gone}"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="50%" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="@dimen/size_16"
+                                android:fontFamily="@font/font_noto_sans_regular"
+                                android:includeFontPadding="false"
+                                android:text="@{viewModel.thirdVote.rateTxt}"
+                                android:textColor="@color/color_222222"
+                                android:textSize="@dimen/size_21"
+                                android:visibility="@{viewModel.thirdVote.top == false,default=gone}"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="50%"
+                                tools:visibility="visible" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <!-- 내가 선택한 선택지 이미지 -->
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/size_28"
+                        android:layout_height="@dimen/size_28"
+                        android:src="@drawable/ic_check_on_blue"
+                        android:visibility="@{viewModel.thirdVote.blueCheck,default=gone}"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <!-- 내가 선택하지 않은 선택지 이미지 -->
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/size_20"
+                        android:layout_height="@dimen/size_20"
+                        android:src="@drawable/ic_check_off_gray"
+                        android:visibility="@{viewModel.thirdVote.grayCheck,default=gone}"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!-- TOP 4 -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_80"
+                    android:layout_marginLeft="@dimen/size_12"
+                    android:layout_marginTop="@dimen/size_12"
+                    android:layout_marginRight="@dimen/size_20"
+                    android:visibility="@{viewModel.fourthVote != null,default=gone}"
+                    tools:visibility="visible">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/size_8"
+                        android:layout_marginTop="@dimen/size_8"
+                        android:background="@drawable/selector_vote_participation"
+                        android:minHeight="@dimen/size_80"
+                        app:isSelected="@{viewModel.fourthVote.isBlueBg}"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toLeftOf="@+id/clFourRate"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/size_18"
+                                android:ellipsize="end"
+                                android:fontFamily="@font/font_noto_sans_kr_bold"
+                                android:includeFontPadding="false"
+                                android:maxLines="2"
+                                android:shadowColor="#40000000"
+                                android:shadowDx="1.0"
+                                android:shadowDy="1.0"
+                                android:shadowRadius="3.0"
+                                android:text="@{viewModel.fourthVote.title}"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/size_18"
+                                android:visibility="@{viewModel.fourthVote.top,default=gone}"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="아오 머니머니 해도 머니"
+                                tools:visibility="visible" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/size_18"
+                                android:ellipsize="end"
+                                android:fontFamily="@font/font_noto_sans_kr_light"
+                                android:includeFontPadding="false"
+                                android:maxLines="2"
+                                android:text="@{viewModel.fourthVote.title}"
+                                android:textColor="@color/color_222222"
+                                android:textSize="@dimen/size_18"
+                                android:visibility="@{viewModel.fourthVote.top == false,default=gone}"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="아오 머니머니 해도 머니"
+                                tools:visibility="gone" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/clFourRate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="@dimen/size_16"
+                                android:fontFamily="@font/font_noto_sans_kr_bold"
+                                android:includeFontPadding="false"
+                                android:shadowColor="#40000000"
+                                android:shadowDx="1.0"
+                                android:shadowDy="1.0"
+                                android:shadowRadius="3.0"
+                                android:text="@{viewModel.fourthVote.rateTxt}"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/size_21"
+                                android:visibility="@{viewModel.fourthVote.top,default=gone}"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="50%" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="@dimen/size_16"
+                                android:fontFamily="@font/font_noto_sans_regular"
+                                android:includeFontPadding="false"
+                                android:text="@{viewModel.fourthVote.rateTxt}"
+                                android:textColor="@color/color_222222"
+                                android:textSize="@dimen/size_21"
+                                android:visibility="@{viewModel.fourthVote.top == false,default=gone}"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:text="50%"
+                                tools:visibility="visible" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <!-- 내가 선택한 선택지 이미지 -->
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/size_28"
+                        android:layout_height="@dimen/size_28"
+                        android:src="@drawable/ic_check_on_blue"
+                        android:visibility="@{viewModel.fourthVote.blueCheck,default=gone}"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:visibility="visible" />
+
+                    <!-- 내가 선택하지 않은 선택지 이미지 -->
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/size_20"
+                        android:layout_height="@dimen/size_20"
+                        android:src="@drawable/ic_check_off_gray"
+                        android:visibility="@{viewModel.fourthVote.grayCheck,default=gone}"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.legacy.widget.Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/size_20" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.core.widget.NestedScrollView>
+
+
+        <com.verse.app.widget.views.CustomTextView
+            android:id="@+id/clBottom"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_52"
+            android:fontFamily="@font/font_noto_sans_kr_medium"
+            android:gravity="center"
+            android:text="@string/str_vote_comment_page_move"
+            android:textSize="@dimen/size_16"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:textViewBgColor="@color/color_2fc2ff"
+            app:textViewTxtColor="@color/white"
+            app:turtleClick="@{()->viewModel.moveToComment()}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

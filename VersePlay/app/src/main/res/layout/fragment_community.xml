@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.verse.app.widget.pagertablayout.PagerTabType" />
+
+        <import type="com.verse.app.contants.ListPagedItemType" />
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.community.CommunityViewModel" />
+
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/abl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            app:disableBottomLine="@{false}"
+            app:layout_behavior=".widget.behavior.AppBarLayoutBehavior">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top"
+                    android:minHeight="@dimen/size_320"
+                    app:layout_collapseMode="none">
+
+                    <androidx.viewpager2.widget.ViewPager2
+                        android:id="@+id/vpBanner"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:orientation="horizontal"
+                        app:dataList="@{viewModel.bannerList}"
+                        app:itemType="@{ListPagedItemType.ITEM_COMMUNITY_MAIN_BANNER}"
+                        app:layout_constraintDimensionRatio="375:320"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:viewModel="@{viewModel}" />
+
+                    <com.verse.app.widget.indicator.FlexibleDotIndicatorView
+                        android:id="@+id/dotIndicator"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/size_20"
+                        android:layout_marginBottom="@dimen/size_77"
+                        android:visibility="@{viewModel.bannerList.size() > 0,default=gone}"
+                        app:flexibleDotIndicatorDisableColor="@color/color_adadad"
+                        app:flexibleDotIndicatorDisableCorner="2dp"
+                        app:flexibleDotIndicatorDisableHeight="3dp"
+                        app:flexibleDotIndicatorDisableWidth="3dp"
+                        app:flexibleDotIndicatorDivider="3dp"
+                        app:flexibleDotIndicatorEnableColor="@color/white"
+                        app:flexibleDotIndicatorEnableCorner="2dp"
+                        app:flexibleDotIndicatorEnableHeight="3dp"
+                        app:flexibleDotIndicatorEnableWidth="8dp"
+                        app:flexibleDotIndicatorGravity="center"
+                        app:layout_constraintBottom_toBottomOf="@+id/vpBanner" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_verse_1"
+                        android:visibility="@{viewModel.isEmpty(),default=gone}"
+                        app:layout_constraintDimensionRatio="375:320"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:src="@drawable/ic_verse_1"
+                        tools:visibility="visible" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <View
+                    android:id="@+id/vCollapse"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_57"
+                    android:layout_gravity="bottom"
+                    android:background="@color/white"
+                    android:visibility="gone"
+                    app:layout_collapseMode="pin" />
+
+                <androidx.appcompat.widget.Toolbar
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_57"
+                    android:layout_gravity="bottom"
+                    android:background="@drawable/bg_community_tab"
+                    android:elevation="0dp"
+                    app:contentInsetStart="0dp"
+                    app:layout_collapseMode="pin">
+
+                    <com.verse.app.widget.pagertablayout.LinePagerTabLayoutV2
+                        android:id="@+id/tabLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingTop="@dimen/size_20"
+                        app:fixedSize="@{3}"
+                        app:menuList="@{viewModel.tabList}"
+                        app:tabBottomLineColor="@color/white"
+                        app:tabBottomLineHeight="0dp"
+                        app:tabDisableTextColor="@color/color_8c8c8c"
+                        app:tabDisableTextStyle="normal"
+                        app:tabEnableTextColor="@color/color_222222"
+                        app:tabEnableTextStyle="medium"
+                        app:tabIndicatorColor="@color/color_2fc2ff"
+                        app:tabIndicatorCorner="@dimen/size_2"
+                        app:tabIndicatorHeight="@dimen/size_2"
+                        app:tabPreviewItems="라운지,이벤트,투표"
+                        app:tabPreviewPos="0"
+                        app:tabTextAppearance="@font/font_noto_sans_kr_light"
+                        app:tabType="fixed"
+                        app:type="@{PagerTabType.COMMUNITY}"
+                        app:viewPager="@{vp}" />
+
+                </androidx.appcompat.widget.Toolbar>
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+            app:position="@={viewModel.tabPosition}" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="@dimen/size_44"
+            android:layout_height="@dimen/size_44"
+            android:layout_gravity="bottom|right"
+            android:layout_marginRight="@dimen/size_20"
+            android:layout_marginBottom="@dimen/size_20"
+            android:elevation="@dimen/size_6"
+            android:visibility="@{viewModel.tabPosition == 0,default=gone}"
+            app:cardBackgroundColor="@color/color_2fc2ff"
+            app:cardCornerRadius="@dimen/size_22"
+            app:turtleClick="@{()->viewModel.moveToWriteLounge()}"
+            tools:visibility="visible">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_pen" />
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>

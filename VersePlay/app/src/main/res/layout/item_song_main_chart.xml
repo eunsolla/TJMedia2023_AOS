@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="position"
+            type="java.lang.Integer" />
+
+        <import type="com.verse.app.contants.ListPagedItemType" />
+
+        <import type="com.verse.app.contants.TabPageType" />
+
+        <import type="com.verse.app.contants.FragmentType" />
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.song.viewmodel.SongMainViewModel" />
+
+        <variable
+            name="data"
+            type="com.verse.app.model.song.SongMainInfo" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_161616">
+
+        <TextView
+            android:id="@+id/title_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/size_20"
+            android:layout_marginTop="@dimen/size_44"
+            android:text="@string/song_main_title_chart"
+            android:fontFamily="@font/font_noto_sans_kr_medium"
+            android:includeFontPadding="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/size_18"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.verse.app.widget.views.CustomConstraintLayout
+            android:id="@+id/pager_constraint_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/size_20"
+            android:layout_marginTop="@dimen/size_27"
+            android:layout_marginRight="@dimen/size_20"
+            android:minHeight="@dimen/size_100"
+            android:paddingBottom="@dimen/size_45"
+            app:layoutBgColor="@color/color_222222"
+            app:layoutBorder="@dimen/size_1"
+            app:layoutBorderColor="@color/color_424242"
+            app:layoutCorner="@dimen/size_5"
+            app:layout_constraintTop_toBottomOf="@+id/title_text_view">
+
+            <com.verse.app.widget.views.CustomTextView
+                android:id="@+id/popular_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_44"
+                android:layout_marginLeft="@dimen/size_20"
+                android:enabled="@{data.songChartList.prPageType != TabPageType.SONG_POPULAR}"
+                android:text="@string/str_song_popular"
+                android:textSize="@dimen/size_23"
+                android:fontFamily="@font/font_noto_sans_kr_medium"
+                android:includeFontPadding="false"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:textViewBgColor="@color/color_00000000"
+                app:textViewDisableBgColor="@color/color_00000000"
+                app:textViewDisableTxtColor="@color/white"
+                app:textViewTxtColor="@color/color_424242"
+                app:turtleClick="@{()->viewModel.onChangeChartPage(TabPageType.SONG_POPULAR,position)}" />
+
+            <com.verse.app.widget.views.CustomTextView
+                android:id="@+id/recent_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/size_20"
+                android:layout_marginTop="@dimen/size_44"
+                android:enabled="@{data.songChartList.prPageType != TabPageType.SONG_RECENT}"
+                android:text="@string/str_song_recent"
+                android:textSize="@dimen/size_23"
+                android:fontFamily="@font/font_noto_sans_kr_medium"
+                android:includeFontPadding="false"
+                app:layout_constraintLeft_toRightOf="@+id/popular_text_view"
+                app:layout_constraintTop_toTopOf="parent"
+                app:textViewBgColor="@color/color_00000000"
+                app:textViewDisableBgColor="@color/color_00000000"
+                app:textViewDisableTxtColor="@color/white"
+                app:textViewTxtColor="@color/color_424242"
+                app:turtleClick="@{()->viewModel.onChangeChartPage(TabPageType.SONG_RECENT,position)}" />
+
+            <com.verse.app.widget.views.CustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="@dimen/size_20"
+                android:text="@string/str_more"
+                android:textSize="@dimen/size_13"
+                android:fontFamily="@font/font_noto_sans_kr_medium"
+                android:includeFontPadding="false"
+                app:layout_constraintBottom_toBottomOf="@+id/recent_text_view"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/recent_text_view"
+                app:textViewBgColor="@color/color_00000000"
+                app:textViewTxtColor="@color/color_8c8c8c"
+                app:turtleClick="@{()->viewModel.onMore(data.songChartList.prPageType,(String)null)}" />
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/vp_song"
+                android:layout_width="match_parent"
+                android:paddingLeft="@dimen/size_20"
+                android:layout_marginLeft="@dimen/size_2"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_35"
+                android:layout_marginRight="@dimen/size_2"
+                android:background="@color/color_222222"
+                app:swipeEnable="@{data.songChartList.prPageType == TabPageType.SONG_POPULAR ? data.songChartList.popSongList.size > 5: data.songChartList.newSongList.size > 5}"
+                android:orientation="horizontal"
+                app:dataList="@{data.songChartList.prDataList}"
+                app:itemType="@{FragmentType.POPULAR_RECENT}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/popular_text_view"
+                app:layout_constraintVertical_bias="0"
+                app:viewModel="@{viewModel}" />
+
+            <!--tab layout indicator-->
+            <com.verse.app.widget.pagertablayout.LinePagerTabLayout
+                android:layout_width="@dimen/size_40"
+                android:layout_height="@dimen/size_2"
+                android:layout_marginTop="@dimen/size_35"
+                android:visibility="@{data.songChartList.prPageType == TabPageType.SONG_POPULAR ? data.songChartList.popSongList.size > 5: data.songChartList.newSongList.size > 5}"
+                app:dataList="@{viewModel.tabList}"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/vp_song"
+                app:tab_indicator_bg_color="@color/color_424242"
+                app:tab_indicator_color="@color/color_2fc2ff"
+                app:tab_indicator_height="@dimen/size_2"
+                app:tab_type="fixed"
+                app:viewPager="@{vpSong}" />
+
+        </com.verse.app.widget.views.CustomConstraintLayout>
+
+        <com.verse.app.widget.views.CustomTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_161616"
+            android:gravity="center"
+            android:paddingTop="@dimen/size_35"
+            android:paddingBottom="@dimen/size_25"
+            android:text="@string/str_verse_play"
+            android:fontFamily="@font/font_noto_sans_kr_medium"
+            android:includeFontPadding="false"
+            android:textSize="@dimen/size_18"
+            app:layout_constraintTop_toBottomOf="@+id/pager_constraint_layout"
+            app:textViewBgColor="@color/color_00000000"
+            app:textViewTxtColor="@color/color_424242" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

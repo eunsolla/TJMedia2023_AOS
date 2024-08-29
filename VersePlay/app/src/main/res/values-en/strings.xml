@@ -1,0 +1,787 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <string name="app_name">VersePlay</string>
+    <string name="str_verse_play">VERSE PLAY</string>
+    <string name="str_back_press_info">\'Back\' button once more to exit.</string>
+
+    <string name="str_common_finish_app_notice">Do you want to quit the VERSE PLAY app?</string>
+
+    <!--[s] Common String -->
+    <string name="str_finish">Exit</string>
+    <string name="str_cancel">Cancel</string>
+    <string name="str_confirm">OK</string>
+    <string name="str_follow">follow</string>
+    <string name="str_following">following</string>
+    <string name="str_follower">followers</string>
+    <string name="str_share">share</string>
+    <string name="str_report">report</string>
+    <string name="str_blocking">block</string>
+    <string name="str_no_interested">Not interested</string>
+    <string name="str_already_no_interested">Content already marked as uninteresting.</string>
+    <string name="str_singing">Sing</string>
+    <string name="str_more">More</string>
+    <string name="str_solo">Solo</string>
+    <string name="str_duet">Duet</string>
+    <string name="str_battle">Battle</string>
+    <string name="str_group">Group</string>
+    <string name="str_normal">General</string>
+    <string name="str_ad">Ad</string>
+    <string name="str_start">Start</string>
+    <string name="str_comment">Comments</string>
+    <string name="str_delete">Delete</string>
+    <string name="str_modify">Modify</string>
+    <string name="str_logout">Logout</string>
+    <string name="str_next">next</string>
+    <string name="str_prev">previous</string>
+    <string name="str_hash_tag"># hashtag</string>
+    <string name="str_counsel">Inquiry</string>
+    <string name="str_re_join">Re-join</string>
+    <string name="str_join_battle">Battle</string>
+    <string name="str_join_duet">Duet</string>
+    <!--[e] Common String -->
+
+    <!--[s] 메인 탭 Tab -->
+    <string name="str_tab_feed">Feed</string>
+    <string name="str_tab_recommend">Recommend</string>
+    <!--[e] 메인 탭  Tab -->
+
+    <!--[s] 메인 하단 Navi -->
+    <string name="str_navi_main">MAIN</string>
+    <string name="str_navi_sing_pass">SSING PASS</string>
+    <string name="str_navi_community">COMMUNITY</string>
+    <string name="str_navi_mypage">MY PAGE</string>
+    <!--[e] 메인 탭  Tab -->
+
+    <!--[s] Error String -->
+    <string name="network_popup_default">Encountered a problem.\nThis may be a temporary phenomenon or a network issue.\nPlease wait a few minutes and try again.\n\nIf this persists\n“My Page> Settings> 1:1 inquiry”\nPlease contact your administrator via.</string>
+    <string name="network_status_rs001">Normally processed.</string>
+    <string name="network_popup_undefined">Unforeseen problems have arisen.\nPlease check and try again.</string>
+    <string name="network_status_rs002">Request failed to process.</string>
+    <string name="network_status_rs003">The authentication information is not valid.</string>
+    <string name="network_status_rs004">The required argument was not passed.</string>
+    <string name="network_status_rs005">The server status is unhealthy.</string>
+    <!--[e] Error String -->
+
+    <!--[s] 이벤트 야간 알림 수신 동의 팝업 -->
+    <string name="event_night_time_agree_title">Agree to receive event benefit notices</string>
+    <string name="event_night_time_agree_contents">First of all, hot content and the latest event news.</string>
+    <string name="event_night_time_agree_switch_title">Getting notified at night</string>
+    <string name="event_night_time_agree_switch_sub_title">9pm to 8am</string>
+    <!--[e] 이벤트 야간 알림 수신 동의 팝업 -->
+
+    <!-- [s] login -->
+    <string name="common_login_popup_title_text_string">VERSE PLAY Login or Sign up as a member.</string>
+    <string name="common_login_popup_signing_up_info_text_string1">By Signing up, you agree to the&#160;</string>
+    <string name="common_login_popup_signing_up_info_text_string2">&#160;and&#160;</string>
+    <string name="common_login_popup_signing_up_info_text_string3"> </string>
+    <string name="common_login_popup_signing_up_info_text_string4">of VERSE PLAY.</string>
+    <string name="common_login_popup_signing_up_info_text_agree"><u>Terms of Use</u></string>
+    <string name="common_login_popup_signing_up_info_text_privacy"><u>Privacy Policy </u></string>
+    <string name="common_login_popup_sign_in_with_kakao">Kakao login</string>
+    <string name="common_login_popup_sign_in_with_naver">Naver login</string>
+    <string name="common_login_popup_sign_in_with_google">Google login</string>
+    <string name="common_login_popup_sign_in_with_facebook">Facebook login</string>
+    <string name="common_login_popup_sign_in_with_Twitter">Twitter login</string>
+    <string name="common_login_popup_sign_in_with_Snapchat">Snapchat login</string>
+    <!-- [e] login -->
+
+    <!--[s] intro -->
+    <string name="start_verseplay">VERSE PLAY START</string>
+    <string name="permission_notice_title">To use the VERSE PLAY Service.\n The following access rights are required.</string>
+    <string name="permission_notice_selection">Optional access rights</string>
+    <string name="permission_notice_essential">Required access rights</string>
+    <string name="str_permission_internet">Internet</string>
+    <string name="str_permissions_internet_contents">Check network (Internet) Status</string>
+    <string name="str_permission_network">network</string>
+    <string name="str_permission_network_contents">Check Network Status</string>
+    <string name="str_permission_wifi">WiFi</string>
+    <string name="str_permission_wifi_contents">Check Wi-Fi network Status</string>
+    <string name="str_permission_call">Call</string>
+    <string name="str_permission_call_contents">When singing, check the status of receiving call</string>
+    <string name="str_permission_mic">Microphone</string>
+    <string name="str_permission_mic_contents">When singing, use recording and recording</string>
+    <string name="str_permission_camera">Camera</string>
+    <string name="str_permission_camera_contents">When singing, record video and take user profile</string>
+    <string name="str_permission_storage">Storage</string>
+    <string name="str_permission_storage_contents">access gallery, change user profile image, Personal video upload, board image upload</string>
+    <string name="str_permission_bluetooth">Bluetooth</string>
+    <string name="str_permission_bluetooth_contents">When singing, use recording and recording</string>
+    <string name="permission_notice_selectable_access_description">
+        <![CDATA[<font color=#222222 style="bold">Optional access rights</font><font color=#666666>requires , the function, and only services other than the function can be used when<br/>ratio is allowed.</font>]]>
+    </string>
+    <!--[e] intro -->
+
+    <string name="social_login_info_naver_client_name">Naver ID login</string>
+    <string name="setting_verse_country">Please select a \ncountry of activity.</string>
+    <string name="setting_verse_lan1">VERSE PLAY will use the</string>
+    <string name="setting_verse_lan2">Please select a language.</string>
+    <string name="str_intro_help_country">VERSE PLAY service is subject to the song copyright policy of each country.</string>
+    <string name="str_intro_help_language">VERSE PLAY  language support only supports menus and settings, other buttons, and user , and does not support lyric translation.</string>
+    <string name="str_help_nickname">Nickname is the ID to be used in VERSE PLAY. Please note that it cannot be changed after setting. If skipped, it will be set as SNS ID or default ID.</string>
+    <string name="start_sign_up_or_sign_in">Login / Register</string>
+    <string name="tutorial_next">NEXT</string>
+    <string name="tutorial_start">START</string>
+    <string name="tutorial_singpass_sub_title">Battle for the throne of Play</string>
+    <string name="tutorial_singpass_title">SSingpass</string>
+    <string name="tutorial_sing_sub_title">Experience the joy of karaoke in your hand</string>
+    <string name="tutorial_sing_title">sing a song</string>
+    <string name="tutorial_album_sub_title">Share your own special video Upload</string>
+    <string name="tutorial_album_title">Personal album</string>
+    <string name="tutorial_community_sub_title">A place for open communication</string>
+    <string name="tutorial_community_title">Community</string>
+    <string name="tutorial_mypage_sub_title">Unleash your unique personality</string>
+    <string name="tutorial_mypage_title">My Page</string>
+    <!-- SNS Login -->
+
+    <!--[s] feed -->
+    <string name="fmt_feed_contents_more"><u>More</u></string>
+    <string name="fmt_feed_contents_hide"><u>Hidden</u></string>
+    <string name="str_song_contents_upload">song</string>
+    <string name="str_album_contents_upload">gallery</string>
+    <string name="str_ad_detail">See details</string>
+    <string name="str_block_user">Do you want to blocked %s?</string>
+    <string name="str_block_feed">Do you want to block the current feed?</string>
+    <string name="str_block_complete">Blocked.</string>
+    <string name="str_block_user_complete">blocked.\nYou can unblock from My Page.</string>
+    <string name="str_uninterested_feed">You\'ll see fewer similar videos.</string>
+    <string name="str_deleted_detail_feed">The content has been\ndeleted or made private.</string>
+    <string name="str_can_not_like_my_feed">I can\'t like my content.</string>
+    <string name="str_can_not_like_my_book_mark">My content can\'t be favorited.</string>
+    <string name="str_can_remove_my_page">You can delete it from My Page.</string>
+    <string name="str_block_feed_msg">Blocked feeds will not be exposed in the future.</string>
+    <string name="str_not_interested_feed">We\'ll show fewer feeds like this.</string>
+    <!--[e] feed -->
+
+    <!-- [s] Login -->
+    <string name="setting_mypage_logout_string">Logout</string>
+    <string name="Would_like_to_log_out">Do you want to log out?</string>
+    <string name="sign_nickname_explain1">To use in VERSE PLAY</string>
+    <string name="sign_nickname_explain2">Please set a nickname.</string>
+    <string name="sign_hint_enter_nickname">ex) Singing Gorani</string>
+    <string name="sign_nickname_error_already">This nickname is already in use.</string>
+    <string name="sign_location_back_message">Do you want to stop signing up? \n If you stop now \n all progress will be deleted.</string>
+    <string name="sign_location_back_help">Nickname is the ID to be used in VERSE PLAY. Please note that it cannot be changed after setting. If skipped, it will be set as SNS ID or default ID.</string>
+    <string name="sign_nickname_auto_creating">Generate nickname automatically</string>
+    <string name="sign_nickname_check_duplication">check for duplicates</string>
+    <string name="sign_nickname_signup">Signed up</string>
+    <!-- [e]Login -->
+
+    <!-- [s] Upload -->
+    <string name="video_encode_check_mypage">A notification arrives when the upload is complete.</string>
+    <string name="videoupload_picker_title">Upload video</string>
+    <string name="video_upload_max_duration" formatted="false">only can upload videos that are %d minute and %d seconds or less.</string>
+    <string name="videoupload_view_title">Register new content</string>
+    <string name="upload_completed">Upload completed.</string>
+    <string name="upload_completed_star">uploaded content received in stars.</string>
+    <string name="upload_completed_star_off_sing">The star rating of the content you sing a song is as follows.</string>
+    <string name="upload_completed_nick1"><![CDATA[<font color=#2fc2ff><b>%s</b></font>]]>\' uploaded content received in stars.</string>
+    <string name="upload_completed_nick2">The star rating of the content <![CDATA[<font color=#2fc2ff><b>%s</b></font>]]>\'s sing a song is as follows.</string>
+    <string name="upload_completed_nick3">The content <![CDATA[<font color=#2fc2ff><b>%s</b></font>]]>\'s uploaded was successfully published.</string>
+    <string name="upload_completed_star_grade">That\'s great :)</string>
+    <string name="upload_completed_star_1">Only breathing sounds ;ㅁ;</string>
+    <string name="upload_completed_star_2">Half Sound / Half Air ;ㅅ;</string>
+    <string name="upload_completed_star_3">My voice can reach the universe !!</string>
+    <string name="upload_completed_star_desc">You can receive up to 3 stars for completing a song!</string>
+    <string name="upload_album_completed">The content you uploaded was successfully published.</string>
+    <!-- [e] Upload -->
+
+    <!--[s] filter String -->
+    <string name="filter_order_by_recommend">Recommended</string>
+    <string name="filter_order_by_latest">New</string>
+    <string name="filter_order_by_old">Old</string>
+    <!--[e] filter String -->
+
+    <!--[s] search -->
+    <string name="search_hint">Please enter a the search term.</string>
+    <string name="search_help_message">The information you are looking for(user, artist name, song name),\nPlease check and try again.</string>
+    <string name="search_recent_keywords_empty">No recent search terms.</string>
+    <string name="search_result_invalid_msg">The current screen is no longer valid. Please try again.</string>
+    <string name="search_delete_recent_keywords">Do you want to delete all recent search term?</string>
+    <string name="search_result_tab_popular">Popular</string>
+    <string name="search_result_tab_video">Video</string>
+    <string name="search_result_tab_accompaniment">Song</string>
+    <string name="search_result_tab_tag">Tag</string>
+    <string name="search_result_tab_user">User</string>
+    <string name="search_result_popular_song_title">Song</string>
+    <string name="search_result_related_posts_title">Related Posts</string>
+    <string name="search_result_more_title">More</string>
+    <!--[e] search -->
+
+    <!--[s] 업로드 콘텐츠  song list main-->
+    <string name="song_main_title_hot">Hot song</string>
+    <string name="song_main_title_recently">Recently sung songs</string>
+    <string name="song_main_title_genre">Genre</string>
+    <string name="song_main_title_chart">Song chart</string>
+    <string name="str_song_popular">Popular</string>
+    <string name="str_song_recent">New</string>
+    <string name="str_recent_song_no_data">No songs have been sung recently.</string>
+    <string name="str_hot_song_no_data">There are no hot songs now.</string>
+    <string name="str_genre_no_data">There is no music in that genre.</string>
+    <string name="str_related_sound_source_title">Associated song</string>
+    <!--[s] 업로드 콘텐츠  song list main-->
+
+    <!--[s] sing -->
+    <string name="str_audio_recording">Audio</string>
+    <string name="str_video_recording">Video</string>
+    <string name="str_off">OFF</string>
+    <string name="str_section">Section</string>
+    <string name="str_section_change_confirm">Section change completed</string>
+    <string name="str_section_setting_confirm">Section setup complete</string>
+    <string name="str_recording_all">Whole Song</string>
+    <string name="str_part_a">A part</string>
+    <string name="str_part_b">B part</string>
+    <string name="str_challenge_sing_pass">Challenge SSINGPASS</string>
+    <string name="str_challenge_sing_pass_a">Challenge SSINGPASS A</string>
+    <string name="str_challenge_sing_pass_b">Challenge SSINGPASS B</string>
+    <string name="str_inst">INST.</string>
+    <string name="str_mic">MIC.</string>
+    <string name="download_fail_mr">MR download failed!</string>
+    <string name="download_fail_xtf">Lyrics information download failed!</string>
+    <string name="download_fail_song_info">Failed to download song information!</string>
+    <string name="str_stop_recording">stop</string>
+    <string name="str_song_info_title">song info</string>
+    <string name="str_song_info_lyricist">Lyricist</string>
+    <string name="str_song_info_composer">Compose</string>
+    <string name="str_song_info_alb_div_nm">Agency</string>
+    <string name="str_song_info_alb_dis_nm">Distributor</string>
+    <string name="str_filter_sound">audio FX</string>
+    <string name="str_filter_volume">Volume</string>
+    <string name="str_filter_ar">Filter</string>
+    <string name="str_filter_section_change">section Change</string>
+    <string name="str_filter_sync">sink</string>
+    <string name="str_filter_preview">preview</string>
+    <string name="str_preview_setting">Set Preview</string>
+    <string name="singing_popup_pause_message">Do you want to stop singing it?</string>
+    <string name="singing_popup_sing_again">Reset</string>
+    <string name="singing_popup_sing_different">Exit without saving</string>
+    <string name="singing_popup_sing_continue">continue</string>
+    <string name="singing_popup_sing_stop_and_save">Edit and save</string>
+    <string name="singing_popup_sing_part_change">Part Change</string>
+    <string name="singing_popup_preview_message">Do you want to cancel the upload?</string>
+    <string name="singing_popup_preview_other_sing">Sing another song</string>
+    <string name="singing_popup_preview_exit">end</string>
+    <string name="singing_file_download_error">File download failed!</string>
+    <string name="singing_section_complete">Section setup complete</string>
+    <string name="singing_section_change_complete">Section change complete</string>
+    <string name="singing_section_valid_minimum_ms">cannot be set for less than 15 seconds.</string>
+    <string name="singing_permission_need_all">If you don\'t allow access to the camera or microphone, you won\'t be able to record a video of you, apply funny AR stickers..</string>
+    <string name="str_sync_info_desc">Press the left/right buttons to match the accompaniment note and the starting point of the vocal.</string>
+    <string name="str_preview_info_desc">Select the start time you want to be displayed in the preview (main screen).</string>
+    <string name="fmt_time" formatted="false">%,02d:%,02d</string>
+    <string name="fmt_time_preview" formatted="false">%,02d:%,02d ~ %,02d:%,02d</string>
+    <string name="fmt_sync_ms">%,2d ms</string>
+    <string name="str_download_ing">Content downloading.</string>
+    <string name="str_download_ing_wait">Please wait.</string>
+    <string name="str_singing_need_part_select">Please select a media type or part.</string>
+    <!--[s] sing -->
+
+    <!-- [s] earphone popup-->
+    <string name="singing_popup_recommend_earphones_detail_first_String">Recommendation for using earphones</string>
+    <string name="singing_popup_recommend_earphones_detail_second_String">We recommend using \n a headset</string>
+    <string name="singing_popup_recommend_earphones_detail_third_String">Use a headset for \n the best experience.</string>
+    <string name="singing_popup_recommend_earphones_detail_fourth_String">Parts Guideline</string>
+    <string name="singing_popup_recommend_earphones_detail_fifth_String">Sing the part marked in blue.</string>
+    <string name="singing_popup_recommend_earphones_detail_sixth_String">Sing the part marked in pink.</string>
+    <string name="singing_popup_recommend_earphones_detail_seventh_String">Sing the part marked in green.</string>
+    <string name="singing_popup_recommend_earphones_detail_A_String">A</string>
+    <string name="singing_popup_recommend_earphones_detail_B_String">B</string>
+    <string name="singing_popup_recommend_earphones_detail_C_String">C</string>
+    <string name="singing_popup_not_whole_song">Purchasing a membership allows you to create content and enjoy a variety of benefits.</string>
+    <string name="singing_popup_vip">When you purchase a membership SOLO, DUET, BATTLE Create content and enjoy a variety of benefits. \n※ membership purchase \'mypage > Setting > Manage memberships\'You can purchase it from.</string>
+    <!--[e] earphone popup -->
+
+    <!-- 마이페이지 설정-->
+    <string name="mypage_setting">Settings</string>
+    <string name="mypage_setting_account">Account</string>
+    <string name="change_my_info">Change personal information</string>
+    <string name="mypage_setting_security">Security</string>
+    <string name="mypage_setting_service_control">Service control</string>
+    <string name="setting_push_noti">Push notification settings</string>
+    <string name="setting_email">Email Receipt Settings</string>
+    <string name="setting_service_lan_country">Service region &amp; language setting</string>
+    <string name="setting_player">Play settings</string>
+    <string name="delete_cache">Clear Cache</string>
+    <string name="setting_faq">FAQ</string>
+    <string name="one_on_one_qna">1:1 inquiry</string>
+    <string name="user_guide">User Guide</string>
+    <string name="setting_announcement">Notice</string>
+    <string name="setting_terms_n_police">Terms of Service (Policy) and Notice</string>
+    <string name="setting_open_source_license">openSourceLicense</string>
+    <string name="setting_coupon">Enter coupon number</string>
+    <string name="manage_my_follower">Manage friends (blocked accounts)</string>
+    <string name="setting_information">Info</string>
+    <string name="setting_version_information">Version Info</string>
+    <string name="login">Login</string>
+    <string name="mypage_setting_email">Email</string>
+    <string name="mypage_setting_email_description">Please enter your email.</string>
+    <string name="mypage_setting_bio">Status message</string>
+    <string name="mypage_setting_bio_description">Please enter a status message.</string>
+    <string name="mypage_setting_links">Add external link</string>
+    <string name="mypage_setting_links_description">Please insert an external profile link.</string>
+    <string name="mypage_setting_private_account">Private account settings</string>
+    <string name="mypage_setting_account_recommend">Recommend my account to others</string>
+    <string name="mypage_setting_message_only_follower">Only friends messages</string>
+    <string name="verseplay_withdrawal">Delete Account</string>
+    <string name="str_is_withdrawal">Do you want to delete account?</string>
+    <string name="str_withdrawal_complete">Account Deleted.</string>
+    <string name="save_stirng">Save</string>
+    <string name="mypage_edit_my_email_hint">Please enter your email address.</string>
+    <string name="mypage_edit_my_link_hint">Please insert an external profile link.</string>
+    <string name="mypage_edit_link_registerable">External profile types that can be registered are Instagram , YouTube, and TikTok.</string>
+    <string name="mypage_edit_email_invalid">Please enter a valid email address.</string>
+    <string name="no_block_user">No users blocked.</string>
+    <string name="enter_characters_limit">You can enter up to 60 characters.</string>
+    <string name="nickname_enter_characters_limit">You cannot enter more than 50 characters.</string>
+    <string name="mypage_setting_login_devices">Logged in device</string>
+    <string name="mypage_setting_login_devices_notice">If you do not see your activity in the previous login history, check the security status value of the SNS account used for the simple login.</string>
+    <string name="mypage_setting_pre_login_devices">%s (Before)</string>
+    <string name="mypage_setting_cur_login_devices">%s (Current)</string>
+    <string name="mypage_setting_push_manner_mode_description">Consent to nighttime push notifications</string>
+    <string name="mypage_setting_player_auto">Auto volume control</string>
+    <string name="mypage_setting_push_volume_off">Sound OFF when app is running</string>
+    <string name="setting_country">Country</string>
+    <string name="setting_language">Language</string>
+    <string name="setting_coupon_1">Please enter your \ncoupon number paid \nto affiliates.</string>
+    <string name="str_help_setting_popup">Please note that the voucher issued with this coupon can only be used for the stated period of time with all the features of VERSE PLAY.</string>
+    <string name="mypage_setting_coupon_hint">ex) TJM1230500</string>
+    <string name="mypage_edit_coupon_invalid">Please enter a valid coupon number.</string>
+    <string name="filter_order_by_mypage_setting">Settings</string>
+    <string name="filter_order_by_my_private_song">Private content archive</string>
+    <string name="str_success_copy">copy Success.</string>
+    <string name="setting_title_privacy_policy">Privacy Policy</string>
+    <string name="mypagemessage_list_title">Message box</string>
+    <string name="mypagemessage_list_sort">Recent date</string>
+    <string name="mypagemessage_list_delete_string">Delete</string>
+    <string name="mypage_noti">Alerts</string>
+    <string name="delete_cached_files">Do you want to delete cached data?</string>
+    <string name="complete_delete_cache_file">Cache deleted.</string>
+    <!-- 마이페이지 설정-->
+
+    <!--[s] sound filter -->
+    <string-array name="sound_filter">
+        <item>Autotune^selector_sp_auto_tune</item>
+        <item>vinyl record^selector_sp_record</item>
+        <item>Concert Hall^selector_sp_concert_hall</item>
+        <item>Karaoke^selector_sp_singing_room</item>
+        <item>Megaphone^selector_sp_megaphone</item>
+        <item>Cave^selector_sp_cave</item>
+        <item>Squirrel^selector_sp_squirrel</item>
+        <item>Recording Room^selector_sp_recording_studio</item>
+        <item>Helium^selector_sp_helium</item>
+        <item>Robot^selector_sp_robot</item>
+        <item>Ghost^selector_sp_ghost</item>
+        <item>Echo^selector_so_echo</item>
+        <item>Reverb^selector_sp_reverb</item>
+        <item>Voice Changer^selector_sp_voicechanger</item>
+    </string-array>
+    <!--[e] sound filter -->
+
+    <!--[s] 앨범 올리기 -->
+    <string name="videoupload_top_right_menu">Upload</string>
+    <string name="video_files_upload_ing">Content uploading in progress.</string>
+    <string name="post_text_hint">You can write up to 150 characters.</string>
+    <string name="str_post_text_popup">Content introductions can be up to 150 characters long.</string>
+    <string name="post_text_hash_tag_hint">\# Han River \# Cherry Blossom \n Record your day with tags.</string>
+    <string name="post_text_empty">Please enter your upload content.</string>
+    <string name="post_show_contents_need_select">Please select content exposure settings.</string>
+    <string name="videoupload_post_more_text">More</string>
+    <string name="videoupload_post_permit_range_text">Post allowances</string>
+    <string name="videoupload_post_permit_comment_text">Allow comments</string>
+    <string name="videoupload_post_un_permit_comment_text">No Comments</string>
+    <string name="videoupload_post_permit_share_target_text">Set content exposure</string>
+    <string name="videoupload_post_permit_share_onlyme_text">Only me allowed</string>
+    <string name="videoupload_post_permit_share_onlifriends_text">Allow Friends</string>
+    <string name="videoupload_post_permit_share_everyone_text">Allow all</string>
+    <string name="videoupload_top_right_menu_send">Done</string>
+    <string name="videoupload_view_title_upload">Upload video</string>
+    <string name="videoupload_view_menu_repick">Repick</string>
+    <string name="mypage_message_send_text_string">Send</string>
+    <!--[e] 앨범 올리기 -->
+
+    <!-- mypage send feedback -->
+    <string name="mypage_send_feedback_attach_image_text_string">Attachments</string>
+    <string name="mypage_send_feedback_contact_type_text_string">Contact type</string>
+    <string name="mypage_send_feedback_format_info_text_string">※The file format is jpg and png only.</string>
+    <string name="mypage_send_feedback_email_address_info_text_string">Email address to receive reply</string>
+    <string name="send_an_inquiry">Please leave an inquiry.</string>
+    <string name="edit_profile_email_null_string">Please enter your email.</string>
+    <!-- mypage send feedback -->
+
+    <string name="str_network_error_msg">The network connection is unstable.\n Please check the network status.</string>
+    <string name="str_network_disconnect_msg">Please check the network status.</string>
+    <string name="notification_channel_id" translatable="false">Verse_Default</string>
+
+    <string name="videoupload_picker_title_gallery">Gallery</string>
+    <string name="videoupload_picker_cancle_gallery">Do you want to undo your edits?</string>
+
+    <!--[s] main -->
+    <string name="main_notice_popup_option_1">Don\'t show again</string>
+    <string name="main_notice_popup_option_2">Do not show for 3 days</string>
+    <string name="main_notice_popup_option_3">Do not show today</string>
+    <string name="main_notice_popup_link">Shortcut</string>
+    <string name="main_recommend_user_des_1">Follow popular artists and</string>
+    <string name="main_recommend_user_des_2">get the latest updates.</string>
+    <string name="main_recommend_user_empty">No recommended users</string>
+    <string name="main_following_contents_more_desc">All new content uploaded check.</string>
+    <string name="main_following_contents_more">Replay post</string>
+
+    <!--[s] search -->
+    <string name="search_main_title_beloved_song">Songs loved right now</string>
+    <string name="search_filter_order_by_latest">New</string>
+    <string name="search_filter_order_by_oldest">Old</string>
+    <string name="search_filter_order_by_contents">Content</string>
+    <string name="search_filter_order_by_official_partner">Official Partners</string>
+    <string name="search_filter_order_by_follower">Followers</string>
+    <string name="set_update_follow_by_followers">Follow</string>
+    <string name="set_update_follow_by_following">Following</string>
+    <string name="search_recent_keyword_all_dekete">Delete All</string>
+    <string name="search_recent_keyword_all_dekete_2">Do you want to delete all?</string>
+    <string name="search_recent_keyword_view_detail">View details</string>
+    <string name="search_recent_keywords">Recent search terms</string>
+    <string name="search_popular_keyword">popular search terms</string>
+    <string name="str_message">Message</string>
+    <string name="mypage_str_recommend_user">Recommended user</string>
+    <string name="mypage_singpass_seasonclear_status">SSINGPASS season clear status </string>
+    <string name="mypage_profile_edit">Edit Profile</string>
+    <string name="mypage_profile_edit_fail">Failed to upload profile image.</string>
+    <string name="mypage_bg_profile_edit_fail">Failed to upload profile background image.</string>
+    <string name="str_content">Content</string>
+
+    <string name="search_no_result_data">No results found.</string>
+    <!--[e] search -->
+
+    <!--[s] comment -->
+    <string name="str_comment_hint">Leave a comment…</string>
+    <string name="str_comment_re_hint">Leaving a reply to %s.</string>
+    <string name="str_comment_write">Post</string>
+    <string name="str_comment_show">View replies</string>
+    <string name="str_comment_re_show">Show more replies</string>
+    <string name="str_comment_re_hide">Hide replies</string>
+    <string name="str_dialog_comment_report">Report a comment</string>
+    <string name="str_dialog_comment_report_msg">Do you want to report a comment?</string>
+    <string name="str_dialog_comment_report_delete">Delete comment</string>
+    <string name="str_dialog_comment_report_delete_msg">Do you want to delete the comment? \nDeleted comments cannot be recovered.</string>
+    <string name="str_comment_empty">No comments.</string>
+    <string name="str_dialog_comment_un_acceptable">No comments allowed.</string>
+    <!--[e] comment -->
+
+    <!-- [s] 씽패스 -->
+    <string name="season_period_text" formatted="false">%1s ~ %2s to end of%3sday</string>
+    <string name="season_hours_text"> %4s hr</string>
+    <string name="season_search_date_time">%1s As </string>
+    <string name="season_ranking_title">%1s Ranking</string>
+    <string name="season_ranking_more">Full view</string>
+    <string name="season_sing_pass_point">SSing point %,2d</string>
+    <string name="season_sing_pass_user_info_title">Info</string>
+    <string name="season_sing_pass_ranking">Ranking </string>
+    <string name="season_sing_pass_sing_point_name">SSing point</string>
+    <string name="season_sing_pass_sing_point">%,2dP</string>
+    <string name="season_sing_pass_day_mission_sing_point">Daily Mission Points</string>
+    <string name="season_sing_pass_period_mission_sing_point">Periodic Mission Points</string>
+    <string name="season_sing_pass_season_mission_sing_point">Season Mission Points</string>
+    <string name="season_sing_pass_ect_point">Additions point</string>
+    <string name="season_sing_pass_have_mission_item">Acquisition item</string>
+    <string name="season_sing_pass_dash_board_title">SSingPass progress</string>
+    <string name="season_sing_pass_mission_item_title">Obtainable items</string>
+    <string name="season_sing_pass_daily_mission_title">Daily</string>
+    <string name="season_sing_pass_period_mission_title">Period</string>
+    <string name="season_sing_pass_season_mission_title">Season</string>
+    <string name="season_sing_pass_point_desc" formatted="false">Points to earn for the season(%,2d/%,2d)</string>
+    <string name="season_sing_pass_mission_item" formatted="false">%1s (%,2dP)</string>
+    <string name="season_sing_pass_mission_percent">%1d</string>
+    <string name="season_sing_pass_normal_skip">Nomal</string>
+    <string name="season_sing_pass_season_skip">Season</string>
+    <string name="season_sing_pass_normal_skip_count">%,2d</string>
+    <string name="season_sing_pass_season_skip_count">%,2d</string>
+    <string name="season_sing_pass_use_mission_skip">Do you want to use skip cards for a <![CDATA[<font color=#007eff><b>"%s"</b></font>]]> missions?</string>
+    <string name="season_sing_pass_season_join_desc">large amount of points and items earned \n The opportunity is now.</string>
+    <string name="season_sing_pass_season_join">Join</string>
+    <string name="season_sing_pass_new_season_title">A new season \n has begun.</string>
+    <string name="season_sing_pass_new_season_sub_title1">Season\'s limited item</string>
+    <string name="season_sing_pass_new_season_sub_title2">Get the!</string>
+    <string name="season_sing_pass_mission_join_completed">This mission has already been joined.</string>
+    <string name="season_sing_pass_empty_season_title">We are preparing for a new season.</string>
+    <string name="season_sing_pass_empty_season_sub_title1">See you in a more exciting season ~</string>
+    <!-- [e] 씽패스 -->
+
+    <string name="str_post">Post</string>
+    <string name="str_tag_post">Post %sEA</string>
+
+    <!-- [s] tab fragment -->
+    <string name="tab_type_my_concert_contents">Performance</string>
+    <string name="tab_type_my_personal_contents">User collection</string>
+    <string name="tab_type_user_personal_contents">General video</string>
+    <string name="tab_type_user_common_concert_contents">Performance</string>
+    <string name="tab_type_feed_contents">Feed video</string>
+    <string name="tab_type_feed_only_accompanient">Song</string>
+    <string name="sort_asc">ASC</string>
+    <string name="sort_desc">DESC</string>
+    <string name="str_like">Like</string>
+    <string name="str_favorite">Favorites</string>
+    <string name="change_profile_my_album">Select from your album</string>
+    <string name="change_profile_take_picture">Take a Picture</string>
+    <string name="change_profile_empty">Select as default image</string>
+    <string name="change_profile">Change Profile Picture</string>
+    <string name="change_bg_profile">Change background image</string>
+    <string name="popup_camera_permission">Please approve camera permissions.</string>
+    <string name="popup_storage_permission">Please approve Storage permissions.</string>
+    <string name="str_service_stop_song">The use of the video has been restricted due to the expiration of the service music contract.</string>
+
+    <!-- [e] tab fragment -->
+
+    <!-- [s] 인코딩 -->
+    <string name="encode_ing">content creation and upload process has begun. \n I\'ll let you know when it\'s done!</string>
+    <string name="encode_success">Upload completed!</string>
+    <string name="encode_fail">Upload failed.</string>
+    <string name="video_upload_fail">Content upload failed. Upload may fail if the network is unstable. Would you like to try again?</string>
+    <string name="encode_ing_msg">There is content being uploaded. Please try again in a moment.</string>
+    <string name="mypage_setting_push_comment_by_my_follower">People I follow comment on</string>
+    <string name="mypage_setting_push_comment_by_everyone">Comments from everyone</string>
+    <string name="feed_no_result_data">No such information found.</string>
+    <string name="push_toast_msg">Please unsuspended all.</string>
+    <string name="mypage_setting_all_push">All Alerts</string>
+    <string name="mypage_setting_upload_push">Feature Alert</string>
+    <string name="mypage_setting_push_uploading">Upload progress</string>
+    <string name="mypage_setting_push_upload_fail">Upload failed</string>
+    <string name="mypage_setting_push_upload_complete">Upload complete</string>
+    <string name="video_upload_fail_reload">Reupload</string>
+    <string name="mypage_setting_service_push">Service Alert</string>
+    <string name="mypage_setting_push_dormant_user">Dormant Alert </string>
+    <string name="mypage_setting_push_stop_user">Stop Alert</string>
+    <string name="mypage_setting_push_marketing">Marketing Receive Re-Consent</string>
+    <string name="mypage_setting_push_my_activity">Activity Alert</string>
+    <string name="mypage_setting_push_event">Event advertising Alert</string>
+    <string name="mypage_setting_push_new_event">New event Alert</string>
+    <string name="mypage_setting_push_vote">Voting Start/End Alert</string>
+    <string name="mypage_setting_push_season">Season Start/End Alert</string>
+    <string name="mypage_setting_push_follow_me">Another member follows me</string>
+    <string name="mypage_setting_like_my_contents">Other members like my content</string>
+    <string name="mypage_setting_like_my_post">Other members like my post</string>
+    <string name="mypage_setting_like_my_comments">Other members like my comments/replies</string>
+    <string name="mypage_setting_complete_my_duet">Another member completed my duet</string>
+    <string name="mypage_setting_complete_my_battle">Another member has completed participating in my battle</string>
+    <string name="mypage_setting_my_follower_new_contents">My Followers post new content</string>
+    <string name="mypage_setting_my_follower_new_post">Post a new post to my followers</string>
+    <string name="mypage_setting_get_message">Get Alert of all messages</string>
+    <string name="mypage_setting_marketing">Marketing</string>
+    <string name="mypage_setting_push_message">Message</string>
+    <!-- [e] 인코딩 -->
+
+    <!-- [s] 모아보기 -->
+    <string name="feed_count_default">Related content : -</string>
+    <string name="collection_feed_relate_count">Related content: %2d</string>
+    <string name="collection_feed_notice">(except reported and blocked content)</string>
+    <string name="singpass_is_empty">No season badges currently earned.</string>
+    <string name="collection_move_to_sing">singing</string>
+    <!-- [e] 모아보기 -->
+
+    <!-- [s] 갤러리 -->
+    <string name="gallery_max_count_message">can only be registered up to %d</string>
+    <string name="str_unblock">Unblock</string>
+    <string name="gallery_invalid_confirm_message">You must select at least one.</string>
+    <string name="gallery_invalid_file_confirm_message">You must select at least one file.</string>
+    <string name="gallery_invalid_file_max_confirm_message">You can only register up to %d files.</string>
+
+    <!-- [e] 갤러리 -->
+
+    <!-- [s] 커뮤니티 -->
+    <string name="community_tab_lounge">Lounge</string>
+    <string name="community_tab_event">Event</string>
+    <string name="community_tab_vote">Vote</string>
+    <string name="mypage_setting_unblocking_complete">User unblocked.</string>
+    <string name="mypage_setting_unblocking_fail">Failed to unblock user.</string>
+    <string name="community_tab_event_ing">Join</string>
+    <string name="community_tab_event_end">End</string>
+    <string name="community_tab_vote_ing">Join</string>
+    <string name="community_tab_vote_end">End</string>
+    <string name="community_vote_end_title">View results</string>
+    <!-- [e] 커뮤니티 -->
+
+    <!--[s] update -->
+    <string name="str_update">Update</string>
+    <string name="str_update_later">later</string>
+    <!--[e] update -->
+
+    <!-- [s] 라운지 -->
+    <string name="lounge_write_title">Lounge writing</string>
+    <string name="lounge_modify_title">Lounge text editing</string>
+    <string name="lounge_write_register">Register</string>
+    <string name="lounge_write_modify">Modify</string>
+    <string name="invite_my_friend">Invite a friend reward</string>
+    <string name="manage_my_membership">Manage membership</string>
+    <string name="str_support">Support</string>
+    <string name="my_recommend_nickname">My suggested nickname</string>
+    <string name="mypage_edit_my_invite_hint">Please enter your nickname.</string>
+    <string name="mypage_invite_notice_count_noti">you have <![CDATA[<font color=#ff3d33><b>"%s"</b></font>]]> number of invitations left.</string>
+    <string name="str_copy">Copy</string>
+    <string name="str_invite_title">*Invitation information and benefits*</string>
+    <string name="str_invite_subtitle_1">When a friend shares VERSE PLAY with you, enter their <![CDATA[<font color=#2fc2ff><b>suggested nickname in the Suggested Nickname field below and you\'ll both 3 songs use voucher.</b></font>]]></string>
+    <string name="str_invite_subtitle_2">If an invited friend purchases a subscription, <![CDATA[<font color=#2fc2ff><b>you\'ll both still receive a both 3 songs use voucher.</b></font>]]></string>
+    <string name="str_invite_subtitle_3">All rewards for invitations and the act of <![CDATA[<font color=#ff3d33><b>inviting can be earned up to 10 times, with no rewards available after the 11th time.</b></font>]]></string>
+    <string name="str_invite_subtitle_4">Even if an invited member <![CDATA[<font color=#ff3d33><b>leaves and rejoins, they can\'t earn more than 10 referral rewards.</b></font>]]></string>
+    <string name="my_recommend_nickname_input">Enter recommended nickname</string>
+    <string name="str_enter">Enter</string>
+    <string name="lounge_write_link_hint">Please enter the link URL.</string>
+    <string name="lounge_write_link_invalid">Please enter the url in the correct format.</string>
+    <string name="lounge_write_hint">Please enter a text.(max. 1000 characters)</string>
+    <string name="lounge_write_invalid_message">Please write at least 1 character.</string>
+    <string name="lounge_write_back_press_info">Do you want to cancel lounge writing? </string>
+    <string name="lounge_modify_back_press_info">Do you want to cancel the lounge post edit?</string>
+    <string name="lounge_modify_completed">The lounge post has been edited.</string>
+    <string name="lounge_delete_completed">The lounge post has been deleted.</string>
+    <string name="lounge_register_completed">The lounge post registration is complete.</string>
+    <!-- [e] 라운지 -->
+
+    <!-- [s] 이벤트 상세 -->
+    <string name="event_end_message">Event end.</string>
+    <string name="event_participate_title">Join the event</string>
+    <!-- [e] 이벤트 상세 -->
+
+    <!-- [s] 멤버십 -->
+    <string name="membership_title">Manage Membership</string>
+    <string name="membership_empty_notice">There is no active pass.</string>
+    <string name="membership_notice"><Data><![CDATA[<font color=#00e7ff><b>%1s</b></font><br><font color=#ffffff><b>%2s</b></font>]]></Data></string>
+
+    <string name="membership_notice1">The joy of singing,\nExperience it in VERSE PLAY.</string>
+    <string name="membership_notice2"><Data>Enjoy a cost-free <![CDATA[<font color=#222222><b>Voucher</b></font> and Unconstrained <br> All services available <font color=#222222><b>Time Voucher</b></font> to!<br>Meet the member benefits prepared by VERSE PLAY.]]></Data></string>
+    <string name="membership_item1">Sing unlimited songs</string>
+    <string name="membership_item2">Seasonal limited item</string>
+    <string name="membership_item3">audio FX</string>
+    <string name="membership_item4">Face filter</string>
+    <string name="membership_item5">Mission skip card</string>
+    <string name="membership_tab_period">Time Voucher</string>
+    <string name="membership_tab_song">Song Voucher</string>
+    <string name="membership_footer_title"><Data><![CDATA[<font color=#222222><b>Simple information on vouchers</b></font>]]></Data></string>
+    <string name="membership_footer"><Data><![CDATA[
+    <br>- <font color=#222222><b>Time Voucher</b></font> that allows you to use the benefits granted to each voucher for a specified period only.<br>
+    <br>- <font color=#222222><b>A song voucher</b></font> allows you to use the song accompaniment as many times as the number indicated on the voucher.<br>
+    <br>- When you cancel payments, we process the cancelation in accordance with Google Play Store\'s guideline.<br>
+    <br>- You can check your history of payments in Google Play Store.<br>
+    <br>- When you are subscribed, your subscription is transferable when you switch your phone or to a different operating system. Please let us know by contacting us at verseplay.com if you have any issues.<br>
+    <br>※ All voucher can be purchased additionally while holding, and period voucher are used first, then song voucher are exhausted in order.<br>
+    ]]></Data></string>
+
+    <string name="membership_tj_footer_title">TJ Media Co., Ltd</string>
+    <string name="membership_tj_footer"><Data><![CDATA[
+    <p>Representative: Nara Yoon<br>
+    Business registration number: 130-81-44332<br>
+    e-commerce business application number: 2022-Seoul Mapo-0937<br>
+    Address: 8th floor of Sangam IT Tower, 434, World Cup Buk-ro, Mapo-gu, Seoul<br>
+    Email: cs@verseplay.com</p>
+    ]]></Data></string>
+    <string name="membership_nick_name">to %s</string>
+    <string name="membership_fail_load_purchase_info">Failed to load purchase list. \nPlease try again later.</string>
+    <string name="membership_song_count"><Data><![CDATA[<font color=#ffffff><b>%d</b></font>]]></Data> Song left</string>
+    <string name="membership_period_date"><Data><![CDATA[Expiration date<br><font color=#ffffff><b>%s</b></font>]]></Data></string>
+    <string name="membership_buy_ing_message">You already have a Period ticket.\nWant to buy an additional \"%s\"?</string>
+    <string name="membership_additional_purchases">Buy More</string>
+    <!-- [e] 멤버십 -->
+
+    <!-- [s] 투표 -->
+    <string name="vote_comment_send">Post</string>
+    <string name="str_poopup_success">Registration is complete.</string>
+    <string name="str_vote_comment_page_move">View comments</string>
+    <string name="str_vote_selected_confirm_message">Would you like to vote? \n(You can\'t change it since.)</string>
+    <string name="str_try_vote">Vote</string>
+    <string name="str_vote_disable_message">Already voted.</string>
+    <!-- [e] 투표 -->
+
+    <!-- [s] 회원 상태 알림 메시지 -->
+    <string name="member_status_dormant_notice">your account is dormant. \nPlease contact us to cancel the dormant account.</string>
+    <string name="member_status_suspend_notice">Your account is a suspended account.\nFor more information, please contact customer service.</string>
+    <string name="member_status_one_day_suspend_notice">Your account is a suspended for 1 day.\nFor more information, please contact customer service.</string>
+    <string name="member_status_one_month_suspend_notice">Your account is a suspended for 1 month.\nFor more information, please contact customer service.</string>
+    <string name="member_status_three_month_suspend_notice">Your account is a suspended for 3 month.\nFor more information, please contact customer service.</string>
+    <string name="member_status_six_month_suspend_notice">Your account is a suspended for 6 month.\nFor more information, please contact customer service.</string>
+    <string name="member_status_one_year_suspend_notice">Your account is a suspended for 1 year.\nFor more information, please contact customer service.</string>
+    <string name="change_status_fail">Failed to Data change.</string>
+    <string name="str_popup_session_re_join">The account you used has already been withdrawn. \nWould you like to re-join?</string>
+    <!-- [e] 회원 상태 알림 메시지 -->
+
+    <string name="member_contents_title">Contents</string>
+    <string name="member_followers_title">Followers</string>
+    <string name="member_following_title">Following</string>
+
+    <string name="popup_purchase_membership_firstInfo_String">If you purchase a membership, you can create SOLO, DUET, and BATTLE content and enjoy various benefits.</string>
+    <string name="popup_purchase_membership_secondInfo_String">※Membership purchase can be made at \'My Page > Settings > Membership Management\'.</string>
+
+    <string name="popup_allow_comments">Do you want to allow comments?</string>
+    <string name="popup_disallow_comments">Do you want to disallow comments?</string>
+    <string name="popup_feed_delete">Do you want to delete the feed?</string>
+    <string name="popup_change_contents">Do you want to switch this content?</string>
+
+    <string name="str_permission_denied">permission denied.</string>
+    <string name="str_show_config">Set exposure</string>
+    <string name="str_announcement">Information</string>
+    <string name="str_prohibit_notice">Contains unwholesome words. THIS EXPRESSION IS PROHIBITED BY VERSE PLAY. Repeated use may limit the use of the service.</string>
+    <string name="singing_now">Sing Now</string>
+    <string name="coupon_success">Registration is complete.</string>
+    <string name="str_report_success">Report completed.</string>
+
+    <!-- [s] 채팅 -->
+    <string name="chat_room_title">Messages</string>
+    <string name="chat_room_sub_title">recent date</string>
+    <string name="chat_send_message_hint">send message...(max 250 length)</string>
+    <string name="chat_send_message_hint_private">This User is Private.</string>
+    <string name="chat_send_message_hint_block">You blocked this User.</string>
+    <string name="chat_send_message">send</string>
+    <string name="chat_show_profile">view profile</string>
+    <string name="chat_not_read">UnRead</string>
+    <string name="chat_server_error_msg">The connection to the server has been lost.\nDo you want to reconnect?</string>
+    <string name="chat_server_retry">reconnect</string>
+    <!-- [e] 채팅 -->
+
+    <string name="str_nickname_validation">No spaces allowed.</string>
+    <string name="memberShip_footer_terms1">※ See our&#160;</string>
+    <string name="memberShip_footer_terms2">for details.</string>
+    <string name="community_private_account_popup">Private accounts can\'t create Content.</string>
+    <string name="contents_private_account">This user\'s videos are private.</string>
+    <string name="contents_private_account_sub">Videos are currently hidden.</string>
+    <string name="contents_block_account">Account Blocked.</string>
+    <string name="contents_block_account_sub">You aren\'t able to see this user\'s content.</string>
+    <string name="comment_private_account_popup">Private accounts can\'t comment or like other User\'s Video.</string>
+    <string name="message_block_account">The user is blocked. \nTo send messages, please unblock in Settings - Manage Friends(blocked accounts).</string>
+    <string name="message_private_account">You cannot send messages to users who are private.</string>
+
+    <string name="str_invalid_register_nick_name">Please enter except special characters, spaces, and emojis.</string>
+
+    <!-- [s] 서비스 점검 및 업데이트 -->
+    <string name="service_popup_check_title1">Service Maintenance \n(Regular maintenance)</string>
+    <string name="service_popup_check_title2">Service Maintenance \n(Emergency Maintenance)</string>
+    <string name="service_popup_check_title3">Service Maintenance \n(System Maintenance)</string>
+    <string name="service_popup_update_title1">Update Notice\n(Emergency Update)</string>
+    <string name="service_popup_update_title2">Update Notice\n(Feature Update)</string>
+    <string name="service_popup_update_title3">Update Notice</string>
+    <string name="service_popup_check_sub_title">Performs server maintenance to provide better service. Please note that it is difficult to use the app for a while during the maintenance time.</string>
+    <string name="service_popup_update_sub_title">To provide better service App update Please update from the app store.</string>
+    <string name="service_popup_check_bottom_notice">We will do our best to ensure that the maintenance is completed within the scheduled time.</string>
+    <string name="service_popup_update_bottom_notice">we will do our best to provide you with a more stable service.</string>
+    <string name="service_popup_check_date">Maintenance date </string>
+    <string name="service_popup_update_date">Update</string>
+    <string name="service_popup_check_content">check contents</string>
+    <string name="service_popup_update_content">reflection content</string>
+    <!-- [e] 서비스 점검 및 업데이트 -->
+
+    <!-- [s] 멤버십 이용권 콘텐츠 문구-->
+    <string name="memberShip_contents_sc">Sing a song</string>
+    <string name="memberShip_contents_sc001">3 songs</string>
+    <string name="memberShip_contents_sc002">30 songs</string>
+    <string name="memberShip_contents_sc003">100 songs</string>
+    <string name="memberShip_contents_sc004">1 month</string>
+    <string name="memberShip_contents_sc005">1 week</string>
+    <string name="memberShip_contents_sc006">1 month</string>
+    <string name="memberShip_contents_sc007">6 months</string>
+    <string name="memberShip_contents_sc008">12 months</string>
+    <string name="memberShip_contents_sc009">VP Coupon</string>
+    <string name="memberShip_contents_monthly_pass">Monthly Pass</string>
+    <string name="memberShip_contents_useTicket">Voucher</string>
+    <string name="memberShip_contents_useVipTicket">VipTicket</string>
+    <string name="get_push_set_popup">Notification permission is turned off in app settings.\nAre you sure you want to go to Settings? </string>
+    <string name="get_push_set_popup_deny_str">If you do not have notification privileges, you will not be able to use the feature.</string>
+    <string name="change_myaccount_block">Do you want to switch to an unofficial account? \nIf you switch to an unofficial account, your items and points earned in SingPass will be reset and will be removed from rankings. \nIf you\'re sure, click to OK bottons.</string>
+
+    <!-- [e] 멤버십 이용권 콘텐츠 문구-->
+    <string name="str_lounge_cancle">Unregister</string>
+
+</resources>

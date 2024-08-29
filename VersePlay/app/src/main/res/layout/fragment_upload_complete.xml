@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.verse.app.contants.MediaType" />
+        <import type="android.view.View" />
+
+        <import type="com.verse.app.contants.VideoUploadPageType" />
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.videoupload.viewmodel.VideouploadViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/upload_completed_constraint_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_close"
+            android:layout_width="@dimen/size_60"
+            android:layout_height="@dimen/size_52"
+            android:paddingLeft="@dimen/size_20"
+            android:paddingTop="@dimen/size_16"
+            android:paddingRight="@dimen/size_20"
+            android:paddingBottom="@dimen/size_16"
+            android:src="@drawable/ic_sing_close_b"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:turtleClick="@{()->viewModel.onClose()}" />
+
+        <RelativeLayout
+            android:id="@+id/upload_completed_relative_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_124"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/upload_completed_desc_relative_layout"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:ellipsize="end"
+                android:visibility="@{!viewModel.encodeData.isOff ? View.VISIBLE : View.GONE, default = visible}"
+                android:fontFamily="@font/font_noto_sans_kr_medium"
+                android:includeFontPadding="false"
+                android:singleLine="true"
+                android:text="@string/upload_completed"
+                android:textColor="@color/color_222222"
+                android:textSize="@dimen/size_28" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/upload_completed_desc_relative_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_goneMarginTop="@dimen/size_124"
+            android:layout_marginTop="@dimen/size_20"
+            app:layout_constraintBottom_toTopOf="@+id/upload_completed_star_relative_layout"
+            app:layout_constraintTop_toBottomOf="@+id/upload_completed_relative_layout">
+
+            <LinearLayout
+                android:id="@+id/upload_completed_nick_linear_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/size_40"
+                android:layout_marginRight="@dimen/size_40"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/upload_completed_nick"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:ellipsize="end"
+                    android:includeFontPadding="false"
+                    android:fontFamily="@font/font_noto_sans_kr_medium"
+                    android:textColor="@color/color_222222"
+                    android:textSize="@dimen/size_15"
+                    app:htmlText="@{viewModel.pageType == VideoUploadPageType.SING_CONTENTS ? viewModel.encodeData.isOff ? @string/upload_completed_nick2(viewModel.nikName) : @string/upload_completed_nick1(viewModel.nikName) : @string/upload_completed_nick3(viewModel.nikName)}"
+                    tools:text="VersePlay님께서dddddddddddddddddddddddddddddddddddddddddd" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/upload_completed_star_relative_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/upload_completed_desc_relative_layout">
+
+            <LinearLayout
+                android:id="@+id/upload_completed_album_linear_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_44"
+                android:layout_centerHorizontal="true"
+                android:orientation="horizontal"
+                android:visibility="@{viewModel.pageType == VideoUploadPageType.ALBUM, default=gone}">
+
+                <ImageView
+                    android:id="@+id/album_completed_image_veiw"
+                    android:layout_width="@dimen/size_60"
+                    android:layout_height="@dimen/size_60"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/upload_completed_check"
+                    tools:src="@drawable/upload_completed_check" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/upload_completed_star_point_linear_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_20"
+                android:layout_centerHorizontal="true"
+                tools:visibility="visible"
+                android:orientation="horizontal"
+                android:visibility="@{viewModel.pageType == VideoUploadPageType.SING_CONTENTS, default=gone}">
+
+                <ImageView
+                    android:id="@+id/star_point_image_veiw1"
+                    android:layout_width="@dimen/size_58"
+                    android:layout_height="@dimen/size_58"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    android:src="@{viewModel.encodeData.score > 0 ? @drawable/star_point_full : @drawable/star_point_none ,default=@drawable/star_point_none}"
+                    tools:src="@drawable/star_point_full" />
+
+                <ImageView
+                    android:id="@+id/star_point_image_veiw2"
+                    android:layout_width="@dimen/size_58"
+                    android:layout_height="@dimen/size_58"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    android:src="@{viewModel.encodeData.score > 1 ? @drawable/star_point_full : @drawable/star_point_none ,default=@drawable/star_point_none}"
+                    tools:src="@drawable/star_point_full" />
+
+                <ImageView
+                    android:id="@+id/star_point_image_veiw3"
+                    android:layout_width="@dimen/size_58"
+                    android:layout_height="@dimen/size_58"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitXY"
+                    android:src="@{viewModel.encodeData.score > 2 ? @drawable/star_point_full : @drawable/star_point_none ,default=@drawable/star_point_none}"
+                    tools:src="@drawable/star_point_none" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/upload_completed_star_grade_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/upload_completed_star_point_linear_layout"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/size_25"
+                android:ellipsize="end"
+                android:fontFamily="@font/font_noto_sans_kr_medium"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="@string/upload_completed_star_grade"
+                android:textColor="@color/color_8c8c8c"
+                android:textSize="@dimen/size_18"
+                android:visibility="@{viewModel.pageType == VideoUploadPageType.SING_CONTENTS}" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/upload_completed_star_grade_text_view"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/size_44"
+                android:ellipsize="end"
+                android:fontFamily="@font/font_noto_sans_kr_light"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="@string/upload_completed_star_desc"
+                android:textColor="@color/color_222222"
+                android:textSize="@dimen/size_14"
+                android:visibility="@{viewModel.pageType == VideoUploadPageType.SING_CONTENTS}" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/button_confirm_relative_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_52"
+            android:layout_alignParentBottom="true"
+            android:background="@color/color_2fc2ff"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:turtleClick="@{()->viewModel.onClose()}">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/noto_sans_kr_medium"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="@string/str_confirm"
+                android:textColor="@color/white"
+                android:textSize="@dimen/size_16" />
+
+        </RelativeLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

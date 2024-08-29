@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="requestManager"
+            type="com.bumptech.glide.RequestManager" />
+
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.sing.viewmodel.SingViewModel" />
+
+        <variable
+            name="data"
+            type="com.verse.app.model.banuba.EffectWrapper" />
+
+        <variable
+            name="position"
+            type="java.lang.Integer" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/size_8">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/effectImageView"
+            android:layout_width="@dimen/size_50"
+            android:layout_height="@dimen/size_50"
+            android:elevation="@dimen/size_4"
+            android:padding="@dimen/size_2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+            app:strokeColor="@{data.isSelected &amp;&amp; data.effect != 0 ? @color/color_ff3d33 :  @color/color_00000000}"
+            app:strokeWidth="@dimen/size_2"
+            tools:ignore="ContentDescription"
+            tools:src="@drawable/ic_help" />
+
+        <ImageView
+            android:id="@+id/effectDownloadBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="@dimen/size_4"
+            android:src="@drawable/ic_download_btn"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="@+id/effectImageView"
+            app:layout_constraintEnd_toEndOf="@+id/effectImageView"
+            tools:ignore="ContentDescription" />
+
+        <!--        <TextView
+                    android:id="@+id/effectTitleView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="@+id/effectImageView"
+                    app:layout_constraintStart_toStartOf="@+id/effectImageView"
+                    app:layout_constraintTop_toTopOf="parent" />-->
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/downloadingAnimationView"
+            android:layout_width="@dimen/size_16"
+            android:layout_height="@dimen/size_16"
+            android:elevation="@dimen/size_4"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/effectImageView"
+            app:layout_constraintEnd_toEndOf="@+id/effectImageView"
+            app:layout_constraintStart_toStartOf="@+id/effectImageView"
+            app:layout_constraintTop_toTopOf="@+id/effectImageView"
+            app:lottie_autoPlay="false"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/downloading_effect_animation" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

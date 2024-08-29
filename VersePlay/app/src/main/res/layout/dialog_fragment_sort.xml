@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        tools:background="@color/white">
+
+        <com.verse.app.widget.views.CustomTextView
+            android:id="@+id/line_text_view"
+            android:layout_width="@dimen/size_36"
+            android:layout_height="@dimen/size_5"
+            android:layout_marginTop="@dimen/size_12"
+            app:textViewBgColor="@color/color_d9d9d9"
+            app:textViewCorner="@dimen/size_20" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvContents"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/size_40"
+            android:layout_marginTop="@dimen/size_36"
+            android:layout_marginRight="@dimen/size_40"
+            android:focusable="false"
+            tools:listitem="@layout/item_sort"
+            tools:itemCount="3"
+            android:splitMotionEvents="false"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+        <androidx.legacy.widget.Space
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/size_40" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</layout>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.mypage.viewmodel.TermsViewModel" />
+
+    </data>
+
+    <com.verse.app.ui.header.HeaderView
+        android:id="@+id/v_header"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        app:headerType="back_title">
+
+        <com.verse.app.ui.webview.CustomWebView
+            android:id="@+id/terms_webview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/size_60"
+            android:background="@android:color/transparent"
+            app:layout_constraintTop_toBottomOf="@+id/view" />
+
+    </com.verse.app.ui.header.HeaderView>
+
+</layout>

@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="requestManager"
+            type="com.bumptech.glide.RequestManager" />
+
+        <import type="com.verse.app.contants.FragmentType" />
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.sing.viewmodel.SingViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.verse.app.widget.views.CustomConstraintLayout
+            android:id="@+id/contents_constraint_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutBgColor="@color/color_f9f9f9">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_header"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/v_line_1"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_weight="12">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_close"
+                    android:layout_width="@dimen/size_60"
+                    android:layout_height="@dimen/size_52"
+                    android:paddingLeft="@dimen/size_20"
+                    android:paddingTop="@dimen/size_16"
+                    android:paddingRight="@dimen/size_16"
+                    android:paddingBottom="@dimen/size_16"
+                    android:src="@drawable/ic_sing_close_b"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:turtleClick="@{()->viewModel.onClose()}" />
+
+                <com.verse.app.widget.views.CustomTextView
+                    android:id="@+id/tv_song_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/size_60"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/font_noto_sans_kr_medium"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:maxLines="2"
+                    android:text="@{viewModel.songMainData.songNm}"
+                    android:textSize="@dimen/size_18"
+                    app:layout_constraintBottom_toBottomOf="@+id/iv_close"
+                    app:layout_constraintLeft_toRightOf="@+id/iv_close"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/iv_close"
+                    app:layout_constraintVertical_chainStyle="packed"
+                    app:textViewBgColor="@color/color_00000000"
+                    app:textViewTxtColor="@color/color_222222"
+                    tools:text="Easy Ft." />
+
+                <com.verse.app.widget.views.CustomTextView
+                    android:id="@+id/tv_singer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/size_60"
+                    android:layout_marginTop="@dimen/size_2"
+                    android:layout_marginRight="@dimen/size_60"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/font_noto_sans_kr_light"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:maxLines="2"
+                    android:text="@{viewModel.songMainData.artNm}"
+                    android:textSize="@dimen/size_15"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_song_name"
+                    app:textViewBgColor="@color/color_00000000"
+                    app:textViewTxtColor="@color/color_8c8c8c"
+                    tools:text="Easy Ft." />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:id="@+id/v_line_1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/cl_contents"
+                app:layout_constraintTop_toBottomOf="@+id/cl_header"
+                app:layout_constraintVertical_weight="1" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_contents"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/v_line_2"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/v_line_1"
+                app:layout_constraintVertical_weight="26.5">
+
+
+                <View
+                    android:id="@+id/v_empty_left"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/size_1"
+                    app:layout_constraintHorizontal_weight="28"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@+id/cl_album_jacket"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/v_empty_right"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/size_1"
+                    app:layout_constraintHorizontal_weight="28"
+                    app:layout_constraintLeft_toRightOf="@+id/cl_album_jacket"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.verse.app.widget.views.CustomConstraintLayout
+                    android:id="@+id/cl_album_jacket"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    app:layoutCorner="@dimen/size_18"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintHorizontal_weight="44.5"
+                    app:layout_constraintLeft_toRightOf="@+id/v_empty_left"
+                    app:layout_constraintRight_toLeftOf="@+id/v_empty_right"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/iv_album_jacket"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:adjustViewBounds="true"
+                        android:scaleType="centerCrop"
+                        app:imageUrl="@{viewModel.songMainData.albImgPath}"
+                        app:requestManager="@{requestManager}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintDimensionRatio="1:1"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:placeholder="@{@drawable/ic_album_default}"
+                        tools:src="@drawable/ic_album_default" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_song_info"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:background="@color/color_00000000"
+                        android:visibility="@{viewModel.songInfoState}"
+                        app:layout_constraintBottom_toBottomOf="@+id/iv_album_jacket"
+                        app:layout_constraintLeft_toLeftOf="@+id/iv_album_jacket"
+                        app:layout_constraintRight_toRightOf="@+id/iv_album_jacket"
+                        app:layout_constraintTop_toTopOf="@+id/iv_album_jacket">
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:alpha="0.7"
+                            android:background="@color/black"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:paddingLeft="@dimen/size_10"
+                            android:paddingTop="@dimen/size_20"
+                            android:paddingRight="@dimen/size_10"
+                            android:paddingBottom="@dimen/size_20"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <TextView
+                                android:id="@+id/tv_song_info"
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:fontFamily="@font/font_noto_sans_kr_light"
+                                android:gravity="center_vertical"
+                                android:includeFontPadding="false"
+                                android:lineSpacingExtra="@dimen/size_10"
+                                android:text="@string/str_song_info_title"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/size_14"
+                                app:layout_constraintBottom_toTopOf="@+id/tv_song_info_lyricist"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintRight_toRightOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintVertical_weight="1" />
+
+                            <TextView
+                                android:id="@+id/tv_song_info_lyricist"
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:fontFamily="@font/font_noto_sans_kr_medium"
+                                android:gravity="center_vertical"
+                                android:includeFontPadding="false"
+                                android:lineSpacingExtra="@dimen/size_10"
+                                android:text="@string/str_song_info_lyricist"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/size_10"
+                                app:layout_constraintBottom_toTopOf="@+id/tv_song_info_composer"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/tv_song_info"
+                                app:layout_constraintVertical_weight="1" />
+
+                            <TextView
+                                android:id="@+id/tv_song_info_composer"
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:fontFamily="@font/font_noto_sans_kr_medium"
+                                android:gravity="center_vertical"
+                                android:includeFontPadding="false"
+                                android:lineSpacingExtra="@dimen/size_10"
+                                android:text="@string/str_song_info_composer"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/size_10"
+                                app:layout_constraintBottom_toTopOf="@+id/tv_song_info_alb_div_nm"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/tv_song_info_lyricist"
+                                app:layout_constraintVertical_weight="1" />
+
+                            <TextView
+                                android:id="@+id/tv_song_info_alb_div_nm"
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:fontFamily="@font/font_noto_sans_kr_medium"
+                                android:gravity="center_vertical"
+                                android:includeFontPadding="false"
+                                android:lineSpacingExtra="@dimen/size_10"
+                                android:text="@string/str_song_info_alb_div_nm"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/size_10"
+                                app:layout_constraintBottom_toTopOf="@+id/tv_song_info_alb_dis_nm"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/tv_song_info_composer"
+                                app:layout_constraintVertical_weight="1" />
+
+                            <TextView
+                                android:id="@+id/tv_song_info_alb_dis_nm"
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:fontFamily="@font/font_noto_sans_kr_medium"
+                                android:gravity="center_vertical"
+                                android:includeFontPadding="false"
+                                android:lineSpacingExtra="@dimen/size_10"
+                                android:text="@string/str_song_info_alb_dis_nm"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/size_10"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintLeft_toLeftOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/tv_song_info_alb_div_nm"
+                                app:layout_constraintVertical_weight="1" />
+
+                            <TextView
+                                android:id="@+id/tv_song_info_lyricist_val"
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_marginLeft="@dimen/size_5"
+                                android:ellipsize="end"
+                                android:fontFamily="@font/font_noto_sans_kr_light"
+                                android:gravity="center_vertical"
+                                android:includeFontPadding="false"
+                                android:lineSpacingExtra="@dimen/size_10"
+                                android:maxLines="1"
+                                android:text="@{viewModel.songMainData.lyrNm}"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/size_10"
+                                app:layout_constraintBottom_toTopOf="@+id/tv_song_info_composer"
+                                app:layout_constraintLeft_toRightOf="@+id/tv_song_info_lyricist"
+                                app:layout_constraintTop_toBottomOf="@+id/tv_song_info"
+                                app:layout_constraintVertical_weight="1"
+                                tools:text="Vince , KUSH , VVN , TEDDY" />
+
+                            <TextView
+                                android:id="@+id/tv_song_info_composer_val"
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_marginLeft="@dimen/size_5"
+                                android:ellipsize="end"
+                                android:fontFamily="@font/font_noto_sans_kr_light"
+                                android:gravity="center_vertical"
+                                android:includeFontPadding="false"
+                                android:lineSpacingExtra="@dimen/size_10"
+                                android:maxLines="1"
+                                android:text="@{viewModel.songMainData.comNm}"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/size_10"
+                                app:layout_constraintBottom_toTopOf="@+id/tv_song_info_alb_div_nm"
+                                app:layout_constraintLeft_toRightOf="@+id/tv_song_info_composer"
+                                app:layout_constraintTop_toBottomOf="@+id/tv_song_info_lyricist"
+                                app:layout_constraintVertical_weight="1"
+                                tools:text="24 , VVN , KUSH" />
+
+                            <TextView
+                                android:id="@+id/tv_song_info_alb_div_nm_val"
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_marginLeft="@dimen/size_5"
+                                android:ellipsize="end"
+                                android:fontFamily="@font/font_noto_sans_kr_light"
+                                android:gravity="center_vertical"
+                                android:includeFontPadding="false"
+                                android:lineSpacingExtra="@dimen/size_10"
+                                android:maxLines="1"
+                                android:text="@{viewModel.songMainData.albDivNm}"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/size_10"
+                                app:layout_constraintBottom_toTopOf="@+id/tv_song_info_alb_dis_nm"
+                                app:layout_constraintLeft_toRightOf="@+id/tv_song_info_alb_div_nm"
+                                app:layout_constraintTop_toBottomOf="@+id/tv_song_info_composer"
+                                app:layout_constraintVertical_weight="1"
+                                tools:text="YG ENTERTAINMENT" />
+
+                            <TextView
+                                android:id="@+id/tv_song_info_alb_dis_nm_val"
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_marginLeft="@dimen/size_5"
+                                android:ellipsize="end"
+                                android:fontFamily="@font/font_noto_sans_kr_light"
+                                android:gravity="center_vertical"
+                                android:includeFontPadding="false"
+                                android:lineSpacingExtra="@dimen/size_10"
+                                android:maxLines="1"
+                                android:text="@{viewModel.songMainData.albDistNm}"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/size_10"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintLeft_toRightOf="@+id/tv_song_info_alb_dis_nm"
+                                app:layout_constraintTop_toBottomOf="@+id/tv_song_info_alb_div_nm"
+                                app:layout_constraintVertical_weight="1"
+                                tools:text="OOOO" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/size_30"
+                        android:layout_height="@dimen/size_30"
+                        android:src="@drawable/ic_help_em"
+                        app:layout_constraintRight_toRightOf="@+id/iv_album_jacket"
+                        app:layout_constraintTop_toTopOf="@+id/iv_album_jacket"
+                        app:turtleClick="@{()-> viewModel.onShowSongInfo()}" />
+
+                </com.verse.app.widget.views.CustomConstraintLayout>
+
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/size_44"
+                    android:layout_height="@dimen/size_44"
+                    android:src="@drawable/ic_song_list"
+                    app:layout_constraintBottom_toBottomOf="@+id/cl_album_jacket"
+                    app:layout_constraintCircle="@+id/cl_album_jacket"
+                    app:layout_constraintCircleAngle="133"
+                    android:visibility="@{viewModel.songMainData.isRlateSong}"
+                    app:turtleClick="@{()->viewModel.moveToRelatedSoundSource()}"
+                    app:layout_constraintCircleRadius="@dimen/size_107"
+                    app:layout_constraintLeft_toLeftOf="@+id/cl_album_jacket"
+                    app:layout_constraintRight_toRightOf="@+id/cl_album_jacket"
+                    app:layout_constraintTop_toTopOf="@+id/cl_album_jacket" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:id="@+id/v_line_2"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/cl_part"
+                app:layout_constraintTop_toBottomOf="@+id/cl_contents"
+                app:layout_constraintVertical_weight="3" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_part"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/v_line_2"
+                app:layout_constraintVertical_weight="58">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_navi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_square_round_tl_tr"
+                    android:paddingLeft="@dimen/size_10"
+                    android:paddingRight="@dimen/size_10"
+                    app:layout_constraintBottom_toTopOf="@+id/vp_part"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/iv_sing_type"
+                        android:layout_width="@dimen/size_32"
+                        android:layout_height="@dimen/size_32"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintHorizontal_chainStyle="packed"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toLeftOf="@+id/tv_sing_type"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:singType="@{viewModel.curSingType}"
+                        app:viewText="@{tvSingType}" />
+
+                    <TextView
+                        android:id="@+id/tv_sing_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/noto_sans_kr_bold"
+                        android:includeFontPadding="false"
+                        android:textColor="@color/color_222222"
+                        android:textSize="@dimen/size_20"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toRightOf="@+id/iv_sing_type"
+                      app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="솔로" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/iv_prev"
+                        android:layout_width="@dimen/size_74"
+                        android:layout_height="86dp"
+                        android:onClick="@{()->viewModel.moveTopViewPager(true)}"
+                        android:paddingLeft="@dimen/size_30"
+                        android:paddingTop="@dimen/size_18"
+                        android:paddingRight="@dimen/size_30"
+                        android:paddingBottom="@dimen/size_18"
+                        android:src="@drawable/ic_sing_prev"
+                        app:inVisibility="@{viewModel.currentPos != 0}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintDimensionRatio="22:36"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:visibility="visible" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/iv_next"
+                        android:layout_width="@dimen/size_74"
+                        android:layout_height="86dp"
+                        android:onClick="@{()->viewModel.moveTopViewPager(false)}"
+                        android:paddingLeft="@dimen/size_30"
+                        android:paddingTop="@dimen/size_18"
+                        android:paddingRight="@dimen/size_30"
+                        android:paddingBottom="@dimen/size_18"
+                        android:src="@drawable/ic_sing_next"
+                        app:inVisibility="@{viewModel.currentPos &lt; viewModel.pageList.size()-1}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintDimensionRatio="22:36"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:visibility="visible" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/vp_part"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:fontFamily="@font/font_noto_sans_kr_bold"
+                    android:includeFontPadding="false"
+                    android:orientation="horizontal"
+                    app:dataList="@{viewModel.pageList}"
+                    app:itemType="@{FragmentType.PART_INFO_VIEW}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cl_navi"
+                    app:onPageState="@{(state) -> viewModel.onTopPageState(state)}"
+                    app:position="@={viewModel.currentPos}"
+                    app:swipeEnable="@{viewModel.isVpSwipe}"
+                    app:viewModel="@{viewModel}"
+                    tools:background="@color/color_eaeaea" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.verse.app.widget.views.CustomConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

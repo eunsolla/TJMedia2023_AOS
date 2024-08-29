@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.verse.app.contants.ListPagedItemType" />
+
+        <import type="com.verse.app.contants.AppData" />
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.lounge.detail.LoungeDetailFragmentViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clHeader"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_52"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/size_60"
+                android:layout_height="match_parent"
+                android:paddingLeft="@dimen/size_20"
+                android:paddingRight="@dimen/size_20"
+                android:src="@drawable/ic_sing_close_b"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:turtleClick="@{()->viewModel.onFinish()}" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/font_noto_sans_kr_medium"
+                android:gravity="center_vertical"
+                android:includeFontPadding="false"
+                android:text="@string/community_tab_lounge"
+                android:textColor="@color/color_222222"
+                android:textSize="@dimen/size_18"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivModify"
+                android:layout_width="@dimen/size_60"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/font_noto_sans_kr_medium"
+                android:gravity="center_vertical"
+                android:includeFontPadding="false"
+                android:paddingLeft="@dimen/size_20"
+                android:paddingRight="@dimen/size_20"
+                android:src="@drawable/ic_more"
+                android:visibility="@{viewModel.isModify()}"
+                app:layout_constraintRight_toRightOf="parent"
+                app:turtleClick="@{()->viewModel.onModify()}"
+                tools:visibility="visible" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvContents"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:focusable="false"
+            android:splitMotionEvents="false"
+            app:dataList="@{viewModel.dataList}"
+            app:itemType="@{ListPagedItemType.NONE}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toTopOf="@+id/clBottom"
+            app:layout_constraintTop_toBottomOf="@+id/clHeader"
+            app:viewModel="@{viewModel}"
+            tools:itemCount="3"
+            tools:listitem="@layout/item_lounge_modify_image" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clBottom"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_52"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="@dimen/size_20"
+                app:layout_constraintRight_toRightOf="parent">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    app:turtleClick="@{()->viewModel.onLikeLounge()}"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/size_16"
+                        android:layout_height="@dimen/size_14"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/selector_like_comment"
+                        app:isSelected="@{viewModel.likeeYn.equalsIgnoreCase(AppData.Y_VALUE)}" />
+
+                    <TextView
+                        android:id="@+id/tv_like_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/size_10"
+                        android:fontFamily="@font/font_noto_sans_kr_medium"
+                        android:gravity="center_vertical"
+                        android:includeFontPadding="false"
+                        android:text="@{viewModel.likeCountTxt}"
+                        android:textColor="@color/color_707070"
+                        android:textSize="@dimen/size_12"
+                        tools:text="2000" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    app:turtleClick="@{()->viewModel.moveToCommentPage()}"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/size_17"
+                        android:layout_height="@dimen/size_17"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/size_12"
+                        android:src="@drawable/ic_comment_normal_c" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_comment_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/size_10"
+                        android:fontFamily="@font/font_noto_sans_kr_medium"
+                        android:gravity="center_vertical"
+                        android:includeFontPadding="false"
+                        android:text="@{viewModel.commentCountText}"
+                        android:textColor="@color/color_707070"
+                        android:textSize="@dimen/size_12"
+                        tools:text="2" />
+
+                </LinearLayout>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

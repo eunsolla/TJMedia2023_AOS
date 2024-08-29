@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@android:id/background">
+        <shape
+            android:shape="oval"
+            android:useLevel="false">
+            <gradient
+                android:angle="315"
+                android:endColor="#000080"
+                android:startColor="#2fc2ff" />
+        </shape>
+    </item>
+
+    <!-- innerRadiusRatio (바깥원 지름 / 내부 원 반지름) -->
+    <!-- thicknessRatio (바깥원 지름 / 링 두깨) -->
+    <item android:id="@android:id/progress">
+        <rotate
+            android:fromDegrees="270"
+            android:toDegrees="270">
+            <shape
+                android:angle="0"
+                android:innerRadiusRatio="2.3333"
+                android:shape="ring"
+                android:thicknessRatio="14">
+                <solid android:color="#33FFFFFF" />
+            </shape>
+        </rotate>
+    </item>
+
+</layer-list>

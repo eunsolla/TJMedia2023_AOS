@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.verse.app.contants.ListPagedItemType" />
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.search.viewmodel.SearchResultPopularViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:background="@color/white">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="@{viewModel.isContentsShowEvent,default=gone}"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- 노래 영역 -->
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="@{viewModel.isAllEmpty() == false,default=gone}"
+                    tools:visibility="visible">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/size_63">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/font_noto_sans_kr_medium"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="@dimen/size_20"
+                            android:textSize="@dimen/size_18"
+                            android:text="@string/search_result_popular_song_title"
+                            android:textColor="@color/color_222222"
+                            app:layout_constraintLeft_toLeftOf="parent" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/font_noto_sans_kr_medium"
+                            android:gravity="center_vertical"
+                            android:textSize="@dimen/size_13"
+                            android:paddingRight="@dimen/size_20"
+                            android:text="@string/search_result_more_title"
+                            android:textColor="@color/color_8c8c8c"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:turtleClick="@{()->viewModel.onMoveMrTab()}" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:focusable="false"
+                            android:nestedScrollingEnabled="false"
+                            android:splitMotionEvents="false"
+                            app:dataList="@{viewModel.songList}"
+                            app:itemType="@{ListPagedItemType.ITEM_SEARCH_POPULAR_SONG}"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:viewModel="@{viewModel}"
+                            tools:itemCount="3"
+                            tools:listitem="@layout/item_search_popular_song"
+                            tools:visibility="visible" />
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical"
+                            android:visibility="@{viewModel.songList.size() == 0,default=gone}"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:visibility="visible">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="@dimen/size_50"
+                                android:layout_height="@dimen/size_50"
+                                android:layout_marginTop="@dimen/size_40"
+                                android:src="@drawable/search" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/size_20"
+                                android:fontFamily="@font/font_noto_sans_kr_medium"
+                                android:includeFontPadding="false"
+                                android:text="@string/search_no_result_data"
+                                android:textColor="@color/color_707070"
+                                android:textSize="@dimen/size_18" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/size_20"
+                                android:fontFamily="@font/font_noto_sans_kr_light"
+                                android:gravity="center_horizontal"
+                                android:includeFontPadding="false"
+                                android:text="@string/search_help_message"
+                                android:textColor="@color/color_8c8c8c"
+                                android:textSize="@dimen/size_15" />
+
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <!-- 관련 게시물 -->
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_20"
+                    android:orientation="vertical"
+                    android:visibility="@{viewModel.isAllEmpty() == false,default=gone}"
+                    tools:visibility="visible">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/size_63">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/font_noto_sans_kr_medium"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="@dimen/size_20"
+                            android:textSize="@dimen/size_18"
+                            android:text="@string/search_result_related_posts_title"
+                            android:textColor="@color/color_222222"
+                            app:layout_constraintLeft_toLeftOf="parent" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/font_noto_sans_kr_medium"
+                            android:gravity="center_vertical"
+                            android:paddingRight="@dimen/size_20"
+                            android:textSize="@dimen/size_13"
+                            android:text="@string/search_result_more_title"
+                            android:textColor="@color/color_8c8c8c"
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:turtleClick="@{()->viewModel.onMoveVideoTab()}" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:focusable="false"
+                            android:nestedScrollingEnabled="false"
+                            android:splitMotionEvents="false"
+                            app:emptyView="@{llEmpty}"
+                            app:itemType="@{ListPagedItemType.ITEM_SEARCH_CONTENT}"
+                            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:pagedList="@{viewModel.relateFeedList}"
+                            app:spanCount="3"
+                            app:viewModel="@{viewModel}"
+                            tools:itemCount="4"
+                            tools:listitem="@layout/item_search_video" />
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:id="@+id/llEmpty"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical"
+                            android:visibility="gone"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:visibility="visible">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="@dimen/size_50"
+                                android:layout_height="@dimen/size_50"
+                                android:layout_marginTop="@dimen/size_40"
+                                android:src="@drawable/search" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/size_20"
+                                android:fontFamily="@font/font_noto_sans_kr_medium"
+                                android:includeFontPadding="false"
+                                android:text="@string/search_no_result_data"
+                                android:textColor="@color/color_707070"
+                                android:textSize="@dimen/size_18" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/size_20"
+                                android:fontFamily="@font/font_noto_sans_kr_light"
+                                android:gravity="center_horizontal"
+                                android:includeFontPadding="false"
+                                android:text="@string/search_help_message"
+                                android:textColor="@color/color_8c8c8c"
+                                android:textSize="@dimen/size_15" />
+
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <!-- 전체 검색이 없는 경우 -->
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:visibility="@{viewModel.isAllEmpty(),default=gone}"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:visibility="gone">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/size_50"
+                        android:layout_height="@dimen/size_50"
+                        android:layout_marginTop="@dimen/size_40"
+                        android:src="@drawable/search" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/size_20"
+                        android:fontFamily="@font/font_noto_sans_kr_medium"
+                        android:includeFontPadding="false"
+                        android:text="@string/search_no_result_data"
+                        android:textColor="@color/color_707070"
+                        android:textSize="@dimen/size_18" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/size_20"
+                        android:fontFamily="@font/font_noto_sans_kr_light"
+                        android:gravity="center_horizontal"
+                        android:includeFontPadding="false"
+                        android:text="@string/search_help_message"
+                        android:textColor="@color/color_8c8c8c"
+                        android:textSize="@dimen/size_15" />
+
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

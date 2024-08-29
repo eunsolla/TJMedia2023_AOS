@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="color_007eff">#007eff</color>
+    <color name="color_00000000">#00000000</color>
+    <color name="color_ff0000">#ff0000</color>
+    <color name="color_ff3d33">#ff3d33</color>
+    <color name="color_87ff01">#87ff01</color>
+    <color name="color_ffd800">#ffd800</color>
+    <color name="color_161616">#161616</color>
+    <color name="color_00e0ff">#00e0ff</color>
+    <color name="color_adadad">#adadad</color>
+    <color name="color_8c8c8c">#8c8c8c</color>
+    <color name="color_222222">#222222</color>
+    <color name="color_CC222222">#CC222222</color>
+    <color name="color_eaeaea">#eaeaea</color>
+    <color name="color_f9f9f9">#f9f9f9</color>
+    <color name="color_d9d9d9">#d9d9d9</color>
+    <color name="color_333333">#333333</color>
+    <color name="color_424242">#424242</color>
+    <color name="color_4D000000_30">#4D000000</color>
+    <color name="color_66000000_40">#66000000</color>
+    <color name="color_80000000_50">#80000000</color>
+    <color name="color_99000000_60">#99000000</color>
+    <color name="color_B3000000_70">#B3000000</color>
+    <color name="color_CC000000_80">#CC000000</color>
+    <color name="color_E6000000_90">#E6000000</color>
+    <color name="color_B3161616_70">#B3161616</color>
+    <color name="color_cc2fc2ff">#cc2fc2ff</color>
+    <color name="color_00e7ff">#00e7ff</color>
+    <color name="color_ffa8ff">#ffa8ff</color>
+    <color name="color_56ff94">#56ff94</color>
+    <color name="color_03ff20">#03ff20</color>
+    <color name="color_23ceb8">#23ceb8</color>
+    <color name="color_707070">#707070</color>
+    <color name="color_ff8a01">#ff8a01</color>
+    <color name="color_034034">#034034</color>
+    <color name="color_140140">#140140</color>
+    <color name="color_ff6f0f">#ff6f0f</color>
+
+    <!-- tutorial -->
+    <color name="color_2fc2ff">#2fc2ff</color>
+    <color name="color_111111">#111111</color>
+    <color name="color_767676">#767676</color>
+    <color name="color_cccccc">#cccccc</color>
+    <color name="color_f4f4f4">#f4f4f4</color>
+
+    <color name="color_4d91ff">#4d91ff</color>
+
+    <!-- mypage send feedback -->
+    <color name="mypage_send_feedback_background_color">#161616</color>
+    <color name="mypage_send_feedback_title_text_color">#ffffff</color>
+    <color name="mypage_send_feedback_send_btn_text_color">#ffd800</color>
+    <color name="mypage_send_feedback_contents_text_color">#ffffff</color>
+    <color name="mypage_send_feedback_kinds_text_color">#ffffff</color>
+    <color name="mypage_send_feedback_load_file_place_background_color">#525b68</color>
+    <color name="mypage_send_feedback_email_address_border_color">#424242</color>
+    <color name="mypage_send_feedback_email_address_text_color">#ffffff</color>
+    <color name="mypage_send_feedback_format_info_text_color">#8c8c8c</color>
+    <color name="mypage_send_feedback_file_name_text_color">#ffffff</color>
+    <color name="mypage_send_feedback_email_address_to_answer_text_color">#ffffff</color>
+    <color name="mypage_send_feedback_contact_type_text_color">#ffffff</color>
+    <color name="mypage_send_feedback_before_attach_image_background_color">#000000</color>
+    <color name="mypage_send_feedback_after_attach_image_background_color">#525b68</color>
+    <color name="mypage_send_feedback_attach_image_text_color">#8c8c8c</color>
+    <color name="mypage_send_feedback_uploaded_file_name_text_color">#ffffff</color>
+    <color name="mypage_edit_email_complete_text_color_disable">#8c8c8c</color>
+    <color name="mypage_edit_email_complete_text_color_enable">#ffd800</color>
+
+    <!-- The color black, equivalent to 0xff000000 -->
+    <color name="ffblack">#ff000000</color>
+
+</resources>

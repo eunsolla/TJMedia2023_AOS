@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="com.verse.app.contants.AppData" />
+
+        <variable
+            name="position"
+            type="java.lang.Integer" />
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.singpass.viewmodel.SingPassDashBoardSeasonViewModel" />
+
+        <variable
+            name="data"
+            type="com.verse.app.model.singpass.MissionItemData" />
+    </data>
+
+    <com.verse.app.widget.views.CustomConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layoutBgColor="@color/white">
+
+        <com.verse.app.widget.views.CustomConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_44"
+            android:paddingTop="@dimen/size_4"
+            android:paddingBottom="@dimen/size_4"
+            app:layoutBgColor="@color/white"
+            app:turtleClick="@{() -> viewModel.selectedMission(data)}">
+
+            <com.verse.app.widget.views.CustomTextView
+                android:id="@+id/tv_mission"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/size_20"
+                android:ellipsize="end"
+                android:fontFamily="@font/noto_sans_kr_medium"
+                android:lines="1"
+                android:text="@{@string/season_sing_pass_mission_item(data.miMngNm, data.bfPoint)}"
+                android:textSize="@dimen/size_16"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/iv_mission_completed"
+                app:layout_constraintTop_toTopOf="parent"
+                app:textViewBgColor="@color/color_00000000"
+                app:textViewClickEffect="false"
+                app:isSelected="@{data.fgCompletedYn.equalsIgnoreCase(AppData.N_VALUE)}"
+                app:textViewDisableTxtColor="@color/color_8c8c8c"
+                app:textViewTxtColor="@color/color_222222" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_mission_completed"
+                android:layout_width="@dimen/size_36"
+                android:layout_height="@dimen/size_36"
+                app:strokeColor="@null"
+                android:src='@{data.fgCompletedYn.equals(AppData.Y_VALUE) ? @drawable/ic_mission_completed : @drawable/ic_mission_not_completed, default=@drawable/ic_mission_not_completed}'
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </com.verse.app.widget.views.CustomConstraintLayout>
+    </com.verse.app.widget.views.CustomConstraintLayout>
+</layout>

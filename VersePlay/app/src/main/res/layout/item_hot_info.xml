@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="requestManager"
+            type="com.bumptech.glide.RequestManager" />
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.song.viewmodel.SongMainViewModel" />
+
+        <variable
+            name="data"
+            type="com.verse.app.model.song.SongMainData" />
+
+    </data>
+
+    <com.verse.app.widget.views.CustomConstraintLayout
+        android:layout_width="@dimen/size_130"
+        android:layout_height="wrap_content"
+        app:layoutBgColor="@color/color_161616"
+        app:turtleClick="@{()->viewModel.onMoveToSing(data)}">
+
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/song_image_view"
+            android:layout_width="@dimen/size_130"
+            android:layout_height="0dp"
+            android:scaleType="fitXY"
+            app:imageUrl="@{data.albImgPath}"
+            app:placeholder="@{@drawable/ic_album_default}"
+            app:requestManager="@{requestManager}"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize5Percent"
+            app:strokeColor="@null"
+            tools:src="@drawable/ic_album_default" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/user_image_view"
+            android:layout_width="@dimen/size_42"
+            android:layout_height="0dp"
+            android:layout_marginRight="@dimen/size_8"
+            android:layout_marginBottom="@dimen/size_8"
+            android:scaleType="fitXY"
+            app:imageUrl="@{data.artImgPath}"
+            app:placeholder="@{@drawable/ic_album_default}"
+            android:visibility="@{data.isUserSound &amp;&amp; data.artImgPath.length() > 0}"
+            app:requestManager="@{requestManager}"
+            app:layout_constraintBottom_toBottomOf="@+id/song_image_view"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintRight_toRightOf="@+id/song_image_view"
+            app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+            app:strokeColor="@null"
+            tools:src="@drawable/ic_album_default" />
+
+
+        <TextView
+            android:id="@+id/song_name_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_14"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@{data.songNm}"
+            android:fontFamily="@font/font_noto_sans_kr_medium"
+            android:includeFontPadding="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/size_16"
+            app:layout_constraintTop_toBottomOf="@+id/song_image_view"
+            tools:text="도깨비불" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_8"
+            android:ellipsize="end"
+            android:fontFamily="@font/font_noto_sans_kr_light"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:text="@{data.artNm}"
+            android:textColor="@color/color_8c8c8c"
+            android:textSize="@dimen/size_15"
+            app:layout_constraintTop_toBottomOf="@+id/song_name_text_view"
+            tools:text="에스파" />
+
+
+    </com.verse.app.widget.views.CustomConstraintLayout>
+
+</layout>

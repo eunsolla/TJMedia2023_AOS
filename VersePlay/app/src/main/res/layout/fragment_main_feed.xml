@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.verse.app.contants.ExoPageType" />
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.main.viewmodel.FeedViewModel" />
+
+    </data>
+
+
+    <com.verse.app.widget.views.CustomConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/in_user_feed"
+            layout="@layout/view_main_following"
+            android:visibility="@{viewModel.exoPageType == ExoPageType.MAIN_FOLLOWING}"
+            app:viewModel="@{viewModel}" />
+
+        <include
+            android:id="@+id/in_recom_feed"
+            layout="@layout/view_feed_normal"
+            android:visibility="@{viewModel.exoPageType == ExoPageType.MAIN_RECOMMEND}"
+            app:viewModel="@{viewModel}" />
+
+    </com.verse.app.widget.views.CustomConstraintLayout>
+
+
+</layout>

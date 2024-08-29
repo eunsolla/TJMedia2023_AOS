@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:keepScreenOn="true">
+
+    <data>
+
+        <variable
+            name="requestManager"
+            type="com.bumptech.glide.RequestManager" />
+
+        <import type="com.verse.app.contants.GIFType" />
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.sing.viewmodel.SingViewModel" />
+
+    </data>
+
+
+    <com.verse.app.widget.views.CustomConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutBgColor="@color/color_00000000"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <FrameLayout
+            android:id="@+id/sing_container_frame_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/color_B3000000_70"
+            android:visibility="@{!viewModel.curMrAndXtfPath.first}">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_loading"
+                android:layout_width="@dimen/size_70"
+                android:layout_height="@dimen/size_70"
+                app:gifSrc="@{GIFType.DOWN_LOADING_CONTENTS}"
+                app:layout_constraintBottom_toTopOf="@+id/tv_download"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed" />
+
+            <TextView
+                android:id="@+id/tv_download"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_28"
+                android:fontFamily="@font/font_noto_sans_kr_medium"
+                android:gravity="center_horizontal"
+                android:includeFontPadding="false"
+                android:lineSpacingExtra="@dimen/size_5"
+                android:textColor="@color/white"
+                android:textSize="@dimen/size_23"
+                android:text="@string/str_download_ing"
+                app:layout_constraintBottom_toTopOf="@+id/tv_wait"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_loading" />
+
+            <TextView
+                android:id="@+id/tv_wait"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_10"
+                android:fontFamily="@font/font_noto_sans_kr_light"
+                android:gravity="center_horizontal"
+                android:includeFontPadding="false"
+                android:text="@string/str_download_ing_wait"
+                android:lineSpacingExtra="@dimen/size_5"
+                android:textColor="@color/white"
+                android:textSize="@dimen/size_13"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_download"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.verse.app.widget.views.CustomConstraintLayout>
+
+</layout>

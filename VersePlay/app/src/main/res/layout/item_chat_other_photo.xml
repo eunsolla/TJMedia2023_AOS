@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="requestManager"
+            type="com.bumptech.glide.RequestManager" />
+
+        <variable
+            name="data"
+            type="com.verse.app.model.chat.ChatOtherPhotoModel" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/size_10"
+        android:orientation="vertical"
+        tools:background="@color/white">
+
+        <androidx.legacy.widget.Space
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/size_11"
+            android:visibility="@{data.groups == false,default=gone}" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_5"
+            android:gravity="left">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="@dimen/size_32"
+                android:layout_height="@dimen/size_32"
+                app:imageUrl="@{data.profileImagePath}"
+                app:inVisibility="@{data.groups == false}"
+                app:placeholder="@{@drawable/profile_empty_small}"
+                app:requestManager="@{requestManager}"
+                app:strokeColor="@null"
+                app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+                tools:src="@tools:sample/avatars" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ivThumb"
+                android:layout_width="@dimen/size_200"
+                android:layout_height="@dimen/size_200"
+                android:layout_marginLeft="@dimen/size_8"
+                android:scaleType="centerCrop"
+                app:strokeColor="@null"
+                app:imageUrl="@{data.imagePath}"
+                app:placeholder="@{@drawable/ic_album_default}"
+                app:requestManager="@{requestManager}"
+                app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize18"
+                tools:src="@tools:sample/avatars" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginRight="@dimen/size_11"
+                android:fontFamily="@font/font_noto_sans_kr_light"
+                android:includeFontPadding="false"
+                android:text="@{data.sendTime}"
+                android:textColor="@color/color_707070"
+                android:textSize="@dimen/size_12"
+                tools:text="오후 03:26" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- [s] HeaderView Style -->
+    <declare-styleable name="HeaderView">
+        <attr name="headerType" format="enum">
+            <enum name="none" value="0" />
+            <enum name="search" value="1" />
+            <enum name="songList" value="2" />
+            <enum name="mypagesetting" value="3"/>
+            <enum name="back_title" value="4"/>
+            <enum name="comment" value="5"/>
+        </attr>
+    </declare-styleable>
+    <!-- [e] HeaderView Style -->
+
+    <!-- [s] BaseIndicatorView -->
+    <declare-styleable name="BaseIndicatorView">
+        <attr name="indicatorColor" format="color" /> <!-- Indicator Color -->
+        <attr name="indicatorBackgroundColor" format="color" /> <!-- Background Color -->
+        <attr name="indicatorRadius" format="dimension" /> <!--Indicator Corner  -->
+        <attr name="indicatorDotSize" format="integer" /> <!--Indicator Corner  -->
+        <attr name="indicatorLoop" format="boolean" /> <!-- ViewPager Infinite Type -->
+        <attr name="indicatorGravity" format="enum"> <!-- Indicator Gravity -->
+            <enum name="left" value="0" />
+            <enum name="center" value="1" />
+            <enum name="right" value="2" />
+        </attr>
+    </declare-styleable>
+    <!-- [e] BaseIndicatorView -->
+
+    <!-- [s] DotIndicatorView -->
+    <declare-styleable name="DotIndicatorView">
+        <attr name="indicator_dot_size" format="dimension" /> <!-- Dot Size -->
+        <attr name="indicator_dot_gap" format="dimension" /> <!-- Dot Divider  -->
+    </declare-styleable>
+    <!-- [s] DotIndicatorView -->
+
+
+    <!-- [s] BaseTabLayout Style -->
+    <declare-styleable name="BaseTabLayout">
+        <attr name="tab_type" format="enum">
+            <enum name="fixed" value="0" />
+            <enum name="scrollable" value="1" />
+        </attr>
+        <attr name="tab_txt_size" format="dimension" />
+        <attr name="tab_is_change_txt_style" format="boolean" />
+        <attr name="tab_txt_color" format="color" />
+        <attr name="tab_disable_txt_color" format="color" />
+        <attr name="tab_bottom_line_height" format="dimension" />
+    </declare-styleable>
+    <!-- [e] BaseTabLayout Style -->
+
+    <!-- [s] LinePagerTabLayout Style -->
+    <declare-styleable name="LinePagerTabLayout">
+        <attr name="tab_indicator_height" format="dimension" />
+        <attr name="tab_indicator_color" format="color" />
+        <attr name="tab_indicator_bg_color" format="color" />
+        <attr name="tab_scroll_offset" format="dimension" />
+    </declare-styleable>
+    <!-- [e] LinePagerTabLayout Style -->
+
+    <!-- [s] DotLinePagerTabLayout Style -->
+    <declare-styleable name="DotLinePagerTabLayout">
+        <attr name="tab_dot_indicator_height" format="dimension" />
+        <attr name="tab_dot_indicator_color" format="color" />
+        <attr name="tab_dot_scroll_offset" format="dimension" />
+    </declare-styleable>
+    <!-- [e] DotLinePagerTabLayout Style -->
+
+
+    <!-- [s] CustomConstraintLayout Attr -->
+    <declare-styleable name="CustomConstraintLayout">
+        <attr name="layoutDefState" format="boolean" />
+        <attr name="layoutCorner" format="dimension" />
+        <attr name="layoutBgColor" format="color" />
+        <attr name="layoutBorder" format="dimension" />
+        <attr name="layoutBorderColor" format="color" />
+        <attr name="layoutDisableBgColor" format="color" />
+        <attr name="layoutDisableBorder" format="dimension" />
+        <attr name="layoutDisableBorderColor" format="color" />
+        <attr name="layoutClickEffect" format="boolean" />
+    </declare-styleable>
+    <!-- [e] CustomConstraintLayout Attr -->
+
+    <!-- [s] CustomLinearLayout Attr -->
+    <declare-styleable name="CustomLinearLayout">
+        <attr name="linearLayoutDefState" format="boolean" />
+        <attr name="linearLayoutCorner" format="dimension" />
+        <attr name="linearLayoutBgColor" format="color" />
+        <attr name="linearLayoutBorder" format="dimension" />
+        <attr name="linearLayoutBorderColor" format="color" />
+        <attr name="linearLayoutDisableBgColor" format="color" />
+        <attr name="linearLayoutDisableBorder" format="dimension" />
+        <attr name="linearLayoutDisableBorderColor" format="color" />
+    </declare-styleable>
+    <!-- [e] CustomLinearLayout Attr -->
+
+    <!-- [s] CustomTextView Attr -->
+    <declare-styleable name="CustomTextView">
+        <attr name="textViewDefState" format="boolean" /> <!-- Default 상태 -->
+        <attr name="textViewCorner" format="dimension" /> <!-- Corner Radius -->
+        <attr name="textViewTxtColor" format="color" /> <!-- Enable or Default TextColor -->
+        <attr name="textViewBgColor" format="color" /> <!-- Enable or Default Bg Color -->
+        <attr name="textViewBorder" format="dimension" /> <!-- Enable or Default Border Width -->
+        <attr name="textViewBorderColor" format="color" /> <!--Enable or Default Border Color  -->
+        <attr name="textViewDisableTxtColor" format="color" /> <!-- Disable or Not Selected Text Color-->
+        <attr name="textViewDisableBgColor" format="color" /> <!-- Disable or Not Selected Bg Color -->
+        <attr name="textViewDisableBorder" format="dimension" /> <!-- Disable or Not Selected Border Width -->
+        <attr name="textViewDisableBorderColor" format="color" /> <!-- Disable Or Not Selected Border Color -->
+        <attr name="textViewDisableCorner" format="dimension" /> <!-- Disable Or Not Selected Corner Radius -->
+        <attr name="textViewTextStyle" format="reference" />
+        <attr name="textViewDisableTextStyle" format="reference" />
+        <attr name="textViewClickEffect" format="boolean" />
+    </declare-styleable>
+    <!-- [e] CustomTextView Attr -->
+
+    <declare-styleable name="TjTextView">
+        <attr name="tjTxtColor" format="color" /> <!-- Enable or Default TextColor -->
+    </declare-styleable>
+
+
+    <!--  ImageView Style  -->
+
+    <style name="ShapeAppearanceOverlay.App.CornerSize5Percent" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">5%</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.App.CornerSize10Percent" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">10%</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.App.CornerSize13Percent" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">13%</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.App.CornerSize20Percent" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">20%</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.App.CornerSize50Percent" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.App.CornerSize10" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">10dp</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.App.CornerSize18" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">18dp</item>
+    </style>
+
+    <style name="CollapsingToolbar.Expanded.Title" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/size_23</item>
+    </style>
+
+    <style name="CollapsingToolbar.Collapsed.Title" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/size_18</item>
+    </style>
+
+    <!-- [s] DotIndicator Attr -->
+    <declare-styleable name="FlexibleDotIndicatorView">
+        <attr name="flexibleDotIndicatorGravity" format="enum">
+            <enum name="left" value="0" />
+            <enum name="center" value="1" />
+            <enum name="right" value="2" />
+        </attr>
+        <attr name="flexibleDotIndicatorEnableColor" format="color" />
+        <attr name="flexibleDotIndicatorEnableCorner" format="dimension" />
+        <attr name="flexibleDotIndicatorEnableWidth" format="dimension" />
+        <attr name="flexibleDotIndicatorEnableHeight" format="dimension" />
+        <attr name="flexibleDotIndicatorDisableColor" format="color" />
+        <attr name="flexibleDotIndicatorDisableWidth" format="dimension" />
+        <attr name="flexibleDotIndicatorDisableHeight" format="dimension" />
+        <attr name="flexibleDotIndicatorDisableCorner" format="dimension" />
+        <attr name="flexibleDotIndicatorDivider" format="dimension" />
+        <attr name="flexibleDotIndicatorIsInfinite" format="boolean" />
+    </declare-styleable>
+    <!-- [e] DotIndicator Attr -->
+
+    <!-- [s] BaseTabLayoutV2 Attr -->
+    <declare-styleable name="BaseTabLayoutV2">
+        <attr name="tabType" format="enum">
+            <enum name="fixed" value="0" />
+            <enum name="scrollable" value="1" />
+        </attr>
+        <attr name="tabEnableTextColor" format="color" />
+        <attr name="tabDisableTextColor" format="color" />
+        <attr name="tabBottomLineColor" format="color" />
+        <attr name="tabBottomLineHeight" format="dimension" />
+        <attr name="tabTextAppearance" format="reference" /> <!-- 기본 텍스트 스타일 -->
+        <attr name="tabEnableTextStyle" format="enum">
+            <enum name="normal" value="0" />
+            <enum name="medium" value="1" />
+            <enum name="bold" value="2" />
+        </attr>
+        <attr name="tabDisableTextStyle" format="enum">
+            <enum name="normal" value="0" />
+            <enum name="medium" value="1" />
+            <enum name="bold" value="2" />
+        </attr>
+    </declare-styleable>
+    <!-- [e] BaseTabLayoutV2 Attr -->
+
+    <!-- [s] LinePagerTabLayoutV2 Attr -->
+    <declare-styleable name="LinePagerTabLayoutV2">
+        <attr name="tabIndicatorHeight" format="dimension" />
+        <attr name="tabIndicatorColor" format="color" />
+        <attr name="tabIndicatorCorner" format="dimension" />
+        <attr name="tabScrollOffset" format="dimension" />
+        <attr name="tabIndicatorPadding" format="dimension" />
+        <attr name="tabPreviewItems" format="string"/> <!-- 미리보기 화면 지원 -->
+        <attr name="tabPreviewPos" format="integer"/> <!-- 미리보기 위치값 -->
+    </declare-styleable>
+    <!-- [e] LinePagerTabLayoutV2 Attr -->
+
+</resources>

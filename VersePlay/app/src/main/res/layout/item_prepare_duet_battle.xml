@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.verse.app.contants.SingType" />
+
+        <import type="com.verse.app.contants.PartType" />
+
+        <import type="com.verse.app.contants.ChallengeType" />
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.sing.viewmodel.SingViewModel" />
+    </data>
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/ll_part_type"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <com.verse.app.widget.views.CustomTextView
+                android:id="@+id/tv_part_a"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/font_noto_sans_kr_medium"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:text="@string/str_part_a"
+                android:textSize="@dimen/size_18"
+                app:isSelected="@{viewModel.curPartType != PartType.PART_A.PART_A.code}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/v_line_middle"
+                app:layout_constraintTop_toTopOf="parent"
+                app:textViewBgColor="@color/white"
+                app:textViewBorder="@dimen/size_0_5"
+                app:textViewBorderColor="@color/color_eaeaea"
+                app:textViewClickEffect="false"
+                app:textViewCorner="@dimen/size_10"
+                app:textViewDisableBgColor="@color/color_2fc2ff"
+                app:textViewDisableCorner="@dimen/size_10"
+                app:textViewDisableTxtColor="@color/white"
+                app:textViewTxtColor="@color/color_222222"
+                app:turtleClick="@{()->viewModel.onPartType(PartType.PART_A)}" />
+
+            <View
+                android:id="@+id/v_line_middle"
+                android:layout_width="@dimen/size_12"
+                android:layout_height="@dimen/size_1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/tv_part_a"
+                app:layout_constraintRight_toLeftOf="@+id/tv_part_b"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.verse.app.widget.views.CustomTextView
+                android:id="@+id/tv_part_b"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/font_noto_sans_kr_medium"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:text="@string/str_part_b"
+                android:textSize="@dimen/size_18"
+                app:isSelected="@{viewModel.curPartType != PartType.PART_A.PART_B.code}"
+                app:layout_constraintLeft_toRightOf="@+id/v_line_middle"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:textViewBgColor="@color/white"
+                app:textViewBorder="@dimen/size_0_5"
+                app:textViewBorderColor="@color/color_eaeaea"
+                app:textViewClickEffect="false"
+                app:textViewCorner="@dimen/size_10"
+                app:textViewDisableBgColor="@color/color_2fc2ff"
+                app:textViewDisableCorner="@dimen/size_10"
+                app:textViewDisableTxtColor="@color/white"
+                app:textViewTxtColor="@color/color_222222"
+                app:turtleClick="@{()->viewModel.onPartType(PartType.PART_B)}" />
+
+            <com.verse.app.widget.views.CustomConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:alpha="0.6"
+                android:clickable="true"
+                android:visibility="@{!viewModel.isInitContents  &amp;&amp; viewModel.curPartType != PartType.PART_A.code}"
+                app:layoutBgColor="@color/color_eaeaea"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_part_a"
+                app:layout_constraintLeft_toLeftOf="@+id/tv_part_a"
+                app:layout_constraintRight_toRightOf="@+id/tv_part_a"
+                app:layout_constraintTop_toTopOf="@+id/tv_part_a"
+                app:layoutCorner="@dimen/size_10"
+                tools:visibility="gone" />
+
+            <com.verse.app.widget.views.CustomConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:alpha="0.6"
+                android:clickable="true"
+                android:visibility="@{!viewModel.isInitContents  &amp;&amp; viewModel.curPartType != PartType.PART_B.code}"
+                app:layoutBgColor="@color/color_eaeaea"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_part_b"
+                app:layout_constraintLeft_toLeftOf="@+id/tv_part_b"
+                app:layout_constraintRight_toRightOf="@+id/tv_part_b"
+                app:layout_constraintTop_toTopOf="@+id/tv_part_b"
+                app:layoutCorner="@dimen/size_10"
+                tools:visibility="gone" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:layout_width="@dimen/size_1"
+            android:layout_height="@dimen/size_12" />
+
+        <include
+            layout="@layout/view_prepare_challenge"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            app:viewModel="@{viewModel}" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+</layout>

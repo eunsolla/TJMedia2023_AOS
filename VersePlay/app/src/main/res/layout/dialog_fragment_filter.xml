@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data></data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.verse.app.widget.views.CustomTextView
+            android:id="@+id/line_text_view"
+            android:layout_width="@dimen/size_38"
+            android:layout_height="@dimen/size_5"
+            android:layout_marginTop="@dimen/size_12"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:textViewBgColor="@color/color_d9d9d9"
+            app:textViewCorner="@dimen/size_20" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/size_40"
+            android:layout_marginTop="@dimen/size_36"
+            android:layout_marginRight="@dimen/size_40"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/size_52"
+            app:layout_constraintTop_toBottomOf="@+id/line_text_view">
+
+            <com.verse.app.widget.views.CustomTextView
+                android:id="@+id/btn_one_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/noto_sans_kr_medium"
+                android:gravity="center"
+                android:paddingTop="@dimen/size_14"
+                android:paddingBottom="@dimen/size_14"
+                android:text="@string/filter_order_by_recommend"
+                android:textSize="@dimen/size_18"
+                android:visibility="gone"
+                app:textViewBgColor="@color/color_eaeaea"
+                app:textViewCorner="@dimen/size_10"
+                app:textViewTxtColor="@color/color_8c8c8c"
+                tools:visibility="visible" />
+
+            <com.verse.app.widget.views.CustomTextView
+                android:id="@+id/btn_two_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_12"
+                android:fontFamily="@font/noto_sans_kr_medium"
+                android:gravity="center"
+                android:paddingTop="@dimen/size_14"
+                android:paddingBottom="@dimen/size_14"
+                android:text="@string/filter_order_by_latest"
+                android:textSize="@dimen/size_18"
+                android:visibility="gone"
+                app:textViewBgColor="@color/color_eaeaea"
+                app:textViewCorner="@dimen/size_10"
+                app:textViewTxtColor="@color/color_8c8c8c"
+                tools:visibility="visible" />
+
+            <com.verse.app.widget.views.CustomTextView
+                android:id="@+id/btn_three_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_12"
+                android:fontFamily="@font/noto_sans_kr_medium"
+                android:gravity="center"
+                android:paddingTop="@dimen/size_14"
+                android:paddingBottom="@dimen/size_14"
+                android:text="@string/filter_order_by_old"
+                android:textSize="@dimen/size_18"
+                android:visibility="gone"
+                app:textViewBgColor="@color/color_eaeaea"
+                app:textViewCorner="@dimen/size_10"
+                app:textViewTxtColor="@color/color_8c8c8c"
+                tools:visibility="visible" />
+
+            <LinearLayout
+                android:id="@+id/layout_four_text_view"
+                isSelected="false"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_52"
+                android:layout_marginTop="@dimen/size_12"
+                android:background="@drawable/btn_filter_select"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingTop="@dimen/size_14"
+                android:paddingBottom="@dimen/size_14"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_four_text_view"
+                    android:layout_width="@dimen/size_20"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/settings_b" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/btn_four_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/size_5"
+                    android:fontFamily="@font/noto_sans_kr_medium"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:text="@string/filter_order_by_mypage_setting"
+                    android:textColor="@color/color_222222"
+                    android:textSize="17dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_five_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_52"
+                android:layout_marginTop="@dimen/size_12"
+                android:background="@drawable/btn_filter_select"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingTop="@dimen/size_14"
+                android:paddingBottom="@dimen/size_14"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_five_text_view"
+                    android:layout_width="@dimen/size_20"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/lock_b" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/btn_five_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/size_5"
+                    android:fontFamily="@font/noto_sans_kr_medium"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:text="@string/filter_order_by_my_private_song"
+                    android:textColor="@color/color_222222"
+                    android:textSize="17dp" />
+
+            </LinearLayout>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

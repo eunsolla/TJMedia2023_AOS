@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.verse.app.model.search.RecentKeywordData" />
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.search.viewmodel.SearchMainViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_48">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/noto_sans_kr_light"
+            android:maxLines="1"
+            android:text="@{data.recentKeyword}"
+            android:textColor="@color/color_222222"
+            android:textSize="@dimen/size_18"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/ivDelete"
+            app:layout_constraintTop_toTopOf="parent"
+            app:turtleClick="@{()->viewModel.onMoveToSearch(data)}"
+            tools:text="안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingTop="@dimen/size_14"
+            android:paddingRight="20dp"
+            android:paddingBottom="@dimen/size_14"
+            android:src="@drawable/close"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:turtleClick="@{()->viewModel.onDeleteRecentKeyword(data)}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

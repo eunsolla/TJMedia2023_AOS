@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.sing.viewmodel.SingViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_00000000">
+
+        <com.verse.app.widget.views.CustomTextView
+            android:id="@+id/tv_remaining_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:fontFamily="@font/noto_sans_kr_light"
+            android:layout_marginRight="@dimen/size_10"
+            android:text="@{@string/fmt_time(viewModel.progressText.first,viewModel.progressText.second)}"
+            android:textSize="@dimen/size_12"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:textViewBgColor="@color/color_00000000"
+            app:textViewTxtColor="@color/white"
+            tools:text="03:40" />
+
+        <com.verse.app.widget.views.CustomTextView
+            android:layout_width="@dimen/size_10"
+            android:layout_height="@dimen/size_10"
+            android:layout_marginRight="@dimen/size_4"
+            android:fontFamily="@font/font_noto_sans_medium"
+            android:textSize="@dimen/size_14"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_remaining_time"
+            app:layout_constraintRight_toLeftOf="@+id/tv_remaining_time"
+            app:layout_constraintTop_toTopOf="@+id/tv_remaining_time"
+            app:textViewBgColor="@color/color_ff3d33"
+            app:textViewCorner="@dimen/size_20" />
+
+        <ProgressBar
+            android:id="@+id/pb_sing"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_3"
+            android:layout_marginTop="@dimen/size_5"
+            android:progress="@{viewModel.progressPersent}"
+            android:max="100"
+            android:progressDrawable="@drawable/bg_progress_bar_singing"
+            app:layout_constraintTop_toBottomOf="@+id/tv_remaining_time" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="requestManager"
+            type="com.bumptech.glide.RequestManager" />
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.mypage.viewmodel.MemberShipViewModel" />
+
+        <variable
+            name="data"
+            type="com.verse.app.model.mypage.SubscData" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/size_120"
+        android:background="@color/white">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:paddingStart="@dimen/size_10"
+            android:paddingEnd="@dimen/size_10"
+            android:paddingTop="@dimen/size_14"
+            android:paddingBottom="@dimen/size_14"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" >
+
+            <RelativeLayout
+                android:id="@+id/rl_subsc_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.verse.app.widget.views.CustomTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/size_10"
+                    android:fontFamily="@font/noto_sans_kr_medium"
+                    android:gravity="center"
+                    android:text="@{data.subscTpNm}"
+                    android:textSize="@dimen/size_18"
+                    app:textViewBgColor="@color/color_00000000"
+                    app:textViewTxtColor="@color/color_222222" />
+
+                <ImageView
+                    android:layout_width="@dimen/size_7"
+                    android:layout_height="@dimen/size_12"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:visibility="gone"
+                    android:src="@drawable/ic_membership_right_arrow" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_subsc_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_20"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rl_subsc_name">
+
+                <com.verse.app.widget.views.CustomTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/size_10"
+                    android:fontFamily="@font/noto_sans_kr_light"
+                    android:includeFontPadding="false"
+                    android:gravity="left|center_vertical"
+                    app:htmlText="@{data.subscTpDesc}"
+                    android:textSize="@dimen/size_16"
+                    app:textViewBgColor="@color/color_00000000"
+                    app:textViewTxtColor="@color/color_222222" />
+
+                <com.verse.app.widget.views.CustomTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/noto_sans_kr_bold"
+                    android:gravity="center"
+                    android:minWidth="@dimen/size_90"
+                    android:paddingLeft="@dimen/size_14"
+                    android:paddingTop="@dimen/size_8"
+                    android:paddingRight="@dimen/size_14"
+                    android:paddingBottom="@dimen/size_8"
+                    android:text="@{data.subscPrice}"
+                    android:textSize="@dimen/size_15"
+                    app:isSelected="@{data.isVisibility}"
+                    app:textViewBgColor="@color/color_161616"
+                    app:textViewDisableBgColor="@color/color_eaeaea"
+                    app:textViewDisableTxtColor="@color/color_8c8c8c"
+                    app:textViewDisableCorner="@dimen/size_18"
+                    app:textViewCorner="@dimen/size_18"
+                    app:textViewTxtColor="@color/white"
+                    app:turtleClick="@{() -> viewModel.checkCurrentSubscribe(data)}"/>
+            </RelativeLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_1"
+            android:background="@color/color_eaeaea"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

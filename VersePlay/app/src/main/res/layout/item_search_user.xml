@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.verse.app.contants.AppData" />
+
+        <variable
+            name="data"
+            type="com.verse.app.model.search.SearchResultUserData" />
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.search.viewmodel.SearchResultUserViewModel" />
+
+        <variable
+            name="position"
+            type="java.lang.Integer" />
+
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_50"
+        android:paddingLeft="@dimen/size_20"
+        android:paddingRight="@dimen/size_20"
+        tools:background="@color/white">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_search_profile"
+            android:layout_width="@dimen/size_50"
+            android:layout_height="@dimen/size_50"
+            android:scaleType="centerCrop"
+            app:strokeColor="@null"
+            app:imageUrl="@{data.pfFrImgPath}"
+            app:placeholder="@{@drawable/ic_profile_default}"
+            app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+            tools:src="@drawable/ic_profile_default" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/rv_search_user"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/size_12"
+            android:layout_marginRight="@dimen/size_12"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="@font/font_noto_sans_kr_medium"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:text="@{data.memNk}"
+                android:textColor="@color/color_222222"
+                android:textSize="@dimen/size_15"
+                tools:text="안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font_noto_sans_kr_light"
+                    android:includeFontPadding="false"
+                    android:text="@string/str_follower"
+                    android:textColor="@color/color_8c8c8c"
+                    android:textSize="@dimen/size_13"
+                    tools:text="팔로워" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/follower_cnt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/size_4"
+                    android:fontFamily="@font/font_noto_sans_kr_light"
+                    android:includeFontPadding="false"
+                    android:text="@{data.followCount}"
+                    android:textColor="@color/color_8c8c8c"
+                    android:textSize="@dimen/size_13"
+                    tools:text="16.2K" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/size_12"
+                    android:fontFamily="@font/font_noto_sans_kr_light"
+                    android:includeFontPadding="false"
+                    android:text="@string/str_post"
+                    android:textColor="@color/color_8c8c8c"
+                    android:textSize="@dimen/size_13"
+                    tools:text="게시물" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/size_4"
+                    android:fontFamily="@font/font_noto_sans_kr_light"
+                    android:includeFontPadding="false"
+                    android:text="@{data.relateFeedCount}"
+                    android:textColor="@color/color_8c8c8c"
+                    android:textSize="@dimen/size_13"
+                    tools:text="1,013" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <com.verse.app.widget.views.CustomTextView
+            android:id="@+id/tvFollower"
+            android:layout_width="@dimen/size_68"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/size_7"
+            android:layout_marginBottom="@dimen/size_7"
+            android:fontFamily="@font/font_noto_sans_kr_medium"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:text="@{data.isFollowYn ? @string/str_following :  @string/str_follow}"
+            android:textSize="@dimen/size_15"
+            android:visibility="@{!viewModel.isMine(data), default = visible}"
+            app:isSelected="@{data.isFollowYn}"
+            app:textViewBgColor="@color/color_eaeaea"
+            android:maxLines="1"
+            android:ellipsize="end"
+            app:textViewClickEffect="false"
+            app:textViewCorner="@dimen/size_5"
+            app:textViewDisableBgColor="@color/color_2fc2ff"
+            app:textViewDisableCorner="@dimen/size_5"
+            app:textViewDisableTxtColor="@color/white"
+            app:textViewTxtColor="@color/color_8c8c8c"
+            tools:text="팔로잉" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</layout>

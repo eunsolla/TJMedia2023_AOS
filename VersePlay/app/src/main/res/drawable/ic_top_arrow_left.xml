@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Create by Changgi, Hong. on 2019. 10. 24.
+  ~ Copyright (c) 2019. boomto7@hotmail.co.kr. All rights reserved.
+  -->
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_selected="true"
+        android:drawable="@drawable/ic_top_arrow_left_active" />
+    <item android:state_pressed="true"
+        android:drawable="@drawable/ic_top_arrow_left_pressed" />
+    <item
+        android:drawable="@drawable/ic_top_arrow_left_normal" />
+</selector>

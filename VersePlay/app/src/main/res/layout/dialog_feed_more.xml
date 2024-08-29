@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.verse.app.contants.ShowContentsType" />
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.feed.viewmodel.FeedMoreBottomSheetDialogViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:background="@color/color_f9f9f9">
+
+        <com.verse.app.widget.views.CustomTextView
+            android:id="@+id/line_text_view"
+            android:layout_width="@dimen/size_38"
+            android:layout_height="@dimen/size_5"
+            android:layout_marginTop="@dimen/size_12"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:textViewBgColor="@color/color_d9d9d9"
+            app:textViewCorner="@dimen/size_20" />
+
+        <!--다른 유저 컨텐츠-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/size_30"
+            android:layout_marginTop="@dimen/size_36"
+            android:layout_marginRight="@dimen/size_30"
+            android:paddingBottom="@dimen/size_45"
+            android:visibility="@{!viewModel.isMyFeed}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/line_text_view"
+            tools:visibility="gone">
+
+            <com.verse.app.widget.views.CustomConstraintLayout
+                android:id="@+id/cl_share"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layoutBgColor="@color/color_00000000"
+                app:layoutClickEffect="false"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/cl_report"
+                app:layout_constraintTop_toTopOf="parent"
+                app:turtleClick="@{()->viewModel.onShareContents()}">
+
+                <com.verse.app.widget.views.CustomConstraintLayout
+                    android:id="@+id/cl_c_share"
+                    android:layout_width="@dimen/size_50"
+                    android:layout_height="@dimen/size_50"
+                    android:padding="@dimen/size_12"
+                    app:layoutBorder="@dimen/size_1"
+                    app:layoutBorderColor="@color/color_eaeaea"
+                    app:layoutCorner="@dimen/size_10"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:src="@drawable/ic_btd_more_share"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintDimensionRatio="1:1"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </com.verse.app.widget.views.CustomConstraintLayout>
+
+                <com.verse.app.widget.views.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_8"
+                    android:fontFamily="@font/font_noto_sans_kr_medium"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:text="@string/str_share"
+                    android:textSize="@dimen/size_15"
+                    app:layout_constraintLeft_toLeftOf="@+id/cl_c_share"
+                    app:layout_constraintRight_toRightOf="@+id/cl_c_share"
+                    app:layout_constraintTop_toBottomOf="@+id/cl_c_share"
+                    app:textViewBgColor="@color/color_00000000"
+                    app:textViewClickEffect="false"
+                    app:textViewTxtColor="@color/color_222222"
+                    tools:text="공유" />
+            </com.verse.app.widget.views.CustomConstraintLayout>
+
+            <com.verse.app.widget.views.CustomConstraintLayout
+                android:id="@+id/cl_report"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layoutBgColor="@color/color_00000000"
+                app:layoutClickEffect="false"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintLeft_toRightOf="@+id/cl_share"
+                app:layout_constraintRight_toLeftOf="@+id/cl_block"
+                app:layout_constraintTop_toTopOf="parent"
+                app:turtleClick="@{()->viewModel.onReportContents()}">
+
+                <com.verse.app.widget.views.CustomConstraintLayout
+                    android:id="@+id/cl_c_report"
+                    android:layout_width="@dimen/size_50"
+                    android:layout_height="@dimen/size_50"
+                    android:padding="@dimen/size_12"
+                    app:layoutBorder="@dimen/size_1"
+                    app:layoutBorderColor="@color/color_eaeaea"
+                    app:layoutCorner="@dimen/size_10"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:src="@drawable/ic_btd_more_report"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintDimensionRatio="1:1"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </com.verse.app.widget.views.CustomConstraintLayout>
+
+                <com.verse.app.widget.views.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_8"
+                    android:fontFamily="@font/font_noto_sans_kr_medium"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:text="@string/str_report"
+                    android:textSize="@dimen/size_15"
+                    app:layout_constraintLeft_toLeftOf="@+id/cl_c_report"
+                    app:layout_constraintRight_toRightOf="@+id/cl_c_report"
+                    app:layout_constraintTop_toBottomOf="@+id/cl_c_report"
+                    app:textViewBgColor="@color/color_00000000"
+                    app:textViewClickEffect="false"
+                    app:textViewTxtColor="@color/color_222222"
+                    tools:text="신고" />
+            </com.verse.app.widget.views.CustomConstraintLayout>
+
+            <com.verse.app.widget.views.CustomConstraintLayout
+                android:id="@+id/cl_block"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layoutBgColor="@color/color_00000000"
+                app:layoutClickEffect="false"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintLeft_toRightOf="@+id/cl_report"
+                app:layout_constraintRight_toLeftOf="@+id/cl_not_interested"
+                app:layout_constraintTop_toTopOf="parent"
+                app:turtleClick="@{()->viewModel.onBlock()}">
+
+                <com.verse.app.widget.views.CustomConstraintLayout
+                    android:id="@+id/cl_c_block"
+                    android:layout_width="@dimen/size_50"
+                    android:layout_height="@dimen/size_50"
+                    android:padding="@dimen/size_12"
+                    app:layoutBorder="@dimen/size_1"
+                    app:layoutBorderColor="@color/color_eaeaea"
+                    app:layoutCorner="@dimen/size_10"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:src="@drawable/ic_btd_more_block"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintDimensionRatio="1:1"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </com.verse.app.widget.views.CustomConstraintLayout>
+
+                <com.verse.app.widget.views.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_8"
+                    android:fontFamily="@font/font_noto_sans_kr_medium"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:text="@{viewModel.feedContentsData.isBlock ? @string/str_unblock  : @string/str_blocking}"
+                    android:textSize="@dimen/size_15"
+                    app:layout_constraintLeft_toLeftOf="@+id/cl_c_block"
+                    app:layout_constraintRight_toRightOf="@+id/cl_c_block"
+                    app:layout_constraintTop_toBottomOf="@+id/cl_c_block"
+                    app:textViewBgColor="@color/color_00000000"
+                    app:textViewClickEffect="false"
+                    app:textViewTxtColor="@color/color_222222"
+                    tools:text="차단" />
+            </com.verse.app.widget.views.CustomConstraintLayout>
+
+            <com.verse.app.widget.views.CustomConstraintLayout
+                android:id="@+id/cl_not_interested"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layoutBgColor="@color/color_00000000"
+                app:layoutClickEffect="false"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintLeft_toRightOf="@+id/cl_block"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:turtleClick="@{()->viewModel.onUninterested()}">
+
+                <com.verse.app.widget.views.CustomConstraintLayout
+                    android:id="@+id/cl_c_not_interested"
+                    android:layout_width="@dimen/size_50"
+                    android:layout_height="@dimen/size_50"
+                    android:padding="@dimen/size_12"
+                    app:layoutBorder="@dimen/size_1"
+                    app:layoutBorderColor="@color/color_eaeaea"
+                    app:layoutCorner="@dimen/size_10"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:src="@drawable/ic_btd_more_not_interested"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintDimensionRatio="1:1"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </com.verse.app.widget.views.CustomConstraintLayout>
+
+                <com.verse.app.widget.views.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_8"
+                    android:fontFamily="@font/font_noto_sans_kr_medium"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:text="@string/str_no_interested"
+                    android:textSize="@dimen/size_15"
+                    app:layout_constraintLeft_toLeftOf="@+id/cl_c_not_interested"
+                    app:layout_constraintRight_toRightOf="@+id/cl_c_not_interested"
+                    app:layout_constraintTop_toBottomOf="@+id/cl_c_not_interested"
+                    app:textViewBgColor="@color/color_00000000"
+                    app:textViewClickEffect="false"
+                    app:textViewTxtColor="@color/color_222222"
+                    tools:text="관심없음" />
+
+            </com.verse.app.widget.views.CustomConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!--내 컨텐츠-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/size_30"
+            android:layout_marginTop="@dimen/size_36"
+            android:layout_marginRight="@dimen/size_30"
+            android:paddingBottom="@dimen/size_45"
+            android:visibility="@{viewModel.isMyFeed}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/line_text_view">
+
+            <com.verse.app.widget.views.CustomConstraintLayout
+                android:id="@+id/cl_share_my"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layoutBgColor="@color/color_00000000"
+                app:layoutClickEffect="false"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/cl_every_one"
+                app:layout_constraintTop_toTopOf="parent"
+                app:turtleClick="@{()->viewModel.onShareContents()}">
+
+                <com.verse.app.widget.views.CustomConstraintLayout
+                    android:id="@+id/cl_c_share_my"
+                    android:layout_width="@dimen/size_50"
+                    android:layout_height="@dimen/size_50"
+                    android:padding="@dimen/size_12"
+                    app:layoutBorder="@dimen/size_1"
+                    app:layoutBorderColor="@color/color_eaeaea"
+                    app:layoutCorner="@dimen/size_10"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:src="@drawable/ic_btd_more_share"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintDimensionRatio="1:1"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </com.verse.app.widget.views.CustomConstraintLayout>
+
+                <com.verse.app.widget.views.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_8"
+                    android:fontFamily="@font/font_noto_sans_kr_medium"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:text="@string/str_share"
+                    android:textSize="@dimen/size_15"
+                    app:layout_constraintLeft_toLeftOf="@+id/cl_c_share_my"
+                    app:layout_constraintRight_toRightOf="@+id/cl_c_share_my"
+                    app:layout_constraintTop_toBottomOf="@+id/cl_c_share_my"
+                    app:textViewBgColor="@color/color_00000000"
+                    app:textViewClickEffect="false"
+                    app:textViewTxtColor="@color/color_222222"
+                    tools:text="공유" />
+            </com.verse.app.widget.views.CustomConstraintLayout>
+
+            <com.verse.app.widget.views.CustomConstraintLayout
+                android:id="@+id/cl_every_one"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layoutBgColor="@color/color_00000000"
+                app:layoutClickEffect="false"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintLeft_toRightOf="@+id/cl_share_my"
+                app:layout_constraintRight_toLeftOf="@+id/cl_comment"
+                app:layout_constraintTop_toTopOf="parent"
+                app:turtleClick="@{()->viewModel.onUpdateOpenContents()}">
+
+                <com.verse.app.widget.views.CustomConstraintLayout
+                    android:id="@+id/cl_c_every_one"
+                    android:layout_width="@dimen/size_50"
+                    android:layout_height="@dimen/size_50"
+                    android:padding="@dimen/size_12"
+                    app:layoutBorder="@dimen/size_1"
+                    app:layoutBorderColor="@color/color_eaeaea"
+                    app:layoutCorner="@dimen/size_10"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:src="@{viewModel.feedContentsData.isPublicContents ? @drawable/ic_btd_more_contents_only_me : @drawable/ic_btd_more_contents_every_one}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintDimensionRatio="1:1"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:src="@drawable/ic_btd_more_contents_only_me" />
+
+                </com.verse.app.widget.views.CustomConstraintLayout>
+
+                <com.verse.app.widget.views.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_8"
+                    android:fontFamily="@font/font_noto_sans_kr_medium"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:text="@string/str_show_config"
+                    android:textSize="@dimen/size_15"
+                    app:layout_constraintLeft_toLeftOf="@+id/cl_c_every_one"
+                    app:layout_constraintRight_toRightOf="@+id/cl_c_every_one"
+                    app:layout_constraintTop_toBottomOf="@+id/cl_c_every_one"
+                    app:textViewBgColor="@color/color_00000000"
+                    app:textViewClickEffect="false"
+                    app:textViewTxtColor="@color/color_222222"
+                    tools:text="@string/str_show_config" />
+            </com.verse.app.widget.views.CustomConstraintLayout>
+
+            <com.verse.app.widget.views.CustomConstraintLayout
+                android:id="@+id/cl_comment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layoutBgColor="@color/color_00000000"
+                app:layoutClickEffect="false"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintLeft_toRightOf="@+id/cl_every_one"
+                app:layout_constraintRight_toLeftOf="@+id/cl_delete"
+                app:layout_constraintTop_toTopOf="parent"
+                app:turtleClick="@{()->viewModel.onUpdateStateComment()}">
+
+                <com.verse.app.widget.views.CustomConstraintLayout
+                    android:id="@+id/cl_c_comment"
+                    android:layout_width="@dimen/size_50"
+                    android:layout_height="@dimen/size_50"
+                    android:paddingLeft="@dimen/size_8"
+                    android:paddingTop="@dimen/size_11"
+                    android:paddingRight="@dimen/size_8"
+                    android:paddingBottom="@dimen/size_11"
+                    app:layoutBorder="@dimen/size_1"
+                    app:layoutBorderColor="@color/color_eaeaea"
+                    app:layoutCorner="@dimen/size_10"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:src="@{viewModel.feedContentsData.isAcceptComment ?  @drawable/ic_btd_more_comment_un_accept :  @drawable/ic_btd_more_comment_accept}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintDimensionRatio="1:1"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:src="@drawable/ic_btd_more_comment_un_accept" />
+
+                </com.verse.app.widget.views.CustomConstraintLayout>
+
+                <com.verse.app.widget.views.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_8"
+                    android:fontFamily="@font/font_noto_sans_kr_medium"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:text="@{viewModel.feedContentsData.isAcceptComment ? @string/videoupload_post_un_permit_comment_text : @string/videoupload_post_permit_comment_text}"
+                    android:textSize="@dimen/size_15"
+                    app:layout_constraintLeft_toLeftOf="@+id/cl_c_comment"
+                    app:layout_constraintRight_toRightOf="@+id/cl_c_comment"
+                    app:layout_constraintTop_toBottomOf="@+id/cl_c_comment"
+                    app:textViewBgColor="@color/color_00000000"
+                    app:textViewClickEffect="false"
+                    app:textViewTxtColor="@color/color_222222"
+                    tools:text="댓글 허용" />
+
+            </com.verse.app.widget.views.CustomConstraintLayout>
+
+            <com.verse.app.widget.views.CustomConstraintLayout
+                android:id="@+id/cl_delete"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layoutBgColor="@color/color_00000000"
+                app:layoutClickEffect="false"
+                app:layout_constraintHorizontal_weight="1"
+                app:layout_constraintLeft_toRightOf="@+id/cl_comment"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:turtleClick="@{()->viewModel.onDeleteContents(viewModel.feedContentsData.isDeleted)}">
+
+                <com.verse.app.widget.views.CustomConstraintLayout
+                    android:id="@+id/cl_c_delete"
+                    android:layout_width="@dimen/size_50"
+                    android:layout_height="@dimen/size_50"
+                    android:paddingLeft="@dimen/size_14"
+                    android:paddingTop="@dimen/size_14"
+                    android:paddingRight="@dimen/size_14"
+                    android:paddingBottom="@dimen/size_14"
+                    app:layoutBorder="@dimen/size_1"
+                    app:layoutBorderColor="@color/color_eaeaea"
+                    app:layoutCorner="@dimen/size_10"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:src="@drawable/ic_btd_more_contents_delete"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintDimensionRatio="1:1"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </com.verse.app.widget.views.CustomConstraintLayout>
+
+                <com.verse.app.widget.views.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_8"
+                    android:fontFamily="@font/font_noto_sans_kr_medium"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:text="@string/str_delete"
+                    android:textSize="@dimen/size_15"
+                    app:layout_constraintLeft_toLeftOf="@+id/cl_c_delete"
+                    app:layout_constraintRight_toRightOf="@+id/cl_c_delete"
+                    app:layout_constraintTop_toBottomOf="@+id/cl_c_delete"
+                    app:textViewBgColor="@color/color_00000000"
+                    app:textViewClickEffect="false"
+                    app:textViewTxtColor="@color/color_222222"
+                    tools:text="삭제" />
+
+            </com.verse.app.widget.views.CustomConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

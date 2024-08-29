@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="275dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@android:color/transparent">
+
+        <LinearLayout
+            android:layout_width="275dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="51dp"
+            android:background="@drawable/bg_dialog_help_bolder_corner_20"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/layout_descript"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvContents"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="@dimen/size_28"
+                    android:layout_marginTop="@dimen/size_45"
+                    android:layout_marginRight="@dimen/size_28"
+                    android:fontFamily="@font/font_noto_sans_regular"
+                    android:gravity="left"
+                    android:includeFontPadding="false"
+                    android:textColor="@color/color_222222"
+                    android:textSize="@dimen/size_15"
+                    android:textStyle="normal"
+                    tools:text="VERSE PLAY 서비스는 각 나라의 노래 저작권 정책에 따라 서비스가 적용됨을 알려드립니다." />
+
+            </RelativeLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvPositive"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_50"
+                android:layout_marginTop="@dimen/size_36"
+                android:background="@drawable/bg_dialog_one_bottom_corner_20"
+                android:fontFamily="@font/font_noto_sans_medium"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:paddingTop="@dimen/size_15"
+                android:paddingBottom="@dimen/size_15"
+                android:textSize="@dimen/size_15"
+                app:textViewBgColor="@color/color_eaeaea"
+                app:textViewTxtColor="@color/black"
+                tools:text="확인"
+                tools:visibility="visible" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_badge_descript"
+            android:layout_width="@dimen/size_44"
+            android:layout_height="@dimen/size_44"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="@dimen/size_22"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/ic_help" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="requestManager"
+            type="com.bumptech.glide.RequestManager" />
+
+        <variable
+            name="data"
+            type="com.verse.app.model.chat.ChatOtherMessageModel" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.legacy.widget.Space
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/size_11"
+            android:visibility="@{data.groups == false,default=gone}" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/size_10"
+            android:layout_marginTop="@dimen/size_5"
+            tools:background="@color/white">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="@dimen/size_32"
+                android:layout_height="@dimen/size_32"
+                app:imageUrl="@{data.profileImagePath}"
+                app:inVisibility="@{data.groups == false}"
+                android:scaleType="centerCrop"
+                app:strokeColor="@null"
+                app:placeholder="@{@drawable/profile_empty_small}"
+                app:requestManager="@{requestManager}"
+                app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+                tools:src="@tools:sample/avatars" />
+
+            <com.verse.app.widget.views.CustomTextView
+                android:id="@+id/tvMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/size_8"
+                android:fontFamily="@font/font_noto_sans_kr_medium"
+                android:maxWidth="260dp"
+                android:paddingLeft="@dimen/size_14"
+                android:paddingTop="@dimen/size_9"
+                android:paddingRight="@dimen/size_14"
+                android:paddingBottom="@dimen/size_9"
+                android:text="@{data.msgText}"
+                app:textViewBgColor="@color/white"
+                app:textViewBorder="@dimen/size_1"
+                app:textViewBorderColor="@color/color_eaeaea"
+                app:textViewClickEffect="false"
+                app:textViewCorner="@dimen/size_18"
+                app:textViewTxtColor="@color/color_222222"
+                tools:text="하이롱하이롱하이롱하이롱이롱하이롱하이롱하이롱하이롱하이롱하이롱하이롱하이롱하이롱" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="@dimen/size_4"
+                android:fontFamily="@font/font_noto_sans_kr_light"
+                android:includeFontPadding="false"
+                android:text="@{data.sendTime}"
+                android:textColor="@color/color_707070"
+                android:textSize="@dimen/size_12"
+                tools:text="오후 03:26" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+</layout>

@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="requestManager"
+            type="com.bumptech.glide.RequestManager" />
+
+        <import type="com.verse.app.contants.SingingPartType" />
+
+        <import type="com.verse.app.contants.PartType" />
+
+        <import type="com.verse.app.contants.SingType" />
+
+        <import type="com.verse.app.contants.ListPagedItemType" />
+
+        <import type="com.verse.app.contants.GlideCode" />
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.sing.viewmodel.SingViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_161616"
+        android:fitsSystemWindows="false">
+
+        <View
+            android:id="@+id/empty_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/color_00000000"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/ll_btn"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_weight="91.96" />
+
+        <!--준비-->
+        <include
+            android:id="@+id/cl_ready"
+            layout="@layout/view_sing_prepare_audio"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:requestManager="@{requestManager}"
+            android:visibility="@{!viewModel.isStartRecording}"
+            app:layout_constraintBottom_toTopOf="@+id/ll_btn"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_weight="91.96"
+            app:viewModel="@{viewModel}"
+            tools:visibility="visible" />
+
+        <!--녹음 시작-->
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/cl_recording"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:visibility="@{viewModel.isStartRecording}"
+            app:layout_constraintBottom_toTopOf="@+id/ll_btn"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_weight="92"
+            tools:visibility="visible">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="35">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_singing_jacket"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    app:requestManager="@{requestManager}"
+                    app:imageUrl="@{viewModel.songMainData.albImgPath}"
+                    app:placeholder="@{@drawable/ic_album_default}" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/color_B3161616_70" />
+
+                <com.verse.app.widget.views.CustomTextView
+                    android:id="@+id/tv_song_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/size_24"
+                    android:layout_marginRight="@dimen/size_24"
+                    android:fontFamily="@font/font_noto_sans_kr_medium"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:text="@{viewModel.songMainData.songNm}"
+                    android:textSize="@dimen/size_18"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_singer"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_chainStyle="packed"
+                    app:textViewBgColor="@color/color_00000000"
+                    app:textViewTxtColor="@color/white"
+                    tools:text="꽃(FLOWERFLOWERFLOWERFLOWERFLOWERFLOWERFLOWERFLOWERFLOWERFLOWERFLOWERFLOWERFLOWERFLOWERFLOWERFLOWER)" />
+
+                <com.verse.app.widget.views.CustomTextView
+                    android:id="@+id/tv_singer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/size_20"
+                    android:layout_marginTop="@dimen/size_4"
+                    android:layout_marginRight="@dimen/size_20"
+                    android:fontFamily="@font/font_noto_sans_kr_light"
+                    android:text="@{viewModel.songMainData.artNm}"
+                    android:textSize="@dimen/size_14"
+                    android:includeFontPadding="false"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_song_name"
+                    app:textViewBgColor="@color/color_00000000"
+                    app:textViewTxtColor="@color/color_8c8c8c"
+                    tools:text="꽃(FLOWER)" />
+
+                <include
+                    layout="@layout/view_singing_remaining"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:viewModel="@{viewModel}" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_lyrics"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="65">
+
+                <include
+                    android:id="@+id/in_event"
+                    layout="@layout/view_singing_event"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:layout_constraintBottom_toTopOf="@+id/v_empty_middle"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_weight="8.8"
+                    app:viewModel="@{viewModel}" />
+
+                <View
+                    android:id="@+id/v_empty_middle"
+                    android:layout_width="@dimen/size_1"
+                    android:layout_height="0dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/in_event"
+                    app:layout_constraintVertical_weight="91.2" />
+
+                <include
+                    android:id="@+id/in_singing_lyrics"
+                    layout="@layout/view_singing_lyrics"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:layout_constraintBottom_toTopOf="@+id/cl_singing_part"
+                    app:layout_constraintTop_toBottomOf="@+id/in_event"
+                    app:layout_constraintVertical_bias="0"
+                    app:layout_constraintVertical_weight="46"
+                    app:pageType="@{ListPagedItemType.ITEM_LYRICS}"
+                    app:viewModel="@{viewModel}" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_singing_part"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_gravity="center"
+                    android:visibility="@{viewModel.curSingType != SingType.SOLO}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/in_singing_lyrics"
+                    app:layout_constraintVertical_weight="49.2">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="@{viewModel.curSingingPartType == SingingPartType.FEMALE_PART || (viewModel.curSingingPartType == SingingPartType.T_PART  &amp;&amp; viewModel.curPartType == PartType.PART_A.code)}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.3"
+                        tools:visibility="visible">
+
+                        <androidx.constraintlayout.widget.Guideline
+                            android:id="@+id/guideline"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintGuide_percent="0.043"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent" />
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:id="@+id/iv_singing_part_b"
+                            android:layout_width="@dimen/size_125"
+                            android:layout_height="@dimen/size_125"
+                            android:layout_marginLeft="@dimen/size_80"
+                            android:background="@color/color_ffa8ff"
+                            app:requestManager="@{requestManager}"
+                            android:padding="@dimen/size_5"
+                            android:scaleType="fitXY"
+                            app:imageUrl="@{viewModel.curPartType == PartType.PART_B.code ? viewModel.myImgProfile : viewModel.songMainData.pfFrImgPath}"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintDimensionRatio="1:1"
+                            app:layout_constraintLeft_toLeftOf="@id/guideline"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:placeholder="@{@drawable/ic_part_b}"
+                            app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+                            app:strokeColor="@color/color_ffa8ff"
+                            app:strokeWidth="@dimen/size_5"
+                            tools:src="@drawable/ic_part_b" />
+
+                        <com.verse.app.widget.views.CustomConstraintLayout
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:visibility="@{viewModel.curSingingPartType != SingingPartType.T_PART}"
+                            app:layoutBgColor="@color/color_80000000_50"
+                            app:layoutCorner="@dimen/size_100"
+                            app:layout_constraintBottom_toBottomOf="@+id/iv_singing_part_b"
+                            app:layout_constraintLeft_toLeftOf="@+id/iv_singing_part_b"
+                            app:layout_constraintRight_toRightOf="@+id/iv_singing_part_b"
+                            app:layout_constraintTop_toTopOf="@+id/iv_singing_part_b" />
+
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:id="@+id/iv_singing_part_a"
+                            android:layout_width="@dimen/size_125"
+                            android:layout_height="@dimen/size_125"
+                            android:background="@color/color_00e7ff"
+                            android:padding="@dimen/size_4"
+                            android:scaleType="fitXY"
+                            android:visibility="visible"
+                            app:requestManager="@{requestManager}"
+                            app:imageUrl="@{viewModel.curPartType == PartType.PART_A.code ? viewModel.myImgProfile : viewModel.songMainData.pfFrImgPath}"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintDimensionRatio="1:1"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:placeholder="@{@drawable/ic_part_a}"
+                            app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+                            app:strokeColor="@color/color_00e7ff"
+                            app:strokeWidth="@dimen/size_5"
+                            tools:src="@drawable/ic_part_a" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="@{viewModel.curSingingPartType == SingingPartType.MALE_PART || (viewModel.curSingingPartType == SingingPartType.T_PART  &amp;&amp; viewModel.curPartType == PartType.PART_B.code)}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.3"
+                        tools:visibility="gone">
+
+                        <androidx.constraintlayout.widget.Guideline
+                            android:id="@+id/guideline_b"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintGuide_percent="0.043"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent" />
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:id="@+id/iv_singing_part_a_a"
+                            android:layout_width="@dimen/size_125"
+                            android:layout_height="@dimen/size_125"
+                            android:background="@color/color_00e7ff"
+                            android:padding="@dimen/size_4"
+                            android:scaleType="fitXY"
+                            app:requestManager="@{requestManager}"
+                            app:imageUrl="@{viewModel.curPartType == PartType.PART_A.code ? viewModel.myImgProfile : viewModel.songMainData.pfFrImgPath}"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintDimensionRatio="1:1"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:placeholder="@{@drawable/ic_part_a}"
+                            app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+                            app:strokeColor="@color/color_00e7ff"
+                            app:strokeWidth="@dimen/size_5" />
+
+                        <com.verse.app.widget.views.CustomConstraintLayout
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:visibility="@{viewModel.curSingingPartType != SingingPartType.T_PART}"
+                            app:layoutBgColor="@color/color_80000000_50"
+                            app:layoutCorner="@dimen/size_100"
+                            app:layout_constraintBottom_toBottomOf="@+id/iv_singing_part_a_a"
+                            app:layout_constraintLeft_toLeftOf="@+id/iv_singing_part_a_a"
+                            app:layout_constraintRight_toRightOf="@+id/iv_singing_part_a_a"
+                            app:layout_constraintTop_toTopOf="@+id/iv_singing_part_a_a" />
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:id="@+id/iv_singing_part_b_b"
+                            android:layout_width="@dimen/size_125"
+                            android:layout_height="@dimen/size_125"
+                            android:layout_marginLeft="@dimen/size_80"
+                            android:background="@color/color_ffa8ff"
+                            android:padding="@dimen/size_5"
+                            android:scaleType="fitXY"
+                            app:requestManager="@{requestManager}"
+                            app:imageUrl="@{viewModel.curPartType == PartType.PART_B.code ? viewModel.myImgProfile : viewModel.songMainData.pfFrImgPath}"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintDimensionRatio="1:1"
+                            app:layout_constraintLeft_toLeftOf="@id/guideline_b"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:placeholder="@{@drawable/ic_part_b}"
+                            app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+                            app:strokeColor="@color/color_ffa8ff"
+                            app:strokeWidth="@dimen/size_5" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:turtleClick="@{() -> viewModel.toggleLyricsBlur()}">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_lyrics_blur"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:visibility="@{viewModel.curSingType == SingType.SOLO, default=gone}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintDimensionRatio="H,6:4"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="1">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            app:layout_constraintBottom_toBottomOf="parent">
+
+                            <ImageView
+                                android:id="@+id/iv_bottom_lylics_top"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/size_75"
+                                android:background="@drawable/bg_gr_sing_lylics" />
+
+                            <View
+                                android:id="@+id/bottom_lylics_view"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@color/color_161616" />
+                        </LinearLayout>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <include
+            android:id="@+id/in_header"
+            layout="@layout/view_header_sing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="10dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:viewModel="@{viewModel}" />
+
+        <include
+            android:id="@+id/ll_effects"
+            layout="@layout/view_singing_effects"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/size_10"
+            android:visibility="@{!viewModel.isStartRecording}"
+            app:layout_constraintBottom_toTopOf="@+id/ll_btn"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:viewModel="@{viewModel}"
+            tools:visibility="gone" />
+
+        <include
+            android:id="@+id/ll_btn"
+            layout="@layout/view_singing_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/empty_view"
+            app:layout_constraintVertical_weight="8.04"
+            app:viewModel="@{viewModel}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

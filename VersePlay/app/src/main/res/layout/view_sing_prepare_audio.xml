@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="requestManager"
+            type="com.bumptech.glide.RequestManager" />
+
+        <import type="com.verse.app.contants.SingPageType" />
+
+        <import type="com.verse.app.contants.SingingPartType" />
+
+        <import type="com.verse.app.contants.PartType" />
+
+        <import type="com.verse.app.contants.SingType" />
+
+        <import type="com.verse.app.contants.ListPagedItemType" />
+
+        <import type="com.verse.app.contants.GlideCode" />
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.sing.viewmodel.SingViewModel" />
+
+    </data>
+
+    <!--준비-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_ready"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="@{!viewModel.isStartRecording}"
+        app:layout_constraintBottom_toTopOf="@+id/ll_btn"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_weight="91.96"
+        tools:visibility="visible">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_bg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            app:placeholder="@{@drawable/ic_verse_1}"
+            app:requestManager="@{requestManager}"
+            app:imageUrl="@{viewModel.songMainData.albImgPath}" />
+
+        <View
+            android:layout_width="0dp"
+            android:background="@color/color_B3161616_70"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="@+id/iv_bg"
+            app:layout_constraintBottom_toBottomOf="@id/iv_bg"
+            app:layout_constraintLeft_toLeftOf="@id/iv_bg"
+            app:layout_constraintRight_toRightOf="@id/iv_bg"/>
+
+        <View
+            android:id="@+id/v_ready_empty"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/cl_album_jacket"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_weight="26" />
+
+        <View
+            android:id="@+id/v_empty_left"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/size_1"
+            app:layout_constraintHorizontal_weight="23"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/cl_album_jacket"
+            app:layout_constraintTop_toBottomOf="@+id/v_ready_empty" />
+
+        <View
+            android:id="@+id/v_empty_right"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/size_1"
+            app:layout_constraintHorizontal_weight="23"
+            app:layout_constraintLeft_toRightOf="@+id/cl_album_jacket"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/v_ready_empty" />
+
+        <com.verse.app.widget.views.CustomConstraintLayout
+            android:id="@+id/cl_album_jacket"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layoutCorner="@dimen/size_18"
+            app:layout_constraintBottom_toTopOf="@+id/ll_part"
+            app:layout_constraintHorizontal_weight="54"
+            app:layout_constraintLeft_toRightOf="@+id/v_empty_left"
+            app:layout_constraintRight_toLeftOf="@id/v_empty_right"
+            app:layout_constraintTop_toBottomOf="@+id/v_ready_empty"
+            app:layout_constraintVertical_weight="34">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_album_jacket"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                app:requestManager="@{requestManager}"
+                app:imageUrl="@{viewModel.songMainData.albImgPath}"
+                app:placeholder="@{@drawable/ic_album_default}"
+                tools:src="@drawable/ic_album_default" />
+
+        </com.verse.app.widget.views.CustomConstraintLayout>
+
+        <!--듀엣 파트-->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ll_part"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/size_30"
+            android:paddingRight="@dimen/size_30"
+            app:inVisibility="@{viewModel.curSingType != SingType.SOLO &amp;&amp; viewModel.singPageType != SingPageType.SYNC_SING}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cl_album_jacket"
+            app:layout_constraintVertical_weight="40">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.3"
+                tools:visibility="gone">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/iv_singing_part_a"
+                    android:layout_width="@dimen/size_125"
+                    android:layout_height="@dimen/size_125"
+                    android:layout_marginRight="@dimen/size_10"
+                    android:background="@color/color_00e7ff"
+                    android:padding="@dimen/size_4"
+                    android:scaleType="fitXY"
+                    android:visibility="visible"
+                    app:requestManager="@{requestManager}"
+                    app:imageUrl="@{viewModel.curPartType == PartType.PART_A.code ? viewModel.myImgProfile : viewModel.songMainData.pfFrImgPath}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@+id/iv_singing_part_b"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:placeholder="@{@drawable/ic_part_a}"
+                    app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+                    app:strokeColor="@color/color_00e7ff"
+                    app:strokeWidth="@dimen/size_5"
+                    tools:src="@drawable/ic_part_a" />
+
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/iv_singing_part_b"
+                    android:layout_width="@dimen/size_125"
+                    android:layout_height="@dimen/size_125"
+                    android:layout_marginLeft="@dimen/size_10"
+                    android:background="@color/color_ffa8ff"
+                    android:padding="@dimen/size_5"
+                    android:scaleType="fitXY"
+                    app:requestManager="@{requestManager}"
+                    app:imageUrl="@{viewModel.curPartType == PartType.PART_B.code ? viewModel.myImgProfile : viewModel.songMainData.pfFrImgPath}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintLeft_toRightOf="@+id/iv_singing_part_a"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:placeholder="@{@drawable/ic_part_b}"
+                    app:shapeAppearance="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+                    app:strokeColor="@color/color_ffa8ff"
+                    app:strokeWidth="@dimen/size_5"
+                    tools:src="@drawable/ic_part_b" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

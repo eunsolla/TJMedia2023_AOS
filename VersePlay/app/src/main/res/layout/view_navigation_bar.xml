@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.verse.app.contants.NaviType" />
+
+
+        <variable
+            name="bottomNaviView"
+            type="com.verse.app.ui.bottom.BottomNavigationView" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/root_constraint_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_72"
+        android:splitMotionEvents="false">
+
+        <View
+            android:id="@+id/empty_view"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_20"
+            android:background="@color/color_00000000"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/navi_body_linear_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_52"
+            android:background="@color/black"
+            android:paddingLeft="@dimen/size_20"
+            android:paddingRight="@dimen/size_20"
+            android:splitMotionEvents="false"
+            app:layout_constraintTop_toBottomOf="@+id/empty_view">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:turtleClick="@{()->bottomNaviView.onMain()}">
+
+                <ImageView
+                    android:id="@+id/main_image_view"
+                    android:layout_width="@dimen/size_20"
+                    android:layout_height="@dimen/size_20"
+                    android:src="@drawable/selector_navi_main"
+                    app:isSelected="@{bottomNaviView.selectPage == NaviType.MAIN}"
+                    app:layout_constraintBottom_toTopOf="@+id/main_text_view"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.verse.app.widget.views.CustomTextView
+                    android:id="@+id/main_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/noto_sans_kr_medium"
+                    android:includeFontPadding="false"
+                    android:text="@string/str_navi_main"
+                    android:textSize="@dimen/size_8"
+                    app:isSelected="@{bottomNaviView.selectPage == NaviType.MAIN}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/main_image_view"
+                    app:textViewBgColor="@color/color_00000000"
+                    app:textViewClickEffect="false"
+                    app:textViewDisableBgColor="@color/color_00000000"
+                    app:textViewDisableTxtColor="@color/white"
+                    app:textViewTxtColor="@color/color_00e0ff" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:turtleClick="@{()->bottomNaviView.onSingPass()}">
+
+                <ImageView
+                    android:id="@+id/sing_pass_image_view"
+                    android:layout_width="@dimen/size_20"
+                    android:layout_height="@dimen/size_20"
+                    android:src="@drawable/selector_navi_singpass"
+                    app:isSelected="@{bottomNaviView.selectPage == NaviType.SING_PASS}"
+                    app:layout_constraintBottom_toTopOf="@+id/sing_pass_text_view"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.verse.app.widget.views.CustomTextView
+                    android:id="@+id/sing_pass_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/noto_sans_kr_medium"
+                    android:includeFontPadding="false"
+                    android:text="@string/str_navi_sing_pass"
+                    android:textSize="@dimen/size_8"
+                    app:isSelected="@{bottomNaviView.selectPage == NaviType.SING_PASS}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/sing_pass_image_view"
+                    app:textViewBgColor="@color/color_00000000"
+                    app:textViewClickEffect="false"
+                    app:textViewDisableBgColor="@color/color_00000000"
+                    app:textViewDisableTxtColor="@color/white"
+                    app:textViewTxtColor="@color/color_00e0ff" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:clickable="false">
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:turtleClick="@{()->bottomNaviView.onCommunity()}">
+
+                <ImageView
+                    android:id="@+id/community_image_view"
+                    android:layout_width="@dimen/size_20"
+                    android:layout_height="@dimen/size_20"
+                    android:src="@drawable/selector_navi_comunity"
+                    app:isSelected="@{bottomNaviView.selectPage == NaviType.COMMUNITY}"
+                    app:layout_constraintBottom_toTopOf="@+id/community_text_view"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.verse.app.widget.views.CustomTextView
+                    android:id="@+id/community_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/noto_sans_kr_medium"
+                    android:includeFontPadding="false"
+                    android:text="@string/str_navi_community"
+                    android:textSize="@dimen/size_8"
+                    app:isSelected="@{bottomNaviView.selectPage == NaviType.COMMUNITY}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/community_image_view"
+                    app:textViewBgColor="@color/color_00000000"
+                    app:textViewClickEffect="false"
+                    app:textViewDisableBgColor="@color/color_00000000"
+                    app:textViewDisableTxtColor="@color/white"
+                    app:textViewTxtColor="@color/color_00e0ff" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:turtleClick="@{()->bottomNaviView.onMy()}">
+
+                <ImageView
+                    android:id="@+id/my_image_view"
+                    android:layout_width="@dimen/size_20"
+                    android:layout_height="@dimen/size_20"
+                    android:src="@drawable/selector_navi_my"
+                    app:isSelected="@{bottomNaviView.selectPage == NaviType.MY}"
+                    app:layout_constraintBottom_toTopOf="@+id/my_text_view"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.verse.app.widget.views.CustomTextView
+                    android:id="@+id/my_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/noto_sans_kr_medium"
+                    android:includeFontPadding="false"
+                    android:text="@string/str_navi_mypage"
+                    android:textSize="@dimen/size_8"
+                    app:isSelected="@{bottomNaviView.selectPage == NaviType.MY}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/my_image_view"
+                    app:textViewBgColor="@color/color_00000000"
+                    app:textViewClickEffect="false"
+                    app:textViewDisableBgColor="@color/color_00000000"
+                    app:textViewDisableTxtColor="@color/white"
+                    app:textViewTxtColor="@color/color_00e0ff" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+
+        <!-- 컨텐츠 올리기 UI -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="@dimen/size_56"
+            android:layout_height="@dimen/size_56"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:turtleClick="@{()->bottomNaviView.onSing()}">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivSingPlus"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_menu_making" />
+
+            <ProgressBar
+                android:id="@+id/pbUpload"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:indeterminate="false"
+                android:max="100"
+                android:progressDrawable="@drawable/circle_progressbar"
+                android:visibility="gone"
+                tools:progress="30"
+                tools:visibility="gone" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="bottom|center_horizontal"
+                android:paddingLeft="@dimen/size_5"
+                android:paddingRight="@dimen/size_5"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:visibility="gone">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvUpload"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:autoSizeMaxTextSize="@dimen/size_17"
+                    android:autoSizeMinTextSize="@dimen/size_5"
+                    android:autoSizeTextType="uniform"
+                    android:fontFamily="@font/font_noto_sans_kr_bold"
+                    android:includeFontPadding="false"
+                    android:maxLines="1"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/size_17"
+                    android:visibility="gone"
+                    tools:text="99.0"
+                    tools:visibility="visible" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvUploadPercent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/font_noto_sans_kr_bold"
+                    android:includeFontPadding="false"
+                    android:text="%"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/size_9"
+                    android:visibility="gone"
+                    tools:visibility="visible" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

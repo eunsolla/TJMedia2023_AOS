@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.verse.app.contants.ListPagedItemType" />
+
+        <import type="com.verse.app.contants.LoadingDialogState" />
+
+        <variable
+            name="viewModel"
+            type="com.verse.app.ui.search.viewmodel.SearchMainViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clHeader"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_52"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clBack"
+                android:layout_width="@dimen/size_60"
+                android:layout_height="match_parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:turtleClick="@{()->viewModel.onFinish()}">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/size_10"
+                    android:layout_height="@dimen/size_18"
+                    android:src="@drawable/ic_top_arrow_left"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.verse.app.widget.views.CustomConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="@dimen/size_38"
+                android:layout_marginRight="@dimen/size_60"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/clBack"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etKeywords"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bg_search_keyword"
+                    android:fontFamily="@font/noto_sans_kr_medium"
+                    android:gravity="center_vertical"
+                    android:hint="@string/search_hint"
+                    android:imeOptions="actionSearch"
+                    android:includeFontPadding="false"
+                    android:inputType="text"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:onTextChanged="@{(text,start,before,count)->viewModel.onKeyword(text.toString())}"
+                    android:paddingLeft="@dimen/size_16"
+                    android:paddingTop="8dp"
+                    android:paddingRight="@dimen/size_30"
+                    android:paddingBottom="8dp"
+                    android:text="@{viewModel.currentKeyword}"
+                    android:textColor="@color/color_222222"
+                    android:textColorHint="@color/color_adadad"
+                    android:textCursorDrawable="@drawable/search_cursor"
+                    android:textSize="@dimen/size_15"
+                    app:editNextDone="@{()->viewModel.doSearch()}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/clearKeywords"
+                    android:layout_width="@dimen/size_20"
+                    android:layout_height="@dimen/size_20"
+                    android:layout_marginRight="@dimen/size_10"
+                    android:src="@drawable/close"
+                    android:visibility="@{!viewModel.currentKeyword.empty, default = gone}"
+                    app:layout_constraintBottom_toBottomOf="@+id/etKeywords"
+                    app:layout_constraintRight_toRightOf="@+id/etKeywords"
+                    app:layout_constraintTop_toTopOf="@+id/etKeywords"
+                    app:turtleClick="@{()->viewModel.clearKeywords()}" />
+
+            </com.verse.app.widget.views.CustomConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/clHeader">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="@{viewModel.isContentsShowEvent,default=gone}"
+                tools:visibility="visible">
+
+                <!-- 최근 검색어 -->
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_12"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/size_20"
+                        android:fontFamily="@font/noto_sans_kr_medium"
+                        android:gravity="center_vertical"
+                        android:text="@string/search_recent_keywords"
+                        android:textColor="@color/color_8c8c8c"
+                        android:textSize="@dimen/size_13" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:focusable="false"
+                            android:nestedScrollingEnabled="false"
+                            android:splitMotionEvents="false"
+                            app:dataList="@{viewModel.recentKeywordList}"
+                            app:itemType="@{ListPagedItemType.ITEM_SEARCH_MAIN_RECENT_KEYWORD}"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:viewModel="@{viewModel}"
+                            tools:itemCount="3"
+                            tools:listitem="@layout/item_search_main_recent_keyword" />
+
+                        <!-- 최근 검색어가 없는 경우 화면 처리 -->
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical"
+                            android:visibility="@{viewModel.overallRecentKeywordList.size() == 0,default=gone}"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:visibility="visible">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="@dimen/size_48"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/size_50"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/search" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/font_noto_sans_kr_medium"
+                                android:src="@drawable/search"
+                                android:textSize="@dimen/size_18"
+                                android:text="@string/search_recent_keywords_empty"
+                                android:textColor="@color/color_707070" />
+
+                            <androidx.legacy.widget.Space
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/size_20" />
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/size_48"
+                        android:fontFamily="@font/font_noto_sans_kr_medium"
+                        android:gravity="center"
+                        android:text="@string/search_recent_keyword_view_detail"
+                        android:textColor="@color/color_707070"
+                        android:textSize="@dimen/size_13"
+                        android:visibility="@{viewModel.isShowRecentOverall,default=gone}"
+                        app:turtleClick="@{()->viewModel.onShowRecentOverall()}"
+                        tools:visibility="visible" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/size_48"
+                        android:fontFamily="@font/font_noto_sans_kr_medium"
+                        android:gravity="center"
+                        android:text="@string/search_recent_keyword_all_dekete"
+                        android:textColor="@color/color_707070"
+                        android:textSize="@dimen/size_13"
+                        android:visibility="@{viewModel.isRecentKeywordClear,default=gone}"
+                        app:turtleClick="@{()->viewModel.onAllRecentDelete()}"
+                        tools:visibility="visible" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <!-- 인기 검색어 -->
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_12"
+                    android:orientation="vertical"
+                    android:visibility="@{viewModel.popularList.size() > 0,default=gone}"
+                    tools:visibility="visible">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/size_20"
+                        android:fontFamily="@font/font_noto_sans_kr_medium"
+                        android:text="@string/search_popular_keyword"
+                        android:textColor="@color/color_8c8c8c"
+                        android:textSize="@dimen/size_13" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clipToPadding="false"
+                        android:focusable="false"
+                        android:orientation="horizontal"
+                        android:paddingLeft="20dp"
+                        android:splitMotionEvents="false"
+                        app:dataList="@{viewModel.popularList}"
+                        app:itemType="@{ListPagedItemType.ITEM_SEARCH_KEYWORD_POPULAR}"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:viewModel="@{viewModel}"
+                        tools:listitem="@layout/item_search_keyword_popular" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <!-- 지금 사랑 받는 노래 -->
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_36"
+                    android:orientation="vertical"
+                    android:visibility="@{viewModel.nowLoveSongList.size() > 0,default=gone}"
+                    tools:visibility="visible">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:fontFamily="@font/font_noto_sans_kr_medium"
+                        android:text="@string/search_main_title_beloved_song"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/size_18" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clipToPadding="false"
+                        android:orientation="horizontal"
+                        android:paddingLeft="20dp"
+                        app:dataList="@{viewModel.nowLoveSongList}"
+                        app:itemType="@{ListPagedItemType.ITEM_SEARCH_LOVELY_SONG}"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:viewModel="@{viewModel}"
+                        tools:itemCount="5"
+                        tools:listitem="@layout/item_search_lovely_song" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.legacy.widget.Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/size_21" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

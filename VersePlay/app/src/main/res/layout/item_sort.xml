@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.verse.app.ui.dialogfragment.SortDialogFragment.SortUiModel" />
+    </data>
+
+    <com.verse.app.widget.views.CustomTextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_52"
+        android:fontFamily="@font/font_noto_sans_kr_medium"
+        android:gravity="center"
+        android:text="@{data.title}"
+        android:textSize="@dimen/size_18"
+        app:isSelected="@{data.selected}"
+        app:textViewBgColor="@color/color_2fc2ff"
+        app:textViewCorner="@dimen/size_10"
+        app:textViewDisableBgColor="@color/color_eaeaea"
+        app:textViewDisableCorner="@dimen/size_10"
+        app:textViewDisableTxtColor="@color/color_8c8c8c"
+        app:textViewTxtColor="@color/white"
+        tools:text="콘텐츠" />
+
+</layout>
